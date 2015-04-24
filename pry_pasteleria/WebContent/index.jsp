@@ -9,5 +9,12 @@
 </head>
 <body>
 <s:textfield label="Greet " name="mensaje"/>
+
+<s:select list="estados" 
+headerKey="0" headerValue="--Seleccione--" 
+listKey="id" listValue="descripcion" >
+
+</s:select>
+
 </body>
 </html>

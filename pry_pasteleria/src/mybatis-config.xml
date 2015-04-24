@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<properties resource="infoSql.properties"/>
 	
 	<typeAliases>
-		<typeAlias alias="status" type="com.pasteleria.bean.StatusBean.java" />
+		<typeAlias alias="status" 
+		type="com.pasteleria.bean.StatusBean" />
 	</typeAliases>
 	
 	<environments default="development">
