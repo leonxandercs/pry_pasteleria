@@ -1,4 +1,4 @@
-package com.pasteleria.daofactory;
+package com.pasteleria.daos;
 
 import java.io.Reader;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 import com.pasteleria.bean.StatusBean;
+import com.pasteleria.interfaces.StatusDAO;
 
 public class SqlServerStatusDAO implements StatusDAO {
 	

@@ -7,18 +7,23 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class NavbarBean implements Serializable{
 
-private int idmenu;
+private int idMenu;
+private String descripcion;
 private String url;
 private int padre;
-private String perfil;
-private String descripcion;
 private String icono;
 
-public int getIdmenu() {
-	return idmenu;
+public int getIdMenu() {
+	return idMenu;
 }
-public void setIdmenu(int idmenu) {
-	this.idmenu = idmenu;
+public void setIdMenu(int idMenu) {
+	this.idMenu = idMenu;
+}
+public String getDescripcion() {
+	return descripcion;
+}
+public void setDescripcion(String descripcion) {
+	this.descripcion = descripcion;
 }
 public String getUrl() {
 	return url;
@@ -32,24 +37,13 @@ public int getPadre() {
 public void setPadre(int padre) {
 	this.padre = padre;
 }
-public String getPerfil() {
-	return perfil;
-}
-public void setPerfil(String perfil) {
-	this.perfil = perfil;
-}
-public String getDescripcion() {
-	return descripcion;
-}
-public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
-}
 public String getIcono() {
 	return icono;
 }
 public void setIcono(String icono) {
 	this.icono = icono;
 }
+
 
 
 

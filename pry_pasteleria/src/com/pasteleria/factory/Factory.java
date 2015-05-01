@@ -1,4 +1,7 @@
-package com.pasteleria.daofactory;
+package com.pasteleria.factory;
+
+import com.pasteleria.interfaces.NavbarDAO;
+import com.pasteleria.interfaces.StatusDAO;
 
 public abstract class Factory {
 	
@@ -6,6 +9,7 @@ public abstract class Factory {
 	public static final int TIPO_MYSQL=1;
 	
 	public abstract StatusDAO getStatusDAO();
+	public abstract NavbarDAO getNavbarDAO();
 	
 	
 	public static Factory  getTipo(int tipo){

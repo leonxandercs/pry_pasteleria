@@ -7,14 +7,14 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class RolBean  implements Serializable{
 	
-	private int id;
+	private int idRol;
 	private String descripcion;
 	
-	public int getId() {
-		return id;
+	public int getIdRol() {
+		return idRol;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdRol(int idRol) {
+		this.idRol = idRol;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -22,5 +22,7 @@ public class RolBean  implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	
 
 }

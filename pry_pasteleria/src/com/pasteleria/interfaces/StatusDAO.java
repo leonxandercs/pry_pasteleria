@@ -1,4 +1,4 @@
-package com.pasteleria.daofactory;
+package com.pasteleria.interfaces;
 
 import java.util.List;
 

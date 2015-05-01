@@ -7,8 +7,8 @@ import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.pasteleria.bean.StatusBean;
-import com.pasteleria.daofactory.Factory;
-import com.pasteleria.daofactory.StatusDAO;
+import com.pasteleria.factory.Factory;
+import com.pasteleria.interfaces.StatusDAO;
 
 @SuppressWarnings("serial")
 public class TestAction extends ActionSupport {
