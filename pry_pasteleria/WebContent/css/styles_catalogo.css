@@ -25,3 +25,20 @@ body {
   font-size: 12px;
 }
 
+#myModal input[type='number']{
+  width:50px;
+}
+.alex{
+ /* background-color: #BF4D4D;*/
+  display: inline-block;
+  float: left;
+}
+.alexito{
+  clear: left;
+  margin-top: 2em;
+}
+
+#fecha{
+  font-size:12px;
+  height:35px;
+}}
