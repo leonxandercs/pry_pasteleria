@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.pasteleria.bean.NavbarBean;
 import com.pasteleria.interfaces.NavbarDAO;
-
+/**
+ * 
+ * @author Pantera
+ *
+ */
 public class SqlServerNavbarDAO implements NavbarDAO {
 
 	@Override
