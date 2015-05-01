@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Validación de Formularios con Animación</title>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" media="all" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:300,500" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" media="all" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  </head>
+  <body>
+
+    
+    <div class="wrapper">
+      <div class="form-header">
+        <div class="logo">
+        </div>
+        <h1>TORTAS ENCANTADAS</h1>
+      </div>
+      <form class="form animate-form" id="form" onsubmit="return false;">
+        <!-- 
+        <div class="form-group has-feedback">
+          <label class="control-label sr-only" for="username">Nombre de Usuario</label>
+          <div class="input-group-addon">
+            <div class="glyphicon glyphicon-user"></div>
+          </div>
+          <input class="form-control" id="username" name="username" placeholder="Nombre de Usuario" type="text">
+          <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        </div>
+        -->
+      </br></br>
+        <div class="form-group has-feedback">
+          <label class="control-label sr-only" for="email">Correo Electrónico</label>
+          <div class="input-group-addon">
+            <div class="glyphicon glyphicon-envelope"></div>
+          </div>
+          <input class="form-control" id="email" name="email" placeholder="Correo Electrónico" type="text"><span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <label class="control-label sr-only" for="password">Contraseña</label>
+          <div class="input-group-addon">
+            <div class="glyphicon glyphicon-lock"></div>
+          </div>
+          <input class="form-control" id="password" name="password" placeholder="Contraseña" type="password">
+          <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        </div>
+        <div style="text-align:left;height:0px;">
+          &nbsp;
+          <a href="singup.html">Olvidaste tu clave?</a>&nbsp;
+          <a href="singup.html">Registrate</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;
+          
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="form-group submit">
+          <input class="btn btn-lg" type="submit" value="ENVIAR">
+        </div>
+      </form>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.validation.js"></script>
+    <script src="js/messages_es.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

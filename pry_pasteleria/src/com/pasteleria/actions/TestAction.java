@@ -16,12 +16,12 @@ public class TestAction extends ActionSupport {
 	private String mensaje;
 	private List<StatusBean> estados;
 
-	@Action(value = "Greet", results = { @Result(name = "success", location = "/index.jsp") })
+	@Action(value = "Greet", results = { @Result(name = "success", location = "/test.jsp") })
 	public String accion() {
 		return SUCCESS;
 	}
 
-	@Action(value = "ListStatus", results = { @Result(name = "success", location = "/index.jsp") })
+	@Action(value = "ListStatus", results = { @Result(name = "success", location = "/test.jsp") })
 	public String getListStatus() {
 		Factory factory = Factory.getTipo(Factory.TIPO_SQLSERVER);
 		StatusDAO dao = factory.getStatusDAO();
