@@ -2,7 +2,10 @@ package com.pasteleria.daos;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.pasteleria.bean.NavbarBean;
+import com.pasteleria.factory.SqlServerFactory;
 import com.pasteleria.interfaces.NavbarDAO;
 /**
  * 
@@ -10,6 +13,8 @@ import com.pasteleria.interfaces.NavbarDAO;
  *
  */
 public class SqlServerNavbarDAO implements NavbarDAO {
+	
+	SqlSession session=SqlServerFactory.SQL_SESSION_FACTORY.openSession();
 
 	@Override
 	public List<NavbarBean> getNavbar(int rol) {

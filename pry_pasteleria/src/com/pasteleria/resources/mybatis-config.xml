@@ -5,11 +5,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <configuration>
 
-	<properties resource="infoSql.properties"/>
+	<properties resource="com/pasteleria/resources/infoSql.properties"/>
 	
 	<typeAliases>
 		<typeAlias alias="status" 
-		type="com.pasteleria.bean.StatusBean" />
+			type="com.pasteleria.bean.StatusBean" />
+		<typeAlias alias="navbar" 
+			type="com.pasteleria.bean.NavbarBean"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -26,7 +28,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 	<!-- Registro de los mappers -->
 	<mappers>
-		<mapper resource="com/pasteleria/xml/StatusXML.xml"/>
+		<mapper resource="com/pasteleria/mappers/StatusXML.xml"/>
+		<mapper resource="com/pasteleria/mappers/NavbarXML.xml"/>
 	</mappers>
 
 </configuration>

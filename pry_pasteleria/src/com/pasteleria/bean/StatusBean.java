@@ -9,14 +9,14 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class StatusBean implements Serializable {
 
-	private int id;
+	private int idEstado;
 	private String descripcion;
 	
-	public int getId() {
-		return id;
+	public int getIdEstado() {
+		return idEstado;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdEstado(int idEstado) {
+		this.idEstado = idEstado;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -24,5 +24,5 @@ public class StatusBean implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
 }

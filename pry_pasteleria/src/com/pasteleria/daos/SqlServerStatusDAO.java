@@ -1,33 +1,19 @@
 package com.pasteleria.daos;
 
-import java.io.Reader;
+
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 import com.pasteleria.bean.StatusBean;
+import com.pasteleria.factory.SqlServerFactory;
 import com.pasteleria.interfaces.StatusDAO;
 
 public class SqlServerStatusDAO implements StatusDAO {
 	
-	SqlSessionFactory FACTORY=null;
+	SqlSessionFactory FACTORY=SqlServerFactory.SQL_SESSION_FACTORY;
 	
-	{
-		try 
-		{
-			Reader reader=Resources.getResourceAsReader("mybatis-config.xml");
-			FACTORY=new SqlSessionFactoryBuilder().build(reader);
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override

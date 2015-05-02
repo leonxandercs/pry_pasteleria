@@ -12,7 +12,7 @@
 
 <s:select list="estados" 
 headerKey="0" headerValue="--Seleccione--" 
-listKey="id" listValue="descripcion" >
+listKey="idEstado" listValue="descripcion" >
 
 </s:select>
 

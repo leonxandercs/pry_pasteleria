@@ -7,8 +7,7 @@ import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.pasteleria.bean.StatusBean;
-import com.pasteleria.factory.Factory;
-import com.pasteleria.interfaces.StatusDAO;
+import com.pasteleria.service.StatusImplement;
 
 @SuppressWarnings("serial")
 public class TestAction extends ActionSupport {
@@ -23,9 +22,9 @@ public class TestAction extends ActionSupport {
 
 	@Action(value = "ListStatus", results = { @Result(name = "success", location = "/test.jsp") })
 	public String getListStatus() {
-		Factory factory = Factory.getTipo(Factory.TIPO_SQLSERVER);
-		StatusDAO dao = factory.getStatusDAO();
-		estados = dao.list();
+		StatusImplement statusImplement=new StatusImplement();
+		estados =statusImplement.list();
+		mensaje="Hellow Panther";
 		return SUCCESS;
 	}
 
