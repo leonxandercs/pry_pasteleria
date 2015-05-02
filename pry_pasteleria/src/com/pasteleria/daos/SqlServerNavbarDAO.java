@@ -34,10 +34,19 @@ public class SqlServerNavbarDAO implements NavbarDAO {
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<NavbarBean> getNavbarChildren(int father) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		SqlSession session=FACTORY.openSession();
+		List<NavbarBean> list=null;
+		try {
+			list=session.selectList("navbarxml.sql_select_children",father);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }

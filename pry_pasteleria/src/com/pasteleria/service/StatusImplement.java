@@ -15,6 +15,8 @@ public class StatusImplement implements StatusDAO{
 	Factory factory=Factory.getTipo(Factory.TIPO_SQLSERVER);
 	StatusDAO dao=factory.getStatusDAO();
 
+	
+	
 	@Override
 	public List<StatusBean> list() {
 		return dao.list();
