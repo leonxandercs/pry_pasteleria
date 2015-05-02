@@ -22,4 +22,5 @@ public class StatusImplement implements StatusDAO{
 		return dao.list();
 	}
 
+	
 }

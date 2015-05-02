@@ -3,6 +3,7 @@ package com.pasteleria.service;
 import java.util.List;
 
 import com.pasteleria.bean.NavbarBean;
+import com.pasteleria.daos.SqlServerNavbarDAO;
 import com.pasteleria.factory.Factory;
 import com.pasteleria.interfaces.NavbarDAO;
 /**
@@ -22,8 +23,18 @@ public class NavbarImplement implements NavbarDAO{
 	}
 
 	@Override
-	public List<NavbarBean> getNavbarChildren(int father) {
-		return dao.getNavbarChildren(father);
+	public List<NavbarBean> getNavbarChildren(int rol,int father) {
+		return dao.getNavbarChildren(rol,father);
 	}
 	
+	@Override
+	public String getNavBarWithRol(int rol) {
+		return dao.getNavBarWithRol(rol);
+	}
+	
+	
+	public static void main(String[] args) {
+		String esperanza=new NavbarImplement().getNavBarWithRol(1);
+		System.out.println(esperanza);
+	}
 }

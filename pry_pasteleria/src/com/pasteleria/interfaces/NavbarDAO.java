@@ -12,7 +12,7 @@ import com.pasteleria.bean.NavbarBean;
 public interface NavbarDAO {
 
 	List<NavbarBean> getNavbar(int rol);
-	List<NavbarBean> getNavbarChildren(int father);
-	
+	List<NavbarBean> getNavbarChildren(int rol,int father);
+	String getNavBarWithRol(int rol);
 	
 }
