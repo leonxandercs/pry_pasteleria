@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="navbarxml">
 
  <select id="sql_select_fathers" resultType="navbar" parameterType="int" statementType="CALLABLE">
- 	exec sp_getMenuPadre 1
+ 	exec sp_getMenuPadre #{rol}
  </select>
 
 </mapper>

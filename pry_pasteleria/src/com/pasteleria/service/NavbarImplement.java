@@ -26,5 +26,13 @@ public class NavbarImplement implements NavbarDAO{
 		return dao.getNavbarChildren(father);
 	}
 	
-
+	public static void main(String[] args) {
+		
+		List<NavbarBean> list=new NavbarImplement().getNavbar(1);
+		for (NavbarBean temp : list) {
+			System.out.println(temp.getIdMenu());
+			System.out.println(temp.getDescripcion());
+		}
+		
+	}
 }
