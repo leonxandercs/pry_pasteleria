@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Definimos la plantilla principal de la aplicacion -->
+	
+	<definition name="layaout" template="/templates/layaout.jsp">
+		<put-attribute name="baner" value="/templates/baner.jsp"/>		
+		<put-attribute name="menu" value="/templates/menu.jsp"/>
+	</definition>	
+	
+	<!-- 
+	<definition name="menu" template="/templates/plantilla03.jsp">
+		<put-attribute name="cabecera" value="/templates/cabecera.jsp"/>				
+		<put-attribute name="pie" value="/templates/pie.jsp"/>
+	</definition>
+	 -->
+	<!-- LOS SIGUIENTE TILES SON LOS QUE SE UTILIZAN -->
+		
+		
+		
+	<definition name="login" extends="layaout">
+		<put-attribute name="body" value="/templates/login.jsp"/>		
+	</definition>	
+
+	
+	
+</tiles-definitions>
+
+
+

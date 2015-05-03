@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -79,7 +82,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li class=""><a href="catalogo.html">Catalogo de Productos<span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="catalogo.jsp">Catalogo de Productos<span class="sr-only">(current)</span></a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tortas Especiales<span class="caret"></span></a>
@@ -93,14 +96,14 @@
             <li><a href="#">Cumpleaños</a></li>
           </ul>
         </li>
-        <li class="active"><a href="armatutorta.html">Arma tu Torta</a></li>
+        <li class="active"><a href="armatutorta.jsp">Arma tu Torta</a></li>
         <li><a href="#">Ofertas</a></li>
-        <li class=""><a href="seguimiento.html">Seguimiento Pedidos</a></li>
+        <li class=""><a href="seguimiento.jsp">Seguimiento Pedidos</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="carrito.html"><strong>Mi Carrito</strong>&nbsp;<span class="glyphicon glyphicon-shopping-cart"/></a>
+          <a href="carrito.jsp"><strong>Mi Carrito</strong>&nbsp;<span class="glyphicon glyphicon-shopping-cart"/></a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mi Cuenta&nbsp;<span class="glyphicon glyphicon-cog"></span></a>

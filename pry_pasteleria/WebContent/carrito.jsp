@@ -1,13 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <title>Catlálogo de Productos</title>
+    <title>Carrito de Compras</title>
     <link href="css/bootstrap.min.css" media="all" rel="stylesheet">
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" media="all" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Raleway:300,500" rel="stylesheet" type="text/css">
-    <link href="css/styles_account.css" media="all" rel="stylesheet">
+    <link href="css/styles.css" media="all" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
@@ -53,6 +56,10 @@
 </div>
 
 
+
+
+
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -67,7 +74,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li><a href="catalogo.html">Catalogo de Productos<span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="catalogo.html">Catalogo de Productos<span class="sr-only">(current)</span></a></li>
+        
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tortas Especiales<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -86,10 +94,10 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
+        <li class="active">
           <a href="carrito.html"><strong>Mi Carrito</strong>&nbsp;<span class="glyphicon glyphicon-shopping-cart"/></a>
         </li>
-        <li class="active dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mi Cuenta&nbsp;<span class="glyphicon glyphicon-cog"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Mi Perfil</a></li>
@@ -103,104 +111,103 @@
   </div>
 </nav>
 
-<div id="contenedor" width="100%">
-<table width="800px">
-  <tr>
-      <td width="400">
-  <!------------------------------------------------ -->
-          <div style="text-align:left;margin-left:20px;">
-             <h1>
-              <strong style="color:#954F9A;">Bienvenido a Tortas Encantada</strong>
-             </h1>
-                <h3>Crear una cuenta en menos de un minuto</h3>
-                  ¿Es su primer pedido?
-                  Aprovechese de las ventajas de Tortas Encantada al 
-                  &nbsp;<a href="singup.html">Crear una cuenta</a> .
-                </br>
-                  <h1> </h1>
-                </br>
-          </div>
-  <!------------------------------------------------ -->
-      </td>
-    <td width="300px">
-        <div class="wrapper" id="colum2">
-          <form class="form animate-form" id="form" onsubmit="return false;">
-            <div class="form-header">
-              <h1>INICIE SESIÓN</h1>
-            </div>
-            </br>
-            <div class="form-group has-feedback">
-                <label class="control-label sr-only" for="email">Correo Electrónico</label>
-                <div class="input-group-addon">
-                  <div class="glyphicon glyphicon-envelope"></div>
-                </div>
-                <input class="form-control" id="email" name="email" placeholder="Correo Electrónico" type="text"><span class="glyphicon glyphicon-ok form-control-feedback"></span>
-              </div>
-              <div class="form-group has-feedback">
-                  <label class="control-label sr-only" for="password">Contraseña</label>
-                  <div class="input-group-addon">
-                    <div class="glyphicon glyphicon-lock"></div>
-                  </div>
-                  <input class="form-control" id="password" name="password" placeholder="Contraseña" type="password">
-                  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-              </div>
-            <div style="text-align:left;height:0px;">
-              &nbsp;
-              <a href="singup.html">Olvidaste tu clave?</a>&nbsp;
-              <!--<a href="singup.html">Registrate</a>-->
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;
-              
-              &nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="form-group submit">
-              <input class="btn btn-lg" type="submit" value="ENVIAR">
-            </div>
-          </form>
-     </div>
 
+<!-- ------------------------------------------------------------- -->
 
+<div>
 
-    </td>
-  </tr>
-</table>
+<table class="table table-striped table-hover " style="margin-rigth:40px;">
+  <thead>
+    <tr class="info">
+      <th>#</th>
+      <th>Producto</th>
+      <th>Codigo</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+      <th>Subtotal</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>1</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td><input type="number" min=0></td>
+      <td>S/.40.00</td>
+      <td>S/.120.00</td>
+     <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+    </tr>
+    <tr class="info">
+      <td>2</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td><input type="number" min=0></td>
+       <td>S/.70.00</td>
+      <td>S/.140.00</td>
+       <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+    </tr>
+    <tr class="info">
+      <td>3</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td><input type="number" min=0></td>
+      <td>S/.60.00</td>
+      <td>S/.120.00</td>
+      <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+    </tr>
+    <tr class="success">
+      <td>4</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td><input type="number" min=0></td>
+      <td>S/.30.00</td>
+      <td>S/.60.00</td>
+      <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+    </tr>
+    <tr class="info">
+      <td>5</td>
+      <td>Column content</td>
+      <td>Column content</td>
+     <td><input type="number" min=0></td>
+     <td>S/.45.00</td>
+      <td>S/.45.00</td>
+      <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+          <td></td>
+         <td></td>
+          <td></td>
+          <td></td>
+         <td  class="danger"><strong>Sub Total:</strong></td>
+          <td  class="danger"><strong>S/.200.00</strong></td>
+    </tr>
+  </tfoot>
+</table> 
+
+<!-- ------------------------------------------------------------- -->
+
+<div style="text-align:right;margin-right:80px;">
+  <a href="catalogo.html" class="btn btn-primary">Agregar Productos</a>
+  <input type="submit" class="btn btn-success" value="Realizar Pedido"/>
 </div>
 
+</div>
+
+</br>
+</br>
+</br>
 
 
-<!---------------------------------------------->
+
+
+
     <script src="js/jquery-1.11.2.js"></script>
     <script src="js/jquery.validation.js"></script>
     <script src="js/messages_es.js"></script>
     <script src="js/main.js"></script>
     <script src="js/bootstrap.min.js"></script>
-     <script>
-     // A $( document ).ready() block.
-      $( document ).ready(function() {
-
-        ajustar();
-
-
-        $(window).resize( function() {
-          console.log("Cambié de tamaño");
-          ajustar();
-        } );
-
-
-         function ajustar(){
-           console.log( "ready!" );
-          var columna1=$("#filtros");
-           var alto = $("#colum2").height();
-           var ancho=$('#colum2').width();
-           columna1.height(alto);
-           //columna1.width(ancho);
-           console.log(result);
-         }
-
-      });
-    </script>
-
   </body>
 </html>

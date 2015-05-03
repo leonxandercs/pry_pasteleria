@@ -12,13 +12,17 @@ public class NavbarAction  extends ActionSupport{
 	private String navbar;
 
 	
-	@Action(value="Navbar",results={@Result(name="success",location="/menu.jsp")})
+	@Action(value="Navbar",results={@Result(name="success",location="/templates/menu.jsp")})
 	public String getMenuParent() throws Exception {
 		navbar=new NavbarImplement().getNavBarWithRol(1);
 		return SUCCESS;
 	}
 	
-
+	public String menu(){
+		navbar=new NavbarImplement().getNavBarWithRol(1);
+		return SUCCESS;
+	}
+	
 	public String getNavbar() {
 		return navbar;
 	}

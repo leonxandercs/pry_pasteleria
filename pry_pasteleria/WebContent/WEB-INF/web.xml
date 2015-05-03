@@ -5,6 +5,11 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>pry_pasteleria</display-name>
 
+	<listener>
+		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+	</listener>
+
+
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -16,6 +21,6 @@
 	</filter-mapping>
 
 	<welcome-file-list>
-		<welcome-file>catalogo.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
