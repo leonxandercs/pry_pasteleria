@@ -14,9 +14,9 @@
                   ¿Es su primer pedido?
                   Aprovechese de las ventajas de Tortas Encantada al 
                   &nbsp;<a href="singup.html">Crear una cuenta</a> .
-                </br>
+                <br></br>
                   <h1> </h1>
-                </br>
+                <br></br>
           </div>
   <!------------------------------------------------ -->
       </td>
@@ -24,22 +24,22 @@
         <div class="wrapper" id="colum2">
           <form class="form animate-form" id="form" onsubmit="return false;">
             <div class="form-header">
-              <h1>INICIE SESIÃ“N</h1>
+              <h1>INICIE SESIÓN</h1>
             </div>
-            </br>
+            <br></br>
             <div class="form-group has-feedback">
                 <label class="control-label sr-only" for="email">Correo Electrónico</label>
                 <div class="input-group-addon">
                   <div class="glyphicon glyphicon-envelope"></div>
                 </div>
-                <input class="form-control" id="email" name="email" placeholder="Correo ElectrÃ³nico" type="text"><span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                <input class="form-control" id="email" name="email" placeholder="Correo Electrónico" type="text"><span class="glyphicon glyphicon-ok form-control-feedback"></span>
               </div>
               <div class="form-group has-feedback">
                   <label class="control-label sr-only" for="password">Contraseña</label>
                   <div class="input-group-addon">
                     <div class="glyphicon glyphicon-lock"></div>
                   </div>
-                  <input class="form-control" id="password" name="password" placeholder="ContraseÃ±a" type="password">
+                  <input class="form-control" id="password" name="password" placeholder="Contraseña" type="password">
                   <span class="glyphicon glyphicon-ok form-control-feedback"></span>
               </div>
             <div style="text-align:left;height:0px;">
