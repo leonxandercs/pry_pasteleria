@@ -9,6 +9,8 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     
+    <title><tiles:insertAttribute name="title" ignore="true" /></title>
+    
     <link href="css/bootstrap.min.css" media="all" rel="stylesheet">
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" media="all" rel="stylesheet">
@@ -21,7 +23,6 @@
     
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
-
 
 
 </head>

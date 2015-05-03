@@ -1,6 +1,4 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
-
-<link href="css/styles.css" media="all" rel="stylesheet">
    
 <div>
 <table>

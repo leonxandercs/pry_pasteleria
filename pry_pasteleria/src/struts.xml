@@ -28,6 +28,10 @@
 		<result name="success"  type="tiles">armar</result>
 	</action>
 	
+	<action name="carrito" class="com.pasteleria.actions.NavbarAction" method="menu">
+		<result name="success"  type="tiles">carrito</result>
+	</action>
+	
 	</package>
 
 </struts>
