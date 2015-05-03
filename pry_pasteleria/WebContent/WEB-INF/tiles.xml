@@ -11,7 +11,7 @@
 	<definition name="layaout" template="/templates/layaout.jsp">
 		<put-attribute name="baner" value="/templates/baner.jsp"/>		
 		<put-attribute name="menu" value="/templates/menu.jsp"/>
-		<put-attribute name="body" value="/templates/login.jsp"/>
+		<put-attribute name="body" value="/pages/login.jsp"/>
 	</definition>	
 	
 	<!-- 
