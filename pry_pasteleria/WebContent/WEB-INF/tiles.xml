@@ -34,6 +34,10 @@
 		<put-attribute name="body" value="/pages/seguimiento.jsp"/>
 	</definition>
 	
+	<definition name="armar" extends="layaout">
+		<put-attribute name="body" value="/pages/armatutorta.jsp"/>
+	</definition>
+	
 </tiles-definitions>
 
 

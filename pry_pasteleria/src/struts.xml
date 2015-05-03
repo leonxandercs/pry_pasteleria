@@ -24,6 +24,9 @@
 		<result name="success"  type="tiles">seguimiento</result>
 	</action>
 	
+	<action name="armar" class="com.pasteleria.actions.NavbarAction" method="menu">
+		<result name="success"  type="tiles">armar</result>
+	</action>
 	
 	</package>
 
