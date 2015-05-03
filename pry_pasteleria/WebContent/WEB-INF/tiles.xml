@@ -8,11 +8,11 @@
 
 	<!-- Definimos la plantilla principal de la aplicacion -->
 	
-	<definition name="layaout" template="/templates/layaout.jsp">
+	<definition name="layout" template="/templates/layout.jsp">
 		<put-attribute name="title" value="Template"/>
 		<put-attribute name="baner" value="/templates/baner.jsp"/>		
 		<put-attribute name="menu"  value="/templates/menu.jsp"/>
-		<put-attribute name="body"  value="/pages/login.jsp"/>
+		<put-attribute name="body"  value="/security/login.jsp"/>
 	</definition>	
 	
 	<!-- 
@@ -23,30 +23,36 @@
 	 -->
 	<!-- LOS SIGUIENTE TILES SON LOS QUE SE UTILIZAN -->
 				
-	<definition name="login" extends="layaout">
+	<definition name="login" extends="layout">
 		<put-attribute name="title"  value="Login"/>
-		<put-attribute name="body" value="/pages/login.jsp"/>		
+		<put-attribute name="body"   value="/security/login.jsp"/>		
 	</definition>	
 	
-	<definition name="catalogo" extends="layaout">
+	<definition name="singup" extends="layout">
+		<put-attribute name="title" value="Registro de Cliente"/>
+		<put-attribute name="body"  value="/security/singup.jsp"/>
+	</definition>
+	
+	<definition name="catalogo" extends="layout">
 		<put-attribute name="title"  value="Catalogo de Tortas"/>
-		<put-attribute name="body" value="/pages/catalogo.jsp"/>		
+		<put-attribute name="body"   value="/pages/catalogo.jsp"/>		
 	</definition>	
 	
-	<definition name="seguimiento" extends="layaout">
+	<definition name="seguimiento" extends="layout">
 		<put-attribute name="title"  value="Seguimiento Pedidos"/>
-		<put-attribute name="body" value="/pages/seguimiento.jsp"/>
+		<put-attribute name="body" 	 value="/pages/seguimiento.jsp"/>
 	</definition>
 	
-	<definition name="armar" extends="layaout">
+	<definition name="armar" extends="layout">
 		<put-attribute name="title"  value="Arma tu Torta"/>
-		<put-attribute name="body" value="/pages/armatutorta.jsp"/>
+		<put-attribute name="body"   value="/pages/armatutorta.jsp"/>
 	</definition>
 	
-	<definition name="carrito" extends="layaout">
+	<definition name="carrito" extends="layout">
 		<put-attribute name="title"  value="Carrito de Compras"/>
-		<put-attribute name="body" value="/pages/carrito.jsp"/>
+		<put-attribute name="body"   value="/pages/carrito.jsp"/>
 	</definition>
+	
 	
 </tiles-definitions>
 

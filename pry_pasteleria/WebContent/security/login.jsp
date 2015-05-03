@@ -13,7 +13,7 @@
                 <h3>Crear una cuenta en menos de un minuto</h3>
                   ¿Es su primer pedido?
                   Aprovechese de las ventajas de Tortas Encantada al 
-                  &nbsp;<a href="singup.html">Crear una cuenta</a> .
+                  &nbsp;<a href="singup.action">Crear una cuenta</a> .
                 <br></br>
                   <h1> </h1>
                 <br></br>
@@ -44,7 +44,7 @@
               </div>
             <div style="text-align:left;height:0px;">
               &nbsp;
-              <a href="singup.html">Olvidaste tu clave?</a>&nbsp;
+              <a href="singup.action">Olvidaste tu clave?</a>&nbsp;
               <!--<a href="singup.html">Registrate</a>-->
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -8,8 +8,8 @@
 	<package name="pry_pasteleria" namespace="/"			
 			extends="struts-default,json-default,tiles-default">
 
-	<action name="layaout" class="com.pasteleria.actions.NavbarAction" method="menu">
-		<result name="success"  type="tiles">layaout</result>
+	<action name="layout" class="com.pasteleria.actions.NavbarAction" method="menu">
+		<result name="success"  type="tiles">layout</result>
 	</action>
 	
 	<action name="login" class="com.pasteleria.actions.NavbarAction" method="menu">
@@ -30,6 +30,10 @@
 	
 	<action name="carrito" class="com.pasteleria.actions.NavbarAction" method="menu">
 		<result name="success"  type="tiles">carrito</result>
+	</action>
+	
+	<action name="singup" class="com.pasteleria.actions.NavbarAction" method="menu">
+		<result name="success"  type="tiles">singup</result>
 	</action>
 	
 	</package>

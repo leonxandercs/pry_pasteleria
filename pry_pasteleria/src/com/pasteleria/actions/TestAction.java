@@ -15,12 +15,12 @@ public class TestAction extends ActionSupport {
 	private String mensaje;
 	private List<StatusBean> estados;
 
-	@Action(value = "Greet", results = { @Result(name = "success", location = "/test.jsp") })
+	@Action(value = "Greet", results = { @Result(name = "success", location = "/dashboard/test.jsp") })
 	public String accion() {
 		return SUCCESS;
 	}
 
-	@Action(value = "ListStatus", results = { @Result(name = "success", location = "/test.jsp") })
+	@Action(value = "ListStatus", results = { @Result(name = "success", location = "/dashboard/test.jsp") })
 	public String getListStatus() {
 		StatusImplement statusImplement=new StatusImplement();
 		estados =statusImplement.list();
