@@ -56,10 +56,10 @@
     	  
    	   var patron = /^\d*$/;        
        var subtotal=$("#price");
-       var d=new Date();
-       var month = d.getMonth()+1;
-       var day = d.getDate();
-       var year=d.getFullYear();
+       var date=new Date();
+       var month = date.getMonth()+1;
+       var day = date.getDate();
+       var year=date.getFullYear();
 
        ajustar();
 
@@ -87,11 +87,11 @@
 
      $('.input-group.date').datepicker({
            language: "es",
+           startDate: date,
            datesDisabled:[
                            day+'/'+month+'/'+year,
                            day+1+'/'+month+'/'+year
-                         ]
-                
+                         ]                     
        });
 
      $("#myModal input[type=number]").change(function(){

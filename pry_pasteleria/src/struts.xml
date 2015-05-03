@@ -20,6 +20,10 @@
 		<result name="success"  type="tiles">catalogo</result>
 	</action>
 	
+	<action name="seguimiento" class="com.pasteleria.actions.NavbarAction" method="menu">
+		<result name="success"  type="tiles">seguimiento</result>
+	</action>
+	
 	
 	</package>
 

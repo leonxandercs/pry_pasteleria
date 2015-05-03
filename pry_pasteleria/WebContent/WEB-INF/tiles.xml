@@ -30,6 +30,9 @@
 		<put-attribute name="body" value="/pages/catalogo.jsp"/>		
 	</definition>	
 	
+	<definition name="seguimiento" extends="layaout">
+		<put-attribute name="body" value="/pages/seguimiento.jsp"/>
+	</definition>
 	
 </tiles-definitions>
 
