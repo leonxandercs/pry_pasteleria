@@ -5,19 +5,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    
     <link href="css/bootstrap.min.css" media="all" rel="stylesheet">
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" media="all" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Raleway:300,500" rel="stylesheet" type="text/css">
 
+	 <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.standalone.css">
+	
 	
     <link href="css/styles_catalogo.css" media="all" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+
+
 </head>
 <body>
 
@@ -47,17 +53,99 @@
      <script>
      // A $( document ).ready() block.
       $( document ).ready(function() {
+    	  
+   	   var patron = /^\d*$/;        
+       var subtotal=$("#price");
+       var d=new Date();
+       var month = d.getMonth()+1;
+       var day = d.getDate();
+       var year=d.getFullYear();
 
-        ajustar();
+       ajustar();
 
 
-        $(window).resize( function() {
-          console.log("Cambie de tamaño");
-          ajustar();
-        } );
+       $(window).resize( function() {
+         console.log("Cambie de tamaño");
+         ajustar();
+       } );
+	
+       function ajustar(){
+           console.log( "ready!" );
+           var columna1=$("#filtros");
+           var result = $("#rowcatalogo").height();
+           columna1.height(result);
+           console.log(result);
+         }
+	  
 
+       $(".caption p a").click(function(){
+         var modal=$("#myModal");
+         updateModal(this);
+         modal.modal('show');
+       });
+
+
+     $('.input-group.date').datepicker({
+           language: "es",
+           datesDisabled:[
+                           day+'/'+month+'/'+year,
+                           day+1+'/'+month+'/'+year
+                         ]
+                
+       });
+
+     $("#myModal input[type=number]").change(function(){
+           var number=this.value*60;
+           if (validatenumber()) {
+             subtotal.text(number);
+           };
+      });
 		
-     
+
+     /* $("#myModal input[type=number]").keydown(function(){
+         if (!patron.test(this.value)) {
+           alert('numero invalido,no se permite decimales ni negativos');
+         }
+      });*/
+      
+      function validatenumber(){
+       $("#myModal input[type=number]").keyup(function(){
+         if (!patron.test(this.value)) {
+           alert('numero invalido,no se permite decimales ni negativos');
+           this.value=1;
+           subtotal.text(60);
+           console.log('mensaje:keyup');
+           return false;
+         }
+        // return true;
+      });
+       return true;
+      }
+      
+      function updateModal(elemento){
+          var imagen=$("#myModal .modal-body img");
+          var title=$("#myModal h3");
+          getImageSelected(elemento,imagen,title);
+        }
+      
+
+      function getImageSelected(elemento,imagen,titulo){
+        var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
+
+        var titleFather=$(elemento).parent("p").parent(".caption").find('h3').text();
+
+        var img=$(father).find('img').clone();
+
+        $(imagen).replaceWith(img);
+
+        console.log('titulo antes: '+ $(titulo).text());
+
+        $(titulo).text(titleFather);
+
+        console.log('titulo despues: '+titleFather);
+      }
+      
+      
 
       });
     </script>
