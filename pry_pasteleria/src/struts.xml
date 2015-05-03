@@ -12,7 +12,13 @@
 		<result name="success"  type="tiles">layaout</result>
 	</action>
 	
+	<action name="login" class="com.pasteleria.actions.NavbarAction" method="menu">
+		<result name="success"  type="tiles">login</result>
+	</action>
 	
+	<action name="catalogo" class="com.pasteleria.actions.NavbarAction" method="menu">
+		<result name="success"  type="tiles">catalogo</result>
+	</action>
 	
 	
 	</package>

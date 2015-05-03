@@ -1,5 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
-
+<link href="css/styles_account.css" media="all" rel="stylesheet">
+    
 <div id="contenedor" width="100%">
 <table width="800px">
   <tr>

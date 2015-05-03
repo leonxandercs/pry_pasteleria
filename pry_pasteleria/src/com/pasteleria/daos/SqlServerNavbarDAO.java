@@ -69,7 +69,7 @@ public class SqlServerNavbarDAO implements NavbarDAO {
 					sb.append(rb.getString("styleParentOpen")+menuBean.getDescripcion()+rb.getString("styleParentClose"));
 					sb.append("<ul class=\"dropdown-menu\" role=\"menu\">");
 					for (NavbarBean menuBean2 : submenu) {
-						sb.append("<li><a href="+menuBean2.getUrl()+">"+menuBean2.getDescripcion()+"</a></li>");
+						sb.append("<li><a action="+menuBean2.getUrl()+">"+menuBean2.getDescripcion()+"</a></li>");
 					}
 					sb.append("</ul></li>");
 				}else{

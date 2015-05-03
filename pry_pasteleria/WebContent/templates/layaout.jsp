@@ -11,7 +11,10 @@
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" media="all" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Raleway:300,500" rel="stylesheet" type="text/css">
-    <link href="css/styles_account.css" media="all" rel="stylesheet">
+
+	
+    <link href="css/styles_catalogo.css" media="all" rel="stylesheet">
+    
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
@@ -26,9 +29,10 @@
 		<div>
 			<tiles:insertAttribute name="menu"/>
 		</div>
+		<div>
+			<tiles:insertAttribute name="body"/>
+		</div>
 	</div>
-
-
 
 
 
@@ -38,6 +42,8 @@
     <script src="js/messages_es.js"></script>
     <script src="js/main.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/bootstrap-datepicker.es.min.js"></script>
      <script>
      // A $( document ).ready() block.
       $( document ).ready(function() {
@@ -50,16 +56,8 @@
           ajustar();
         } );
 
-
-         function ajustar(){
-           console.log( "ready!" );
-          var columna1=$("#filtros");
-           var alto = $("#colum2").height();
-           var ancho=$('#colum2').width();
-           columna1.height(alto);
-           //columna1.width(ancho);
-           console.log(result);
-         }
+		
+     
 
       });
     </script>
