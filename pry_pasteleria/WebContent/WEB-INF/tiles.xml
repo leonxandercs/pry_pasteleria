@@ -21,15 +21,13 @@
 	</definition>
 	 -->
 	<!-- LOS SIGUIENTE TILES SON LOS QUE SE UTILIZAN -->
-		
-		
-		
+				
 	<definition name="login" extends="layaout">
-		<put-attribute name="body" value="/templates/login.jsp"/>		
+		<put-attribute name="body" value="/pages/login.jsp"/>		
 	</definition>	
 	
 	<definition name="catalogo" extends="layaout">
-		<put-attribute name="body" value="/catalogo.jsp"/>		
+		<put-attribute name="body" value="/pages/catalogo.jsp"/>		
 	</definition>	
 	
 	
