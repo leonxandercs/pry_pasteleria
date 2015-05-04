@@ -29,9 +29,9 @@ public class LinkAction  extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	@Action(value="login",
+	@Action(value="logueo",
 			results={@Result(name=SUCCESS,type="tiles",location="login")})
-	public String login(){
+	public String logueo(){
 		return SUCCESS;
 	}
 	
@@ -66,18 +66,4 @@ public class LinkAction  extends ActionSupport{
 	}
 	
 	
-	public static String getMenu(){
-		return new NavbarImplement().getNavBarWithRol(1);
-	}
-	
-	
-	public String getNavbar() {
-		return navbar;
-	}
-
-
-	public void setNavbar(String navbar) {
-		this.navbar = navbar;
-	}
-
 }
