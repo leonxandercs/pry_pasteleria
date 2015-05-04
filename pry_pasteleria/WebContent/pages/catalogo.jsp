@@ -8,7 +8,7 @@
 
 <!------------------------------------------------ -->
 <div id="filtros" style="height:850px;">
-    <form id="frmCatalogo">
+    <s:form id="frmCatalogo">
         <div class="col-lg-12">
               Cobertura:
               <select class="form-control">
@@ -18,7 +18,7 @@
                 <option>Merengue</option>
                 <option>Maracuya</option>
               </select>
-              <br>
+              <br></br>
               Masa:
               <select  class="form-control">
                 <option>Kekes</option>
@@ -27,7 +27,7 @@
                 <option>4</option>
                 <option>5</option>
               </select>
-            </br>
+            <br></br>
             Relleno:
               <select  class="form-control">
                 <option>Mermelada</option>
@@ -36,7 +36,7 @@
                 <option>Queso</option>
                 <option>Pecanas</option>
               </select>
-            </br>
+            <br></br>
             Ocasión:
               <select  class="form-control">
                 <option>Cumpleaños</option>
@@ -45,8 +45,10 @@
                 <option>Matrimonio</option>
                 <option>Despedida Soltero</option>
               </select>
+            <br></br>
+            <input type="submit"  value="Consultar Producto"class="btn btn-primary">
             </div>
-      </form>
+      </s:form>
 </div>
 <!------------------------------------------------ -->
 
