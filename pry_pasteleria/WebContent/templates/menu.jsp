@@ -1,2 +1,2 @@
-${navbar}
+${session.navbar}
 

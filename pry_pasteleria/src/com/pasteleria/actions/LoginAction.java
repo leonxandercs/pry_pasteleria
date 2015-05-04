@@ -1,11 +1,16 @@
 package com.pasteleria.actions;
 
+import java.util.Map;
+
+
+
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pasteleria.service.NavbarImplement;
 
 /**
  * 
@@ -14,11 +19,12 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 @SuppressWarnings("serial")
 @ParentPackage(value="cloudedleopard")
-public class UserAction  extends ActionSupport{
-	
-	private String navbar=LinkAction.getMenu();
+public class LoginAction  extends ActionSupport{
+
+	private String navbar;
 	private String email;
 	private String password;
+	public Map<String, Object> session=(Map<String, Object>)ActionContext.getContext().getSession();
 	
 	@Action(value="ValidateUser",
 			results={@Result(name=SUCCESS,type="tiles",location="catalogo"),
@@ -27,11 +33,20 @@ public class UserAction  extends ActionSupport{
 	public String validateUser(){
 		if (email.equals("alex_0446@hotmail.com") &&
 				password.equals("123456")) {
+			this.navbar=new NavbarImplement().getNavBarWithRol(2);;
+			session.put("navbar", this.navbar);
 			addActionMessage("! Bienvenido a Tortas Encantadas !");
 			return SUCCESS;
+		}else if(email.equals("leonxandercs@gmail.com") &&
+				password.equals("123456")){
+			this.navbar=new NavbarImplement().getNavBarWithRol(3);;
+			session.put("navbar", this.navbar);
+			addActionMessage("! Bienvenido a Tortas Encantadas !");
+			return SUCCESS;
+		}else{
+			addActionError("Credenciales Incorrectas");
+			return ERROR;
 		}
-		addActionError("Credenciales Incorrectas");
-		return ERROR;
 	}
 	
 	public String getEmail() {

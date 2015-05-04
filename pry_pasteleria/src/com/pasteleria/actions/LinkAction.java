@@ -1,9 +1,12 @@
 package com.pasteleria.actions;
 
+import java.util.Map;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pasteleria.service.NavbarImplement;
 /**
@@ -16,15 +19,13 @@ import com.pasteleria.service.NavbarImplement;
 public class LinkAction  extends ActionSupport{
 	
 	private String navbar;
-	
-	{
-		navbar=new NavbarImplement().getNavBarWithRol(1);
-	}
-	
-	
+	public Map<String, Object> session=ActionContext.getContext().getSession();
+		
 	@Action(value="layout",
 			results={@Result(name=SUCCESS,type="tiles",location="layout")})
 	public String layout(){
+		navbar=new NavbarImplement().getNavBarWithRol(1);
+		session.put("navbar", this.navbar);
 		return SUCCESS;
 	}
 	
