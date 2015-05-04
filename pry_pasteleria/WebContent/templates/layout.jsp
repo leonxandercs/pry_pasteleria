@@ -23,7 +23,9 @@
     
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
-
+	<script src="js/jquery-1.11.2.js"></script>
+	
+	
 
 </head>
 <body>

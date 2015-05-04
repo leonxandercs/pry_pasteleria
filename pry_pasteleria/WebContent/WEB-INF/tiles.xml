@@ -53,7 +53,7 @@
 		<put-attribute name="body"   value="/pages/carrito.jsp"/>
 	</definition>
 	
-	
+
 </tiles-definitions>
 
 

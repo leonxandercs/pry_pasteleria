@@ -59,6 +59,7 @@ public class LinkAction  extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	
 	@Action(value="singup",
 			results={@Result(name=SUCCESS,type="tiles",location="singup")})
 	public String singup(){
