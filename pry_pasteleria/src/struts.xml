@@ -5,37 +5,8 @@
 
 <struts>
  
-	<package name="pry_pasteleria" namespace="/"			
+	<package name="cloudedleopard" namespace="/" 
 			extends="struts-default,json-default,tiles-default">
-
-	<action name="layout" class="com.pasteleria.actions.NavbarAction" method="menu">
-		<result name="success"  type="tiles">layout</result>
-	</action>
-	
-	<action name="login" class="com.pasteleria.actions.NavbarAction" method="menu">
-		<result name="success"  type="tiles">login</result>
-	</action>
-	
-	<action name="catalogo" class="com.pasteleria.actions.NavbarAction" method="menu">
-		<result name="success"  type="tiles">catalogo</result>
-	</action>
-	
-	<action name="seguimiento" class="com.pasteleria.actions.NavbarAction" method="menu">
-		<result name="success"  type="tiles">seguimiento</result>
-	</action>
-	
-	<action name="armar" class="com.pasteleria.actions.NavbarAction" method="menu">
-		<result name="success"  type="tiles">armar</result>
-	</action>
-	
-	<action name="carrito" class="com.pasteleria.actions.NavbarAction" method="menu">
-		<result name="success"  type="tiles">carrito</result>
-	</action>
-	
-	<action name="singup" class="com.pasteleria.actions.NavbarAction" method="menu">
-		<result name="success"  type="tiles">singup</result>
-	</action>
-	
 	</package>
 
 </struts>

@@ -31,10 +31,6 @@ public class NavbarImplement implements NavbarDAO{
 	public String getNavBarWithRol(int rol) {
 		return dao.getNavBarWithRol(rol);
 	}
+
 	
-	
-	public static void main(String[] args) {
-		String esperanza=new NavbarImplement().getNavBarWithRol(1);
-		System.out.println(esperanza);
-	}
 }
