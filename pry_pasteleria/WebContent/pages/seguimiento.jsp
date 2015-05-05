@@ -5,13 +5,13 @@
 }
 
 .tableCriterios {
-	margin-left: 15%;
-	/*width:100%*/
+	/*margin-left: 15%;
+	width:100%*/
 }
 
 .tablecenter {
 	text-align: center;
-	width: 70%;
+	/*width: 70%;*/
 	margin: 0 auto;
 }
 
@@ -25,18 +25,19 @@
 </style>
 <script>
 
-function myColorChange(s) {
-	var x = $(s).val();
+function myColorChange(object) {
+	var x = $(object).val();
 	if (x == 2) {
-		$(s).removeClass('label label-warning');
-		$(s).addClass('label label-success');
+		$(object).removeClass('label label-warning');
+		$(object).addClass('label label-success');
 	} else {
-		$(s).removeClass('label label-success');
-		$(s).addClass('label label-warning');
+		$(object).removeClass('label label-success');
+		$(object).addClass('label label-warning');
 	}
 }
 function ver(e){
 	$('#detalle').fadeIn(1500);
+	$('#lstPedidos').hide();
 }
 
 function eliminar(object){
@@ -44,11 +45,16 @@ function eliminar(object){
 }
 function ocultar(e){
 	$('#detalle').hide(500);
-	
+	$('#lstPedidos').show();
 }
 
 </script>
 
+<div id="lstPedidos" class="panel panel-primary" style="width: 80%; margin: 0 10% 10%;">
+<div class="panel-heading">
+	<h4 class="panel-title">Listado de Pedidos</h4>
+</div>
+<div class="panel-body">
 <div class="tableCriterios">
 	<div class="campos">
 		<label>&nbsp;&nbsp;Codigo de Pedido:</label> <input type="text"
@@ -132,22 +138,14 @@ function ocultar(e){
 				<td><a href="#" class="label label-danger" onclick="eliminar(this)">Anular</a></td>
 			</tr>
 		</tbody>
-		<tfoot>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</tfoot>
 	</table>
 
 </div>
 
+</div>
 
+
+</div>
 
 
 <div id="detalle" class="panel panel-primary" style="width: 80%; margin: 0 10% 10%;">
