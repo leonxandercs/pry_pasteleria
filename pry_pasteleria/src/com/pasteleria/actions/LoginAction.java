@@ -4,9 +4,14 @@ import java.util.Map;
 
 
 
+
+
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.dispatcher.SessionMap;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -33,7 +38,7 @@ public class LoginAction  extends ActionSupport{
 	public String validateUser(){
 		if (email.equals("alex_0446@hotmail.com") &&
 				password.equals("123456")) {
-			this.navbar=new NavbarImplement().getNavBarWithRol(2);;
+			this.navbar=new NavbarImplement().getNavBarWithRol(2);
 			session.put("navbar", this.navbar);
 			addActionMessage("! Bienvenido a Tortas Encantadas !");
 			return SUCCESS;
@@ -49,6 +54,7 @@ public class LoginAction  extends ActionSupport{
 		}
 	}
 	
+
 	public String getEmail() {
 		return email;
 	}
