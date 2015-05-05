@@ -118,7 +118,7 @@ form {
     form .form-group.submit {
       margin: 35px -25px 0; }
       form .form-group.submit input[type="submit"] {
-        display: block;
+        /*display: block;*/
         width: 100%;
         font-size: 18px;
         letter-spacing: 0.4em;

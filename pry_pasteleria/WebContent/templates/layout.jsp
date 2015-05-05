@@ -17,14 +17,13 @@
     <link href="http://fonts.googleapis.com/css?family=Raleway:300,500" rel="stylesheet" type="text/css">
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.standalone.css">
-	
-	
-    <link href="css/styles_catalogo.css" media="all" rel="stylesheet">
+	<link href="css/styles_catalogo.css" media="all" rel="stylesheet">
+    
     
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
 	<script src="js/jquery-1.11.2.js"></script>
-	
+	<script src="js/jquery.bootstrap-growl.js"></script>
 	
 
 </head>

@@ -40,13 +40,13 @@ public class LoginAction  extends ActionSupport{
 				password.equals("123456")) {
 			this.navbar=new NavbarImplement().getNavBarWithRol(2);
 			session.put("navbar", this.navbar);
-			addActionMessage("! Bienvenido a Tortas Encantadas !");
+			addActionMessage("!"+email+": Bienvenido a Tortas Encantadas !");
 			return SUCCESS;
 		}else if(email.equals("leonxandercs@gmail.com") &&
 				password.equals("123456")){
 			this.navbar=new NavbarImplement().getNavBarWithRol(3);;
 			session.put("navbar", this.navbar);
-			addActionMessage("! Bienvenido a Tortas Encantadas !");
+			addActionMessage("!"+email+": Bienvenido a Tortas Encantadas !");
 			return SUCCESS;
 		}else{
 			addActionError("Credenciales Incorrectas");
