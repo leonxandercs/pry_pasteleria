@@ -1,7 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <link href="css/styles_account.css" media="all" rel="stylesheet">
 
-
 <div id="contenedor" width="100%">
 <table width="800px">
   <tr>
@@ -25,9 +24,7 @@
         <div class="wrapper" id="colum2">
           <s:form action="ValidateUser" cssClass="form animate-form" id="form" onsubmit="return true;" >
             <div class="form-header">
-              <h1>INICIE SESIÓN</h1>
-              <s:actionerror />
-              <s:actionmessage />
+              <h1>INICIE SESIÓN</h1>        
             </div>
             <br></br>
             <div class="form-group has-feedback">
@@ -46,6 +43,8 @@
                   <span class="glyphicon glyphicon-ok form-control-feedback"></span>
               </div>
             <div style="text-align:left;height:0px;">
+              <s:actionerror />
+              <s:actionmessage />
               &nbsp;
               <a href="singup.action">Olvidaste tu clave?</a>&nbsp;
               <!--<a href="singup.html">Registrate</a>-->
