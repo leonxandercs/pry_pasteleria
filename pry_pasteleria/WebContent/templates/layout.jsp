@@ -150,9 +150,10 @@
         console.log('titulo despues: '+titleFather);
       }
       
-      
+      $('#detalle').hide();
+            
 
-      });
-    </script>
+ });
+</script>
 </body>
 </html>
