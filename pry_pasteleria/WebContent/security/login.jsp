@@ -7,12 +7,23 @@
 	<script>
 		var msj = $('#messagerror li span').text();
 		$('#messagerror').remove();
+		$.growl(
+				{
+					title:" <strong>Error: </strong></b>",
+					message:msj,
+					icon:"glyphicon glyphicon-alert"
+				},
+				{
+					type:'danger'
+				}
+			);
+		/*
 		$.bootstrapGrowl("Mensaje: " + msj + "..!", {
 			type : 'danger',
 			width : 'auto',
 			align:'rigth',
 			allow_dismiss : false
-		});
+		});*/
 	</script>
 </s:if>
 

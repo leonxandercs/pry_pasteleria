@@ -18,12 +18,15 @@
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.standalone.css">
 	<link href="css/styles_catalogo.css" media="all" rel="stylesheet">
-    
-    
+	
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
+   <!--  
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
 	<script src="js/jquery-1.11.2.js"></script>
 	<script src="js/jquery.bootstrap-growl.js"></script>
+	<script src="js/bootstrap-growl.min.js"></script>
 	
 
 </head>

@@ -4,11 +4,21 @@
 	<script>
 		var msj = $('#messageSucces li span').text();
 		$('#messageSucces').remove();
+		$.growl(
+			{
+				title:" <strong>Bienvenido: </strong>",
+				message:msj,
+				icon:"glyphicon glyphicon-thumbs-up"
+			},{
+				type:'success'
+			}
+			);
+		/*
 		$.bootstrapGrowl(msj + "..!", {
 			type : 'success',
 			width : 'auto',
 			allow_dismiss : false
-		});
+		});*/
 	</script>
 </s:if>
 <div>
