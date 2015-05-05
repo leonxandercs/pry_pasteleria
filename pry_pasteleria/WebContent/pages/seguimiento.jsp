@@ -46,6 +46,7 @@ function ocultar(e){
 	$('#detalle').hide(500);
 	
 }
+
 </script>
 
 <div class="tableCriterios">
@@ -220,7 +221,7 @@ function ocultar(e){
 							<option value="2">Despachado</option>
 					</select></td>
 					<td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a href="#" onclick="eliminar(this)"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				<tr class="info">
 					<td>2</td>
@@ -238,7 +239,7 @@ function ocultar(e){
 							<option value="2">Despachado</option>
 					</select></td>
 					<td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a href="#" onclick="eliminar(this)"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				<tr class="info">
 					<td>3</td>
@@ -256,7 +257,7 @@ function ocultar(e){
 							<option value="2">Despachado</option>
 					</select></td>
 					<td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a href="#" onclick="eliminar(this)"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				<tr class="success">
 					<td>4</td>
@@ -274,7 +275,7 @@ function ocultar(e){
 							<option value="2">Despachado</option>
 					</select></td>
 					<td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a href="#" onclick="eliminar(this)"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				<tr class="info">
 					<td>5</td>
@@ -292,7 +293,7 @@ function ocultar(e){
 							<option value="2">Despachado</option>
 					</select></td>
 					<td><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a href="#" onclick="eliminar(this)"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 			</tbody>
 		</table>
