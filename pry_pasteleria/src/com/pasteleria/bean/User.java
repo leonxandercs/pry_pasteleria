@@ -5,7 +5,7 @@ import java.io.Serializable;
  * @author Pantera
  */
 @SuppressWarnings("serial")
-public class UserBean implements Serializable{
+public class User implements Serializable{
 	
 	private int id;
 	private String nombre;

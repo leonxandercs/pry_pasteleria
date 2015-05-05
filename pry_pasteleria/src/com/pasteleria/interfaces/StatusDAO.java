@@ -2,9 +2,9 @@ package com.pasteleria.interfaces;
 
 import java.util.List;
 
-import com.pasteleria.bean.StatusBean;
+import com.pasteleria.bean.Status;
 
 public interface StatusDAO {
 
-	public List<StatusBean> list();
+	public List<Status> list();
 }

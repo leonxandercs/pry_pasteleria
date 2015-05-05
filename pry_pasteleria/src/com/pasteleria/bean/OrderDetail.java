@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 
 @SuppressWarnings("serial")
-public class OrderDetailBean implements Serializable{
+public class OrderDetail implements Serializable{
 	
 	private int idpedido;
 	private int idproducto;

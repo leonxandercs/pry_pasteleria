@@ -2,7 +2,7 @@ package com.pasteleria.interfaces;
 
 import java.util.List;
 
-import com.pasteleria.bean.NavbarBean;
+import com.pasteleria.bean.Navbar;
 
 /**
  * 
@@ -11,8 +11,8 @@ import com.pasteleria.bean.NavbarBean;
  */
 public interface NavbarDAO {
 
-	List<NavbarBean> getNavbar(int rol);
-	List<NavbarBean> getNavbarChildren(int rol,int father);
+	List<Navbar> getNavbar(int rol);
+	List<Navbar> getNavbarChildren(int rol,int father);
 	String getNavBarWithRol(int rol);
 	
 }

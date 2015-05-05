@@ -1,8 +1,8 @@
-package com.pasteleria.service;
+package com.pasteleria.services;
 
 import java.util.List;
 
-import com.pasteleria.bean.StatusBean;
+import com.pasteleria.bean.Status;
 import com.pasteleria.factory.Factory;
 import com.pasteleria.interfaces.StatusDAO;
 /**
@@ -18,7 +18,7 @@ public class StatusImplement implements StatusDAO{
 	
 	
 	@Override
-	public List<StatusBean> list() {
+	public List<Status> list() {
 		return dao.list();
 	}
 

@@ -8,7 +8,7 @@ import java.io.Serializable;
  *
  */
 @SuppressWarnings("serial")
-public class ResourceBean implements Serializable{
+public class Resource implements Serializable{
 
 	private int id;
 	private String descripcion;

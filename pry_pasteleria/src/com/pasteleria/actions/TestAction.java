@@ -6,14 +6,14 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.pasteleria.bean.StatusBean;
-import com.pasteleria.service.StatusImplement;
+import com.pasteleria.bean.Status;
+import com.pasteleria.services.StatusImplement;
 
 @SuppressWarnings("serial")
 public class TestAction extends ActionSupport {
 
 	private String mensaje;
-	private List<StatusBean> estados;
+	private List<Status> estados;
 
 	@Action(value = "ListStatus", results = { @Result(name = "success", location = "/dashboard/test.jsp") })
 	public String getListStatus() {
@@ -31,11 +31,11 @@ public class TestAction extends ActionSupport {
 		this.mensaje = mensaje;
 	}
 
-	public List<StatusBean> getEstados() {
+	public List<Status> getEstados() {
 		return estados;
 	}
 
-	public void setEstados(List<StatusBean> estados) {
+	public void setEstados(List<Status> estados) {
 		this.estados = estados;
 	}
 

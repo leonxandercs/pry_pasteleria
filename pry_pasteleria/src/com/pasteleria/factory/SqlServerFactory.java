@@ -23,7 +23,7 @@ public class SqlServerFactory extends Factory {
 	{
 		try 
 		{
-			Reader reader = Resources.getResourceAsReader("com/pasteleria/resources/mybatis-config.xml");
+			Reader reader = Resources.getResourceAsReader("com/pasteleria/mybatis/config/mybatis-config.xml");
 			sqlsessionFactory = new SqlSessionFactoryBuilder().build(reader);
 		} 
 		catch (Exception e) 

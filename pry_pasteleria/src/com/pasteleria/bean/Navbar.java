@@ -5,7 +5,7 @@ import java.io.Serializable;
  * @author Pantera 
  */
 @SuppressWarnings("serial")
-public class NavbarBean implements Serializable{
+public class Navbar implements Serializable{
 
 private int idMenu;
 private String descripcion;

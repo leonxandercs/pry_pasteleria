@@ -1,8 +1,8 @@
-package com.pasteleria.service;
+package com.pasteleria.services;
 
 import java.util.List;
 
-import com.pasteleria.bean.NavbarBean;
+import com.pasteleria.bean.Navbar;
 import com.pasteleria.daos.SqlServerNavbarDAO;
 import com.pasteleria.factory.Factory;
 import com.pasteleria.interfaces.NavbarDAO;
@@ -18,12 +18,12 @@ public class NavbarImplement implements NavbarDAO{
 	
 	
 	@Override
-	public List<NavbarBean> getNavbar(int rol) {
+	public List<Navbar> getNavbar(int rol) {
 		return dao.getNavbar(rol);
 	}
 
 	@Override
-	public List<NavbarBean> getNavbarChildren(int rol,int father) {
+	public List<Navbar> getNavbarChildren(int rol,int father) {
 		return dao.getNavbarChildren(rol,father);
 	}
 	

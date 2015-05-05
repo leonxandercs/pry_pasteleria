@@ -8,7 +8,7 @@ import java.io.Serializable;
  *
  */
 @SuppressWarnings("serial")
-public class OrderBean implements Serializable {
+public class Order implements Serializable {
 	
 	private int id;
 	private String fecha_pedido;

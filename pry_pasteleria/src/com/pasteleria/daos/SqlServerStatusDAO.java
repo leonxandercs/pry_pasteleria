@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.pasteleria.bean.StatusBean;
+import com.pasteleria.bean.Status;
 import com.pasteleria.factory.SqlServerFactory;
 import com.pasteleria.interfaces.StatusDAO;
 
@@ -17,13 +17,13 @@ public class SqlServerStatusDAO implements StatusDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<StatusBean> list() {
+	public List<Status> list() {
 		
 		SqlSession session=FACTORY.openSession();
-		List<StatusBean> list=null;
+		List<Status> list=null;
 		try 
 		{
-			list=(List<StatusBean>)session.selectList("statusxml.sql_select");
+			list=(List<Status>)session.selectList("statusxml.sql_select");
 		} 
 		catch (Exception e) 
 		{

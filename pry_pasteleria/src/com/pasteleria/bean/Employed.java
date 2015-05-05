@@ -3,14 +3,14 @@ package com.pasteleria.bean;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class EmployedBean extends UserBean implements Serializable{
+public class Employed extends User implements Serializable{
 
 	private String fec_ingreso;
 	private String fec_salida;
 	private Double sueldo;
 	
 	
-	public EmployedBean() {
+	public Employed() {
 		super();
 	}
 	

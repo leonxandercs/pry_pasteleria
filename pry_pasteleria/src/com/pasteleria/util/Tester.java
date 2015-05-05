@@ -1,7 +1,7 @@
 package com.pasteleria.util;
 
-import com.pasteleria.bean.ClientBean;
-import com.pasteleria.bean.EmployedBean;
+import com.pasteleria.bean.Client;
+import com.pasteleria.bean.Employed;
 
 /**
  * @author Pantera
@@ -12,7 +12,7 @@ public class Tester {
 	
 	public static void main(String[] args) {
 		
-		ClientBean client=new ClientBean();
+		Client client=new Client();
 		client.setNombre("alexander");
 		client.setApe_pa("chavez");
 		client.setApe_ma("simbron");
@@ -31,7 +31,7 @@ public class Tester {
 		
 		System.out.println("------------------");
 		
-		EmployedBean emp=new EmployedBean();
+		Employed emp=new Employed();
 		emp.setNombre("Leo Alexander");
 		emp.setApe_pa("Chavez");
 		emp.setFec_ingreso("27-04-15");

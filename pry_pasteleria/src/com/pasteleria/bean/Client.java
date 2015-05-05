@@ -5,12 +5,12 @@ import java.io.Serializable;
  * @author Pantera
  */
 @SuppressWarnings("serial")
-public class ClientBean  extends UserBean  implements Serializable {
+public class Client  extends User  implements Serializable {
 
 	private String fec_registro;
 	private String categoria;
 	
-	public ClientBean() {
+	public Client() {
 		super();
 	}
 
