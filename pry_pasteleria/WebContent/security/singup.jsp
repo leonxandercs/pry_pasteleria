@@ -31,7 +31,7 @@
 						<div class="glyphicon glyphicon-lock"></div>
 					</div>
 					<input class="form-control" id="password" name="password"
-						placeholder="ContraseÃ±a" type="password"><span
+						placeholder="Contraseña" type="password"><span
 						class="glyphicon glyphicon-ok form-control-feedback"></span>
 				</div>
 
@@ -104,7 +104,7 @@
 				</div>
 
 				<div class="form-group submit">
-					<a href="login.action" style="background-color: #7E506C;">CANCELAR</a>
+					<a href="logueo.action" style="background-color: #7E506C;">CANCELAR</a>
 				</div> <!------------------------------------------>
 			</td>
 			<td width="80px"></td>
@@ -216,31 +216,6 @@
 		</tr>
 
 	</table>
-
-	<!-------------------------------
-
-        <div class="form-group has-feedback">
-          <select class="form-control lg">
-              <option  value="0">Seleccione Departamento</option>
-              <option  value="1">Lima</option>
-              <option  value="2">Anchash</option>
-              <option  value="3">Apurimac</option>
-              <option  value="4">Cuzco</option>
-              <option  value="5">Cajamarca</option>
-            </select>
-          <div class="input-group-addon">
-            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-          </div>
-         </div>
-  -------->
-
-	<!-------------------------------->
-
-	<!--
-        <div class="form-group submit">
-            <input class="btn btn-lg" type="submit" value="REGISTRAR"> 
-        </div>
-      -->
 </form>
 <div>
 	<h1></h1>

@@ -68,5 +68,10 @@ public class LinkAction  extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	@Action(value="recoverPwd",
+			results={@Result(name=SUCCESS,type="tiles",location="recoverPwd")})
+	public String recoverPwd(){
+		return SUCCESS;
+	}
 	
 }

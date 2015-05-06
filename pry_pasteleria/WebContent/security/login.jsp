@@ -56,8 +56,6 @@
 
 
 						<div class="form-group has-feedback">
-							<label class="control-label sr-only" for="email">Correo
-								Electrónico</label>
 							<div class="input-group-addon">
 								<div class="glyphicon glyphicon-envelope"></div>
 							</div>
@@ -66,7 +64,6 @@
 								class="glyphicon glyphicon-ok form-control-feedback"></span>
 						</div>
 						<div class="form-group has-feedback">
-							<label class="control-label sr-only" for="password">Contraseña</label>
 							<div class="input-group-addon">
 								<div class="glyphicon glyphicon-lock"></div>
 							</div>
@@ -75,7 +72,7 @@
 								class="glyphicon glyphicon-ok form-control-feedback"></span>
 						</div>
 						<div style="text-align: left; height: 0px;">
-							&nbsp; <a href="singup.action">Olvidaste tu clave?</a>&nbsp;
+							&nbsp; <a href="recoverPwd.action">Olvidaste tu clave?</a>&nbsp;
 							<!--<a href="singup.html">Registrate</a>-->
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

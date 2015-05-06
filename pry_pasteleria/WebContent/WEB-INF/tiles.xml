@@ -53,6 +53,10 @@
 		<put-attribute name="body"   value="/pages/carrito.jsp"/>
 	</definition>
 	
+	<definition name="recoverPwd" extends="layout">
+		<put-attribute name="title"  value="Recuperar clave"/>
+		<put-attribute name="body" 	 value="/security/recoverPassword.jsp"/>
+	</definition>
 
 </tiles-definitions>
 

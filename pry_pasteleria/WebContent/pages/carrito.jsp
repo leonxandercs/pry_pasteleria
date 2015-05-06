@@ -1,7 +1,10 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
-
+<style type="text/css">
+input[type=number]{
+	width:60px;
+	}
+</style>
 <div>
-
 <table class="table table-striped table-hover " style="margin-rigth:40px;">
   <thead>
     <tr class="info">
