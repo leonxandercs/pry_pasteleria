@@ -6,8 +6,8 @@
 		$('#messageSucces').remove();
 		$.growl(
 			{
-				title:" <strong>Bienvenido: </strong>",
-				message:msj,
+				title:" <strong>! Bienvenido</strong> a Tortas Encantadas: ",
+				message:msj+" <strong>!</strong>",
 				icon:"glyphicon glyphicon-thumbs-up"
 			},{
 				type:'success'
