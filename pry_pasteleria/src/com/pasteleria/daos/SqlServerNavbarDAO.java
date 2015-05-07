@@ -81,7 +81,11 @@ public class SqlServerNavbarDAO implements NavbarDAO {
 			
 		}
 		sb.append("</ul>");
-		sb.append(rb.getString("styleNavRight"));
+		if (rol==1) {
+			sb.append(rb.getString("styleNavRightNotLoggedIn"));
+		}else{
+			sb.append(rb.getString("styleNavRight"));
+		}
 		sb.append(rb.getString("stylefin"));
 		return String.valueOf(sb);
 	}

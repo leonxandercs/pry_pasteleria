@@ -38,5 +38,6 @@ public class TestAction extends ActionSupport {
 	public void setEstados(List<Status> estados) {
 		this.estados = estados;
 	}
-
+	
+	
 }
