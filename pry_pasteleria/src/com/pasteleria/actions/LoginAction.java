@@ -36,20 +36,26 @@ public class LoginAction  extends ActionSupport{
 			results={@Result(name=SUCCESS,type="tiles",location="catalogo"),
 			@Result(name=ERROR,type="tiles",location="login")
 			})
-	public String validateUser(){
+	public String validateUser()
+	{
 		if (email.equals("alex_0446@hotmail.com") &&
-				password.equals("123456")) {
+				password.equals("123456")) 
+		{
 			this.navbar=new NavbarImplement().getNavBarWithRol(2);
 			session.put("navbar", this.navbar);
-			addActionMessage("!"+email+": Bienvenido a Tortas Encantadas !");
+			addActionMessage("Alexander: ! Bienvenido a Tortas Encantadas !");
 			return SUCCESS;
-		}else if(email.equals("leonxandercs@gmail.com") &&
-				password.equals("123456")){
+		}
+		else if(email.equals("leonxandercs@gmail.com") &&
+				password.equals("123456"))
+		{
 			this.navbar=new NavbarImplement().getNavBarWithRol(3);;
 			session.put("navbar", this.navbar);
-			addActionMessage("!"+email+": Bienvenido a Tortas Encantadas !");
+			addActionMessage("Leo: ! Bienvenido a Tortas Encantadas !");
 			return SUCCESS;
-		}else{
+		}
+		else
+		{
 			addActionError("Credenciales Incorrectas");
 			return ERROR;
 		}
