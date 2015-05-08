@@ -5,34 +5,48 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Employed extends User implements Serializable{
 
-	private String fec_ingreso;
-	private String fec_salida;
+	private String fecha_ingreso;
 	private Double sueldo;
+	private String fecha_salida;
+	private String activo;
+	
 	
 	
 	public Employed() {
 		super();
 	}
-	
-	public String getFec_ingreso() {
-		return fec_ingreso;
+
+	public String getFecha_ingreso() {
+		return fecha_ingreso;
 	}
-	public void setFec_ingreso(String fec_ingreso) {
-		this.fec_ingreso = fec_ingreso;
+
+	public void setFecha_ingreso(String fecha_ingreso) {
+		this.fecha_ingreso = fecha_ingreso;
 	}
-	public String getFec_salida() {
-		return fec_salida;
-	}
-	public void setFec_salida(String fec_salida) {
-		this.fec_salida = fec_salida;
-	}
+
 	public Double getSueldo() {
 		return sueldo;
 	}
+
 	public void setSueldo(Double sueldo) {
 		this.sueldo = sueldo;
 	}
-	
+
+	public String getFecha_salida() {
+		return fecha_salida;
+	}
+
+	public void setFecha_salida(String fecha_salida) {
+		this.fecha_salida = fecha_salida;
+	}
+
+	public String getActivo() {
+		return activo;
+	}
+
+	public void setActivo(String activo) {
+		this.activo = activo;
+	}
 	
 	
 }
