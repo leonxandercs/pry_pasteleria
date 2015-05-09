@@ -30,6 +30,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="com/pasteleria/mybatis/mappers/StatusXML.xml"/>
 		<mapper resource="com/pasteleria/mybatis/mappers/NavbarXML.xml"/>
+		<mapper resource="com/pasteleria/mybatis/mappers/UserXML.xml"/>
+		<mapper resource="com/pasteleria/mybatis/mappers/MapXML.xml"/>
 	</mappers>
 
 </configuration>

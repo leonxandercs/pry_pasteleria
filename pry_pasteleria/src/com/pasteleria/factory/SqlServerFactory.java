@@ -8,8 +8,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.pasteleria.daos.SqlServerNavbarDAO;
 import com.pasteleria.daos.SqlServerStatusDAO;
+import com.pasteleria.daos.SqlServerUserDAO;
 import com.pasteleria.interfaces.NavbarDAO;
 import com.pasteleria.interfaces.StatusDAO;
+import com.pasteleria.interfaces.UserDAO;
 /**
  * 
  * @author Pantera
@@ -46,6 +48,11 @@ public class SqlServerFactory extends Factory {
 	@Override
 	public NavbarDAO getNavbarDAO() {
 		return new SqlServerNavbarDAO();
+	}
+
+	@Override
+	public UserDAO getUserDAO() {
+		return new SqlServerUserDAO();
 	}
 
 }
