@@ -11,7 +11,7 @@ import com.pasteleria.interfaces.NavbarDAO;
  * @author Pantera
  *
  */
-public class NavbarImplement implements NavbarDAO{
+public class ServiceNavbar implements NavbarDAO{
 	
 	Factory factory=Factory.getTipo(Factory.TIPO_SQLSERVER);
 	NavbarDAO dao=factory.getNavbarDAO();

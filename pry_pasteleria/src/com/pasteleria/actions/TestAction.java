@@ -7,7 +7,7 @@ import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.pasteleria.bean.Status;
-import com.pasteleria.services.StatusImplement;
+import com.pasteleria.services.ServiceStatus;
 
 @SuppressWarnings("serial")
 public class TestAction extends ActionSupport {
@@ -17,7 +17,7 @@ public class TestAction extends ActionSupport {
 
 	@Action(value = "ListStatus", results = { @Result(name = "success", location = "/dashboard/test.jsp") })
 	public String getListStatus() {
-		StatusImplement statusImplement=new StatusImplement();
+		ServiceStatus statusImplement=new ServiceStatus();
 		estados =statusImplement.list();
 		mensaje="Hellow Panther";
 		return SUCCESS;

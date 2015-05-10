@@ -16,7 +16,7 @@ import org.apache.struts2.dispatcher.SessionMap;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.pasteleria.services.NavbarImplement;
+import com.pasteleria.services.ServiceNavbar;
 
 /**
  * 
@@ -41,7 +41,7 @@ public class LoginAction  extends ActionSupport{
 		if (email.equals("alex_0446@hotmail.com") &&
 				password.equals("123456")) 
 		{
-			this.navbar=new NavbarImplement().getNavBarWithRol(3);
+			this.navbar=new ServiceNavbar().getNavBarWithRol(3);
 			session.put("navbar", this.navbar);
 			addActionMessage("Alexander");
 			return SUCCESS;
@@ -49,7 +49,7 @@ public class LoginAction  extends ActionSupport{
 		else if(email.equals("leonxandercs@gmail.com") &&
 				password.equals("123456"))
 		{
-			this.navbar=new NavbarImplement().getNavBarWithRol(4);;
+			this.navbar=new ServiceNavbar().getNavBarWithRol(4);;
 			session.put("navbar", this.navbar);
 			addActionMessage("Leo");
 			return SUCCESS;
@@ -57,7 +57,7 @@ public class LoginAction  extends ActionSupport{
 		else if(email.equals("katty@gmail.com") &&
 				password.equals("123456"))
 		{
-			this.navbar=new NavbarImplement().getNavBarWithRol(2);;
+			this.navbar=new ServiceNavbar().getNavBarWithRol(2);;
 			session.put("navbar", this.navbar);
 			addActionMessage("Katy");
 			return SUCCESS;

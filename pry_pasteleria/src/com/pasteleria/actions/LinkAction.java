@@ -9,7 +9,7 @@ import org.apache.struts2.dispatcher.SessionMap;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.pasteleria.services.NavbarImplement;
+import com.pasteleria.services.ServiceNavbar;
 /**
  * 
  * @author Pantera
@@ -26,7 +26,7 @@ public class LinkAction  extends ActionSupport{
 	@Action(value="layout",
 			results={@Result(name=SUCCESS,type="tiles",location="layout")})
 	public String layout(){
-		navbar=new NavbarImplement().getNavBarWithRol(1);
+		navbar=new ServiceNavbar().getNavBarWithRol(1);
 		session.put("navbar", this.navbar);
 		return SUCCESS;
 	}

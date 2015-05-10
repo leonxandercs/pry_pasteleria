@@ -15,15 +15,14 @@ public class SqlServerUserDAO implements UserDAO {
 	SqlSessionFactory FACTORY=SqlServerFactory.SQL_SESSION_FACTORY;
 
 	@Override
-	public User find(String tipo, String login, String pasword) {
+	public User find(String login, String pasword) {
 		
 		SqlSession session=FACTORY.openSession();
 		User user=null;
 		try {
 			Map<String, String> map=new HashMap<String,String>();
-			map.put("tipo",tipo);
 			map.put("login",login);
-			map.put("pwd", pasword);
+			map.put("password", pasword);
 			user=(User) session.selectOne("userxml.sql_find",map);
 		} catch (Exception e) {
 			e.printStackTrace();

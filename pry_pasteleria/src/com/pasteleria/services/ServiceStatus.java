@@ -10,7 +10,7 @@ import com.pasteleria.interfaces.StatusDAO;
  * @author Pantera
  *
  */
-public class StatusImplement implements StatusDAO{
+public class ServiceStatus implements StatusDAO{
 	
 	Factory factory=Factory.getTipo(Factory.TIPO_SQLSERVER);
 	StatusDAO dao=factory.getStatusDAO();

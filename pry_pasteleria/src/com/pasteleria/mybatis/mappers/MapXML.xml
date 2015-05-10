@@ -2,29 +2,39 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="mapxml">
 
-<resultMap type="com.pasteleria.bean.Rol" id="rolMap">
-	<id property="idRol" column="idRol" javaType="int"/>
-	<result property="descripcion" column="descripcion" javaType="string"/>
-</resultMap>
-
-<resultMap type="com.pasteleria.bean.User" id="userMap">
-	 <id property="idUsuario" column="idUsuario" javaType="string"/>
-	 <result property="login" column="login" javaType="string"/>
-	 <result property="password" column="password" javaType="string"/>
-	 <result property="nombre" column="nombre" javaType="string"/>
-	 <result property="ape_pa" column="ape_pa" javaType="string"/>
-	 <result property="ape_ma" column="ape_ma" javaType="string"/>
-	 <result property="dni" column="dni" javaType="string"/>
-	 <result property="fec_nacimiento" column="fec_nacimiento" javaType="string"/>
-	 <result property="sexo" column="sexo" javaType="string"/>
-	 <result property="email" column="email" javaType="string"/>
-	 <result property="estado_civil" column="estado_civil" javaType="string"/>
-	 <result property="telefono" column="telefono" javaType="string"/>
-	 <result property="celular" column="celular" javaType="string"/>
-	 <association property="rol" resultMap="rolMap"/>
-</resultMap>
-
-
+	<resultMap type="com.pasteleria.bean.Rol" id="rolMap">
+		<id property="idRol" column="idRol" javaType="int"/>
+		<result property="descripcion" column="descripcion" javaType="string"/>
+	</resultMap>
+	
+	<resultMap type="com.pasteleria.bean.User" id="userMap">
+		 <id property="idUsuario" column="idUsuario" javaType="string"/>
+		 <result property="login" column="login" javaType="string"/>
+		 <result property="password" column="password" javaType="string"/>
+		 <result property="nombre" column="nombre" javaType="string"/>
+		 <result property="ape_pa" column="ape_pa" javaType="string"/>
+		 <result property="ape_ma" column="ape_ma" javaType="string"/>
+		 <result property="dni" column="dni" javaType="string"/>
+		 <result property="fec_nacimiento" column="fec_nacimiento" javaType="string"/>
+		 <result property="sexo" column="sexo" javaType="string"/>
+		 <result property="email" column="email" javaType="string"/>
+		 <result property="estado_civil" column="estado_civil" javaType="string"/>
+		 <result property="telefono" column="telefono" javaType="string"/>
+		 <result property="celular" column="celular" javaType="string"/>
+		 <association property="rol" resultMap="rolMap"/>
+	</resultMap>
+	
+	<resultMap type="com.pasteleria.bean.Employed" id="employedMap" extends="userMap">
+		<result property="fecha_ingreso" column="fecha_ingreso" javaType="string"/>
+		<result property="sueldo" column="sueldo" javaType="double"/>
+		<result property="fecha_salida" column="fecha_salida" javaType="string"/>
+		<result property="activo" column="activo" javaType="string"/>
+	</resultMap>
+	
+	<resultMap type="com.pasteleria.bean.Client" id="clientMap" extends="userMap">
+		<result property="fecha_registro" column="fecha_registro" javaType="string"/>
+	</resultMap>
 </mapper>
