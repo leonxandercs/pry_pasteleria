@@ -1,29 +1,14 @@
 package com.pasteleria.actions;
 
-import java.util.List;
+
 import java.util.Map;
 
-
-
-
-
-
-
-
-
-
-
-
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.dispatcher.SessionMap;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.pasteleria.bean.Client;
-import com.pasteleria.bean.Employed;
 import com.pasteleria.bean.User;
 import com.pasteleria.services.ServiceNavbar;
 import com.pasteleria.services.ServiceUser;
