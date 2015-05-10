@@ -1,6 +1,10 @@
 package com.pasteleria.actions;
 
+import java.util.List;
 import java.util.Map;
+
+
+
 
 
 
@@ -16,7 +20,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pasteleria.bean.User;
 import com.pasteleria.services.ServiceNavbar;
+import com.pasteleria.services.ServiceUser;
 
 /**
  * 
@@ -38,35 +44,22 @@ public class LoginAction  extends ActionSupport{
 			})
 	public String validateUser()
 	{
-		if (email.equals("alex_0446@hotmail.com") &&
-				password.equals("123456")) 
+		User user=new ServiceUser().find(email, password);
+		
+		if (user!=null)
 		{
-			this.navbar=new ServiceNavbar().getNavBarWithRol(3);
+			this.navbar=new ServiceNavbar().getNavBarWithRol(user.getRol().getIdRol());
 			session.put("navbar", this.navbar);
-			addActionMessage("Alexander");
+			addActionMessage(user.getNombre());
 			return SUCCESS;
-		}
-		else if(email.equals("leonxandercs@gmail.com") &&
-				password.equals("123456"))
-		{
-			this.navbar=new ServiceNavbar().getNavBarWithRol(4);;
-			session.put("navbar", this.navbar);
-			addActionMessage("Leo");
-			return SUCCESS;
-		}
-		else if(email.equals("katty@gmail.com") &&
-				password.equals("123456"))
-		{
-			this.navbar=new ServiceNavbar().getNavBarWithRol(2);;
-			session.put("navbar", this.navbar);
-			addActionMessage("Katy");
-			return SUCCESS;
+			
 		}
 		else
 		{
 			addActionError("Credenciales Incorrectas");
 			return ERROR;
 		}
+		
 	}
 	
 
