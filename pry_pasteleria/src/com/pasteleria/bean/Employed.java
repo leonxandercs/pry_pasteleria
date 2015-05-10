@@ -2,6 +2,12 @@ package com.pasteleria.bean;
 
 import java.io.Serializable;
 
+
+/**
+ * 
+ * @author Pantera
+ *
+ */
 @SuppressWarnings("serial")
 public class Employed extends User implements Serializable{
 
@@ -9,8 +15,6 @@ public class Employed extends User implements Serializable{
 	private Double sueldo;
 	private String fecha_salida;
 	private String activo;
-	
-	
 	
 	public Employed() {
 		super();
