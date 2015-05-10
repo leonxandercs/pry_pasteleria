@@ -12,6 +12,8 @@ import java.util.Map;
 
 
 
+
+
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -20,6 +22,8 @@ import org.apache.struts2.dispatcher.SessionMap;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pasteleria.bean.Client;
+import com.pasteleria.bean.Employed;
 import com.pasteleria.bean.User;
 import com.pasteleria.services.ServiceNavbar;
 import com.pasteleria.services.ServiceUser;
@@ -50,6 +54,7 @@ public class LoginAction  extends ActionSupport{
 		{
 			this.navbar=new ServiceNavbar().getNavBarWithRol(user.getRol().getIdRol());
 			session.put("navbar", this.navbar);
+			session.put("user", user);
 			addActionMessage(user.getNombre());
 			return SUCCESS;
 			

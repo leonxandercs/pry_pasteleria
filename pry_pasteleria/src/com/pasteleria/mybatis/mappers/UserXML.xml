@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userxml">
 
-<select id="sql_find" parameterType="map" resultMap="mapxml.clientMap" statementType="PREPARED">
+<select id="sql_find" parameterType="map" resultMap="mapxml.userMap" statementType="PREPARED">
 	select * from BUSCA_USUARIO where login=#{login} and  password=#{password}
 </select>
 
