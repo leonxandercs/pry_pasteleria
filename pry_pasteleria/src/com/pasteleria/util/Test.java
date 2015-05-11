@@ -7,8 +7,8 @@ public class Test {
 
 	
 	public static void main(String[] args) {
-		User u=new User();
-		u.setCelular("dfsff");
+		User u=null;
+		
 		
 		Customer c=(Customer)u;
 	}

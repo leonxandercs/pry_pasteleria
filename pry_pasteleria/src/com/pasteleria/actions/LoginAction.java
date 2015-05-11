@@ -42,7 +42,6 @@ public class LoginAction  extends ActionSupport{
 			session.put("user", user);
 			addActionMessage(user.getNombre());
 			return SUCCESS;
-			
 		}
 		else
 		{
