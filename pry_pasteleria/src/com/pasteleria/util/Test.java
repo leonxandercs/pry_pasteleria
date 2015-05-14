@@ -65,7 +65,7 @@ public class Test {
 		Iterator<Product> it3=lista3.iterator();
 		while (it3.hasNext()) {
 			Product c=it3.next();
-			System.out.println(c.getIdProducto()+" "+c.getDescripcion());
+			System.out.println(c.getIdProducto()+" "+c.getDescripcion()+" "+c.getPrecio());
 			System.out.println(c.getCategoria().getIdCategoria()+" "+c.getCategoria().getDescripcion());
 			System.out.println(c.getCobertura().getIdCobertura()+" "+c.getCobertura().getDescripcion());
 			System.out.println(c.getMasa().getIdMasa()+" "+c.getMasa().getDescripcion());

@@ -2,7 +2,9 @@ package com.pasteleria.factory;
 
 import com.pasteleria.interfaces.CategoryDAO;
 import com.pasteleria.interfaces.CoverageDAO;
+import com.pasteleria.interfaces.CustomerDAO;
 import com.pasteleria.interfaces.DoughDAO;
+import com.pasteleria.interfaces.EmployedDAO;
 import com.pasteleria.interfaces.FillingDAO;
 import com.pasteleria.interfaces.NavbarDAO;
 import com.pasteleria.interfaces.ProductDAO;
@@ -17,6 +19,8 @@ public abstract class Factory {
 	public abstract StatusDAO getStatusDAO();
 	public abstract NavbarDAO getNavbarDAO();
 	public abstract UserDAO getUserDAO();
+	public abstract CustomerDAO getCustomerDAO();
+	public abstract EmployedDAO getEmployedDAO();
 	public abstract CategoryDAO getCategoryDAO();
 	public abstract CoverageDAO  getCoverageDAO();
 	public abstract DoughDAO getDoughDAO();
