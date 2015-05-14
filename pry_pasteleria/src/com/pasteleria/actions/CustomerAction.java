@@ -22,7 +22,21 @@ public class CustomerAction extends ActionSupport {
 		clientes=new ServiceCustomer().list();
 		return SUCCESS;
 	}
-
+	
+	@Action(value="saveCustomer",results={
+			@Result(name="success",type="redirectAction",location="listCustomer")})
+	public String save(){
+		new ServiceCustomer().create(cliente);
+		return SUCCESS;
+	}
+	
+	@Action(value="deleteCustomer",results={
+			@Result(name="success",type="redirectAction",location="listCustomer")})
+	public String delete(){
+		new ServiceCustomer().delete(cliente);
+		return SUCCESS;
+	}
+	
 	
 	public List<Customer> getClientes() {
 		return clientes;
