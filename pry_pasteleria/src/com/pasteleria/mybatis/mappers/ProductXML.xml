@@ -16,4 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		exec NUEVO_PRODUCTO #{descripcion},#{stock},#{precio},#{image_resource},#{categoria.idCategoria},#{cobertura.idCobertura},#{masa.idMasa},#{relleno.idRelleno}
 	</insert>
 	
+	<update id="sql_update" parameterType="product" statementType="CALLABLE">
+		exec SP_MODIFICA_PRODUCTO #{descripcion},#{stock},#{precio},#{image_resource},#{categoria.idCategoria},#{cobertura.idCobertura},#{masa.idMasa},#{relleno.idRelleno},#{idProducto}
+	</update>
+	
+	<delete id="sql_delete" parameterType="int" statementType="CALLABLE">
+		exec SP_ELIMINA_PRODUCTO #{idProducto};
+	</delete>
+	
 </mapper>

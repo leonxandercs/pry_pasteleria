@@ -16,4 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from BUSCA_EMPLEADO where idUsuario=#{idUsuario};
 	</select>
 	
+	<update id="sql_update" parameterType="employed" statementType="CALLABLE">
+		exec SP_MODIFICA_EMPLEADO #{nombre}, #{ape_pa}, #{ape_ma}, #{dni}, #{fec_nacimiento}, #{sexo}, #{email}, #{estado_civil}, #{telefono}, #{celular},#{fecha_ingreso},#{sueldo},#{fecha_salida},#{activo},#{idUsuario},#{login},#{password},#{rol.idRol}
+	</update>
+	
+	<delete id="sql_delete" parameterType="String" statementType="CALLABLE">
+		exec SP_ELIMINA_EMPLEADO #{idUsuario};
+	</delete>
+	
 </mapper>

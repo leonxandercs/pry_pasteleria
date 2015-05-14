@@ -16,4 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from BUSCA_CLIENTE where idUsuario=#{idUsuario};
 	</select>
 	
+	<update id="sql_update" parameterType="customer" statementType="CALLABLE">
+		exec 
+	</update>
+	
+	<delete id="sql_delete" parameterType="String" statementType="CALLABLE">
+		exec 
+	</delete>
+	
 </mapper>

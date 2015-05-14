@@ -60,14 +60,34 @@ public class SqlServerProductDAO implements ProductDAO {
 
 	@Override
 	public int update(Product bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.insert("productxml.sql_update",bean);
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 	@Override
 	public int delete(Product bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.insert("productxml.sql_delete",bean.getIdProducto());
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 }
