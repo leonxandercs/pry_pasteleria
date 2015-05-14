@@ -8,4 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 select * from BUSCA_CLIENTE;
 	</select>
 	
+	<insert id="sql_insert" parameterType="customer" statementType="CALLABLE">
+		exec NUEVO_CLIENTE
+	</insert>
+	
 </mapper>

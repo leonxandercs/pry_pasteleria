@@ -22,6 +22,8 @@ public class SqlServerCategoryDAO implements CategoryDAO {
 			list=session.selectList("categoryxml.sql_select");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}	
 		return list;
 	}

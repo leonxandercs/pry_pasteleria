@@ -22,6 +22,8 @@ public class SqlServerProductDAO implements ProductDAO {
 			list=session.selectList("productxml.sql_select");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}	
 		return list;
 	}

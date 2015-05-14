@@ -22,7 +22,9 @@ public class SqlServerDoughDAO implements DoughDAO {
 			list=session.selectList("doughxml.sql_select");
 		} catch (Exception e) {
 			e.printStackTrace();
-		}	
+		}finally{
+			session.close();
+		}
 		return list;
 	}
 

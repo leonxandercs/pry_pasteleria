@@ -22,6 +22,8 @@ public class SqlServerCustomerDAO implements CustomerDAO {
 			list=session.selectList("customerxml.sql_select");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}	
 		return list;
 	}
@@ -34,8 +36,17 @@ public class SqlServerCustomerDAO implements CustomerDAO {
 
 	@Override
 	public int create(Customer bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.insert("customerxml.sql_insert",bean);
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 	@Override

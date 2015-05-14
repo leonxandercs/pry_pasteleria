@@ -22,6 +22,8 @@ public class SqlServerFillingDAO implements FillingDAO {
 			list=session.selectList("fillingxml.sql_select");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}	
 		return list;
 	}

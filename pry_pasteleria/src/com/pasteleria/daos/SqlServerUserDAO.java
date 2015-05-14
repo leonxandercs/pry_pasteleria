@@ -26,6 +26,8 @@ public class SqlServerUserDAO implements UserDAO {
 			user=(User) session.selectOne("userxml.sql_find",map);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}
 		
 		return user;

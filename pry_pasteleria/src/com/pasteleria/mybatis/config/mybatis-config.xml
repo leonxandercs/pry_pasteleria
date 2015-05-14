@@ -12,6 +12,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			type="com.pasteleria.bean.Status" />
 		<typeAlias alias="navbar" 
 			type="com.pasteleria.bean.Navbar"/>
+		<typeAlias alias="customer" 
+			type="com.pasteleria.bean.Customer"/>
+		<typeAlias alias="employed" 
+			type="com.pasteleria.bean.Employed"/>
 	</typeAliases>
 	
 	<environments default="development">

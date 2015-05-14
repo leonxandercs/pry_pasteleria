@@ -5,13 +5,17 @@ import java.util.List;
 
 import com.pasteleria.bean.Category;
 import com.pasteleria.bean.Coverage;
+import com.pasteleria.bean.Customer;
 import com.pasteleria.bean.Dough;
+import com.pasteleria.bean.Employed;
 import com.pasteleria.bean.Filling;
 import com.pasteleria.bean.Product;
 import com.pasteleria.bean.User;
 import com.pasteleria.services.ServiceCategory;
 import com.pasteleria.services.ServiceCoverage;
+import com.pasteleria.services.ServiceCustomer;
 import com.pasteleria.services.ServiceDough;
+import com.pasteleria.services.ServiceEmployed;
 import com.pasteleria.services.ServiceFilling;
 import com.pasteleria.services.ServiceProduct;
 import com.pasteleria.services.ServiceUser;
@@ -61,7 +65,7 @@ public class Test {
 	}
 	System.out.println((System.currentTimeMillis()-inicio));
 	*/
-		List<Product>lista3=new ServiceProduct().list();
+	/*	List<Product>lista3=new ServiceProduct().list();
 		Iterator<Product> it3=lista3.iterator();
 		while (it3.hasNext()) {
 			Product c=it3.next();
@@ -71,7 +75,23 @@ public class Test {
 			System.out.println(c.getMasa().getIdMasa()+" "+c.getMasa().getDescripcion());
 			System.out.println(c.getRelleno().getIdRelleno()+" "+c.getRelleno().getDescripcion());
 		}
-		
+	*/
+		List<Employed> empleados=new ServiceEmployed().list();
+		for (Employed employed : empleados) {
+			System.out.println(employed.getIdUsuario());
+			System.out.println(employed.getNombre());
+			System.out.println(employed.getActivo());
+			System.out.println(employed.getFecha_ingreso());
+			System.out.println(employed.getSueldo());
+			System.out.println(employed.getFecha_salida());
+		}
+		System.out.println("---------------------");
+		List<Customer> clientes=new ServiceCustomer().list();
+		for (Customer customer : clientes) {
+			System.out.println(customer.getIdUsuario());
+			System.out.println(customer.getNombre());
+			System.out.println(customer.getFecha_registro());
+		}
 	
 	}
 

@@ -8,4 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 select * from BUSCA_EMPLEADO;
 	</select>
 	
+	<insert id="sql_insert" parameterType="employed" statementType="CALLABLE">
+		exec NUEVO_EMPLEADO
+	</insert>
+	
 </mapper>

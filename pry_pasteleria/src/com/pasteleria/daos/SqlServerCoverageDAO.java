@@ -22,6 +22,8 @@ public class SqlServerCoverageDAO implements CoverageDAO {
 			list=session.selectList("coveragexml.sql_select");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}	
 		return list;
 	}

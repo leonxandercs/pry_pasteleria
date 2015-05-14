@@ -22,6 +22,8 @@ public class SqlServerEmployedDAO implements EmployedDAO {
 			list=session.selectList("employedxml.sql_select");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}	
 		return list;
 	}
@@ -34,8 +36,17 @@ public class SqlServerEmployedDAO implements EmployedDAO {
 
 	@Override
 	public int create(Employed bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.insert("employedxml.sql_insert",bean);
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 	@Override
