@@ -1,0 +1,18 @@
+package com.pasteleria.interfaces;
+
+import java.util.List;
+
+import com.pasteleria.bean.Product;
+/**
+ * 
+ * @author Pantera
+ *
+ */
+public interface ProductDAO {
+
+	public List<Product> list();
+	public Product find(Product bean);
+	public int create(Product bean);
+	public int update(Product bean);
+	public int delete(Product bean);
+}

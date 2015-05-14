@@ -7,17 +7,20 @@ import com.pasteleria.bean.Category;
 import com.pasteleria.bean.Coverage;
 import com.pasteleria.bean.Dough;
 import com.pasteleria.bean.Filling;
+import com.pasteleria.bean.Product;
 import com.pasteleria.bean.User;
 import com.pasteleria.services.ServiceCategory;
 import com.pasteleria.services.ServiceCoverage;
 import com.pasteleria.services.ServiceDough;
 import com.pasteleria.services.ServiceFilling;
+import com.pasteleria.services.ServiceProduct;
 import com.pasteleria.services.ServiceUser;
 
 public class Test {
 
 	
 	public static void main(String[] args) {
+		/*
 	User user=new ServiceUser().find("leonxandercs@gmail.com","123456");
 	System.out.println(user.getNombre());
 	System.out.println("-------------------------------");
@@ -57,8 +60,18 @@ public class Test {
 		System.out.println(c.getDescripcion());
 	}
 	System.out.println((System.currentTimeMillis()-inicio));
-	
-	
+	*/
+		List<Product>lista3=new ServiceProduct().list();
+		Iterator<Product> it3=lista3.iterator();
+		while (it3.hasNext()) {
+			Product c=it3.next();
+			System.out.println(c.getIdProducto()+" "+c.getDescripcion());
+			System.out.println(c.getCategoria().getIdCategoria()+" "+c.getCategoria().getDescripcion());
+			System.out.println(c.getCobertura().getIdCobertura()+" "+c.getCobertura().getDescripcion());
+			System.out.println(c.getMasa().getIdMasa()+" "+c.getMasa().getDescripcion());
+			System.out.println(c.getRelleno().getIdRelleno()+" "+c.getRelleno().getDescripcion());
+		}
+		
 	
 	}
 

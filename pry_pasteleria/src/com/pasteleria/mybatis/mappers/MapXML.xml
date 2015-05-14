@@ -40,22 +40,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<resultMap type="com.pasteleria.bean.Category" id="categoryMap">
 		<id    property="idCategoria" column="idCategoria" javaType="int"/>
-		<result property="descripcion" column="descripcion" javaType="string"/>
+		<result property="descripcion" column="descripcionCategoria" javaType="string"/>
 	</resultMap>
 	
 	<resultMap type="com.pasteleria.bean.Coverage" id="coverageMap">
 		<id    property="idCobertura" column="idCobertura" javaType="int"/>
-		<result property="descripcion" column="descripcion" javaType="string"/>
+		<result property="descripcion" column="descripcionCobertura" javaType="string"/>
 	</resultMap>
 	
 	<resultMap type="com.pasteleria.bean.Dough" id="doughMap">
 		<id    property="idMasa" column="idMasa" javaType="int"/>
-		<result property="descripcion" column="descripcion" javaType="string"/>
+		<result property="descripcion" column="descripcionMasa" javaType="string"/>
 	</resultMap>
 	
 	<resultMap type="com.pasteleria.bean.Filling" id="fillingMap">
 		<id    property="idRelleno" column="idRelleno" javaType="int"/>
+		<result property="descripcion" column="descripcionRelleno" javaType="string"/>
+	</resultMap>
+	
+	<resultMap type="com.pasteleria.bean.Product" id="productMap">
+		<id  property="idProducto" column="idProducto" javaType="int"/>
 		<result property="descripcion" column="descripcion" javaType="string"/>
+		<result property="stock" column="stock" javaType="int"/>
+		<result property="precio" column="precio" javaType="double"/>
+		<result property="image_resource" column="ruta_imagen" javaType="string"/>
+		<association property="categoria" resultMap="categoryMap" />
+		<association property="cobertura" resultMap="coverageMap" />
+		<association property="masa" resultMap="doughMap" />
+		<association property="relleno" resultMap="fillingMap" />
 	</resultMap>
 	
 </mapper>

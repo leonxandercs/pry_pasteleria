@@ -36,6 +36,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/pasteleria/mybatis/mappers/CoverageXML.xml"/>
 		<mapper resource="com/pasteleria/mybatis/mappers/DoughXML.xml"/>
 		<mapper resource="com/pasteleria/mybatis/mappers/FillingXML.xml"/>
+		<mapper resource="com/pasteleria/mybatis/mappers/ProductXML.xml"/>
 	</mappers>
 
 </configuration>
