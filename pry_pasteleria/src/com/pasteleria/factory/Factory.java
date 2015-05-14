@@ -8,6 +8,7 @@ import com.pasteleria.interfaces.EmployedDAO;
 import com.pasteleria.interfaces.FillingDAO;
 import com.pasteleria.interfaces.NavbarDAO;
 import com.pasteleria.interfaces.ProductDAO;
+import com.pasteleria.interfaces.RolDAO;
 import com.pasteleria.interfaces.StatusDAO;
 import com.pasteleria.interfaces.UserDAO;
 
@@ -18,6 +19,7 @@ public abstract class Factory {
 	
 	public abstract StatusDAO getStatusDAO();
 	public abstract NavbarDAO getNavbarDAO();
+	public abstract RolDAO getRolDAO();
 	public abstract UserDAO getUserDAO();
 	public abstract CustomerDAO getCustomerDAO();
 	public abstract EmployedDAO getEmployedDAO();

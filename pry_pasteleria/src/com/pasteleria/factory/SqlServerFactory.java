@@ -14,6 +14,7 @@ import com.pasteleria.daos.SqlServerEmployedDAO;
 import com.pasteleria.daos.SqlServerFillingDAO;
 import com.pasteleria.daos.SqlServerNavbarDAO;
 import com.pasteleria.daos.SqlServerProductDAO;
+import com.pasteleria.daos.SqlServerRolDAO;
 import com.pasteleria.daos.SqlServerStatusDAO;
 import com.pasteleria.daos.SqlServerUserDAO;
 import com.pasteleria.interfaces.CategoryDAO;
@@ -24,6 +25,7 @@ import com.pasteleria.interfaces.EmployedDAO;
 import com.pasteleria.interfaces.FillingDAO;
 import com.pasteleria.interfaces.NavbarDAO;
 import com.pasteleria.interfaces.ProductDAO;
+import com.pasteleria.interfaces.RolDAO;
 import com.pasteleria.interfaces.StatusDAO;
 import com.pasteleria.interfaces.UserDAO;
 /**
@@ -102,6 +104,11 @@ public class SqlServerFactory extends Factory {
 	@Override
 	public ProductDAO getProductDAO() {
 		return new SqlServerProductDAO();
+	}
+
+	@Override
+	public RolDAO getRolDAO() {
+		return new SqlServerRolDAO();
 	}
 
 }
