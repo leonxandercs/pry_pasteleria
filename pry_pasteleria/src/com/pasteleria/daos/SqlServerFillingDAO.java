@@ -2,15 +2,28 @@ package com.pasteleria.daos;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import com.pasteleria.bean.Filling;
+import com.pasteleria.factory.SqlServerFactory;
 import com.pasteleria.interfaces.FillingDAO;
 
 public class SqlServerFillingDAO implements FillingDAO {
 
+	SqlSessionFactory SQL_SESSION_FACTORY=SqlServerFactory.SQL_SESSION_FACTORY;
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Filling> list() {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		List<Filling> list=null;
+		try {
+			list=session.selectList("fillingxml.sql_select");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return list;
 	}
 
 	@Override

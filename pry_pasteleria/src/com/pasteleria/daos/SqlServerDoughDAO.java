@@ -2,15 +2,28 @@ package com.pasteleria.daos;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import com.pasteleria.bean.Dough;
+import com.pasteleria.factory.SqlServerFactory;
 import com.pasteleria.interfaces.DoughDAO;
 
 public class SqlServerDoughDAO implements DoughDAO {
-
+	
+	SqlSessionFactory SQL_SESSION_FACTORY=SqlServerFactory.SQL_SESSION_FACTORY;
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dough> list() {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		List<Dough> list=null;
+		try {
+			list=session.selectList("doughxml.sql_select");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return list;
 	}
 
 	@Override
