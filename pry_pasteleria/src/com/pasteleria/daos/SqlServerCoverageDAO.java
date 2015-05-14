@@ -13,6 +13,8 @@ public class SqlServerCoverageDAO implements CoverageDAO {
 	
 	SqlSessionFactory SQL_SESSION_FACTORY=SqlServerFactory.SQL_SESSION_FACTORY;
 
+	//@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Coverage> list() {
 		SqlSession session=SQL_SESSION_FACTORY.openSession();

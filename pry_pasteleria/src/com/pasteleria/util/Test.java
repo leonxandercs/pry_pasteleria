@@ -20,10 +20,12 @@ public class Test {
 	
 	List<Coverage>lista=dao.list();
 	Iterator<Coverage> it=lista.iterator();
+	long inicio=System.currentTimeMillis();
 	while (it.hasNext()) {
 		Coverage c=it.next();
 		System.out.println(c.getDescripcion());
 	}
+	System.out.println((System.currentTimeMillis()-inicio));
 	}
 	
 }
