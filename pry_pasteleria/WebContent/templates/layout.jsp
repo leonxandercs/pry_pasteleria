@@ -2,6 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="/struts-jquery-tags" prefix="sj" %>
+<%@taglib uri="/struts-jquery-grid-tags" prefix="sjg" %>
 <!DOCTYPE html>
 <html>
 <head>
