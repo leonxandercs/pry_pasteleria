@@ -9,7 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="sql_insert" parameterType="employed" statementType="CALLABLE">
-		exec NUEVO_EMPLEADO
+		exec NUEVO_EMPLEADO #{nombre}, #{ape_pa}, #{ape_ma}, #{dni}, #{fec_nacimiento}, #{sexo}, #{email}, #{estado_civil}, #{telefono}, #{celular},#{sueldo},#{activo},#{login},#{password},#{rol.idRol}
 	</insert>
+	
+	<select id="sql_find" parameterType="String" resultMap="mapxml.employedMap" statementType="PREPARED">
+		select * from BUSCA_EMPLEADO where idUsuario=#{idUsuario};
+	</select>
 	
 </mapper>

@@ -7,5 +7,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="sql_select" resultMap="mapxml.productMap" statementType="PREPARED">
 		select * from buscar_producto;
 	</select>
+		
+	<select id="sql_find"  parameterType="int" resultMap="mapxml.productMap" statementType="PREPARED">
+		select * from buscar_producto where idProducto=#{idProducto};
+	</select>
+	
+	<insert id="sql_insert" parameterType="product" statementType="CALLABLE">
+		exec NUEVO_PRODUCTO #{descripcion},#{stock},#{precio},#{image_resource},#{categoria.idCategoria},#{cobertura.idCobertura},#{masa.idMasa},#{relleno.idRelleno}
+	</insert>
 	
 </mapper>

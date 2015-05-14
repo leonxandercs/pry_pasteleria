@@ -30,8 +30,16 @@ public class SqlServerEmployedDAO implements EmployedDAO {
 
 	@Override
 	public Employed find(Employed bean) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		Employed employed=null;
+		try {
+			employed=(Employed) session.selectOne("employedxml.sql_find",bean.getIdUsuario());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return employed;
 	}
 
 	@Override
@@ -40,6 +48,7 @@ public class SqlServerEmployedDAO implements EmployedDAO {
 		SqlSession session=SQL_SESSION_FACTORY.openSession();
 		try {
 			salida=session.insert("employedxml.sql_insert",bean);
+			session.commit();
 			System.out.println(salida);
 		} catch (Exception e) {
 			e.printStackTrace();

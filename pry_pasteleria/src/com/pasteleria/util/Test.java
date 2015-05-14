@@ -3,6 +3,8 @@ package com.pasteleria.util;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.struts2.components.Bean;
+
 import com.pasteleria.bean.Category;
 import com.pasteleria.bean.Coverage;
 import com.pasteleria.bean.Customer;
@@ -10,6 +12,7 @@ import com.pasteleria.bean.Dough;
 import com.pasteleria.bean.Employed;
 import com.pasteleria.bean.Filling;
 import com.pasteleria.bean.Product;
+import com.pasteleria.bean.Rol;
 import com.pasteleria.bean.User;
 import com.pasteleria.services.ServiceCategory;
 import com.pasteleria.services.ServiceCoverage;
@@ -76,6 +79,7 @@ public class Test {
 			System.out.println(c.getRelleno().getIdRelleno()+" "+c.getRelleno().getDescripcion());
 		}
 	*/
+	/*
 		List<Employed> empleados=new ServiceEmployed().list();
 		for (Employed employed : empleados) {
 			System.out.println(employed.getIdUsuario());
@@ -92,7 +96,75 @@ public class Test {
 			System.out.println(customer.getNombre());
 			System.out.println(customer.getFecha_registro());
 		}
-	
+	*/
+		/*
+		Employed employed=new Employed();
+		employed.setNombre("lizzet");
+		employed.setApe_pa("chavez");
+		employed.setApe_ma("simbron");
+		employed.setDni("46529017");
+		employed.setFec_nacimiento("25-02-1981");
+		employed.setSexo("F");
+		employed.setEmail("lichi@gmail.com");
+		employed.setEstado_civil("C");
+		employed.setTelefono("5292210");
+		employed.setCelular("954191116");
+		employed.setSueldo(2500.00);
+		employed.setActivo("1");
+		employed.setLogin("lichi@gmail.com");
+		employed.setPassword("123456");
+		employed.setIdUsuario("E0003");
+		employed.setRol(new Rol(4,""));
+		
+		//int salida=new ServiceEmployed().create(employed);
+		//Employed e=new ServiceEmployed().find(employed);
+		 System.out.println(e.getNombre());
+		 System.out.println(e.getFecha_ingreso());
+		 System.out.println(e.getRol().getDescripcion());
+	*/
+		/*
+		Customer customer=new Customer();
+		customer.setNombre("Ana");
+		customer.setApe_pa("Simbron");
+		customer.setApe_ma("Cayetano");
+		customer.setDni("34529017");
+		customer.setFec_nacimiento("25-02-1962");
+		customer.setSexo("F");
+		customer.setEmail("alinasc@gmail.com");
+		customer.setEstado_civil("C");
+		customer.setTelefono("5292210");
+		customer.setCelular("954191116");
+		customer.setLogin(customer.getEmail());
+		customer.setPassword("123456");
+		customer.setRol(new Rol(2,""));
+		customer.setIdUsuario("C0002");
+		
+		//int salida=new ServiceCustomer().create(customer);
+		Customer c=new ServiceCustomer().find(customer);
+		System.out.println(c.getNombre());
+		System.out.println(c.getRol().getDescripcion());*/
+		Category category=new Category();
+		category.setIdCategoria(1);
+		
+		Coverage coverage=new Coverage();
+		coverage.setIdCobertura(1);
+		
+		
+		
+		Product product=new Product();
+		product.setIdProducto(1);
+		product.setDescripcion("alala");
+		product.setStock(100);
+		product.setPrecio(45.90);
+		product.setImage_resource("infantil2");
+		//product.setCategoria(categoria);
+		//product.setCobertura(cobertura);
+		//product.setMasa(masa);
+		//product.setRelleno(relleno);
+		
+		Product p=new ServiceProduct().find(product);
+		System.out.println(p.getDescripcion());
+		
 	}
 
 

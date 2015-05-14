@@ -9,7 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="sql_insert" parameterType="customer" statementType="CALLABLE">
-		exec NUEVO_CLIENTE
+		exec NUEVO_CLIENTE #{nombre}, #{ape_pa}, #{ape_ma}, #{dni}, #{fec_nacimiento}, #{sexo}, #{email}, #{estado_civil}, #{telefono}, #{celular}, #{login}, #{password}
 	</insert>
+	
+	<select id="sql_find" parameterType="String" resultMap="mapxml.customerMap" statementType="PREPARED">
+		select * from BUSCA_CLIENTE where idUsuario=#{idUsuario};
+	</select>
 	
 </mapper>

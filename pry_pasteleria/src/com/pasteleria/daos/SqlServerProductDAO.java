@@ -30,14 +30,32 @@ public class SqlServerProductDAO implements ProductDAO {
 
 	@Override
 	public Product find(Product bean) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		Product product=null;
+		try {
+			product=(Product) session.selectOne("productxml.sql_find",bean.getIdProducto());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return product;
 	}
 
 	@Override
 	public int create(Product bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.insert("productxml.sql_insert",bean);
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 	@Override

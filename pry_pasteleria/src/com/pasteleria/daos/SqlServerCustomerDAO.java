@@ -30,8 +30,16 @@ public class SqlServerCustomerDAO implements CustomerDAO {
 
 	@Override
 	public Customer find(Customer bean) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		Customer customer=null;
+		try {
+			customer=(Customer) session.selectOne("customerxml.sql_find",bean.getIdUsuario());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return customer;
 	}
 
 	@Override
@@ -40,6 +48,7 @@ public class SqlServerCustomerDAO implements CustomerDAO {
 		SqlSession session=SQL_SESSION_FACTORY.openSession();
 		try {
 			salida=session.insert("customerxml.sql_insert",bean);
+			session.commit();
 			System.out.println(salida);
 		} catch (Exception e) {
 			e.printStackTrace();
