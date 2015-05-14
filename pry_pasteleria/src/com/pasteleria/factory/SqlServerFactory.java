@@ -6,9 +6,11 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.pasteleria.daos.SqlServerCoverageDAO;
 import com.pasteleria.daos.SqlServerNavbarDAO;
 import com.pasteleria.daos.SqlServerStatusDAO;
 import com.pasteleria.daos.SqlServerUserDAO;
+import com.pasteleria.interfaces.CoverageDAO;
 import com.pasteleria.interfaces.NavbarDAO;
 import com.pasteleria.interfaces.StatusDAO;
 import com.pasteleria.interfaces.UserDAO;
@@ -53,6 +55,11 @@ public class SqlServerFactory extends Factory {
 	@Override
 	public UserDAO getUserDAO() {
 		return new SqlServerUserDAO();
+	}
+
+	@Override
+	public CoverageDAO getCoverageDAO() {
+		return new SqlServerCoverageDAO();
 	}
 
 }
