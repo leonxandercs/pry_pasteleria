@@ -10,19 +10,22 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Product implements Serializable {
 
-	private int id;
+	private int idProducto;
 	private String descripcion;
 	private int stock;
 	private double precio;
 	private String image_resource;
-	private int categoria;
+	private Category categoria;
+	private Coverage cobertura;
+	private Dough masa;
+	private Filling relleno;
 	
 	
-	public int getId() {
-		return id;
+	public int getIdProducto() {
+		return idProducto;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -48,12 +51,32 @@ public class Product implements Serializable {
 	public void setImage_resource(String image_resource) {
 		this.image_resource = image_resource;
 	}
-	public int getCategoria() {
+	public Category getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(int categoria) {
+	public void setCategoria(Category categoria) {
 		this.categoria = categoria;
 	}
+	public Coverage getCobertura() {
+		return cobertura;
+	}
+	public void setCobertura(Coverage cobertura) {
+		this.cobertura = cobertura;
+	}
+	public Dough getMasa() {
+		return masa;
+	}
+	public void setMasa(Dough masa) {
+		this.masa = masa;
+	}
+	public Filling getRelleno() {
+		return relleno;
+	}
+	public void setRelleno(Filling relleno) {
+		this.relleno = relleno;
+	}
+	
+	
 
 }
 

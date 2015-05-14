@@ -2,22 +2,21 @@ package com.pasteleria.bean;
 
 import java.io.Serializable;
 /**
- *  
+ * 
  * @author Pantera
  *
  */
-
 @SuppressWarnings("serial")
-public class Category implements Serializable{
+public class Coverage implements Serializable {
 
-	private int idCategoria;
+	private int idCobertura;
 	private String descripcion;
 	
-	public int getIdCategoria() {
-		return idCategoria;
+	public int getIdCobertura() {
+		return idCobertura;
 	}
-	public void setIdCategoria(int idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setIdCobertura(int idCobertura) {
+		this.idCobertura = idCobertura;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -25,5 +24,4 @@ public class Category implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
 }
