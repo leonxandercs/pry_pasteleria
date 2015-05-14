@@ -60,14 +60,34 @@ public class SqlServerCustomerDAO implements CustomerDAO {
 
 	@Override
 	public int update(Customer bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.update("customerxml.sql_update",bean);
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 	@Override
 	public int delete(Customer bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.delete("customerxml.sql_delete",bean.getIdUsuario());
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 }

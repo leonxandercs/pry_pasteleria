@@ -63,7 +63,7 @@ public class SqlServerProductDAO implements ProductDAO {
 		int salida=0;
 		SqlSession session=SQL_SESSION_FACTORY.openSession();
 		try {
-			salida=session.insert("productxml.sql_update",bean);
+			salida=session.update("productxml.sql_update",bean);
 			session.commit();
 			System.out.println(salida);
 		} catch (Exception e) {
@@ -79,7 +79,7 @@ public class SqlServerProductDAO implements ProductDAO {
 		int salida=0;
 		SqlSession session=SQL_SESSION_FACTORY.openSession();
 		try {
-			salida=session.insert("productxml.sql_delete",bean.getIdProducto());
+			salida=session.delete("productxml.sql_delete",bean.getIdProducto());
 			session.commit();
 			System.out.println(salida);
 		} catch (Exception e) {

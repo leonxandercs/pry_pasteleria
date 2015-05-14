@@ -60,14 +60,34 @@ public class SqlServerEmployedDAO implements EmployedDAO {
 
 	@Override
 	public int update(Employed bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.update("employedxml.sql_update",bean);
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 	@Override
 	public int delete(Employed bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.delete("employedxml.sql_delete",bean.getIdUsuario());
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 }
