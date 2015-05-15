@@ -1,4 +1,5 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
+
 <s:if test="hasActionMessages()">
 	<s:actionmessage id="messageSucces" />
 	<script>

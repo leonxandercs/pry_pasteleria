@@ -15,23 +15,22 @@
     <link href="css/bootstrap.min.css" media="all" rel="stylesheet">
      
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" media="all" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Raleway:300,500" rel="stylesheet" type="text/css">
-    
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.standalone.css">
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" media="all" rel="stylesheet">
+ 	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.standalone.css">
 	<link href="css/styles_catalogo.css" media="all" rel="stylesheet">
 	 
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
-   <!--  
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-   -->
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
-	<!--<script src="js/jquery-1.11.2.js"></script>-->
-	<script src="js/jquery.bootstrap-growl.js"></script>
+	<!--  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	-->
+  	
+  	<sj:head jqueryui="true" jquerytheme="excite-bike" locale="es"/>
+  	
+  	<script src="js/jquery.bootstrap-growl.js"></script>
 	<script src="js/bootstrap-growl.min.js"></script>	
-	
-	<sj:head jqueryui="true" jquerytheme="excite-bike" locale="es"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
 	
 </head>
 
