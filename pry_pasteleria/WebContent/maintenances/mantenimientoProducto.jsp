@@ -2,10 +2,6 @@
 <%@taglib uri="/struts-jquery-tags" prefix="sj" %>
 <%@taglib uri="/struts-jquery-grid-tags" prefix="sjg" %>
 
-<!--
-<sj:head jqueryui="true" jquerytheme="trontastic" locale="es"/>
--->
-<sj:head jqueryui="true" jquerytheme="excite-bike" locale="es"/>
 <script>
 	function abrirVentana(){
 		$('#dialog1').dialog("open");
@@ -43,9 +39,6 @@ width="1100">
 	<s:form id="frmdatos" action="saveProduct">
 			
 			<div>
-			 <!-- 
-				<s:hidden name="producto.idProducto" id="txtproducto" label="Codigo"/>
-			 -->
 				<s:textfield name="producto.descripcion" id="txtdescripcion" label="Producto"/>
 				<s:textfield name="producto.stock" id="txtstock" label="Stock"/>
 				<s:textfield name="producto.precio" id="txtprecio" label="Precio"/>

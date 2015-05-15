@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <%@taglib uri="/struts-jquery-tags" prefix="sj" %>
 <%@taglib uri="/struts-jquery-grid-tags" prefix="sjg" %>
 <!DOCTYPE html>
 <html>
-<sj:head jqueryui="true" jquerytheme="excite-bike" locale="es"/>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta charset="utf-8" />
@@ -28,12 +27,14 @@
    -->
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
-	<script src="js/jquery-1.11.2.js"></script>
+	<!--<script src="js/jquery-1.11.2.js"></script>-->
 	<script src="js/jquery.bootstrap-growl.js"></script>
-	<script src="js/bootstrap-growl.min.js"></script>
+	<script src="js/bootstrap-growl.min.js"></script>	
 	
-
+	<sj:head jqueryui="true" jquerytheme="excite-bike" locale="es"/>
+	
 </head>
+
 <body>
 
 	<div>
@@ -52,7 +53,6 @@
 
 
 <!---------------------------------------------->
-    <script src="js/jquery-1.11.2.js"></script>
     <script src="js/jquery.validation.js"></script>
     <script src="js/messages_es.js"></script>
     <script src="js/main.js"></script>
