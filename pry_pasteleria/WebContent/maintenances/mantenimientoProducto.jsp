@@ -37,6 +37,10 @@ width="1100">
 	<sjg:gridColumn name="stock" title="Stock"/>
 	<sjg:gridColumn name="precio" title="Precio"/>
 	<sjg:gridColumn name="image_resource" title="Imagen"/>
+	<sjg:gridColumn name="categoria.descripcion" title="Categoria"/>
+	<sjg:gridColumn name="cobertura.descripcion"  title="Cobertura"/>
+	<sjg:gridColumn name="masa.descripcion" title="Masa"/>
+	<sjg:gridColumn name="relleno.descripcion" title="Relleno"/>
 </sjg:grid>
 
 
@@ -46,7 +50,9 @@ width="1100">
 	<s:form id="frmdatos" action="saveProduct">
 			
 			<div>
-				<s:textfield name="producto.idProducto" id="txtproducto" label="Codigo"/>
+			 <!-- 
+				<s:hidden name="producto.idProducto" id="txtproducto" label="Codigo"/>
+			 -->
 				<s:textfield name="producto.descripcion" id="txtdescripcion" label="Producto"/>
 				<s:textfield name="producto.stock" id="txtstock" label="Stock"/>
 				<s:textfield name="producto.precio" id="txtprecio" label="Precio"/>
@@ -55,7 +61,7 @@ width="1100">
 			<div>
 			 
 			<s:url id="URL_ListCategorys" action="listCategory"/>
-				<sj:select id="cboespecialidad" label="Categoria"
+				<sj:select id="cbocategoria" label="Categoria"
 				list="categorias"
 				listKey="idCategoria"
 				listValue="descripcion"
@@ -66,7 +72,7 @@ width="1100">
 			</div>
 			<div>
 			<s:url id="URL_ListCoverages" action="listCoverage"/>
-				<sj:select id="cboespecialidad" label="Cobertura"
+				<sj:select id="cbocobertura" label="Cobertura"
 				list="coberturas"
 				listKey="idCobertura"
 				listValue="descripcion"
@@ -77,7 +83,7 @@ width="1100">
 			</div>
 			<div>
 			<s:url id="URL_ListDoughs" action="listDough"/>
-				<sj:select id="cboespecialidad" label="Masa"
+				<sj:select id="cbomasa" label="Masa"
 				list="masas"
 				listKey="idMasa"
 				listValue="descripcion"
@@ -88,7 +94,7 @@ width="1100">
 			</div>
 			<div>
 			<s:url id="URL_ListFillings" action="listFilling"/>
-				<sj:select id="cboespecialidad" label="Relleno"
+				<sj:select id="cborelleno" label="Relleno"
 				list="rellenos"
 				listKey="idRelleno"
 				listValue="descripcion"

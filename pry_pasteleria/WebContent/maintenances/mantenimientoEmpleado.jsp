@@ -50,7 +50,7 @@ width="1100">
 
 <sj:a button="true" onclick="abrirVentana()">Nuevo</sj:a>
 
-<sj:dialog id="dialog1" modal="true" width="400" height="600"  title="Datos del Empleado" autoOpen="false">
+<sj:dialog id="dialog1" modal="true" width="400" height="500"  title="Datos del Empleado" autoOpen="false">
 	<s:form id="frmdatos" action="saveEmployed">
 			
 			<div>
@@ -67,7 +67,7 @@ width="1100">
 			</div>
 			<div>
 			<s:url id="URL_ListRoles" action="listRol"/>
-				<sj:select id="cboespecialidad" label="Rol"
+				<sj:select id="cborol" label="Rol"
 				list="roles"
 				listKey="idRol"
 				listValue="descripcion"

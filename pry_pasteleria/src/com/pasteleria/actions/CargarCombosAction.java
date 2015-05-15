@@ -11,6 +11,8 @@ import com.pasteleria.bean.Category;
 import com.pasteleria.bean.Coverage;
 import com.pasteleria.bean.Dough;
 import com.pasteleria.bean.Filling;
+import com.pasteleria.bean.Rol;
+import com.pasteleria.services.HasServiceRol;
 import com.pasteleria.services.ServiceCategory;
 import com.pasteleria.services.ServiceCoverage;
 import com.pasteleria.services.ServiceDough;
@@ -20,15 +22,23 @@ import com.pasteleria.services.ServiceFilling;
 public class CargarCombosAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
+	private List<Rol> roles;
 	private List<Category> categorias;
 	private List<Coverage> coberturas;
 	private List<Dough> masas;
 	private List<Filling> rellenos;
 	
+	private Rol rol;
 	private Category categoria;
 	private Coverage cobertura;
 	private Dough masa;
 	private Filling relleno;
+	
+	@Action(value="listRol",results={@Result(name="success",type="json")})
+	public String list(){
+		roles=new HasServiceRol().list();
+		return SUCCESS;
+	}
 	
 	@Action(value="listCategory",results={@Result(name="success",type="json")})
 	public String listCategoria(){
@@ -102,6 +112,22 @@ public class CargarCombosAction extends ActionSupport{
 	}
 	public void setRelleno(Filling relleno) {
 		this.relleno = relleno;
+	}
+
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 	
 	
