@@ -25,8 +25,8 @@
 	<!--  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	-->
-  	<sj:head jquerytheme="dot-luv" locale="es" jqueryui="true"/>
-  	<!-- excite-bike start
+  	<sj:head jquerytheme="start" locale="es" jqueryui="true"/>
+  	<!-- excite-bike start dot-luv
   	<sj:head jquerytheme="showcase" customBasepath="themes" locale="es" jqueryui="true"/>
   	-->
   	<script src="js/jquery.bootstrap-growl.js"></script>
@@ -155,8 +155,8 @@
       }
       
       $('#detalle').hide();
-            
-
+      
+      
  });
 </script>
 </body>

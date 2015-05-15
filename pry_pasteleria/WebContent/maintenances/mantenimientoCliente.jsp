@@ -19,7 +19,22 @@ font-size:1.2em;
 
 <script>
 	
+	function cleaner(){
+		//limpiar fields
+		$('#txtnom').val('');
+		$('#txtape_pa').val('');
+		$('#txtape_ma').val('');
+		$('#txtdni').val('');
+		$('#txtfec_nac').val('');
+		$('#txtsexo').val('');
+		$('#txtemail').val('');
+		$('#txtestado_civil').val('');
+		$('#txttelefono').val('');
+		$('#txtcelular').val('');
+	}
+	
 	function abrirVentana(){
+		cleaner();
 		$('#dialog1').dialog("open");
 		$('#txtid').val('nuevo');
 	}
@@ -42,6 +57,7 @@ font-size:1.2em;
 	}
 	function editar(cellvalue){
 		$.getJSON("findCustomer?cliente.idUsuario="+cellvalue,function(datos){
+			abrirVentana();
 			$('#txtnom').val(datos.cliente.nombre);
 			$('#txtape_pa').val(datos.cliente.ape_pa);
 			$('#txtape_ma').val(datos.cliente.ape_ma);
@@ -52,7 +68,6 @@ font-size:1.2em;
 			$('#txtestado_civil').val(datos.cliente.estado_civil);
 			$('#txttelefono').val(datos.cliente.telefono);
 			$('#txtcelular').val(datos.cliente.celular);
-			abrirVentana();
 			$('#txtid').val(datos.cliente.idUsuario);
 		});
 	}

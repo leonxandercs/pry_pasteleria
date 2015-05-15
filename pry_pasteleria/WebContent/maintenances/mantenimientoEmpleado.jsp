@@ -16,9 +16,31 @@ font-size:1.2em;
 </style>
 
 <script>
+	
+	function cleaner(){
+		
+		$('#txtnom').val('');
+		$('#txtape_pa').val('');
+		$('#txtape_ma').val('');
+		$('#txtdni').val('');
+		$('#txtfec_nac').val('');
+		$('#txtsexo').val('');
+		$('#txtemail').val('');
+		$('#txtestado_civil').val('');
+		$('#txttelefono').val('');
+		$('#txtcelular').val('');
+		$('#txtsueldo').val('');
+		$('#txtfecha_ingreso').val('');
+		$('#txtfecha_salida').val('');
+		$('#cborol').val(0);
+	}
+	
 	function abrirVentana(){
-		$('#dialog1').dialog("open");
+		cleaner();	   
+	    $('#dialog1').dialog("open");
 		$('#txtid').val('nuevo');
+		var fregistro=$('#txtfecha_ingreso').parent().parent();
+		$(fregistro).hide();
 	}
 	$.subscribe('cerrarVentana',function(event,data){
 		$('#dialog1').dialog("close");
@@ -38,6 +60,8 @@ font-size:1.2em;
 	}
 	function editar(cellvalue){
 		$.getJSON("findEmployed?empleado.idUsuario="+cellvalue,function(datos){
+			
+			abrirVentana();
 			$('#txtnom').val(datos.empleado.nombre);
 			$('#txtape_pa').val(datos.empleado.ape_pa);
 			$('#txtape_ma').val(datos.empleado.ape_ma);
@@ -53,8 +77,11 @@ font-size:1.2em;
 			$('#txtfecha_ingreso').val(datos.empleado.fecha_ingreso);
 			$('#txtfecha_salida').val(datos.empleado.fecha_salida);
 			$('#cborol').val(datos.empleado.rol.idRol);
-			abrirVentana();
+			
 			$('#txtid').val(datos.empleado.idUsuario);
+			//muestra el campo fecha de ingreso para editarlo 
+			var fr=$('#txtfecha_ingreso').parent().parent();
+			$(fr).show();
 		});
 	}
 	
@@ -80,6 +107,7 @@ width="1400">
 	<sjg:gridColumn name="estado_civil" title="Estado Civil"/>
 	<sjg:gridColumn name="telefono" title="Telefono"/>
 	<sjg:gridColumn name="celular" title="Celular"/>
+	<sjg:gridColumn name="rol.descripcion" title="Rol" width="230"/>
 	<sjg:gridColumn name="fecha_ingreso" title="Ingreso"/>
 	<sjg:gridColumn name="sueldo" title="Sueldo"/>
 	<sjg:gridColumn name="fecha_salida" title="Fecha Fin contrato"/>
@@ -106,9 +134,9 @@ width="1400">
 				<s:textfield name="empleado.estado_civil" id="txtestado_civil" label="Estado Civil"/>
 				<s:textfield name="empleado.telefono" id="txttelefono" label="Telefono"/>
 				<s:textfield name="empleado.celular" id="txtcelular" label="Celular"/>
-				 
+				
+				
 				<s:textfield name="empleado.fecha_ingreso" id="txtfecha_ingreso" label="Fecha Ingreso"/>
-				 
 				<s:textfield name="empleado.sueldo" id="txtsueldo" label="Sueldo"/>
 				<s:textfield name="empleado.fecha_salida" id="txtfecha_salida" label="Fecha Fin contrato"/>
 				
@@ -132,3 +160,4 @@ width="1400">
 </sj:dialog>
 	
 <div id="divresult"></div>
+
