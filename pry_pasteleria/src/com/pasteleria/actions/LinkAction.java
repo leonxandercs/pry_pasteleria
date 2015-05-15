@@ -90,4 +90,10 @@ public class LinkAction  extends ActionSupport{
 	public String mEmpleado(){
 		return SUCCESS;
 	}
+	
+	@Action(value="mcobertura",
+			results={@Result(name=SUCCESS,type="tiles",location="mcobertura")})
+	public String mCobertura(){
+		return SUCCESS;
+	}
 }

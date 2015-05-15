@@ -64,15 +64,20 @@
 	</definition>
 	
 	<definition name="mempleado" extends="layout">
-		<put-attribute name="title"  value="Mantenimiento de Productos"/>
+		<put-attribute name="title"  value="Mantenimiento de Empleados"/>
 		<put-attribute name="body" 	 value="/maintenances/mantenimientoEmpleado.jsp"/>
 	</definition>
 	
 	<definition name="mcliente" extends="layout">
-		<put-attribute name="title"  value="Mantenimiento de Productos"/>
+		<put-attribute name="title"  value="Mantenimiento de Cliente"/>
 		<put-attribute name="body" 	 value="/maintenances/mantenimientoCliente.jsp"/>
 	</definition>
-
+	
+	<definition name="mcobertura" extends="layout">
+		<put-attribute name="title"  value="Mantenimiento de Cobertura"/>
+		<put-attribute name="body" 	 value="/maintenances/mantenimientoCobertura.jsp"/>
+	</definition>
+	
 </tiles-definitions>
 
 

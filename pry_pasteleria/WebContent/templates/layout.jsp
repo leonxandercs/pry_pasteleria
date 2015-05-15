@@ -25,7 +25,7 @@
 	<!--  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	-->
-  	<sj:head jquerytheme="start" locale="es" jqueryui="true"/>
+  	<sj:head jquerytheme="excite-bike" locale="es" jqueryui="true"/>
   	<!-- excite-bike start dot-luv
   	<sj:head jquerytheme="showcase" customBasepath="themes" locale="es" jqueryui="true"/>
   	-->
