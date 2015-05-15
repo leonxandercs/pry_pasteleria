@@ -25,9 +25,10 @@
 	<!--  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	-->
-  	
-  	<sj:head jqueryui="true" jquerytheme="excite-bike" locale="es"/>
-  	
+  	<sj:head jquerytheme="dot-luv" locale="es" jqueryui="true"/>
+  	<!-- excite-bike start
+  	<sj:head jquerytheme="showcase" customBasepath="themes" locale="es" jqueryui="true"/>
+  	-->
   	<script src="js/jquery.bootstrap-growl.js"></script>
 	<script src="js/bootstrap-growl.min.js"></script>	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>

@@ -23,15 +23,26 @@ public class CustomerAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	@Action(value="findCustomer",results={@Result(name="success",type="json")})
+	public String find(){
+		cliente=new ServiceCustomer().find(cliente);
+		return SUCCESS;
+	}
+	
+	
 	@Action(value="saveCustomer",results={
-			@Result(name="success",type="redirectAction",location="listCustomer")})
+			@Result(name="success",type="json")})
 	public String save(){
-		new ServiceCustomer().create(cliente);
+		if (cliente.getIdUsuario().equals("nuevo")) {
+			new ServiceCustomer().create(cliente);
+		}else{
+			new ServiceCustomer().update(cliente);
+		}
 		return SUCCESS;
 	}
 	
 	@Action(value="deleteCustomer",results={
-			@Result(name="success",type="redirectAction",location="listCustomer")})
+			@Result(name="success",type="json")})
 	public String delete(){
 		new ServiceCustomer().delete(cliente);
 		return SUCCESS;
@@ -53,10 +64,6 @@ public class CustomerAction extends ActionSupport {
 	public void setCliente(Customer cliente) {
 		this.cliente = cliente;
 	}
-	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+		
 	
 }

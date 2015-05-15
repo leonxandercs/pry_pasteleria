@@ -21,27 +21,41 @@ font-size:1.2em;
 	
 	function abrirVentana(){
 		$('#dialog1').dialog("open");
+		$('#txtid').val('nuevo');
 	}
 
 	$.subscribe('cerrarVentana',function(event,data){
 		$('#dialog1').dialog("close");
 	});
 
-	$.subscribe('rowselectCliente', function(event,data) {
-		document.getElementById("txtsexo").value= event.originalEvent.id;
-		 
-	   	 //var grid = event.originalEvent.grid; 
-	     var grid=jQuery('#gridClientes');
-		 var sel_id = grid.jqGrid('getGridParam','selrow');
-		 
-		 
-		 document.getElementById("txtnom").value = grid.jqGrid('getCell', sel_id, 'strnombre');
-		 document.getElementById("txtape_pa").value = grid.jqGrid('getCell', sel_id, 'strapepa');
-		 document.getElementById("txtape_ma").value = grid.jqGrid('getCell', sel_id, 'strapema');
-		 document.getElementById("txtdni").value = grid.jqGrid('getCell', sel_id, 'strdni');
-		 abrirVentana();
-	}); 
-	
+	function formatodel(cellvalue,data,options){
+		return "<a href=javascript:eliminar('"+cellvalue+"')><span class=\"glyphicon glyphicon-trash\"></span></a>";
+	}
+	function eliminar(cellvalue){
+		$.getJSON("deleteCustomer?cliente.idUsuario="+cellvalue,function(datos){
+			$.publish('cargaGrid');
+			alert("Registro Eliminado");
+		});
+	}
+	function formatoedit(cellvalue,data,options){
+		return "<a href=javascript:editar('"+cellvalue+"')><span class=\"glyphicon glyphicon-pencil\"></span></a>";
+	}
+	function editar(cellvalue){
+		$.getJSON("findCustomer?cliente.idUsuario="+cellvalue,function(datos){
+			$('#txtnom').val(datos.cliente.nombre);
+			$('#txtape_pa').val(datos.cliente.ape_pa);
+			$('#txtape_ma').val(datos.cliente.ape_ma);
+			$('#txtdni').val(datos.cliente.dni);
+			$('#txtfec_nac').val(datos.cliente.fec_nacimiento);
+			$('#txtsexo').val(datos.cliente.sexo);
+			$('#txtemail').val(datos.cliente.email);
+			$('#txtestado_civil').val(datos.cliente.estado_civil);
+			$('#txttelefono').val(datos.cliente.telefono);
+			$('#txtcelular').val(datos.cliente.celular);
+			abrirVentana();
+			$('#txtid').val(datos.cliente.idUsuario);
+		});
+	}
 	
 
 </script>
@@ -69,16 +83,21 @@ width="1100">
 	<sjg:gridColumn name="telefono" title="Telefono"/>
 	<sjg:gridColumn name="celular" title="Celular"/>
 	<sjg:gridColumn name="fecha_registro" title="Registro"/>
+	<sjg:gridColumn name="idUsuario" formatter="formatoedit" title="Editar" width="40"/>
+	<sjg:gridColumn name="idUsuario" formatter="formatodel" title="Eliminar" width="40"/>
+	
+	
 	
 </sjg:grid>
 
 
 <sj:a button="true" onclick="abrirVentana()">Nuevo</sj:a>
 
-<sj:dialog id="dialog1" modal="true" width="400" height="500"  title="Datos del Cliente" autoOpen="false">
+<sj:dialog id="dialog1" modal="true" width="450" height="550"  title="Datos del Cliente" autoOpen="false">
 	<s:form id="frmdatos" action="saveCustomer">
 			
 			<div>
+				<s:hidden    name="cliente.idUsuario" id="txtid"/>
 				<s:textfield name="cliente.nombre" id="txtnom"  label="Nombre"/>
 				<s:textfield name="cliente.ape_pa" id="txtape_pa" label="Apellido Paterno"/>
 				<s:textfield name="cliente.ape_ma" id="txtape_ma" label="Apellido Materno"/>
