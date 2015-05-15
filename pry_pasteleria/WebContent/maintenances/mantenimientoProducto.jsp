@@ -16,12 +16,62 @@ font-size:1.2em;
 </style>
 
 <script>
+	function cleaner(){
+		
+		$('#txtdescripcion').val('');
+		$('#txtstock').val('');
+		$('#txtprecio').val('');
+		$('#txtimagen').val('');
+		
+		$('#cbocategoria').val(0);
+		$('#cbocobertura').val(0);
+		$('#cbomasa').val(0);
+		$('#cborelleno').val(0);
+	}
+
 	function abrirVentana(){
+		cleaner();
 		$('#dialog1').dialog("open");
+		$('#txtid').val(0);
 	}
 	$.subscribe('cerrarVentana',function(event,data){
 		$('#dialog1').dialog("close");
 	});
+	
+	function formatimage(cellvalue,data,options){
+		return "<img src='img/"+cellvalue+"' width=100>";
+	}
+	
+	function formatodel(cellvalue,data,options){
+		return "<a href=javascript:eliminar('"+cellvalue+"')><span class=\"glyphicon glyphicon-trash\"></span></a>";
+	}
+	function eliminar(cellvalue){
+		$.getJSON("deleteProduct?producto.idProducto="+cellvalue,function(datos){
+			$.publish('cargaGrid');
+			alert("Registro Eliminado");
+		});
+	}
+	function formatoedit(cellvalue,data,options){
+		return "<a href=javascript:editar('"+cellvalue+"')><span class=\"glyphicon glyphicon-pencil\"></span></a>";
+	}
+	function editar(cellvalue){
+		$.getJSON("findProduct?producto.idProducto="+cellvalue,function(datos){
+			
+			abrirVentana();
+			$('#txtdescripcion').val(datos.producto.descripcion);
+			$('#txtstock').val(datos.producto.stock);
+			$('#txtprecio').val(datos.producto.precio);
+			$('#txtimagen').val(datos.producto.image_resource);
+			
+			$('#cbocategoria').val(datos.producto.categoria.idCategoria);
+			$('#cbocobertura').val(datos.producto.cobertura.idCobertura);
+			$('#cbomasa').val(datos.producto.masa.idMasa);
+			$('#cborelleno').val(datos.producto.relleno.idRelleno);
+			
+			$('#txtid').val(datos.producto.idProducto);
+		});
+
+	}
 </script>
 
 
@@ -38,13 +88,16 @@ width="1100">
 	<sjg:gridColumn name="descripcion" title="Producto"/>
 	<sjg:gridColumn name="stock" title="Stock"/>
 	<sjg:gridColumn name="precio" title="Precio"/>
-	<sjg:gridColumn name="image_resource" title="Imagen"/>
+	
+	<sjg:gridColumn name="image_resource" formatter="formatimage" title="Imagen"/>
+	
 	<sjg:gridColumn name="categoria.descripcion" title="Categoria"/>
 	<sjg:gridColumn name="cobertura.descripcion"  title="Cobertura"/>
 	<sjg:gridColumn name="masa.descripcion" title="Masa"/>
 	<sjg:gridColumn name="relleno.descripcion" title="Relleno"/>
+	<sjg:gridColumn name="idProducto" formatter="formatoedit" title="Editar" width="40"/>
+	<sjg:gridColumn name="idProducto" formatter="formatodel" title="Eliminar" width="40"/>
 </sjg:grid>
-
 
 <sj:a button="true" onclick="abrirVentana()">Nuevo</sj:a>
 
@@ -52,6 +105,7 @@ width="1100">
 	<s:form id="frmdatos" action="saveProduct">
 			
 			<div>
+				<s:hidden    name="producto.idProducto" id="txtid"/>
 				<s:textfield name="producto.descripcion" id="txtdescripcion" label="Producto"/>
 				<s:textfield name="producto.stock" id="txtstock" label="Stock"/>
 				<s:textfield name="producto.precio" id="txtprecio" label="Precio"/>

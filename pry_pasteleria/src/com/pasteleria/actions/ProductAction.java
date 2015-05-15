@@ -29,15 +29,17 @@ public class ProductAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	@Action(value="saveProduct",results={
-			@Result(name="success",type="redirectAction",location="listCustomer")})
+	@Action(value="saveProduct",results={@Result(name="success",type="json")})
 	public String save(){
-		new ServiceProduct().create(producto);
+		if (producto.getIdProducto()==0)
+			new ServiceProduct().create(producto);
+		else
+			new ServiceProduct().update(producto);
+		
 		return SUCCESS;
 	}
 	
-	@Action(value="deleteProduct",results={
-			@Result(name="success",type="redirectAction",location="listCustomer")})
+	@Action(value="deleteProduct",results={@Result(name="success",type="json")})
 	public String delete(){
 		new ServiceProduct().delete(producto);
 		return SUCCESS;
@@ -58,6 +60,6 @@ public class ProductAction extends ActionSupport {
 	public void setProducto(Product producto) {
 		this.producto = producto;
 	}
-	
-	
+
+
 }
