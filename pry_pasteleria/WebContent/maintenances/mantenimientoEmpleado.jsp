@@ -31,7 +31,7 @@ caption="Listado de Empleados"
 dataType="json"
 href="%{URL_ListEmployeds}"
 reloadTopics="cargaGrid"
-width="1100">
+width="1400">
 	<sjg:gridColumn name="idUsuario" title="Codigo"/>
 	<sjg:gridColumn name="nombre" title="Nombre"/>
 	<sjg:gridColumn name="ape_pa" title="Apellido Paterno"/>
@@ -43,6 +43,8 @@ width="1100">
 	<sjg:gridColumn name="estado_civil" title="Estado Civil"/>
 	<sjg:gridColumn name="telefono" title="Telefono"/>
 	<sjg:gridColumn name="celular" title="Celular"/>
+	<sjg:gridColumn name="fecha_ingreso" title="Sueldo"/>
+	<sjg:gridColumn name="sueldo" title="Sueldo"/>
 	<sjg:gridColumn name="fecha_ingreso" title="Ingreso"/>
 	
 </sjg:grid>
@@ -50,20 +52,23 @@ width="1100">
 
 <sj:a button="true" onclick="abrirVentana()">Nuevo</sj:a>
 
-<sj:dialog id="dialog1" modal="true" width="400" height="500"  title="Datos del Empleado" autoOpen="false">
+<sj:dialog id="dialog1" modal="true" width="420" height="520"  title="Datos del Empleado" autoOpen="false">
 	<s:form id="frmdatos" action="saveEmployed">
 			
 			<div>
 				<s:textfield name="empleado.nombre" id="txtnom" label="Nombre"/>
-				<s:textfield name="empleado.ape_pa" id="txtnom" label="Apellido Paterno"/>
-				<s:textfield name="empleado.ape_ma" id="txtnom" label="Apellido Materno"/>
-				<s:textfield name="empleado.dni" id="txtnom" label="DNI"/>
-				<s:textfield name="empleado.fec_nacimiento" id="txtnom" label="Nacimiento"/>
-				<s:textfield name="empleado.sexo" id="txtnom" label="Sexo"/>
-				<s:textfield name="empleado.email" id="txtnom" label="Email"/>
-				<s:textfield name="empleado.estado_civil" id="txtnom" label="Estado Civil"/>
-				<s:textfield name="empleado.telefono" id="txtnom" label="Telefono"/>
-				<s:textfield name="empleado.celular" id="txtnom" label="Celular"/>
+				<s:textfield name="empleado.ape_pa" id="txtapepa" label="Apellido Paterno"/>
+				<s:textfield name="empleado.ape_ma" id="txtapema" label="Apellido Materno"/>
+				<s:textfield name="empleado.dni" id="txtdni" label="DNI"/>
+				<s:textfield name="empleado.fec_nacimiento" id="txtnacimiento" label="Nacimiento"/>
+				<s:textfield name="empleado.sexo" id="txtsexo" label="Sexo"/>
+				<s:textfield name="empleado.email" id="txtemail" label="Email"/>
+				<s:textfield name="empleado.estado_civil" id="txtecivil" label="Estado Civil"/>
+				<s:textfield name="empleado.telefono" id="txttelefono" label="Telefono"/>
+				<s:textfield name="empleado.celular" id="txtcelular" label="Celular"/>
+				
+				<s:textfield name="empleado.sueldo" id="txtsueldo" label="Sueldo"/>
+				
 			</div>
 			<div>
 			<s:url id="URL_ListRoles" action="listRol"/>

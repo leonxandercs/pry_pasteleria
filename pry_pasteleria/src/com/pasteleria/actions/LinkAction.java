@@ -73,4 +73,9 @@ public class LinkAction  extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	@Action(value="mproducto",
+			results={@Result(name=SUCCESS,type="tiles",location="mproducto")})
+	public String mProducto(){
+		return SUCCESS;
+	}
 }

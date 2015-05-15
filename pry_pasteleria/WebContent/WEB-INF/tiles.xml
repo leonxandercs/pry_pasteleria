@@ -57,6 +57,11 @@
 		<put-attribute name="title"  value="Recuperar clave"/>
 		<put-attribute name="body" 	 value="/security/recoverPassword.jsp"/>
 	</definition>
+	
+	<definition name="mproducto" extends="layout">
+		<put-attribute name="title"  value="Mantenimiento de Productos"/>
+		<put-attribute name="body" 	 value="/maintenances/mantenimientoProducto.jsp"/>
+	</definition>
 
 </tiles-definitions>
 
