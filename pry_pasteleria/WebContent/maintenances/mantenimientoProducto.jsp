@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mantenimiento clientes</title>
+<title>Mantenimiento Productos</title>
 <!--
 <sj:head jqueryui="true" jquerytheme="trontastic" locale="es"/>
 -->
@@ -23,59 +23,81 @@
 </script>
 <body>
 
-<s:url id="URL_ListEmployeds" action="listEmployed"/>
+<s:url id="URL_ListProducts" action="listProduct"/>
 
 <sjg:grid 
-gridModel="empleados" 
-caption="Listado de Empleados"
+gridModel="productos" 
+caption="Listado de Productos"
 dataType="json"
-href="%{URL_ListEmployeds}"
+href="%{URL_ListProducts}"
 reloadTopics="cargaGrid"
 width="1100">
-	<sjg:gridColumn name="idUsuario" title="Codigo"/>
-	<sjg:gridColumn name="nombre" title="Nombre"/>
-	<sjg:gridColumn name="ape_pa" title="Apellido Paterno"/>
-	<sjg:gridColumn name="ape_ma" title="Apellido Materno"/>
-	<sjg:gridColumn name="dni" title="DNI"/>
-	<sjg:gridColumn name="fec_nacimiento" title="Fecha Nacimiento"/>
-	<sjg:gridColumn name="sexo" title="Sexo"/>
-	<sjg:gridColumn name="email" title="Correo"/>
-	<sjg:gridColumn name="estado_civil" title="Estado Civil"/>
-	<sjg:gridColumn name="telefono" title="Telefono"/>
-	<sjg:gridColumn name="celular" title="Celular"/>
-	<sjg:gridColumn name="fecha_ingreso" title="Ingreso"/>
-	
+	<sjg:gridColumn name="idProducto" title="Codigo"/>
+	<sjg:gridColumn name="descripcion" title="Producto"/>
+	<sjg:gridColumn name="stock" title="Stock"/>
+	<sjg:gridColumn name="precio" title="Precio"/>
+	<sjg:gridColumn name="image_resource" title="Imagen"/>
 </sjg:grid>
 
 
 <sj:a button="true" onclick="abrirVentana()">Nuevo</sj:a>
 
-<sj:dialog id="dialog1" modal="true" width="400" height="600"  title="Datos del Empleado" autoOpen="false">
-	<s:form id="frmdatos" action="saveEmployed">
+<sj:dialog id="dialog1" modal="true" width="400" height="600"  title="Datos del Producto" autoOpen="false">
+	<s:form id="frmdatos" action="saveProduct">
 			
 			<div>
-				<s:textfield name="empleado.nombre" id="txtnom" label="Nombre"/>
-				<s:textfield name="empleado.ape_pa" id="txtnom" label="Apellido Paterno"/>
-				<s:textfield name="empleado.ape_ma" id="txtnom" label="Apellido Materno"/>
-				<s:textfield name="empleado.dni" id="txtnom" label="DNI"/>
-				<s:textfield name="empleado.fec_nacimiento" id="txtnom" label="Nacimiento"/>
-				<s:textfield name="empleado.sexo" id="txtnom" label="Sexo"/>
-				<s:textfield name="empleado.email" id="txtnom" label="Email"/>
-				<s:textfield name="empleado.estado_civil" id="txtnom" label="Estado Civil"/>
-				<s:textfield name="empleado.telefono" id="txtnom" label="Telefono"/>
-				<s:textfield name="empleado.celular" id="txtnom" label="Celular"/>
+				<s:textfield name="producto.idProducto" id="txtproducto" label="Codigo"/>
+				<s:textfield name="producto.descripcion" id="txtdescripcion" label="Producto"/>
+				<s:textfield name="producto.stock" id="txtstock" label="Stock"/>
+				<s:textfield name="producto.precio" id="txtprecio" label="Precio"/>
+				<s:textfield name="producto.image_resource" id="txtimagen" label="Imagen"/>
 			</div>
 			<div>
-			<s:url id="URL_ListRoles" action="listRol"/>
-				<sj:select id="cboespecialidad" label="Rol"
-				list="roles"
-				listKey="idRol"
+			 
+			<s:url id="URL_ListCategorys" action="listCategory"/>
+				<sj:select id="cboespecialidad" label="Categoria"
+				list="categorias"
+				listKey="idCategoria"
 				listValue="descripcion"
-				href="%{URL_ListRoles}"
+				href="%{URL_ListCategorys}"
 				headerKey="0"
 				headerValue="--Seleccione--" 
-				name="empleado.rol.idRol" />
+				name="producto.categoria.idCategoria" />
 			</div>
+			<div>
+			<s:url id="URL_ListCoverages" action="listCoverage"/>
+				<sj:select id="cboespecialidad" label="Cobertura"
+				list="coberturas"
+				listKey="idCobertura"
+				listValue="descripcion"
+				href="%{URL_ListCoverages}"
+				headerKey="0"
+				headerValue="--Seleccione--" 
+				name="producto.cobertura.idCobertura" />
+			</div>
+			<div>
+			<s:url id="URL_ListDoughs" action="listDough"/>
+				<sj:select id="cboespecialidad" label="Masa"
+				list="masas"
+				listKey="idMasa"
+				listValue="descripcion"
+				href="%{URL_ListDoughs}"
+				headerKey="0"
+				headerValue="--Seleccione--" 
+				name="producto.masa.idMasa" />
+			</div>
+			<div>
+			<s:url id="URL_ListFillings" action="listFilling"/>
+				<sj:select id="cboespecialidad" label="Relleno"
+				list="rellenos"
+				listKey="idRelleno"
+				listValue="descripcion"
+				href="%{URL_ListFillings}"
+				headerKey="0"
+				headerValue="--Seleccione--" 
+				name="producto.relleno.idRelleno" />
+			</div>
+			
 			<sj:submit value="Grabar" button="true" 
 			 onCompleteTopics="cerrarVentana,cargaGrid" targets="divresult"/>
 		
