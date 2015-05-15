@@ -62,6 +62,16 @@
 		<put-attribute name="title"  value="Mantenimiento de Productos"/>
 		<put-attribute name="body" 	 value="/maintenances/mantenimientoProducto.jsp"/>
 	</definition>
+	
+	<definition name="mempleado" extends="layout">
+		<put-attribute name="title"  value="Mantenimiento de Productos"/>
+		<put-attribute name="body" 	 value="/maintenances/mantenimientoEmpleado.jsp"/>
+	</definition>
+	
+	<definition name="mcliente" extends="layout">
+		<put-attribute name="title"  value="Mantenimiento de Productos"/>
+		<put-attribute name="body" 	 value="/maintenances/mantenimientoCliente.jsp"/>
+	</definition>
 
 </tiles-definitions>
 

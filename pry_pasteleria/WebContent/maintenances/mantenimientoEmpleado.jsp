@@ -1,18 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@taglib uri="/struts-jquery-tags" prefix="sj" %>
 <%@taglib uri="/struts-jquery-grid-tags" prefix="sjg" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mantenimiento clientes</title>
-<!--
-<sj:head jqueryui="true" jquerytheme="trontastic" locale="es"/>
--->
-<sj:head jqueryui="true" jquerytheme="excite-bike" locale="es"/>
-</head>
+
+<style>
+.label{
+font-size:0.6em;
+color: black;
+}
+.ui-jqgrid-title{
+font-size:1.3em;
+}
+table{
+font-size:1.2em;
+}
+</style>
+
 <script>
 	function abrirVentana(){
 		$('#dialog1').dialog("open");
@@ -21,7 +23,6 @@
 		$('#dialog1').dialog("close");
 	});
 </script>
-<body>
 
 <s:url id="URL_ListEmployeds" action="listEmployed"/>
 
@@ -88,6 +89,3 @@ width="1400">
 </sj:dialog>
 	
 <div id="divresult"></div>
-
-</body>
-</html>

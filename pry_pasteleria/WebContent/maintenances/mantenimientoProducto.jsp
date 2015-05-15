@@ -2,6 +2,19 @@
 <%@taglib uri="/struts-jquery-tags" prefix="sj" %>
 <%@taglib uri="/struts-jquery-grid-tags" prefix="sjg" %>
 
+<style>
+.label{
+font-size:0.6em;
+color: black;
+}
+.ui-jqgrid-title{
+font-size:1.3em;
+}
+table{
+font-size:1.2em;
+}
+</style>
+
 <script>
 	function abrirVentana(){
 		$('#dialog1').dialog("open");
@@ -89,10 +102,9 @@ width="1100">
 				headerValue="--Seleccione--" 
 				name="producto.relleno.idRelleno" />
 			</div>
-			
+			 
 			<sj:submit value="Grabar" button="true" 
 			 onCompleteTopics="cerrarVentana,cargaGrid" targets="divresult"/>
-		
 	</s:form>
 </sj:dialog>
 	
