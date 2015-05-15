@@ -23,6 +23,12 @@ public class ProductAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	@Action(value="findProduct",results={@Result(name="success",type="json")})
+	public String find(){
+		producto=new ServiceProduct().find(producto);
+		return SUCCESS;
+	}
+	
 	@Action(value="saveProduct",results={
 			@Result(name="success",type="redirectAction",location="listCustomer")})
 	public String save(){
