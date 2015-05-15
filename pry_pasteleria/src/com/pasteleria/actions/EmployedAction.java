@@ -23,15 +23,23 @@ public class EmployedAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	@Action(value="saveEmployed",results={
-			@Result(name="success",type="redirectAction",location="listCustomer")})
-	public String save(){
-		new ServiceEmployed().create(empleado);
+	@Action(value="findEmployed",results={@Result(name="success",type="json")})
+	public String find(){
+		empleado=new ServiceEmployed().find(empleado);
 		return SUCCESS;
 	}
 	
-	@Action(value="deleteEmployed",results={
-			@Result(name="success",type="redirectAction",location="listCustomer")})
+	@Action(value="saveEmployed",results={@Result(name="success",type="json")})
+	public String save(){
+		if (empleado.getIdUsuario().equals("nuevo")) {
+			new ServiceEmployed().create(empleado);
+		}else{
+			new ServiceEmployed().update(empleado);
+		}
+		return SUCCESS;
+	}
+	
+	@Action(value="deleteEmployed",results={@Result(name="success",type="json")})
 	public String delete(){
 		new ServiceEmployed().delete(empleado);
 		return SUCCESS;
