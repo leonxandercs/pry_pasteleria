@@ -18,8 +18,8 @@ $(document).ready(function() {
     $('#example').dataTable( {
         "processing": true,
         "ajax": {
-        	"url":"listCustomer.action",
-        	 "dataSrc":"clientes"
+        	"url":"listEmployed.action",
+        	 "dataSrc":"empleados"
         	},
         "columns": [
                     { "data": "idUsuario" },
@@ -31,7 +31,8 @@ $(document).ready(function() {
                     { "data": "sexo" },
                     { "data": "email" },
                     { "data": "estado_civil" },
-                    { "data": "telefono" }
+                    { "data": "telefono" },
+                    { "data": "rol.descripcion" }
                     
                 ]
        , "language": {
@@ -74,6 +75,7 @@ $(document).ready(function() {
 			                <th>Email</th>
 			                <th>E.Civil</th>
 			                <th>Telefono</th>
+			                <th>Rol</th>
 			            </tr>
 			        </thead>
 			 
@@ -89,6 +91,7 @@ $(document).ready(function() {
 			                <th>Email</th>
 			                <th>E.Civil</th>
 			                <th>Telefono</th>
+			                <th>Rol</th>
 			            </tr>
 			        </tfoot>
 			    </table>

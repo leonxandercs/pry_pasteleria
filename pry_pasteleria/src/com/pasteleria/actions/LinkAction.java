@@ -102,4 +102,9 @@ public class LinkAction  extends ActionSupport{
 	public String mCustomer(){
 		return SUCCESS;
 	}
+	
+	@Action(value="memployed",results={@Result(name=SUCCESS,type="tiles",location="memployed")})
+	public String memployed(){
+	return SUCCESS;
+	}
 }

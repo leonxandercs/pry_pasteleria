@@ -83,6 +83,11 @@
 		<put-attribute name="body" 	 value="/maintenances/customer.jsp"/>
 	</definition>
 	
+	<definition name="memployed" extends="layout">
+		<put-attribute name="title"  value="Mantenimiento de Empleados"/>
+		<put-attribute name="body" 	 value="/maintenances/employed.jsp"/>
+	</definition>
+	
 </tiles-definitions>
 
 
