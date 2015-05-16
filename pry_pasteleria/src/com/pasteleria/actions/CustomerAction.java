@@ -20,6 +20,7 @@ public class CustomerAction extends ActionSupport {
 	@Action(value="listCustomer",results={@Result(name="success",type="json")})
 	public String list(){
 		clientes=new ServiceCustomer().list();
+		System.out.println("fui invocado");
 		return SUCCESS;
 	}
 	
