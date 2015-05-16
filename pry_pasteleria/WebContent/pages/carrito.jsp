@@ -5,6 +5,7 @@ input[type=number]{
 	}
 </style>
 <div>
+<div class="table-responsive">
 <table class="table table-striped table-hover " style="margin-rigth:40px;">
   <thead>
     <tr class="info">
@@ -75,7 +76,7 @@ input[type=number]{
     </tr>
   </tfoot>
 </table> 
-
+</div>
 <!-- ------------------------------------------------------------- -->
 
 <div style="text-align:right;margin-right:80px;">

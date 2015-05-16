@@ -79,7 +79,7 @@ function ocultar(e){
 <br></br>
 
 <div class="divcenter">
-
+<div class="table-responsive">
 	<table class="table table-striped table-hover tablecenter">
 		<thead>
 			<tr class="info">
@@ -139,7 +139,7 @@ function ocultar(e){
 			</tr>
 		</tbody>
 	</table>
-
+</div>
 </div>
 
 </div>
@@ -153,6 +153,7 @@ function ocultar(e){
 		<h4 class="panel-title">Detalle de Pedido</h4>
 	</div>
 	<div class="panel-body">
+	<div class="table-responsive">
 		<table>
 			<tr>
 				<td><label>&nbsp;&nbsp;Codigo de Pedido:&nbsp;</label></td>
@@ -184,8 +185,8 @@ function ocultar(e){
 				<td>&nbsp;</td>
 			</tr>
 		</table>
-
-
+	</div>
+	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr class="info">
@@ -295,6 +296,8 @@ function ocultar(e){
 				</tr>
 			</tbody>
 		</table>
+	</div>
+		
 		<div style="text-align: right;">
 			<div style="display: inline-block;">
 				<s:submit cssClass="btn btn-primary" value="Guardar" />

@@ -96,4 +96,10 @@ public class LinkAction  extends ActionSupport{
 	public String mCobertura(){
 		return SUCCESS;
 	}
+	
+	@Action(value="mcustomer",
+			results={@Result(name=SUCCESS,type="tiles",location="mcustomer")})
+	public String mCustomer(){
+		return SUCCESS;
+	}
 }

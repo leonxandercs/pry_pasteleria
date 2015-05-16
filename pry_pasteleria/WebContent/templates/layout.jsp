@@ -12,16 +12,16 @@
     
     <title><tiles:insertAttribute name="title" ignore="true" /></title>
    
-    <link href="css/bootstrap.min.css" media="all" rel="stylesheet">
+   
      
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Raleway:300,500" rel="stylesheet" type="text/css">
    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" media="all" rel="stylesheet">
  	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.standalone.css">
+ 	
 	<link href="css/styles_catalogo.css" media="all" rel="stylesheet">
-	 
-    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.css">
+	<link href="css/bootstrap.min.css" media="all" rel="stylesheet">
 	<!--  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	-->
@@ -33,7 +33,13 @@
 	<script src="js/bootstrap-growl.min.js"></script>	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
 	
-</head>
+	<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
+
+	
+</head>		
 
 <body>
 

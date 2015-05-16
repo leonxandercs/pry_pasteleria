@@ -1,24 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib uri="/struts-jquery-tags" prefix="sj"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-	<sj:head/>
-	<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <style type="text/css">
     div.container {
-        width: 80%;
+        width:95%;
         margin: 0 auto 0 auto;
-        margin-top: 10%;     
+        margin-top:5%;
+        margin-bottom:5%;    
+    }
+    .panel-primary{
+    	width: 80%;
+    	margin: 0 10% 10%;"
     }
 </style>
 <script>
@@ -57,36 +49,39 @@ $(document).ready(function() {
 } );
 
 </script>
-</head>
-<body>
-<div class="container">
-<table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
- 
-        <tfoot>
-            <tr>
-                 <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-    </table>
-   
+<div class="panel panel-primary">
+	<div class="panel panel-heading">
+		<h1 class="panel-title">LISTADO DE CLIENTES</h1>
+	</div>
+	<div>
+	<div class="container">
+		<div class="table-responsive">
+			<table id="example" class="table table-responsive table-striped table-bordered table-hover" cellspacing="0" width="100%">
+			        <thead>
+			            <tr>
+			                <th>Name</th>
+			                <th>Position</th>
+			                <th>Office</th>
+			                <th>Extn.</th>
+			                <th>Start date</th>
+			                <th>Salary</th>
+			            </tr>
+			        </thead>
+			 
+			        <tfoot>
+			            <tr>
+			                 <th>Name</th>
+			                <th>Position</th>
+			                <th>Office</th>
+			                <th>Extn.</th>
+			                <th>Start date</th>
+			                <th>Salary</th>
+			            </tr>
+			        </tfoot>
+			    </table>
+			   
+			</div>
+		</div>
+	</div>
 </div>
-
-</body>
-</html>
-
 

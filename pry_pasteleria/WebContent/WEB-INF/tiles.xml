@@ -78,6 +78,11 @@
 		<put-attribute name="body" 	 value="/maintenances/mantenimientoCobertura.jsp"/>
 	</definition>
 	
+	<definition name="mcustomer" extends="layout">
+		<put-attribute name="title"  value="Mantenimiento de Clientes"/>
+		<put-attribute name="body" 	 value="/maintenances/customer.jsp"/>
+	</definition>
+	
 </tiles-definitions>
 
 
