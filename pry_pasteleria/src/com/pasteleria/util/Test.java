@@ -143,27 +143,12 @@ public class Test {
 		Customer c=new ServiceCustomer().find(customer);
 		System.out.println(c.getNombre());
 		System.out.println(c.getRol().getDescripcion());*/
-		Category category=new Category();
-		category.setIdCategoria(1);
+		Coverage c=new Coverage();
+		c.setIdCobertura(7);
+		c.setDescripcion("Sin cobertura");
 		
-		Coverage coverage=new Coverage();
-		coverage.setIdCobertura(1);
+		int salida=new ServiceCoverage().update(c);
 		
-		
-		
-		Product product=new Product();
-		product.setIdProducto(1);
-		product.setDescripcion("alala");
-		product.setStock(100);
-		product.setPrecio(45.90);
-		product.setImage_resource("infantil2");
-		//product.setCategoria(categoria);
-		//product.setCobertura(cobertura);
-		//product.setMasa(masa);
-		//product.setRelleno(relleno);
-		
-		Product p=new ServiceProduct().find(product);
-		System.out.println(p.getDescripcion());
 		
 	}
 

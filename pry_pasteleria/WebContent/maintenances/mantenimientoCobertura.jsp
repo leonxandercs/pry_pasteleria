@@ -17,7 +17,6 @@ font-size:1.2em;
 
 <script>
 	function cleaner(){
-		
 		$('#txtdescripcion').val('');
 	}
 
@@ -35,7 +34,7 @@ font-size:1.2em;
 		return "<a href=javascript:eliminar('"+cellvalue+"')><span class=\"glyphicon glyphicon-trash\"></span></a>";
 	}
 	function eliminar(cellvalue){
-		$.getJSON("?cobertura.idCobertura="+cellvalue,function(datos){
+		$.getJSON("deleteCoverage?cobertura.idCobertura="+cellvalue,function(datos){
 			$.publish('cargaGrid');
 			alert("Registro Eliminado");
 		});
@@ -44,11 +43,11 @@ font-size:1.2em;
 		return "<a href=javascript:editar('"+cellvalue+"')><span class=\"glyphicon glyphicon-pencil\"></span></a>";
 	}
 	function editar(cellvalue){
-		$.getJSON("?cobertura.idCobertura="+cellvalue,function(datos){
+		$.getJSON("findCoverage?cobertura.idCobertura="+cellvalue,function(datos){
 			
 			abrirVentana();
-			$('#txtdescripcion').val(datos.producto.descripcion);
-			$('#txtid').val(datos.producto.idProducto);
+			$('#txtdescripcion').val(datos.cobertura.descripcion);
+			$('#txtid').val(datos.cobertura.idCobertura);
 		});
 
 	}
@@ -73,7 +72,7 @@ width="1100">
 <sj:a button="true" onclick="abrirVentana()">Nuevo</sj:a>
 
 <sj:dialog id="dialog1" modal="true" width="400" height="400"  title="Datos de Cobertura" autoOpen="false">
-	<s:form id="frmdatos" action="">
+	<s:form id="frmdatos" action="createCoverage">
 			
 			<div>
 				<s:hidden    name="cobertura.idCobertura" id="txtid"/>

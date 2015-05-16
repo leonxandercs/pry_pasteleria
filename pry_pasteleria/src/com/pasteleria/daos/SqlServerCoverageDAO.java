@@ -30,26 +30,64 @@ public class SqlServerCoverageDAO implements CoverageDAO {
 
 	@Override
 	public Coverage find(Coverage bean) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		Coverage coverage=null;
+		try {
+			coverage=(Coverage) session.selectOne("coveragexml.sql_find",bean.getIdCobertura());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}	
+		return coverage;
 	}
 
 	@Override
 	public int create(Coverage bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.insert("coveragexml.sql_insert",bean);
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 	@Override
 	public int update(Coverage bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.update("coveragexml.sql_update",bean);
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 	@Override
 	public int delete(Coverage bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=0;
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		try {
+			salida=session.delete("coveragexml.sql_delete",bean.getIdCobertura());
+			session.commit();
+			System.out.println(salida);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return salida;
 	}
 
 }
