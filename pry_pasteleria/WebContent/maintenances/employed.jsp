@@ -42,7 +42,7 @@ $(document).ready(function() {
            "info": "Mostrando pagina _PAGE_ de _PAGES_",
            "infoEmpty": "No hay Registros disponibles",
            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-           "search":"Busqueda:",
+           "search":"Búsqueda:",
            "loadingRecords": "Cargando...",    
            "processing":     "Procesando...",
            "paginate": { 

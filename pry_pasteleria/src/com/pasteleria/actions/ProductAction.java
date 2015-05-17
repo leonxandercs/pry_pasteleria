@@ -29,7 +29,7 @@ public class ProductAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	@Action(value="saveProduct",results={@Result(name="success",type="json")})
+	@Action(value="saveProduct",results={@Result(name="success",type="redirectAction",location="mproduct")})
 	public String save(){
 		if (producto.getIdProducto()==0)
 			new ServiceProduct().create(producto);
@@ -39,7 +39,7 @@ public class ProductAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	@Action(value="deleteProduct",results={@Result(name="success",type="json")})
+	@Action(value="deleteProduct",results={@Result(name="success",type="redirectAction",location="mproduct")})
 	public String delete(){
 		new ServiceProduct().delete(producto);
 		return SUCCESS;
