@@ -33,11 +33,13 @@
 	<script src="js/bootstrap-growl.min.js"></script>	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js"></script>
 	
-	<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+	<script src="js/datatables/jquery.dataTables.min.js"></script>
+	<script src="js/datatables/dataTables.responsive.js"></script>
+	<script src="js/datatables/dataTables.bootstrap.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
-
+	<link rel="stylesheet" type="text/css" href="css/datatables/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="css/datatables/dataTables.responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/datatables/dataTables.bootstrap.css">
 	
 </head>		
 
@@ -162,7 +164,9 @@
       
       $('#detalle').hide();
       
+     
       
+	 
  });
 </script>
 </body>

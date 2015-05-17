@@ -50,18 +50,19 @@ $(document).ready(function() {
                    "next":   "siguiente",       
                    "previous": "Anterior"    
                   },
-       }
+       },
+       responsive:true
     } );
 } );
 
 </script>
 <div class="panel panel-primary">
 	<div class="panel panel-heading">
-		<h1 class="panel-title">LISTADO DE CLIENTES</h1>
+		<h1 class="panel-title">LISTADO DE EMPLEADOS</h1>
 	</div>
 	<div>
 	<div class="container">
-		<div class="table-responsive">
+	<!--<div class="table-responsive">  -->
 			<table id="example" class="table table-responsive table-striped table-bordered table-hover" cellspacing="0" width="100%">
 			        <thead>
 			            <tr>
@@ -96,7 +97,7 @@ $(document).ready(function() {
 			        </tfoot>
 			    </table>
 			   
-			</div>
+			<!--</div>-->
 		</div>
 	</div>
 </div>

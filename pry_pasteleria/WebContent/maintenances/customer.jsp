@@ -12,11 +12,19 @@
     	width: 80%;
     	margin: 0 10% 10%;"
     }
+    body { font-size: 140% }
+ 
+    table.dataTable th,
+    table.dataTable td {
+        white-space: nowrap;
+    }
 </style>
 <script>
 $(document).ready(function() {
-    $('#example').dataTable( {
-        "processing": true,
+	
+	
+    var table=$('#example').DataTable( {
+       // "processing": true,
         "ajax": {
         	"url":"listCustomer.action",
         	 "dataSrc":"clientes"
@@ -49,8 +57,54 @@ $(document).ready(function() {
                    "next":   "siguiente",       
                    "previous": "Anterior"    
                   },
-       }
-    } );
+       },
+       "lengthMenu": [
+		              [5,10, 25, 50, -1], 
+		              [5,10, 25, 50, "Todo"]
+		             ]
+       ,responsive:true
+        	
+        	
+    });
+    
+  
+	
+	//Setup - add a text input to each footer cell
+   /* 
+	$('#example tfoot th').each( function () {   
+     	var title = $('#example thead th').eq( $(this).index() ).text();  
+       $(this).html( '<input type="text" placeholder="Buscar '+title+'" />' );
+     });
+    
+    
+    
+    // Apply the filter
+    /*
+    table.columns().every(function(){  
+      var column=this; 
+
+      $( 'input', this.footer() ).on( 'keyup change', function () { 
+            column
+            .search( this.value ) 
+            .draw();    
+        });
+     });
+  */
+    
+    //seleccion x click
+    $('#example tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+            var x=$('.selected td')[0].innerHTML;
+            alert(x);
+        }
+     });
+  
+    
 } );
 
 </script>
@@ -60,8 +114,8 @@ $(document).ready(function() {
 	</div>
 	<div>
 	<div class="container">
-		<div class="table-responsive">
-			<table id="example" class="table table-responsive table-striped table-bordered table-hover" cellspacing="0" width="100%">
+		<!--  <div class="table-responsive"> -->
+			<table id="example" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
 			        <thead>
 			            <tr>
 			                <th>Codigo</th>
@@ -93,7 +147,7 @@ $(document).ready(function() {
 			        </tfoot>
 			    </table>
 			   
-			</div>
+			<!--  </div>-->
 		</div>
 	</div>
 </div>
