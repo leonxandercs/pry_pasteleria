@@ -15,7 +15,8 @@
 </style>
 <script>
 $(document).ready(function() {
-    $('#example').dataTable( {
+	
+    var table=$('#example').DataTable( {
         "processing": true,
         "ajax": {
         	"url":"listEmployed.action",
@@ -52,7 +53,22 @@ $(document).ready(function() {
                   },
        },
        responsive:true
-    } );
+    });
+    
+    
+    //seleccion x click
+    $('#example tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+            var x=$('.selected td')[0].innerHTML;
+            alert(x);
+        }
+     });
+    
 } );
 
 </script>
