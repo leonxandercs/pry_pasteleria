@@ -4,7 +4,7 @@
 <%@taglib uri="/struts-jquery-tags" prefix="sj" %>
 <%@taglib uri="/struts-jquery-grid-tags" prefix="sjg" %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta charset="utf-8" />

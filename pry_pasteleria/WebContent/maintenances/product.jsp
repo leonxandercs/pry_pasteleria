@@ -18,7 +18,7 @@
 <script>
 $(document).ready(function() {
 	
-    var table=$('#example').DataTable( {
+    var table=$('#example').DataTable({
         "processing": true,
         "ajax": {
         	"url":"listProduct.action",
@@ -54,6 +54,41 @@ $(document).ready(function() {
        },
        responsive:true
     });
+    
+    
+    
+    /* Actualizando las Imagenes del DataTable*/
+
+    $('#example')
+           .on( 'order.dt',  function () { console.log('Order' );updateImages();} )
+           .on( 'search.dt', function () {console.log('Search' );} )
+           .on( 'page.dt',   function () { console.log('Page' );updateImages();} )
+           .dataTable();
+
+       function updateImages(){
+
+             setTimeout(function(){
+
+                   $("tr").each(function(){
+                       var k=$(this).children("td").eq(4);
+                   
+                        var j= $(k).html();
+                        var str=new String(j); 
+                        var contenido=str.substring(0,4);
+
+                        if(contenido=='<img'){
+                           console.log('ya tiene imagen');
+                        }else{
+                           console.log('No tiene imagen se Actualizara');
+                           $(k).html("<img src='img/" + j + "' width=\'100\' heigth=\'100\'/>");
+                        }
+					});
+                   
+              },500);
+       }
+       
+   /* Actualizando las Imagenes del DataTable */
+    
     
     
     /*Evento Un click*/
