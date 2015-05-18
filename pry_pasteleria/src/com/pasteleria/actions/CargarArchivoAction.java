@@ -119,10 +119,5 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 		this.httpServletRequest=arg0;
 		
 	}
-	
-	
-	
 
-	
-	
 }
