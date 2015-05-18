@@ -11,7 +11,7 @@
 
 
 
-	<img src="img/test/emblema.jpg">
+	<img src="img/emblema.jpg">
 
 	
 </body>

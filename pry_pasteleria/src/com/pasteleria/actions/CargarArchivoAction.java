@@ -31,11 +31,11 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 	public String cargar(){
 		
 		try {
-			String ruta=httpServletRequest.getSession().getServletContext().getRealPath("");
+			String ruta=httpServletRequest.getSession().getServletContext().getRealPath("/img/");
 			File fichero=new File(ruta);
 			File path=new File("C:/Files/");
 			
-		/*	
+			
 			if (fichero.exists()==false) {
 				fichero = new File(ruta);
 				fichero.mkdirs();
@@ -44,8 +44,8 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
            	 	FileUtils.copyFile(this.archivo,file);
 			}
 			else{
-				File uploadedFile = new File(fichero+this.archivoFileName);
-				FileUtils.copyFile(this.archivo,uploadedFile);
+				File file = new File(fichero,this.archivoFileName);
+				FileUtils.copyFile(this.archivo,file);
 			}
 			
 			if (path.exists()==false) {
@@ -60,7 +60,7 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 				FileUtils.copyFile(this.archivo,uploadedFile);
 			}
 			
-		 	*/
+		 	
 			
 			System.out.println(ruta);
 			System.out.println(this.archivoFileName);
