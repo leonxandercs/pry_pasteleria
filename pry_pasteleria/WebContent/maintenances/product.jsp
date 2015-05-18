@@ -16,8 +16,19 @@
     }
 </style>
 <script>
+//var categoriasArray;
+
 $(document).ready(function() {
-	
+ /*	
+	$.getJSON("listCategory",function(data){
+		categoriasArray=data.categorias;
+		for (var i = 0; i < categoriasArray.length; i++) {
+			var idcat = categoriasArray[i].idCategoria;
+			var cat = categoriasArray[i].descripcion;
+			console.log(idcat+": "+cat);
+		}
+	});
+ */
     var table=$('#example').DataTable({
         "processing": true,
         "ajax": {
@@ -133,7 +144,7 @@ $(document).ready(function() {
            table.$('tr.selected').removeClass('selected');
            $(this).addClass('selected');
          //----------------------------
-            var dato1=$(".selected td")[0].innerHTML;
+           var dato1=$(".selected td")[0].innerHTML;
            var dato2=$(".selected td")[1].innerHTML;
            var dato3=$(".selected td")[2].innerHTML;
            var dato4=$(".selected td")[3].innerHTML;
@@ -141,10 +152,29 @@ $(document).ready(function() {
            var dato6=$(".selected td")[5].innerHTML;
            var dato7=$(".selected td")[6].innerHTML;
            var dato8=$(".selected td")[7].innerHTML;	
-           var dato9=$(".selected td")[8].innerHTML;      
+           var dato9=$(".selected td")[8].innerHTML;
+           
+   		   $("#cbocategoria option").each(function(){
+   				if(dato6==$(this).text())
+  				 dato6=$(this).val();
+   		   });
+          
+   		   $('#cbocobertura option').each(function(){
+   				if(dato7==$(this).text())
+ 				  dato7=$(this).val();
+   		   });
+		   $('#cbomasa option').each(function(){
+			   	if(dato8==$(this).text())
+	  			  dato8=$(this).val();
+		   });
+		   $('#cborelleno option').each(function(){
+			   	if(dato9==$(this).text())
+	  			   dato9=$(this).val();
+		   });
+           
            mostrarmodal(dato1,dato2,dato3,dato4,dato5,dato6,dato7,dato8,dato9);
-	    	$('#myModalNuevo').modal();	
-	    	$("#delete").show();
+	       $('#myModalNuevo').modal();	
+	       $("#delete").show();
        }
   	 });
     
