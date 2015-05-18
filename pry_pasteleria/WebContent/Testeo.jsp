@@ -11,9 +11,6 @@
 <s:form action="cargar" enctype="multipart/form-data" method="post">
 
 
-<img  src="../../../../../../../C:/Files/testemblema.jpg">
-
-
 <s:file name="archivo" label="Imagen" />
 <s:submit value="Upload"/>
 

@@ -1,12 +1,9 @@
 package com.pasteleria.actions;
 
-import java.io.BufferedReader;
+
+import java.io.ByteArrayInputStream;
 import java.io.File;
-
-
-
-
-import java.io.FileReader;
+import java.io.InputStream;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,62 +14,55 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.pasteleria.util.ByteArrayImage;
+import com.pasteleria.util.SaveFile;
 
 @ParentPackage(value="cloudedleopard")
 public class CargarArchivoAction extends ActionSupport implements ServletRequestAware{
+	private static final long serialVersionUID = 1L;
 	
 	private File archivo;
 	private String archivoContentType;
 	private String archivoFileName;
-	private String datos="";
+	
+	private String imagenProducto;
+	private InputStream imagen;
+	
 	private HttpServletRequest httpServletRequest;
 	
 	@Action(value="cargar",results={@Result(name=SUCCESS,type="json")})
 	public String cargar(){
 		
+		boolean b=new SaveFile().save(this.archivo,this.archivoFileName);
+			
+		System.out.println(this.archivoContentType);
+		
+	
+		return SUCCESS;
+	}
+	
+	
+	@Action(value = "verImagenProducto",results = {
+			@Result(params={"inputName","imagen"},name = "success", type="stream") })
+	public String imagenProducto() throws Exception {
 		try {
-			String ruta=httpServletRequest.getSession().getServletContext().getRealPath("/img/");
-			File fichero=new File(ruta);
-			File path=new File("C:/Files/");
 			
-			
-			if (fichero.exists()==false) {
-				fichero = new File(ruta);
-				fichero.mkdirs();
-				fichero=new File(ruta);
-           	 	File file=new File(fichero,this.archivoFileName);
-           	 	FileUtils.copyFile(this.archivo,file);
-			}
-			else{
-				File file = new File(fichero,this.archivoFileName);
-				FileUtils.copyFile(this.archivo,file);
-			}
-			
-			if (path.exists()==false) {
-				path = new File("C:\\Files\\");
-           	 	path.mkdirs();
-           	 	path=new File("C:/Files/");
-           	 	File file=new File(path,this.archivoFileName);
-           	 	FileUtils.copyFile(this.archivo,file);
-			}
-			else{
-				File uploadedFile = new File(path,this.archivoFileName);
-				FileUtils.copyFile(this.archivo,uploadedFile);
-			}
-			
-		 	
-			
-			System.out.println(ruta);
-			System.out.println(this.archivoFileName);
-			System.out.println(this.archivoContentType);
-			
+			byte[] bytes=new ByteArrayImage().setImageToArrayBytes(this.imagenProducto);
+			imagen= new ByteArrayInputStream(bytes);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return SUCCESS;
 	}
-
+	
+	
+	
+	@Override
+	public void setServletRequest(HttpServletRequest arg0) {
+		this.httpServletRequest=arg0;
+		
+	}
 
 	public File getArchivo() {
 		return archivo;
@@ -103,21 +93,27 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 		this.archivoFileName = archivoFileName;
 	}
 
-
-	public String getDatos() {
-		return datos;
+	public String getImagenProducto() {
+		return imagenProducto;
 	}
 
 
-	public void setDatos(String datos) {
-		this.datos = datos;
+	public void setImagenProducto(String imagenProducto) {
+		this.imagenProducto = imagenProducto;
 	}
 
 
-	@Override
-	public void setServletRequest(HttpServletRequest arg0) {
-		this.httpServletRequest=arg0;
-		
+	public InputStream getImagen() {
+		return imagen;
 	}
 
+
+	public void setImagen(InputStream imagen) {
+		this.imagen = imagen;
+	}
+
+
+	
+	
+	
 }
