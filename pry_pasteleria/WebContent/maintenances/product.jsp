@@ -112,7 +112,7 @@ $(document).ready(function() {
     
     /*  Evento Doble click */
     $('#example tbody').on( 'dblclick', 'tr', function () {
-   	
+   		 
        if ( $(this).hasClass('selected') ) {
            $(this).removeClass('selected');
        }
@@ -191,10 +191,8 @@ $(document).ready(function() {
     //Clean Fields
     function limpiarfields(){
 		/* Limpiar el Validate */
-	    $('.modificar .form-group').removeClass('has-error');
-	    $(".help-block").hide();
-	    /* Limpiar el Validate */
-	    $('.registrar .form-group').removeClass('has-error');
+	    $('.modal-body .form-group').removeClass('has-error');
+	    $('.modal-body .form-group').removeClass('has-success');
 	    $(".help-block").hide();
 	    /* Limpiar el Modal */
 		var modal =$('#myModalNuevo');
@@ -233,6 +231,7 @@ $(document).ready(function() {
 	          
 	      	$("#conexionServer").before(res);
 	      });
+	  
 	
 } );
 

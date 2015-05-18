@@ -72,6 +72,7 @@ $(document).ready(function() {
     
     /*  Evento Doble click */
     $('#example tbody').on( 'dblclick', 'tr', function () {
+    	limpiarfields();
    	
        if ( $(this).hasClass('selected') ) {
            $(this).removeClass('selected');
@@ -139,10 +140,8 @@ $(document).ready(function() {
     //Clean Fields
     function limpiarfields(){
 		/* Limpiar el Validate */
-	    $('.modificar .form-group').removeClass('has-error');
-	    $(".help-block").hide();
-	    /* Limpiar el Validate */
-	    $('.registrar .form-group').removeClass('has-error');
+	    $('.modal-body .form-group').removeClass('has-error');
+	    $('.modal-body .form-group').removeClass('has-success');
 	    $(".help-block").hide();
 	    /* Limpiar el Modal */
 		var modal =$('#myModalNuevo');
@@ -177,6 +176,27 @@ $(document).ready(function() {
 	      	$("#conexionServer").before(res);
 	      });   
  
+	  
+	// Interceptamos el evento submit
+	    $('#form').submit(function() {
+	    	 $('#myModalNuevo').modal('hide');	
+	  // Enviamos el formulario usando AJAX
+	        $.ajax({
+	            type: 'POST',
+	            url: $(this).attr('action'),
+	            data: $(this).serialize(),
+	            // Mostramos un mensaje con la respuesta de PHP
+	            success: function(data) {
+	                $('#result').html(data);
+	                //recargamos el DataTable
+	                table.ajax.reload();
+	                alert('Registrado');
+	                
+	            }
+	        })        
+	        return false;
+	    }); 
+	  
     
 } );
 
@@ -245,7 +265,7 @@ $(document).ready(function() {
 <div class="modal fade" id="myModalNuevo" role="dialog" ria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
-  <s:form action="saveEmployed"  theme="bootstrap" cssClass="well form-vertical">
+  <s:form id="form" action="saveEmployed"  theme="bootstrap" cssClass="well form-vertical">
     <div class="modal-header">
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     	<h4>Registro</h4>

@@ -34,7 +34,7 @@ public class ProductAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	@Action(value="saveProduct",results={@Result(name="success",type="redirectAction",location="mproduct")})
+	@Action(value="saveProduct",results={@Result(name="success",type="json")})
 	public String save(){
 		if (producto.getIdProducto()==0)
 			new ServiceProduct().create(producto);

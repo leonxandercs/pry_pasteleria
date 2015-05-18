@@ -32,7 +32,7 @@ public class CustomerAction extends ActionSupport {
 	
 	
 	@Action(value="saveCustomer",results={
-			@Result(name="success",type="redirectAction",location="mcustomer")})
+			@Result(name="success",type="json")})
 	public String save(){
 		if (cliente.getIdUsuario().equals("nuevo")) {
 			new ServiceCustomer().create(cliente);

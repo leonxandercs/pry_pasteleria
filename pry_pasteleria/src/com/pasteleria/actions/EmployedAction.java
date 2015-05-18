@@ -29,7 +29,7 @@ public class EmployedAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	@Action(value="saveEmployed",results={@Result(name="success",type="redirectAction",location="memployed")})
+	@Action(value="saveEmployed",results={@Result(name="success",type="json")})
 	public String save(){
 		if (empleado.getIdUsuario().equals("nuevo")) {
 			new ServiceEmployed().create(empleado);

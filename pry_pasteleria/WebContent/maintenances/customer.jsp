@@ -105,6 +105,7 @@ $(document).ready(function() {
     
     /*  Evento Doble click */
     $('#example tbody').on( 'dblclick', 'tr', function () {
+    	limpiarfields();
    	
        if ( $(this).hasClass('selected') ) {
            $(this).removeClass('selected');
@@ -156,10 +157,8 @@ $(document).ready(function() {
     //Clean Fields
     function limpiarfields(){
 		/* Limpiar el Validate */
-	    $('.modificar .form-group').removeClass('has-error');
-	    $(".help-block").hide();
-	    /* Limpiar el Validate */
-	    $('.registrar .form-group').removeClass('has-error');
+	    $('.modal-body .form-group').removeClass('has-error');
+	    $('.modal-body .form-group').removeClass('has-success');
 	    $(".help-block").hide();
 	    /* Limpiar el Modal */
 		var modal =$('#myModalNuevo');
@@ -182,7 +181,7 @@ $(document).ready(function() {
 	
 
 
-	  $('#delete').click(function(){
+	 $('#delete').click(function(){
 	      	$('#borrame').remove();
 	      	var modal = $('#myModalNuevo');
 	      	var id=modal.find('.modal-body #idUsuario').val();
@@ -192,8 +191,43 @@ $(document).ready(function() {
 	        var res = c1.concat(str1,id,str2);
 	          
 	      	$("#conexionServer").before(res);
-	      });
+	      });   
+	 
+	 /*
+	 $('.modal-body #borrame').click(function(event){
+		 event.preventDefault();
+		 alert('clickeaste');
+	 });
+	 
 	  
+	  
+	 function eliminar(cellvalue){
+			$.getJSON("deleteEmployed?empleado.idUsuario="+cellvalue,function(datos){
+				table.ajax.reload();
+				alert("Registro Eliminado");
+			});
+	 }
+	 */
+	 
+	 // Interceptamos el evento submit
+	    $('#form').submit(function() {
+	    	 $('#myModalNuevo').modal('hide');	
+	  // Enviamos el formulario usando AJAX
+	        $.ajax({
+	            type: 'POST',
+	            url: $(this).attr('action'),
+	            data: $(this).serialize(),
+	            // Mostramos un mensaje con la respuesta de PHP
+	            success: function(data) {
+	                $('#result').html(data);
+	                //recargamos el DataTable
+	                table.ajax.reload();
+	                alert('Registrado');
+	                
+	            }
+	        })        
+	        return false;
+	    }); 
     
 } );
 
@@ -254,7 +288,7 @@ $(document).ready(function() {
 <div class="modal fade" id="myModalNuevo" role="dialog" ria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
-  <s:form action="saveCustomer"  theme="bootstrap" cssClass="well form-vertical">
+  <s:form id="form" action="saveCustomer"  theme="bootstrap" cssClass="well form-vertical">
     <div class="modal-header">
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     	<h4>Registro</h4>
@@ -314,14 +348,12 @@ $(document).ready(function() {
     <div class="modal-header">
     	<h4 class="modal-title">Guardar Cambios</h4>
     </div>
-    <form action="">
       <div class="modal-body" style="text-align: right;">
          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
          <div id="conexionServer"></div>
          <!--  <button type="button" class="btn btn-primary eliminar" data-dismiss="modal">Si</button>
          <input type="hidden" value="delete" name="accion"></input>-->
          </div>
-     </form>
       </div>
     </div>
   </div>
