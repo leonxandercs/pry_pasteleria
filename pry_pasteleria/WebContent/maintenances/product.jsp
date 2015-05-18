@@ -60,10 +60,10 @@ $(document).ready(function() {
     /* Actualizando las Imagenes del DataTable*/
 
     $('#example')
-           .on( 'order.dt',  function () { console.log('Order' );updateImages();} )
-           .on( 'search.dt', function () {console.log('Search' );} )
-           .on( 'page.dt',   function () { console.log('Page' );updateImages();} )
-           .dataTable();
+       .on( 'order.dt',  function () { console.log('Order' );updateImages();} )
+       .on( 'search.dt', function () {console.log('Search' );} )
+       .on( 'page.dt',   function () { console.log('Page' );updateImages();} )
+       .dataTable();
 
        function updateImages(){
 
