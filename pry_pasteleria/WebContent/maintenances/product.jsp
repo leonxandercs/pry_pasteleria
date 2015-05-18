@@ -108,31 +108,7 @@ $(document).ready(function() {
               },500);
        }
        
-   /* Actualizando las Imagenes del DataTable */
-    
-    
-    
-    /*Evento Un click*/
-    $('#example tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-            var dato1=$(".selected td")[0].innerHTML;
-            var dato2=$(".selected td")[1].innerHTML;
-            var dato3=$(".selected td")[2].innerHTML;
-            var dato4=$(".selected td")[3].innerHTML;
-            var dato5=$(".selected td")[4].innerHTML;
-            var dato6=$(".selected td")[5].innerHTML;
-            var dato7=$(".selected td")[6].innerHTML;
-            var dato8=$(".selected td")[7].innerHTML;
-            var dato9=$(".selected td")[8].innerHTML;		
-            mostrarmodal(dato1,dato2,dato3,dato4,dato5,dato6,dato7,dato8,dato9);
-       
-        }
-     });
+     /* Actualizando las Imagenes del DataTable */
     
     /*  Evento Doble click */
     $('#example tbody').on( 'dblclick', 'tr', function () {
@@ -143,8 +119,24 @@ $(document).ready(function() {
        else {
            table.$('tr.selected').removeClass('selected');
            $(this).addClass('selected');
-         //----------------------------
-           var dato1=$(".selected td")[0].innerHTML;
+           //Obtenemos Fila actual
+           var currentRow=table.row(this).data();
+           //Extraemos los datos con JSON
+           var dato1=currentRow.idProducto;
+           var dato2=currentRow.descripcion;
+           var dato3=currentRow.stock;
+           var dato4=currentRow.precio;
+           var dato5=currentRow.image_resource;
+           var dato6=currentRow.categoria.descripcion;
+           var dato7=currentRow.cobertura.descripcion;
+           var dato8=currentRow.masa.descripcion;
+           var dato9=currentRow.relleno.descripcion;
+           /* Esta manera es obtener data por las filas
+           pero no es muy optima ya que al colpasar
+           la tabla por el repsonse no funciona y causa
+           un breakpoint*/
+           
+           /*var dato1=$(".selected td")[0].innerHTML;
            var dato2=$(".selected td")[1].innerHTML;
            var dato3=$(".selected td")[2].innerHTML;
            var dato4=$(".selected td")[3].innerHTML;
@@ -152,7 +144,7 @@ $(document).ready(function() {
            var dato6=$(".selected td")[5].innerHTML;
            var dato7=$(".selected td")[6].innerHTML;
            var dato8=$(".selected td")[7].innerHTML;	
-           var dato9=$(".selected td")[8].innerHTML;
+           var dato9=$(".selected td")[8].innerHTML;*/
            
    		   $("#cbocategoria option").each(function(){
    				if(dato6==$(this).text())
@@ -228,10 +220,7 @@ $(document).ready(function() {
 			verNuevo();
 	});
 	
-	function formatodel(cellvalue,data,options){
-		return "<a href=javascript:eliminar('"+cellvalue+"')><span class=\"glyphicon glyphicon-trash\"></span></a>";
-	}
-	
+
 
 	  $('#delete').click(function(){
 	      	$('#borrame').remove();
