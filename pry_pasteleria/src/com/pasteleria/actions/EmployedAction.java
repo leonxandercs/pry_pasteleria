@@ -29,7 +29,7 @@ public class EmployedAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	@Action(value="saveEmployed",results={@Result(name="success",type="json")})
+	@Action(value="saveEmployed",results={@Result(name="success",type="redirectAction",location="memployed")})
 	public String save(){
 		if (empleado.getIdUsuario().equals("nuevo")) {
 			new ServiceEmployed().create(empleado);
@@ -39,7 +39,7 @@ public class EmployedAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	@Action(value="deleteEmployed",results={@Result(name="success",type="json")})
+	@Action(value="deleteEmployed",results={@Result(name="success",type="redirectAction",location="memployed")})
 	public String delete(){
 		new ServiceEmployed().delete(empleado);
 		return SUCCESS;

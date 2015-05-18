@@ -92,7 +92,7 @@ $(document).ready(function() {
      });
   */
         
-    /*Evento Un click*/
+    /*Evento Un click -- sombrea la celda seleccionada*/
     $('#example tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
