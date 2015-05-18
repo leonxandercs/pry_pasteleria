@@ -25,7 +25,7 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 	private String archivoContentType;
 	private String archivoFileName;
 	
-	private String imagenProducto;
+	private String imagenName;
 	private InputStream imagen;
 	
 	private HttpServletRequest httpServletRequest;
@@ -42,16 +42,16 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 	}
 	
 	
-	@Action(value = "verImagenProducto",results = {
+	@Action(value = "verImagen",results = {
 			@Result(params={"inputName","imagen"},name = "success", type="stream") })
 	public String imagenProducto() throws Exception {
 		try {
 			
-			byte[] bytes=new ByteArrayImage().setImageToArrayBytes(this.imagenProducto);
+			byte[] bytes=new ByteArrayImage().setImageToArrayBytes(this.imagenName);
 			imagen= new ByteArrayInputStream(bytes);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		return SUCCESS;
 	}
@@ -93,13 +93,13 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 		this.archivoFileName = archivoFileName;
 	}
 
-	public String getImagenProducto() {
-		return imagenProducto;
+	public String getImagenName() {
+		return imagenName;
 	}
 
 
-	public void setImagenProducto(String imagenProducto) {
-		this.imagenProducto = imagenProducto;
+	public void setImagenName(String imagenName) {
+		this.imagenName = imagenName;
 	}
 
 

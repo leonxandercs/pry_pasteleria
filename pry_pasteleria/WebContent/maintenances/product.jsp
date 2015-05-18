@@ -52,16 +52,25 @@ $(document).ready(function() {
                    "previous": "Anterior"    
                   },
        },
-       responsive:true
+       "lengthMenu": [
+                      [5,10, 25, 50, -1], 
+                      [5,10, 25, 50, "Todo"]
+                     ],
+        responsive:true
+        
     });
     
     
     
     /* Actualizando las Imagenes del DataTable*/
+    $('#example_length select').change(function(){
+    	console.log('Change Number Rows');
+    	updateImages();
+    });
 
     $('#example')
        .on( 'order.dt',  function () { console.log('Order' );updateImages();} )
-       .on( 'search.dt', function () {console.log('Search' );} )
+       .on( 'search.dt', function () {console.log('Search' );updateImages();} )
        .on( 'page.dt',   function () { console.log('Page' );updateImages();} )
        .dataTable();
 
@@ -80,7 +89,8 @@ $(document).ready(function() {
                            console.log('ya tiene imagen');
                         }else{
                            console.log('No tiene imagen se Actualizara');
-                           $(k).html("<img src='img/" + j + "' width=\'100\' heigth=\'100\'/>");
+                         //$(k).html("<img src='img/" + j + "' width=\'100\' heigth=\'100\'/>");
+                           $(k).html("<img  src='verImagen?imagenName="+j+"' width=\'95%\' height=\'110\' />");
                         }
 					});
                    
@@ -262,7 +272,7 @@ $(document).ready(function() {
 <div class="modal fade" id="myModalNuevo" role="dialog" ria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
-  <s:form action="saveProduct" theme="bootstrap" cssClass="well form-vertical">
+  <s:form action="cargarProduct" enctype="multipart/form-data" method="post" theme="bootstrap" cssClass="well form-vertical">
     <div class="modal-header">
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     	<h4>Registrar Empleado</h4>
@@ -280,7 +290,10 @@ $(document).ready(function() {
 	    		<s:textfield label="Precio :" name="producto.precio" id="precio" cssClass="form-control"/>
 	    	</div>
 	    	<div class="form-group">
+	    		<s:file label="Imagen :" name="archivo"/>
+	    		<!--  
 	    		<s:textfield label="Imagen :" name="producto.image_resource" id="imagen" cssClass="form-control"/>
+	    		-->
 	    	</div>
 	    	<div class="form-group">
 	    			<s:url id="URL_ListCategorys" action="listCategory"/>

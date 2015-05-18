@@ -9,13 +9,14 @@
 </head>
 <body>
 
-	<img  src="verImagenProducto?imagenProducto=ippo.png" width="100" height="100">
-  	<img  src="verImagenProducto?imagenProducto=bruce.jpg" width="100" height="100">
-  	<img  src="verImagenProducto?imagenProducto=ippo1.jpg" width="100" height="100">
-  	<img  src="verImagenProducto?imagenProducto=ippo2.png" width="100" height="100">
-  	<img  src="verImagenProducto?imagenProducto=nunchacu.jpg" width="100" height="100">
-  	<img  src="verImagenProducto?imagenProducto=bruce2.jpg" width="200" height="200">
-
+	<img  src="verImagen?imagenName=ippo.png" width="100" height="100">
+  	<img  src="verImagen?imagenName=bruce.jpg" width="100" height="100">
+  	<img  src="verImagen?imagenName=ippo1.jpg" width="100" height="100">
+  	<img  src="verImagen?imagenName=ippo2.png" width="100" height="100">
+  	<img  src="verImagen?imagenName=nunchacu.jpg" width="100" height="100">
+  	<img  src="verImagen?imagenName=bruce2.jpg" width="200" height="200">
+	<img  src="verImagen?imagenName=granadilla.jpg" width="100" height="100">
+	
 
 	
 </body>

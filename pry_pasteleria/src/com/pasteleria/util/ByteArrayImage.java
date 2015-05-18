@@ -43,7 +43,7 @@ public class ByteArrayImage{
 	            bytes = bos.toByteArray();
 	            
 		  }catch (FileNotFoundException e) {
-	            e.printStackTrace();
+			  System.out.println(e.getMessage());
 	      }
 	         
 	     return bytes;
