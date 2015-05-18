@@ -11,7 +11,7 @@ public class SaveFile {
 		
 		
 		try {
-			File path=new File("C:/Files/imagen");
+				File path=new File("C:/Files/imagen");
 			
 			if (path.exists()==false) {
 				path = new File("C:\\Files\\imagen\\");

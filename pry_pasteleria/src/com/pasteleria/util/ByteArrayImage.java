@@ -24,7 +24,7 @@ public class ByteArrayImage{
 		byte[] bytes=null;
 		
 		  try {
-
+			  	//busca el archivo por su nombre en el Directorio establecido
 	            File file = new File("C:\\Files\\imagen\\"+filename);
 	            System.out.println(file.exists() + "!!");
 	           
@@ -39,7 +39,7 @@ public class ByteArrayImage{
 	            } catch (IOException ex) {
 	                Logger.getLogger(ByteArrayImage.class.getName()).log(Level.SEVERE, null, ex);
 	            }
-	          //convertimos el archivo a un array de byte
+	          //convierte el archivo a un array de byte
 	            bytes = bos.toByteArray();
 	            
 		  }catch (FileNotFoundException e) {
