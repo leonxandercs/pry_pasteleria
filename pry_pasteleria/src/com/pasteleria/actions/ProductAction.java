@@ -47,15 +47,21 @@ public class ProductAction extends ActionSupport {
 	
 	@Action(value="cargarProduct",results={@Result(name=SUCCESS,type="redirectAction",location="mproduct")})
 	public String cargar(){
+		//Validamos si se cargo algun archivo al input File si se cargo se actualiza imagen 
+		//con el archivo nuevo si no se cargo nada se mantiene la imagen original
+		boolean uploaded=false;
 		
-		boolean uploaded=new SaveFile().save(this.archivo,this.archivoFileName);
-		this.producto.setImage_resource(archivoFileName);
+		if (archivo!=null) {
+			uploaded=new SaveFile().save(this.archivo,this.archivoFileName);
+			this.producto.setImage_resource(archivoFileName);
+		}else{
+			this.producto.setImage_resource((new ServiceProduct().find(producto)).getImage_resource());
+		}
 		
 		if (producto.getIdProducto()==0)
 			new ServiceProduct().create(this.producto);
 		else
 			new ServiceProduct().update(this.producto);
-		
 		
 		System.out.println("uploaded: "+uploaded);
 		System.out.println(this.archivoContentType);

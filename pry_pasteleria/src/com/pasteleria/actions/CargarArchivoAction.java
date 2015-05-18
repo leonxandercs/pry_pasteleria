@@ -7,18 +7,16 @@ import java.io.InputStream;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.pasteleria.util.ByteArrayImage;
 import com.pasteleria.util.SaveFile;
 
 @ParentPackage(value="cloudedleopard")
-public class CargarArchivoAction extends ActionSupport implements ServletRequestAware{
+public class CargarArchivoAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
 	private File archivo;
@@ -28,13 +26,12 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 	private String imagenName;
 	private InputStream imagen;
 	
-	private HttpServletRequest httpServletRequest;
-	
 	@Action(value="cargar",results={@Result(name=SUCCESS,type="json")})
 	public String cargar(){
 		
-		boolean b=new SaveFile().save(this.archivo,this.archivoFileName);
-			
+		boolean uploaded=new SaveFile().save(this.archivo,this.archivoFileName);
+		
+		System.out.println(uploaded);
 		System.out.println(this.archivoContentType);
 		
 	
@@ -57,13 +54,6 @@ public class CargarArchivoAction extends ActionSupport implements ServletRequest
 	}
 	
 	
-	
-	@Override
-	public void setServletRequest(HttpServletRequest arg0) {
-		this.httpServletRequest=arg0;
-		
-	}
-
 	public File getArchivo() {
 		return archivo;
 	}
