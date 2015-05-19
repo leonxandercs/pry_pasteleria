@@ -35,7 +35,7 @@
 	
 	<definition name="catalogo" extends="layout">
 		<put-attribute name="title"  value="Catalogo de Tortas"/>
-		<put-attribute name="body"   value="/pages/catalogo.jsp"/>		
+		<put-attribute name="body"   value="/pages/catalogo2.jsp"/>		
 	</definition>	
 	
 	<definition name="seguimiento" extends="layout">

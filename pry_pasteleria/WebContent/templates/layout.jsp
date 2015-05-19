@@ -78,10 +78,10 @@
        var day = date.getDate();
        var year=date.getFullYear();
 
-       ajustar();
+     //  ajustar();
 
 
-       $(window).resize( function() {
+     /*  $(window).resize( function() {
          console.log("Cambie de tamaño");
          ajustar();
        } );
@@ -93,9 +93,10 @@
            columna1.height(result);
            console.log(result);
          }
-	  
+	  */
 
        $(".caption .palex a").click(function(){
+    	   alert('hola');
          var modal=$("#myModal");
          updateModal(this);
          modal.modal('show');
