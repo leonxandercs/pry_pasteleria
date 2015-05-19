@@ -77,94 +77,9 @@
        var month = date.getMonth()+1;
        var day = date.getDate();
        var year=date.getFullYear();
-
-     //  ajustar();
-
-
-     /*  $(window).resize( function() {
-         console.log("Cambie de tamaño");
-         ajustar();
-       } );
-	
-       function ajustar(){
-           console.log( "ready!" );
-           var columna1=$("#filtros");
-           var result = $("#rowcatalogo").height();
-           columna1.height(result);
-           console.log(result);
-         }
-	  */
-
-       $(".caption .palex a").click(function(){
-    	   alert('hola');
-         var modal=$("#myModal");
-         updateModal(this);
-         modal.modal('show');
-       });
-
-
-     $('.input-group.date').datepicker({
-           language: "es",
-           startDate: date,
-           datesDisabled:[
-                           day+'/'+month+'/'+year,
-                           day+1+'/'+month+'/'+year
-                         ]                     
-       });
-
-     $("#myModal input[type=number]").change(function(){
-           var number=this.value*60;
-           if (validatenumber()) {
-             subtotal.text(number);
-           };
-      });
-		
-
-     /* $("#myModal input[type=number]").keydown(function(){
-         if (!patron.test(this.value)) {
-           alert('numero invalido,no se permite decimales ni negativos');
-         }
-      });*/
-      
-      function validatenumber(){
-       $("#myModal input[type=number]").keyup(function(){
-         if (!patron.test(this.value)) {
-           alert('numero invalido,no se permite decimales ni negativos');
-           this.value=1;
-           subtotal.text(60);
-           console.log('mensaje:keyup');
-           return false;
-         }
-        // return true;
-      });
-       return true;
-      }
-      
-      function updateModal(elemento){
-          var imagen=$("#myModal .modal-body img");
-          var title=$("#myModal h3");
-          getImageSelected(elemento,imagen,title);
-        }
-      
-
-      function getImageSelected(elemento,imagen,titulo){
-        var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
-
-        var titleFather=$(elemento).parent("p").parent(".caption").find('h3').text();
-
-        var img=$(father).find('img').clone();
-
-        $(imagen).replaceWith(img);
-
-        console.log('titulo antes: '+ $(titulo).text());
-
-        $(titulo).text(titleFather);
-
-        console.log('titulo despues: '+titleFather);
-      }
-      
-      $('#detalle').hide();
-
+       
+       
+       $('#detalle').hide();
 	 
  });
 </script>

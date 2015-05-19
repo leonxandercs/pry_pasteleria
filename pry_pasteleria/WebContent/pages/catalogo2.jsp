@@ -22,10 +22,10 @@ var row;
 var products;
 var childRow;
 
+$(document).ready(function(){	
 
-$(document).ready(function(){
 	row=$('.panel');
-    row.html('');
+	row.html('');
 	
     $.getJSON('listProduct',function(data){
 		//recuperamos el array de productos
@@ -67,8 +67,10 @@ $(document).ready(function(){
 	}
 	
 	console.log('ready - page loaded success');
-		
+	
 });
+
+
 
 
 </script>
@@ -284,3 +286,90 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+		
+setTimeout(function(){
+	
+	   var patron = /^\d*$/;        
+	    var subtotal=$("#price");
+	    var date=new Date();
+	    var month = date.getMonth()+1;
+	    var day = date.getDate();
+	    var year=date.getFullYear();
+	    
+	    
+		   $(".caption p a").click(function(){
+		       var modal=$("#myModal");
+		         updateModal(this);
+		         modal.modal('show');
+	    });
+
+
+	  $('.input-group.date').datepicker({
+	        language: "es",
+	        startDate: date,
+	        datesDisabled:[
+	                        day+'/'+month+'/'+year,
+	                        day+1+'/'+month+'/'+year
+	                      ]                     
+	    });
+
+	  $("#myModal input[type=number]").change(function(){
+	        var number=this.value*60;
+	        if (validatenumber()) {
+	          subtotal.text(number);
+	        };
+	   });
+			
+
+	  /* $("#myModal input[type=number]").keydown(function(){
+	      if (!patron.test(this.value)) {
+	        alert('numero invalido,no se permite decimales ni negativos');
+	      }
+	   });*/
+	   
+	   function validatenumber(){
+	    $("#myModal input[type=number]").keyup(function(){
+	      if (!patron.test(this.value)) {
+	        alert('numero invalido,no se permite decimales ni negativos');
+	        this.value=1;
+	        subtotal.text(60);
+	        console.log('mensaje:keyup');
+	        return false;
+	      }
+	     // return true;
+	   });
+	    return true;
+	   }
+	   
+	   function updateModal(elemento){
+	       var imagen=$("#myModal .modal-body img");
+	       var title=$("#myModal h3");
+	       getImageSelected(elemento,imagen,title);
+	     }
+	   
+
+	   function getImageSelected(elemento,imagen,titulo){
+	     var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
+
+	     var titleFather=$(elemento).parent("p").parent(".caption").find('h3').text();
+
+	     var img=$(father).find('img').clone();
+
+	     $(imagen).replaceWith(img);
+
+	     console.log('titulo antes: '+ $(titulo).text());
+
+	     $(titulo).text(titleFather);
+
+	     console.log('titulo despues: '+titleFather);
+	   } 
+	   
+},2000);
+	   
+});
+
+</script>
+
+
