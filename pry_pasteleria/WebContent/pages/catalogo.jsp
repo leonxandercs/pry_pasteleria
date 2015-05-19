@@ -22,6 +22,7 @@ var row;
 var products;
 var childRow;
 
+
 $(document).ready(function(){
 	row=$('.row');
 	row.html('');
@@ -66,6 +67,9 @@ $(document).ready(function(){
 	}
 	
 	console.log('ready - page loaded success');
+	
+
+	
 });
 
 
