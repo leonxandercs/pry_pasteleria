@@ -1,5 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
-
+<%@taglib uri="/struts-jquery-tags" prefix="sj" %>
+<%@taglib uri="/struts-bootstrap-tags" prefix="sb" %>
 <s:if test="hasActionMessages()">
 	<s:actionmessage id="messageSucces" />
 	<script>
@@ -13,52 +14,128 @@
 			},{
 				type:'success'
 			}
-			);
-		/*
-		$.bootstrapGrowl(msj + "..!", {
-			type : 'success',
-			width : 'auto',
-			allow_dismiss : false
-		});*/
+		  );
 	</script>
 </s:if>
+<script>
+var row;
+var products;
+var childRow;
+
+$(document).ready(function(){
+	row=$('.row');
+	row.html('');
+
+	$.getJSON('listProduct',function(data){
+		//recuperamos el array de productos
+		products=data.productos;
+		
+		for (var i = 0; i < products.length; i++) {
+			//declaramos una variable producto
+			var producto=(products[i]);
+			
+			var label=(producto.descripcion).toUpperCase();
+			var imagen='<img src="verImagen?imagenName='+producto.image_resource+'" width="200" alt="134x180"/>'
+			var precio=producto.precio;
+			var cobertura=producto.cobertura.descripcion;
+			var masa=producto.masa.descripcion;
+			var relleno=producto.relleno.descripcion;
+			
+			row.append(agregaProductContainer(label, imagen, precio, cobertura, masa, relleno));
+		}
+	});
+	
+	console.log(childRow);
+	
+	function agregaProductContainer(label,imagen,precio,cobertura,masa,relleno){
+		
+		var containerProducto='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">'+
+		'<div class="thumbnail calex">'+
+		imagen+
+		'<div class="caption">'+
+			'<h3>'+label+'</h3>'+
+			'<p>Cras justo odio, dapibus ac facilisis in, egestas eget'+
+			'	quam. Donec id elit non mi porta gravida at eget metus.</p>'+
+				'<p class="palex">'+
+				'<a href="#" class="btn btn-primary">Agregar al Carrito</a>'+
+				'</p>'+
+			'</div>'+
+		'</div>'+
+		'</div>';
+		return containerProducto;
+	}
+	
+	console.log('ready - page loaded success');
+});
+
+
+</script>
 <div>
 	<table>
 		<tr>
 			<td width="125">
 				<div id="filtros" style="height: 850px;">
-					<s:form id="frmCatalogo">
-						<div class="col-lg-12">
-							Cobertura: <select class="form-control">
-								<option>Chocolate</option>
-								<option>Chantilly</option>
-								<option>Gelatina</option>
-								<option>Merengue</option>
-								<option>Maracuya</option>
-							</select> <br></br> Masa: <select class="form-control">
-								<option>Kekes</option>
-								<option>Soufles</option>
-								<option>Bizcochos</option>
-								<option>4</option>
-								<option>5</option>
-							</select> <br></br> Relleno: <select class="form-control">
-								<option>Mermelada</option>
-								<option>Manjar</option>
-								<option>Frutas</option>
-								<option>Queso</option>
-								<option>Pecanas</option>
-							</select> <br></br> Ocasión: <select class="form-control">
-								<option>Cumpleaños</option>
-								<option>Paseo</option>
-								<option>Postre</option>
-								<option>Matrimonio</option>
-								<option>Despedida Soltero</option>
-							</select> <br></br> <input type="submit" value="Consultar Producto"
-								class="btn btn-primary">
+				
+					<s:form id="frmCatalogo" theme="bootstrap">
+						<div class="col-xs-12">
+							<div class="form-group">
+					    			<s:url id="URL_ListCategorys" action="listCategory"/>
+									<sj:select cssClass="form-control"
+									id="cbocategoria" 
+									label="Categoria :"
+									list="categorias"
+									listKey="idCategoria"
+									listValue="descripcion"
+									href="%{URL_ListCategorys}"
+									headerKey="0"
+									headerValue="--Seleccione--" 
+									name="producto.categoria.idCategoria" />
+					    	</div>
+							<div class="form-group">
+					    		<s:url id="URL_ListCoverages" action="listCoverage"/>
+								<sj:select cssClass="form-control" 
+									id="cbocobertura" 
+									label="Cobertura :"
+									list="coberturas"
+									listKey="idCobertura"
+									listValue="descripcion"
+									href="%{URL_ListCoverages}"
+									headerKey="0"
+									headerValue="--Seleccione--" 
+									name="producto.cobertura.idCobertura" />
+					    	</div>		
+							<div class="form-group">
+					    		<s:url id="URL_ListDoughs" action="listDough"/>
+								<sj:select cssClass="form-control"
+									id="cbomasa" 
+									label="Masa :"
+									list="masas"
+									listKey="idMasa"
+									listValue="descripcion"
+									href="%{URL_ListDoughs}"
+									headerKey="0"
+									headerValue="--Seleccione--" 
+									name="producto.masa.idMasa" />
+					    	</div>
+	    					<div class="form-group">
+					    		<s:url id="URL_ListFillings" action="listFilling"/>
+								<sj:select cssClass="form-control"
+									id="cborelleno" 
+									label="Relleno :"
+									list="rellenos"
+									listKey="idRelleno"
+									listValue="descripcion"
+									href="%{URL_ListFillings}"
+									headerKey="0"
+									headerValue="--Seleccione--" 
+									name="producto.relleno.idRelleno" />
+					    	</div>
+							<s:submit value="Consultar Producto" cssClass="btn btn-primary"/>
 						</div>
 					</s:form>
-				</div> <!------------------------------------------------ -->
-
+				</div> 
+			<!------------------------------------------------ -->
+				
 			</td>
 
 			<td>
@@ -69,7 +146,7 @@
 					<div class="row" id="rowcatalogo">
 
 						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
+							<div class="thumbnail" >
 								<img src="img/torta1.jpg" alt="134x180" width="200">
 								<div class="caption">
 									<h3>Torta1 Label</h3>
@@ -389,7 +466,7 @@
 
 			<div class="modal-footer alexito">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-primary">Agregar al
+				<button type="button" class="btn btn-primary" data-dimiss="modal">Agregar al
 					Carrito</button>
 			</div>
 		</div>

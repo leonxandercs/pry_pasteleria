@@ -41,4 +41,17 @@ body {
 #fecha{
   font-size:12px;
   height:35px;
-}}
+}
+
+.palex {
+  background-color: red;
+  position: absolute;
+  bottom: 0px;
+}
+
+.calex {
+  height:350px;
+  position: relative;
+}
+
+}
