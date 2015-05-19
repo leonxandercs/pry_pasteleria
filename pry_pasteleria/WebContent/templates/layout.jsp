@@ -95,7 +95,7 @@
          }
 	  
 
-       $("p.palex a").click(function(){
+       $(".caption .palex a").click(function(){
          var modal=$("#myModal");
          updateModal(this);
          modal.modal('show');
