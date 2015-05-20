@@ -33,24 +33,7 @@
 	  <div class="col-xs-12 col-sm-0 col-md-0 col-lg-2 col-centered">
 	  </div>
 	  
-	  <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered firstcolum">
-				<!------------------------------------------------ -->
-			<div style="text-align: left; margin-left: 20px;">
-				<h1>
-					<strong style="color: #954F9A;">Bienvenido a Tortas
-						Encantada</strong>
-				</h1>
-				<h3>Crear una cuenta en menos de un minuto</h3>
-				¿Es su primer pedido? Aprovechese de las ventajas de Tortas
-				Encantada al &nbsp;<a href="singup.action">Crear una cuenta</a> . <br></br>
-				<h1></h1>
-				<br></br>
-			</div> <!------------------------------------------------ -->
-	  </div>
-			
-			
-			
-	<div class="wrapper col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered nopading" >
+	<div class="wrapper col-xs-12 col-sm-6 col-sm-push-6 col-md-6 col-md-push-6 col-lg-4 col-lg-push-4 col-centered nopading" >
 	
 					<s:form action="ValidateUser" cssClass="form animate-form"
 						id="form" onsubmit="return true;">
@@ -89,6 +72,26 @@
 						</div>
 					</s:form>
 	  </div>
+	
+	
+	    <div  class="col-xs-12 col-sm-6 col-sm-pull-6 col-md-6 col-md-pull-6 col-lg-4 col-lg-pull-4 col-centered firstcolum">
+				<!------------------------------------------------ -->
+			<div style="text-align: left; margin-left: 20px;">
+				<br/>
+				<h1>
+					<strong style="color: #954F9A;">Bienvenido a Tortas
+						Encantada</strong>
+				</h1>
+				<h3>Crear una cuenta en menos de un minuto</h3>
+				¿Es su primer pedido? Aprovechese de las ventajas de Tortas
+				Encantada al &nbsp;<a href="singup.action">Crear una cuenta</a> . <br></br>
+				<h1></h1>
+				<br></br>
+			</div> <!------------------------------------------------ -->
+	  </div>
+			
+			
+			
 	
    	  <div class="col-xs-12 col-sm-0 col-md-0 col-lg-2 col-centered">
 	  
