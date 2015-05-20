@@ -65,6 +65,7 @@ body {
 @media screen and (max-width:768px) {
  .panelalex{
    background-color: transparent;
+   margin-top: 10px;
   }
 
 }
@@ -74,11 +75,10 @@ body {
   	width: 100px;
   	font-size: 0.7em;
   	text-align: center;
-  	
   }
   
   .panelalex p{
-  	font-size:0.9em;
+  	font-size:0.9em; 	
   }
   
 }
