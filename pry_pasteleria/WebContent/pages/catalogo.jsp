@@ -62,13 +62,12 @@ $(document).ready(function(){
 	
 
 	function agregaProductContainer(position,label,imagen,precio,cobertura,masa,relleno){
-		
-		var label=label.toLowerCase();
+				
 		var containerProducto='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">'+
 		'<div id="'+position+'" class="thumbnail calex">'+
 		imagen+
 		'<div class="caption">'+
-			'<h3>'+label+'</h3>'+
+			'<h3>'+label.charAt(0)+label.slice(1).toLowerCase()+'</h3>'+
 			'<p>El pastel de '+label+', tiene como base lo mejor de nuestros '+masa+
 			' con una cobertura de '+cobertura+' y un exquisito relleno de '+relleno+'.</p>'+
 				'<p class="palex">'+
@@ -129,7 +128,7 @@ $(document).ready(function(){
 			 
 		     var img=$(father).find('img').clone();
 			 $(img).attr('width','100%');
-			 $('#myModal h3').text(datos.torta.label);
+			 $('#myModal h3').text(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
 			 $('#myModal input[type=number]').val(1);
 			 $("#myModal .modal-body img").replaceWith(img);
 		     $('#price').text(datos.torta.precio);
@@ -206,98 +205,15 @@ $(document).ready(function(){
 		</div>
 	
 <!------------------------------------------------ -->
+		<div class="panelalex col-xs-12  col-sm-10  col-md-10  col-lg-10">	
 
-
-	<div class="panelalex col-xs-12  col-sm-10  col-md-10  col-lg-10">
-
-			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-				<div class="thumbnail" >
-					<img src="img/torta1.jpg" alt="134x180" width="200">
-					<div class="caption">
-						<h3>Torta1 Label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-				<div class="thumbnail">
-					<img src="img/torta2.png" alt="134x180" width="200">
-					<div class="caption">
-						<h3>Torta2 Label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-				<div class="thumbnail">
-					<img src="img/torta3.png" alt="134x180" width="200">
-					<div class="caption">
-						<h3>Torta3 Label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-				<div class="thumbnail">
-					<img src="img/torta4.png" alt="134x180" width="200">
-					<div class="caption">
-						<h3>Torta4 Label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-				<div class="thumbnail">
-					<img src="img/torta5.png" alt="134x180" width="200">
-					<div class="caption">
-						<h3>Torta5 Label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-				<div class="thumbnail">
-					<img src="img/torta6.png" alt="134x180" width="200">
-					<div class="caption">
-						<h3>Torta6 Label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-	</div> <!-- Fin panel--> 
+		</div> <!-- Fin panel--> 
+	
 </div>  <!-- Fin Row -->
 
 
+
+<!------------------------------------------------ -->
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
