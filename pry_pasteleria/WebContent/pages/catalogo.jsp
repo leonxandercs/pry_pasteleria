@@ -24,9 +24,9 @@ var childRow;
 
 $(document).ready(function(){	
 
-	formatContainer();
+
 	
-	row=$('.panel');
+	row=$('.panelalex');
 	row.html('');
 	
     $.getJSON('listProduct',function(data){
@@ -144,18 +144,7 @@ $(document).ready(function(){
 		   
 	},1000);
 	
-	$(window).resize(function(){
-		console.log('cmabie mi tamaño ah'+$(this).width()+"x"+$(this).height());
-		formatContainer();
-	});
-	
-	function formatContainer(){
-		if ($(this).width()<=748) {
-			$('.panel').css('background-color','transparent');
-		}else{
-			$('.panel').css('background-color','white');
-		}
-	}
+
 	
 });
 
@@ -225,7 +214,7 @@ $(document).ready(function(){
 <!------------------------------------------------ -->
 
 
-	<div class="panel col-xs-12  col-sm-10  col-md-10  col-lg-10">
+	<div class="panelalex col-xs-12  col-sm-10  col-md-10  col-lg-10">
 
 			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
 				<div class="thumbnail" >
