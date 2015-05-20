@@ -22,12 +22,14 @@ var row;
 var products;
 var childRow;
 
+$(document).ready(function(){	
 
-$(document).ready(function(){
-	row=$('.row');
+	formatContainer();
+	
+	row=$('.panel');
 	row.html('');
-
-	$.getJSON('listProduct',function(data){
+	
+    $.getJSON('listProduct',function(data){
 		//recuperamos el array de productos
 		products=data.productos;
 		
@@ -50,7 +52,7 @@ $(document).ready(function(){
 	
 	function agregaProductContainer(label,imagen,precio,cobertura,masa,relleno){
 		
-		var containerProducto='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">'+
+		var containerProducto='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">'+
 		'<div class="thumbnail calex">'+
 		imagen+
 		'<div class="caption">'+
@@ -68,352 +70,249 @@ $(document).ready(function(){
 	
 	console.log('ready - page loaded success');
 	
+	
+	setTimeout(function(){
+		
+		   var patron = /^\d*$/;        
+		    var subtotal=$("#price");
+		    var date=new Date();
+		    var month = date.getMonth()+1;
+		    var day = date.getDate();
+		    var year=date.getFullYear();
+		    
+		    
+			   $(".caption p a").click(function(){
+			       var modal=$("#myModal");
+			         updateModal(this);
+			         modal.modal('show');
+		    });
 
+
+		  $('.input-group.date').datepicker({
+		        language: "es",
+		        startDate: date,
+		        datesDisabled:[
+		                        day+'/'+month+'/'+year,
+		                        day+1+'/'+month+'/'+year
+		                      ]                     
+		    });
+
+		  $("#myModal input[type=number]").change(function(){
+		        var number=this.value*60;
+		        if (validatenumber()) {
+		          subtotal.text(number);
+		        };
+		   });
+				
+		  
+		   function validatenumber(){
+		    $("#myModal input[type=number]").keyup(function(){
+		      if (!patron.test(this.value)) {
+		        alert('numero invalido,no se permite decimales ni negativos');
+		        this.value=1;
+		        subtotal.text(60);
+		        console.log('mensaje:keyup');
+		        return false;
+		      }
+		     // return true;
+		   });
+		    return true;
+		   }
+		   
+		   function updateModal(elemento){
+		       var imagen=$("#myModal .modal-body img");
+		       var title=$("#myModal h3");
+		       getImageSelected(elemento,imagen,title);
+		     }
+		   
+
+		   function getImageSelected(elemento,imagen,titulo){
+		     var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
+
+		     var titleFather=$(elemento).parent("p").parent(".caption").find('h3').text();
+
+		     var img=$(father).find('img').clone();
+
+		     $(imagen).replaceWith(img);
+
+		     console.log('titulo antes: '+ $(titulo).text());
+
+		     $(titulo).text(titleFather);
+
+		     console.log('titulo despues: '+titleFather);
+		   } 
+		   
+	},1000);
+	
+	$(window).resize(function(){
+		console.log('cmabie mi tamaño ah'+$(this).width()+"x"+$(this).height());
+		formatContainer();
+	});
+	
+	function formatContainer(){
+		if ($(this).width()<=748) {
+			$('.panel').css('background-color','transparent');
+		}else{
+			$('.panel').css('background-color','white');
+		}
+	}
 	
 });
 
 
+
+
 </script>
-<div>
-	<table>
-		<tr>
-			<td width="125">
-				<div id="filtros" style="height: 850px;">
-				
-					<s:form id="frmCatalogo" theme="bootstrap">
-						<div class="col-xs-12">
-							<div class="form-group">
-					    			<s:url id="URL_ListCategorys" action="listCategory"/>
-									<sj:select cssClass="form-control"
-									id="cbocategoria" 
-									label="Categoria :"
-									list="categorias"
-									listKey="idCategoria"
-									listValue="descripcion"
-									href="%{URL_ListCategorys}"
-									headerKey="0"
-									headerValue="--Seleccione--" 
-									name="producto.categoria.idCategoria" />
-					    	</div>
-							<div class="form-group">
-					    		<s:url id="URL_ListCoverages" action="listCoverage"/>
-								<sj:select cssClass="form-control" 
-									id="cbocobertura" 
-									label="Cobertura :"
-									list="coberturas"
-									listKey="idCobertura"
-									listValue="descripcion"
-									href="%{URL_ListCoverages}"
-									headerKey="0"
-									headerValue="--Seleccione--" 
-									name="producto.cobertura.idCobertura" />
-					    	</div>		
-							<div class="form-group">
-					    		<s:url id="URL_ListDoughs" action="listDough"/>
-								<sj:select cssClass="form-control"
-									id="cbomasa" 
-									label="Masa :"
-									list="masas"
-									listKey="idMasa"
-									listValue="descripcion"
-									href="%{URL_ListDoughs}"
-									headerKey="0"
-									headerValue="--Seleccione--" 
-									name="producto.masa.idMasa" />
-					    	</div>
-	    					<div class="form-group">
-					    		<s:url id="URL_ListFillings" action="listFilling"/>
-								<sj:select cssClass="form-control"
-									id="cborelleno" 
-									label="Relleno :"
-									list="rellenos"
-									listKey="idRelleno"
-									listValue="descripcion"
-									href="%{URL_ListFillings}"
-									headerKey="0"
-									headerValue="--Seleccione--" 
-									name="producto.relleno.idRelleno" />
-					    	</div>
-							<s:submit value="Consultar Producto" cssClass="btn btn-primary"/>
-						</div>
-					</s:form>
-				</div> 
-			<!------------------------------------------------ -->
-				
-			</td>
 
-			<td>
-				<!---------------------------------------------->
-				<div id="cont" class="panel">
+ <div class="row col-xs-12  col-sm-12  col-md-12  col-lg-12">
+	
+					
+		<div class="col-xs-12  col-sm-2  col-md-2  col-lg-2">
+			 <s:form  theme="bootstrap">
+	    			<s:url id="URL_ListCategorys" action="listCategory"/>
+					<sj:select cssClass="form-control"
+					id="cbocategoria" 
+					label="Categoria :"
+					list="categorias"
+					listKey="idCategoria"
+					listValue="descripcion"
+					href="%{URL_ListCategorys}"
+					headerKey="0"
+					headerValue="--Seleccione--" 
+					name="producto.categoria.idCategoria" />
+	    	 
+			 
+	    		<s:url id="URL_ListCoverages" action="listCoverage"/>
+				<sj:select cssClass="form-control" 
+					id="cbocobertura" 
+					label="Cobertura :"
+					list="coberturas"
+					listKey="idCobertura"
+					listValue="descripcion"
+					href="%{URL_ListCoverages}"
+					headerKey="0"
+					headerValue="--Seleccione--" 
+					name="producto.cobertura.idCobertura" />
+	    	 
+	    		<s:url id="URL_ListDoughs" action="listDough"/>
+				<sj:select cssClass="form-control"
+					id="cbomasa" 
+					label="Masa :"
+					list="masas"
+					listKey="idMasa"
+					listValue="descripcion"
+					href="%{URL_ListDoughs}"
+					headerKey="0"
+					headerValue="--Seleccione--" 
+					name="producto.masa.idMasa" />
+	    	 
+	    		<s:url id="URL_ListFillings" action="listFilling"/>
+				<sj:select cssClass="form-control"
+					id="cborelleno" 
+					label="Relleno :"
+					list="rellenos"
+					listKey="idRelleno"
+					listValue="descripcion"
+					href="%{URL_ListFillings}"
+					headerKey="0"
+					headerValue="--Seleccione--" 
+					name="producto.relleno.idRelleno" />
+			<br/>					   
+			<s:submit value="Consultar Producto" cssClass="btn btn-primary col-xs-12"/>
+			</s:form>
+		</div>
+	
+<!------------------------------------------------ -->
 
 
-					<div class="row" id="rowcatalogo">
+	<div class="panel col-xs-12  col-sm-10  col-md-10  col-lg-10">
 
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail" >
-								<img src="img/torta1.jpg" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta1 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta2.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta2 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta3.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta3 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta4.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta4 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta5.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta5 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta6.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta6 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<!---------------------------------------------------------------------->
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta1.jpg" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta1 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta2.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta2 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta3.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta3 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta4.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta4 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta5.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta5 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta6.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta6 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta1.jpg" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta1 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta2.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta2 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta3.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta3 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta4.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta4 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta5.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta5 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-6 col-sm-2">
-							<div class="thumbnail">
-								<img src="img/torta6.png" alt="134x180" width="200">
-								<div class="caption">
-									<h3>Torta6 Label</h3>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus.</p>
-									<p>
-										<a href="#" class="btn btn-primary">Agregar al Carrito</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+				<div class="thumbnail" >
+					<img src="img/torta1.jpg" alt="134x180" width="200">
+					<div class="caption">
+						<h3>Torta1 Label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+							quam. Donec id elit non mi porta gravida at eget metus.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
+						</p>
 					</div>
-					<!--- Fin ROW  -->
-
 				</div>
-				<!-- Fin panel--> <!---------------------------------------------->
+			</div>
 
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+				<div class="thumbnail">
+					<img src="img/torta2.png" alt="134x180" width="200">
+					<div class="caption">
+						<h3>Torta2 Label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+							quam. Donec id elit non mi porta gravida at eget metus.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
+						</p>
+					</div>
+				</div>
+			</div>
 
-			</td>
-		</tr>
-	</table>
-</div>
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+				<div class="thumbnail">
+					<img src="img/torta3.png" alt="134x180" width="200">
+					<div class="caption">
+						<h3>Torta3 Label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+							quam. Donec id elit non mi porta gravida at eget metus.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+				<div class="thumbnail">
+					<img src="img/torta4.png" alt="134x180" width="200">
+					<div class="caption">
+						<h3>Torta4 Label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+							quam. Donec id elit non mi porta gravida at eget metus.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+				<div class="thumbnail">
+					<img src="img/torta5.png" alt="134x180" width="200">
+					<div class="caption">
+						<h3>Torta5 Label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+							quam. Donec id elit non mi porta gravida at eget metus.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+				<div class="thumbnail">
+					<img src="img/torta6.png" alt="134x180" width="200">
+					<div class="caption">
+						<h3>Torta6 Label</h3>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+							quam. Donec id elit non mi porta gravida at eget metus.</p>
+						<p>
+							<a href="#" class="btn btn-primary">Agregar al Carrito</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+	</div> <!-- Fin panel--> 
+</div>  <!-- Fin Row -->
 
 
 <!-- Modal -->
@@ -476,3 +375,4 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+
