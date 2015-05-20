@@ -68,7 +68,7 @@ $(document).ready(function(){
 		imagen+
 		'<div class="caption">'+
 			'<h3>'+label.charAt(0)+label.slice(1).toLowerCase()+'</h3>'+
-			'<p>El pastel de '+label+', tiene como base lo mejor de nuestros '+masa+
+			'<p>El pastel de '+label.toLowerCase()+', tiene como base lo mejor de nuestros '+masa+
 			' con una cobertura de '+cobertura+' y un exquisito relleno de '+relleno+'.</p>'+
 				'<p class="palex">'+
 				'<a href="#" class="btn btn-primary">Agregar al Carrito</a>'+
@@ -141,9 +141,6 @@ $(document).ready(function(){
 	
 });
 
-
-
-
 </script>
 
  <div class="row col-xs-12  col-sm-12  col-md-12  col-lg-12">
@@ -202,9 +199,8 @@ $(document).ready(function(){
 			<br/>					   
 			<s:submit value="Consultar Producto" cssClass="btn btn-primary col-xs-12"/>
 			</s:form>
-		</div>
-	
-<!------------------------------------------------ -->
+		</div><!-- fin filtros -->
+
 		<div class="panelalex col-xs-12  col-sm-10  col-md-10  col-lg-10">	
 
 		</div> <!-- Fin panel--> 
