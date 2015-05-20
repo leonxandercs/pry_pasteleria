@@ -61,13 +61,21 @@ body {
 .panelalex p{
 	font-size:0.9em;
 }
-
+.detaAC{
+ 	width: 100%;
+  }
 @media screen and (max-width:768px) {
  .panelalex{
    background-color: transparent;
    margin-top: 10px;
   }
-
+ .detaAC{
+ 	width: 80%;
+ 	margin: auto;
+ 	margin-top:30px;
+ 	margin-bottom:50px;
+  }
+  
 }
 
 @media screen and (max-width:914px) and (min-width:769px){

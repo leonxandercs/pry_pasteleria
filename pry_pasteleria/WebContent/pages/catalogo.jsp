@@ -132,7 +132,7 @@ $(document).ready(function(){
 		     var titleFather=$(elemento).parent("p").parent(".caption").find('h3').text();
 
 		     var img=$(father).find('img').clone();
-
+			 $(img).attr('width','100%');
 		     $(imagen).replaceWith(img);
 
 		     console.log('titulo antes: '+ $(titulo).text());
@@ -319,11 +319,12 @@ $(document).ready(function(){
 
 			<div class="modal-body">
 
-				<div class="alex">
+				<div class="alex col-xs-12 col-sm-5 col-md-5 col-lg-5">
 					<img src="">
 				</div>
-				<div class="alex">
-					<table>
+				
+				<div class="alex col-xs-12 col-sm-7 col-md-7 col-lg-7">
+					<table class="detaAC">
 						<tr>
 							<td>Cantidad</td>
 							<td><input type="number" min=1></td>
@@ -358,7 +359,7 @@ $(document).ready(function(){
 
 			<div class="modal-footer alexito">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-primary" data-dimiss="modal">Agregar al
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Agregar al
 					Carrito</button>
 			</div>
 		</div>
