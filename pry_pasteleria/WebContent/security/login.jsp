@@ -61,8 +61,8 @@
 						</div>
 						<div style="text-align: left; height: 0px;">
 							&nbsp; <a href="recoverPwd.action">Olvidaste tu clave?</a>&nbsp;
-							<!--<a href="singup.html">Registrate</a>-->
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;<a class="registrate" singup.action">Crear una cuenta</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
