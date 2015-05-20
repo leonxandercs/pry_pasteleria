@@ -24,6 +24,8 @@ var childRow;
 
 $(document).ready(function(){	
 
+	formatContainer();
+	
 	row=$('.panel');
 	row.html('');
 	
@@ -50,7 +52,7 @@ $(document).ready(function(){
 	
 	function agregaProductContainer(label,imagen,precio,cobertura,masa,relleno){
 		
-		var containerProducto='<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">'+
+		var containerProducto='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">'+
 		'<div class="thumbnail calex">'+
 		imagen+
 		'<div class="caption">'+
@@ -141,6 +143,19 @@ $(document).ready(function(){
 		   } 
 		   
 	},1000);
+	
+	$(window).resize(function(){
+		console.log('cmabie mi tamaño ah'+$(this).width()+"x"+$(this).height());
+		formatContainer();
+	});
+	
+	function formatContainer(){
+		if ($(this).width()<=747) {
+			$('.panel').css('background-color','transparent');
+		}else{
+			$('.panel').css('background-color','white');
+		}
+	}
 	
 });
 
