@@ -207,7 +207,7 @@ form.animate-form .form-group.has-success .form-control-feedback {
 } 
  
  
-@media screen and (max-width:640px){
+@media screen and (max-width:640px) and (min-width:481px){
 	
 	.firstcolum{
 	border-radius: 12px 12px 10px 10px;
@@ -250,6 +250,54 @@ form.animate-form .form-group.has-success .form-control-feedback {
 	        -moz-transition: all 0.4s;
 	        transition: all 0.4s; 
 	}
+}
+
+@media screen and (max-width:480px){
+	
+	.firstcolum{
+	border-radius: 12px 12px 10px 10px;
+	background-image:url('../img/textura.png');
+	box-shadow: 1px 1px 10px 10px #4E1552;
+	height:368px;
+	display:none;
+	}
+
+	.registrate{
+		display: inline;
+	}
+	
+	form {
+	  background-color: #f6f6f6;
+	  padding: 30px 25px 0;
+	  /*border-radius: 12px 12px 10px 10px;*/
+	  border-radius: 8px 8px 8px 8px;
+	  /*box-shadow: 1px 1px 10px 10px #4E1552;*/
+	  box-shadow: 1px 1px 10px 3px #4E1552;
+	  text-align: center; 
+	  margin-top:50px;
+	  margin-left:0%;
+	  margin-right:0%;
+	  margin-bottom: 40px;
+	}
+	
+	form .form-group.submit input[type="submit"] {
+	        /*display: block;*/
+	        width: 100%;
+	        font-size: 18px;
+	        letter-spacing: 0.4em;
+	        border-radius: 0 0 10px 10px;
+	        border: 0;
+	        padding: 20px 0 22px;
+	        background-color: #F7A2CB;
+	        color: white;
+	        font-weight: 500;
+	        -webkit-transition: all 0.4s;
+	        -moz-transition: all 0.4s;
+	        transition: all 0.4s; 
+	}
+
+
+}
 
 } 
  
