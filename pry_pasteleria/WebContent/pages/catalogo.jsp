@@ -37,34 +37,30 @@ $(document).ready(function(){
 			//declaramos una variable producto
 			var producto=(products[i]);
 			
-			var label=(producto.descripcion).toUpperCase();
 			var imagen='<img src="verImagen?imagenName='+producto.image_resource+'" width="200" alt="134x180"/>'
-			var precio=producto.precio;
-			var cobertura=producto.cobertura.descripcion;
-			var masa=producto.masa.descripcion;
-			var relleno=producto.relleno.descripcion;
-			
-			row.append(agregaProductContainer(i,label, imagen, precio, cobertura, masa, relleno));
-			
-			var datos={"torta":{
+			//almanecamos la info del producto[i] en un JSON
+		    var datos={"torta":{
 				"idx":i,
-				"label":label,
+				"label":(producto.descripcion).toUpperCase(),
 				"imagen":imagen,
-				"precio":precio,
-				"cobertura":cobertura,
-				"masa":masa,
-				"relleno":relleno
+				"precio":producto.precio,
+				"cobertura":producto.cobertura.descripcion,
+				"masa":producto.masa.descripcion,
+				"relleno":producto.relleno.descripcion
 	           }
      		 };	
+			//agregamos el producto al catalogo
+			row.append(agregaProductContainer(i,datos.torta.label, imagen, datos.torta.precio, 
+					datos.torta.cobertura,datos.torta.masa,datos.torta.relleno));
 			
-			var cp=$('.thumbnail').eq(i);
-			console.log($(cp).html());
-			$(cp).data("dataproducto",datos);
+			//le asignamos la data respectiva al container html producto
+			var currentProduct=$('.thumbnail').eq(i);
+			$(currentProduct).data("dataproducto",datos);
+			
 		}
 	});
 	
-	console.log(childRow);
-	
+
 	function agregaProductContainer(position,label,imagen,precio,cobertura,masa,relleno){
 		
 		var label=label.toLowerCase();
@@ -85,29 +81,16 @@ $(document).ready(function(){
 		return containerProducto;
 	}
 	
-	console.log('ready - page loaded success');
+	console.log('ready - gallery loaded successfully');
 	
 	
 	setTimeout(function(){
 			
 			var precio=0;
-		
-		    var patron = /^\d*$/;        
+			var patron = /^\d*$/;        
 		    var subtotal=$("#price");
-		    var date=new Date();
-		    var month = date.getMonth()+1;
-		    var day = date.getDate();
-		    var year=date.getFullYear();
-		    
-		  $('.input-group.date').datepicker({
-		        language: "es",
-		        startDate: date,
-		        datesDisabled:[
-		                        day+'/'+month+'/'+year,
-		                        day+1+'/'+month+'/'+year
-		                      ]                     
-		    });
-
+		    var datos;
+		       
 		  $("#myModal input[type=number]").change(function(){
 		        var number=this.value*precio;
 		        if (validatenumber()) {
@@ -117,17 +100,17 @@ $(document).ready(function(){
 				
 		  
 		   function validatenumber(){
-		    $("#myModal input[type=number]").keyup(function(){
-		      if (!patron.test(this.value)) {
-		        alert('numero invalido,no se permite decimales ni negativos');
-		        this.value=1;
-		        subtotal.text(precio);
-		        console.log('mensaje:keyup');
-		        return false;
-		      }
-		     // return true;
-		   });
-		    return true;
+			    $("#myModal input[type=number]").keyup(function(){
+			      if (!patron.test(this.value)) {
+			        alert('numero invalido,no se permite decimales ni negativos');
+			        this.value=1;
+			        subtotal.text(precio);
+			        console.log('mensaje:keyup');
+			        return false;
+			      }
+			     // return true;
+			   });
+		     return true;
 		   }
 		   
 		   $(".caption p a").click(function(){
@@ -138,36 +121,19 @@ $(document).ready(function(){
 
 
 		   function updateModal(elemento){
-		       var imagen=$("#myModal .modal-body img");
-		       var title=$("#myModal h3");
-		       $('#myModal input[type=number]').val(1);
-		       getProductSelected(elemento,imagen,title);
-		     }
-		   
-
-		   function getProductSelected(elemento,imagen,titulo){
-			 
+			   
 			 var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
 
-		     var datos=$(father).data("dataproducto");
-		     console.log(datos.torta.label);
+		     datos=$(father).data("dataproducto");
 		     precio=datos.torta.precio;  
 			 
-		   
-		     var titleFather=$(elemento).parent("p").parent(".caption").find('h3').text();
-		     
 		     var img=$(father).find('img').clone();
 			 $(img).attr('width','100%');
-		     $(imagen).replaceWith(img);
+			 $('#myModal h3').text(datos.torta.label);
+			 $('#myModal input[type=number]').val(1);
+			 $("#myModal .modal-body img").replaceWith(img);
 		     $('#price').text(datos.torta.precio);
 		     
-		     console.log('titulo antes: '+ $(titulo).text());
-
-		     $(titulo).text(titleFather);
-
-		     console.log('titulo despues: '+titleFather);
-		     
-			
 		   } 
 		   
 	},1000);
