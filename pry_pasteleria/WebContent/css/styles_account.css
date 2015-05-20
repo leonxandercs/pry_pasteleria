@@ -16,27 +16,28 @@ body {
    }
 
 table{
-  border-radius: 12px 12px 10px 10px;
+  
   margin: auto;
-  background-image:url('../img/textura.png');
-  box-shadow: 1px 5px 10px 10px #4E1552;
+  
 }
-table td{
-
-}
-
-
-#contenedor{
-  margin-left:10% ;
-  margin-right:10%;
-  height:300px;
-  vertical-align: middle;"
+/*   clases para responsive login*/
+.centrando{
+  width: 80%;
+  margin: 0 auto;
+ 
 }
 
-
-
-
-
+.firstcolum{
+	border-radius: 12px 0px 0px 10px;
+	background-image:url('../img/textura.png');
+	/*box-shadow: 1px 5px 10px 10px #4E1552;*/
+	box-shadow: -6px 1px 7px 6px #4E1552;
+	height:368px;
+}
+.nopading{
+	border-radius: 0px 0px 10px 10px;
+	padding: 0px;	
+}
 
 .form-header {
   text-align: center;
@@ -60,8 +61,10 @@ table td{
 form {
   background-color: #f6f6f6;
   padding: 30px 25px 0;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 10px 10px;
+  /*box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 5px 8px 9px #4E1552;*/
+  box-shadow: 11px 1px 7px 6px #4E1552;
   text-align: center; 
 }
 
@@ -122,7 +125,7 @@ form {
         width: 100%;
         font-size: 18px;
         letter-spacing: 0.4em;
-        border-radius: 0 0 4px 4px;
+        border-radius: 0 0 8px 0px;
         border: 0;
         padding: 20px 0 22px;
         background-color: #F7A2CB;

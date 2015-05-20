@@ -27,25 +27,31 @@
 </s:if>
 
 
-<div id="contenedor" width="100%">
-	<table width="800px">
-		<tr>
-			<td width="400">
+	<div class="centrando">
+  <div class="row row-centered">
+  
+	  <div class="col-xs-12 col-sm-0 col-md-0 col-lg-2 col-centered">
+	  </div>
+	  
+	  <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered firstcolum">
 				<!------------------------------------------------ -->
-				<div style="text-align: left; margin-left: 20px;">
-					<h1>
-						<strong style="color: #954F9A;">Bienvenido a Tortas
-							Encantada</strong>
-					</h1>
-					<h3>Crear una cuenta en menos de un minuto</h3>
-					¿Es su primer pedido? Aprovechese de las ventajas de Tortas
-					Encantada al &nbsp;<a href="singup.action">Crear una cuenta</a> . <br></br>
-					<h1></h1>
-					<br></br>
-				</div> <!------------------------------------------------ -->
-			</td>
-			<td width="300px">
-				<div class="wrapper" id="colum2">
+			<div style="text-align: left; margin-left: 20px;">
+				<h1>
+					<strong style="color: #954F9A;">Bienvenido a Tortas
+						Encantada</strong>
+				</h1>
+				<h3>Crear una cuenta en menos de un minuto</h3>
+				¿Es su primer pedido? Aprovechese de las ventajas de Tortas
+				Encantada al &nbsp;<a href="singup.action">Crear una cuenta</a> . <br></br>
+				<h1></h1>
+				<br></br>
+			</div> <!------------------------------------------------ -->
+	  </div>
+			
+			
+			
+	<div class="wrapper col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered nopading" >
+	
 					<s:form action="ValidateUser" cssClass="form animate-form"
 						id="form" onsubmit="return true;">
 						<div class="form-header">
@@ -82,11 +88,14 @@
 							<input class="btn btn-lg" type="submit" value="ENVIAR">
 						</div>
 					</s:form>
-				</div>
+	  </div>
+	
+   	  <div class="col-xs-12 col-sm-0 col-md-0 col-lg-2 col-centered">
+	  
+	  </div>
 
-
-
-			</td>
-		</tr>
-	</table>
-</div>
+   </div> <!--en row -->
+</div> <!-- FIN CONTENEDOR LOGIN -->	
+	
+<br/>	
+	
