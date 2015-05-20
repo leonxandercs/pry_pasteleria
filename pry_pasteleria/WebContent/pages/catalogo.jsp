@@ -44,27 +44,44 @@ $(document).ready(function(){
 			var masa=producto.masa.descripcion;
 			var relleno=producto.relleno.descripcion;
 			
-			row.append(agregaProductContainer(label, imagen, precio, cobertura, masa, relleno));
+			row.append(agregaProductContainer(i,label, imagen, precio, cobertura, masa, relleno));
+			
+			var datos={"torta":{
+				"idx":i,
+				"label":label,
+				"imagen":imagen,
+				"precio":precio,
+				"cobertura":cobertura,
+				"masa":masa,
+				"relleno":relleno
+	           }
+     		 };	
+			
+			var cp=$('.thumbnail').eq(i);
+			console.log($(cp).html());
+			$(cp).data("dataproducto",datos);
 		}
 	});
 	
 	console.log(childRow);
 	
-	function agregaProductContainer(label,imagen,precio,cobertura,masa,relleno){
+	function agregaProductContainer(position,label,imagen,precio,cobertura,masa,relleno){
 		
+		var label=label.toLowerCase();
 		var containerProducto='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">'+
-		'<div class="thumbnail calex">'+
+		'<div id="'+position+'" class="thumbnail calex">'+
 		imagen+
 		'<div class="caption">'+
 			'<h3>'+label+'</h3>'+
-			'<p>Cras justo odio, dapibus ac facilisis in, egestas eget'+
-			'	quam. Donec id elit non mi porta gravida at eget metus.</p>'+
+			'<p>El pastel de '+label+', tiene como base lo mejor de nuestros '+masa+
+			' con una cobertura de '+cobertura+' y un exquisito relleno de '+relleno+'.</p>'+
 				'<p class="palex">'+
 				'<a href="#" class="btn btn-primary">Agregar al Carrito</a>'+
 				'</p>'+
 			'</div>'+
 		'</div>'+
 		'</div>';
+			
 		return containerProducto;
 	}
 	
@@ -72,22 +89,16 @@ $(document).ready(function(){
 	
 	
 	setTimeout(function(){
+			
+			var precio=0;
 		
-		   var patron = /^\d*$/;        
+		    var patron = /^\d*$/;        
 		    var subtotal=$("#price");
 		    var date=new Date();
 		    var month = date.getMonth()+1;
 		    var day = date.getDate();
 		    var year=date.getFullYear();
 		    
-		    
-			   $(".caption p a").click(function(){
-			       var modal=$("#myModal");
-			         updateModal(this);
-			         modal.modal('show');
-		    });
-
-
 		  $('.input-group.date').datepicker({
 		        language: "es",
 		        startDate: date,
@@ -98,7 +109,7 @@ $(document).ready(function(){
 		    });
 
 		  $("#myModal input[type=number]").change(function(){
-		        var number=this.value*60;
+		        var number=this.value*precio;
 		        if (validatenumber()) {
 		          subtotal.text(number);
 		        };
@@ -110,7 +121,7 @@ $(document).ready(function(){
 		      if (!patron.test(this.value)) {
 		        alert('numero invalido,no se permite decimales ni negativos');
 		        this.value=1;
-		        subtotal.text(60);
+		        subtotal.text(precio);
 		        console.log('mensaje:keyup');
 		        return false;
 		      }
@@ -119,27 +130,44 @@ $(document).ready(function(){
 		    return true;
 		   }
 		   
+		   $(".caption p a").click(function(){
+		       var modal=$("#myModal");
+		         updateModal(this);
+		         modal.modal('show');
+	    	});
+
+
 		   function updateModal(elemento){
 		       var imagen=$("#myModal .modal-body img");
 		       var title=$("#myModal h3");
-		       getImageSelected(elemento,imagen,title);
+		       $('#myModal input[type=number]').val(1);
+		       getProductSelected(elemento,imagen,title);
 		     }
 		   
 
-		   function getImageSelected(elemento,imagen,titulo){
-		     var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
+		   function getProductSelected(elemento,imagen,titulo){
+			 
+			 var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
 
+		     var datos=$(father).data("dataproducto");
+		     console.log(datos.torta.label);
+		     precio=datos.torta.precio;  
+			 
+		   
 		     var titleFather=$(elemento).parent("p").parent(".caption").find('h3').text();
-
+		     
 		     var img=$(father).find('img').clone();
 			 $(img).attr('width','100%');
 		     $(imagen).replaceWith(img);
-
+		     $('#price').text(datos.torta.precio);
+		     
 		     console.log('titulo antes: '+ $(titulo).text());
 
 		     $(titulo).text(titleFather);
 
 		     console.log('titulo despues: '+titleFather);
+		     
+			
 		   } 
 		   
 	},1000);
