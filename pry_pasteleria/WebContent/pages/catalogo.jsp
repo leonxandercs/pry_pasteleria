@@ -20,11 +20,9 @@
 <script>
 var row;
 var products;
-var childRow;
+var childRow='ola soy un virus';
 
 $(document).ready(function(){	
-
-
 	
 	row=$('.panelalex');
 	row.html('');
@@ -133,15 +131,51 @@ $(document).ready(function(){
 			 $("#myModal .modal-body img").replaceWith(img);
 		     $('#price').text(datos.torta.precio);
 		     
-		   } 
+		   }
+		   
+		   
+		   $('#compraT').click(function(){
+			   comprar();
+		   });
+		   
+		   function comprar(){
+				
+			 	var parametros=new Object();
+			 	parametros.idPedidoCabe=1;
+			 	parametros.producto={
+			 				idProducto:1,
+			 				descripcion:"Torta Angry Bird",
+			 				precio:30
+			 				};
+			 	parametros.dedicatoria='Happy Birthday';
+			 	parametros.nombre_agasajado="Alexander Chavez";
+			 	parametros.fec_requerimiento="2015/05/30";
+			 	parametros.cantidad=50;
+			 		
+			 var orderDetail=JSON.stringify(parametros);
+			 	
+			 $.ajax({
+				url:"addToCart.action",
+				type:"post",
+				datatype:"json",
+				contentType: 'application/json',
+				data:orderDetail,
+				
+				success:function(result){
+					alert(result);
+				}
+		 	});
+				
+			}
 		   
 	},1000);
 	
-
 	
 });
 
 </script>
+
+<button id="compraT">Comprando</button>
 
  <div class="row col-xs-12  col-sm-12  col-md-12  col-lg-12">
 	

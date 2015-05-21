@@ -11,23 +11,25 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class OrderDetail implements Serializable{
 	
-	private int idpedido;
-	private int idproducto;
+	private int idPedidoCabe;
+	private Product producto;
 	private int cantidad;
 	private String dedicatoria;
 	private String nombre_agasajado;
 	private String fec_requerimiento;
-	public int getIdpedido() {
-		return idpedido;
+	
+	
+	public int getIdPedidoCabe() {
+		return idPedidoCabe;
 	}
-	public void setIdpedido(int idpedido) {
-		this.idpedido = idpedido;
+	public void setIdPedidoCabe(int idPedidoCabe) {
+		this.idPedidoCabe = idPedidoCabe;
 	}
-	public int getIdproducto() {
-		return idproducto;
+	public Product getProducto() {
+		return producto;
 	}
-	public void setIdproducto(int idproducto) {
-		this.idproducto = idproducto;
+	public void setProducto(Product producto) {
+		this.producto = producto;
 	}
 	public int getCantidad() {
 		return cantidad;
@@ -53,6 +55,6 @@ public class OrderDetail implements Serializable{
 	public void setFec_requerimiento(String fec_requerimiento) {
 		this.fec_requerimiento = fec_requerimiento;
 	}
-	
+
 
 }

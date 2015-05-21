@@ -4,6 +4,13 @@ input[type=number]{
 	width:60px;
 	}
 </style>
+<script>
+$(window).load(function(){
+	
+});
+</script>
+
+
 <div>
 <div class="table-responsive">
 <table class="table table-striped table-hover " style="margin-rigth:40px;">
@@ -80,7 +87,7 @@ input[type=number]{
 <!-- ------------------------------------------------------------- -->
 
 <div style="text-align:right;margin-right:80px;">
-  <a href="catalogo.html" class="btn btn-primary">Agregar Productos</a>
+  <a href="catalogo.action" class="btn btn-primary">Agregar Productos</a>
   <input type="submit" class="btn btn-success" value="Realizar Pedido"/>
 </div>
 
