@@ -34,53 +34,69 @@ public class CartAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	 
 	private Map<String,Object> session=(Map<String,Object>)ActionContext.getContext().getSession();
-	//private List<OrderDetail> currentOrder=new ArrayList<OrderDetail>();
-	//private Product producto;
-	//private OrderDetail detalle;
 	private HttpServletRequest reques=ServletActionContext.getRequest();
-	private String orderDetail;
-	//private int cantidad;
 	
-	
+	private String orderDetailJSON;
+	private OrderDetail orderDetail;
+	private List<OrderDetail> currentOrder=new ArrayList<OrderDetail>();
+
 	
 	
 	@SuppressWarnings("unchecked")
 	@Action(value="addToCart",results={@Result(name=SUCCESS,type="json")})
 	public String  add(){
-		//if (currentOrder.size()==0) {
-		//	currentOrder.add(this.detalle);
-		//	session.put("cart",currentOrder);
-		//}else{
-		 // this.currentOrder=(ArrayList<OrderDetail>) session.get("cart");
-		//  currentOrder.add(this.detalle);
-		// session.put("cart",currentOrder);
-		//}
+		
 		BufferedReader br;
 		try {
+				
 			br = new BufferedReader(new InputStreamReader(reques.getInputStream()));
-		String json = "";
-        if(br != null){
-          
+			String json = "";
+			if(br != null){
 				json = br.readLine();
 			} 
-        //inicamos Jackson mapper
-        ObjectMapper mapper=new ObjectMapper();
-        //convertimos el json en producto
-        OrderDetail od=mapper.readValue(json,OrderDetail.class);
-        //enviar response type json
-        
-        System.out.println("se agrego al Carrito");
-		//System.out.println(producto.getDescripcion()+"-"+producto.getIdProducto() );
-        System.out.println("Pedido: "+od.getIdPedidoCabe());
-        System.out.println("Producto: "+od.getProducto().getIdProducto()
-        		+"-"+od.getProducto().getDescripcion());
-        System.out.println("Cantidad: "+od.getCantidad());
-        System.out.println("Dedicatoria: "+od.getDedicatoria());
-        System.out.println("Agasajado: "+od.getNombre_agasajado());
-        System.out.println("Requerimiento: "+od.getFec_requerimiento());
-        System.out.println("Subtotal:"+od.getCantidad()*od.getProducto().getPrecio());
-        }catch (IOException e) {
+	        //inicamos Jackson mapper
+	        ObjectMapper mapper=new ObjectMapper();
+	        //convertimos el json en producto
+	        this.orderDetail=mapper.readValue(json,OrderDetail.class);
+	        //enviar response type json
+	        System.out.println("se agrego al Carrito");
+	        System.out.println("Pedido: "+orderDetail.getIdPedidoCabe());
+	        System.out.println("Producto: "+orderDetail.getProducto().getIdProducto()+"-"+orderDetail.getProducto().getDescripcion());
+	        System.out.println("Cantidad: "+orderDetail.getCantidad());
+	        System.out.println("Dedicatoria: "+orderDetail.getDedicatoria());
+	        System.out.println("Agasajado: "+orderDetail.getNombre_agasajado());
+	        System.out.println("Requerimiento: "+orderDetail.getFec_requerimiento());
+	        System.out.println("Subtotal:"+orderDetail.getCantidad()*orderDetail.getProducto().getPrecio());
+	        
+	        if ((List<OrderDetail>) session.get("cart")!=null) {
+	        	
+	        	this.currentOrder=(ArrayList<OrderDetail>) session.get("cart");
+				currentOrder.add(this.orderDetail);
+				session.put("cart",currentOrder);
+				System.out.println("agrenado 2 veces");
+				
+			}else{
+				
+				currentOrder.add(this.orderDetail);
+				session.put("cart",currentOrder);
+				System.out.println("primera vez agregado");
+			}
+	        
+	        
+        }catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			
+			for (OrderDetail deta : currentOrder) {
+				System.out.println("-----------------");
+				System.out.println
+						(
+						deta.getProducto().getIdProducto()+
+						"-"+deta.getProducto().getDescripcion()+
+						"-"+deta.getCantidad()
+						);
+			}
+			
 		}
 	 
 		return SUCCESS;
@@ -102,58 +118,17 @@ public class CartAction extends ActionSupport{
 		return SUCCESS;
 	}
 
-	/*
-	public List<OrderDetail> getCurrentOrder() {
-		//return currentOrder;
+
+	public String getOrderDetailJSON() {
+		return orderDetailJSON;
 	}
 
 
-	public void setCurrentOrder(List<OrderDetail> currentOrder) {
-		//this.currentOrder = currentOrder;
+	public void setOrderDetailJSON(String orderDetailJSON) {
+		this.orderDetailJSON = orderDetailJSON;
 	}
 
-
-	public Product getProducto() {
-		return producto;
-	}
-
-
-	public void setProducto(Product producto) {
-		this.producto = producto;
-	}
-
-
-	public OrderDetail getDetalle() {
-		return detalle;
-	}
-
-
-	public void setDetalle(OrderDetail detalle) {
-		//this.detalle = detalle;
-	}
-
-*/
-	public String getOrderDetail() {
-		return orderDetail;
-	}
-
-
-	public void setOrderDetail(String product) {
-		this.orderDetail = product;
-	}
-
-/*
-	public int getCantidad() {
-		return cantidad;
-	}
-
-
-	public void setCantidad(int cantidad) {
-		//this.cantidad = cantidad;
-	}
-
-*/	
-
+	
 
 	
 	
