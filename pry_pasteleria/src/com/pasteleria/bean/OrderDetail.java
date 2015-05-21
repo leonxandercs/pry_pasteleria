@@ -18,6 +18,9 @@ public class OrderDetail implements Serializable{
 	private String nombre_agasajado;
 	private String fec_requerimiento;
 	
+	public double getSubTotal(){
+		return this.cantidad*this.producto.getPrecio();
+	}
 	
 	public int getIdPedidoCabe() {
 		return idPedidoCabe;

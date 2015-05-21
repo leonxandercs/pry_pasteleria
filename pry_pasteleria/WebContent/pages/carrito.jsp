@@ -1,4 +1,5 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@taglib uri="/struts-jquery-tags" prefix="sj" %>
 <style type="text/css">
 input[type=number]{
 	width:60px;
@@ -17,8 +18,8 @@ $(window).load(function(){
   <thead>
     <tr class="info">
       <th>#</th>
-      <th>Producto</th>
       <th>Codigo</th>
+      <th>Producto</th>
       <th>Cantidad</th>
       <th>Precio</th>
       <th>Subtotal</th>
@@ -26,52 +27,21 @@ $(window).load(function(){
     </tr>
   </thead>
   <tbody>
-    <tr class="info">
-      <td>1</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td><input type="number" min=0></td>
-      <td>S/.40.00</td>
-      <td>S/.120.00</td>
-     <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-    <tr class="info">
-      <td>2</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td><input type="number" min=0></td>
-       <td>S/.70.00</td>
-      <td>S/.140.00</td>
-       <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-    <tr class="info">
-      <td>3</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td><input type="number" min=0></td>
-      <td>S/.60.00</td>
-      <td>S/.120.00</td>
-      <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-    <tr class="success">
-      <td>4</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td><input type="number" min=0></td>
-      <td>S/.30.00</td>
-      <td>S/.60.00</td>
-      <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-    <tr class="info">
-      <td>5</td>
-      <td>Column content</td>
-      <td>Column content</td>
-     <td><input type="number" min=0></td>
-     <td>S/.45.00</td>
-      <td>S/.45.00</td>
-      <td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-  </tbody>
+      
+	<s:iterator value="#session.cart" var="c">
+		<tr class="info">
+			<td><s:property value="idPedidoCabe"/></td>
+		  	<td><s:property value="producto.idProducto"/></td>
+		  	<td><s:property value="producto.descripcion"/></td>
+		  	<td><input type="number" min=0 value="<s:property value="cantidad"/>"></td>
+		  	<td><s:property value="producto.precio"/></td>
+		  	<td><s:property value="getSubTotal()"/></td>
+		  	<td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+		 </tr>
+	</s:iterator>
+  
+  
+  </tbody>  
   <tfoot>
     <tr>
           <td></td>
