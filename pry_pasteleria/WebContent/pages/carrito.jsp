@@ -23,6 +23,28 @@ $(window).load(function(){
 			window.location.href="seguimiento.action";
 		}
 	});
+		
+	$('.eliminar').click(function(){
+		
+		var id=$(this).parent().parent().children().eq(1).html();
+		
+		var dato=new Object();
+		dato.producto={idProducto:id};
+					
+		 $.ajax({
+				url:"removeItem.action",
+				type:"post",
+				datatype:"json",
+				contentType:'application/json;charset-utf-8',
+				data:JSON.stringify(dato),
+				
+				success:function(result){
+					alert('Se Elimino');
+				}
+		 	});
+		 
+	});
+	
 });
 </script>
 
@@ -35,6 +57,7 @@ $(window).load(function(){
       <th>#</th>
       <th>Codigo</th>
       <th>Producto</th>
+      <th>Fecha Requerimiento</th>
       <th>Cantidad</th>
       <th>Precio</th>
       <th>Subtotal</th>
@@ -48,10 +71,11 @@ $(window).load(function(){
 			<td><s:property value="idPedidoCabe"/></td>
 		  	<td><s:property value="producto.idProducto"/></td>
 		  	<td><s:property value="producto.descripcion"/></td>
+		  	<td><s:property value="fec_requerimiento"/></td>
 		  	<td><input type="number" min=0 value="<s:property value="cantidad"/>"></td>
 		  	<td><s:property value="producto.precio"/></td>
 		  	<td><s:property value="getSubTotal()"/></td>
-		  	<td><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+		  	<td><a class="eliminar" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
 		 </tr>
 	</s:iterator>
   
@@ -60,6 +84,7 @@ $(window).load(function(){
   <tfoot>
     <tr>
           <td></td>
+         <td></td>
          <td></td>
           <td></td>
           <td></td>

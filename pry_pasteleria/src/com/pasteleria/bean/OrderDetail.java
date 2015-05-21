@@ -18,6 +18,13 @@ public class OrderDetail implements Serializable{
 	private String nombre_agasajado;
 	private String fec_requerimiento;
 	
+	//Sobrescribimos el Metodo Equals
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof OrderDetail && this.producto.getIdProducto()==
+		 ((OrderDetail)obj).getProducto().getIdProducto();
+	}
+	
 	public double getSubTotal(){
 		return this.cantidad*this.producto.getPrecio();
 	}

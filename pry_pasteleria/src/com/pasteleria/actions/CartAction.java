@@ -3,6 +3,8 @@ package com.pasteleria.actions;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +36,7 @@ public class CartAction extends ActionSupport{
 	
 	private String orderDetailJSON;
 	private OrderDetail orderDetail;
-	private List<OrderDetail> currentOrder=new ArrayList<OrderDetail>();
+	private List<OrderDetail> currentOrder=new LinkedList<OrderDetail>();
 
 	
 	
@@ -67,7 +69,7 @@ public class CartAction extends ActionSupport{
 		        
 		     if ((List<OrderDetail>) session.get("cart")!=null) {
 		        	
-		        	this.currentOrder=(ArrayList<OrderDetail>) session.get("cart");
+		        	this.currentOrder=(LinkedList<OrderDetail>) session.get("cart");
 					currentOrder.add(this.orderDetail);
 					session.put("cart",currentOrder);
 					System.out.println("agrenado 2 veces");
@@ -90,7 +92,8 @@ public class CartAction extends ActionSupport{
 						(
 						deta.getProducto().getIdProducto()+
 						"-"+deta.getProducto().getDescripcion()+
-						"-"+deta.getCantidad()
+						"-"+deta.getCantidad()+
+						"-"+deta.getFec_requerimiento()
 						);
 			}
 			
@@ -99,6 +102,45 @@ public class CartAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	
+	@SuppressWarnings("unchecked")
+	@Action(value="removeItem",results={@Result(name=SUCCESS,type="json")})
+	public String remove(){
+		
+		boolean eliminado=false;
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new InputStreamReader(reques.getInputStream(),"utf-8"));
+			String json = "";
+			if(br != null){
+				json = br.readLine();
+			} 
+	        ObjectMapper mapper=new ObjectMapper();
+	        this.orderDetail=mapper.readValue(json,OrderDetail.class); 
+	        this.currentOrder=(LinkedList<OrderDetail>) session.get("cart");
+	        
+	        long ini=System.currentTimeMillis();
+	        
+	        eliminado=currentOrder.remove(this.orderDetail);
+			
+	        
+	        System.out.println(System.currentTimeMillis()-ini);
+	        /*
+	        for (OrderDetail obj : currentOrder) {
+	        	
+				if (obj.getProducto().getIdProducto()==
+						this.orderDetail.getProducto().getIdProducto()) {
+					    eliminado=this.currentOrder.remove(obj);
+				}
+			}*/
+	        	
+			System.out.println("Eliminado: "+eliminado);
+			
+		   }catch (Exception e) {
+			e.printStackTrace();
+		   }
+		return SUCCESS;
+	}
 
 	public String getOrderDetailJSON() {
 		return orderDetailJSON;
