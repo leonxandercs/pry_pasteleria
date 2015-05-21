@@ -8,6 +8,7 @@ input[type=number]{
 <script>
 $(window).load(function(){
 	
+	
 });
 </script>
 

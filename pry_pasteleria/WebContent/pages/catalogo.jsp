@@ -39,6 +39,7 @@ $(document).ready(function(){
 			//almanecamos la info del producto[i] en un JSON
 		    var datos={"torta":{
 				"idx":i,
+				"idProducto":producto.idProducto,
 				"label":(producto.descripcion).toUpperCase(),
 				"imagen":imagen,
 				"precio":producto.precio,
@@ -83,6 +84,7 @@ $(document).ready(function(){
 	
 	setTimeout(function(){
 			
+			var cantidad=1;
 			var precio=0;
 			var patron = /^\d*$/;        
 		    var subtotal=$("#price");
@@ -127,30 +129,40 @@ $(document).ready(function(){
 		     var img=$(father).find('img').clone();
 			 $(img).attr('width','100%');
 			 $('#myModal h3').text(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
-			 $('#myModal input[type=number]').val(1);
+			 $('#idProducto').val(datos.torta.idProducto);
+			 $('#myModal input[type=number]').val(cantidad);
 			 $("#myModal .modal-body img").replaceWith(img);
 		     $('#price').text(datos.torta.precio);
 		     
+		     $('#myModal').data("dataproducto",datos);
 		   }
 		   
 		   
-		   $('#compraT').click(function(){
-			   comprar();
+		   $('#addToCart').click(function(event){
+			   
+			   var datos=$('#myModal').data("dataproducto");
+			   cantidad=$('#myModal input[type=number]').val();  
+			   var agazajado=$('#agazajado').val();
+			   var dedicatoria=$('#dedicatoria').val();
+			   var fecha=$('#fecha').val();			
+			   alert(cantidad);
+			   comprar(datos,cantidad,agazajado,dedicatoria,fecha);
+			   $('#myModal').modal('hide');
 		   });
 		   
-		   function comprar(){
+		   function comprar(datos,cantidad,agazajado,dedicatoria,fecha){
 				
 			 	var parametros=new Object();
 			 	parametros.idPedidoCabe=1;
 			 	parametros.producto={
-			 				idProducto:1,
-			 				descripcion:"Torta Angry Bird",
-			 				precio:30
+			 				idProducto:datos.torta.idProducto,
+			 				descripcion:datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase(),
+			 				precio:datos.torta.precio
 			 				};
-			 	parametros.dedicatoria='Happy Birthday';
-			 	parametros.nombre_agasajado="Alexander Chavez";
-			 	parametros.fec_requerimiento="2015/05/30";
-			 	parametros.cantidad=50;
+			 	parametros.dedicatoria=dedicatoria;
+			 	parametros.nombre_agasajado=agazajado;
+			 	parametros.fec_requerimiento=fecha;
+			 	parametros.cantidad=cantidad;
 			 		
 			 var orderDetail=JSON.stringify(parametros);
 			 	
@@ -255,6 +267,7 @@ $(document).ready(function(){
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h3 class="modal-title" id="myModalLabel">Modal title</h3>
+				<s:hidden id="idProducto"/>
 			</div>
 
 			<div class="modal-body">
@@ -271,11 +284,11 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<td>Nombre Agazajado:</td>
-							<td><input class="form-control" type="text"></td>
+							<td><input id="agazajado" class="form-control" type="text"></td>
 						</tr>
 						<tr>
 							<td>Dedicatoria:</td>
-							<td><input class="form-control" type="text"></td>
+							<td><input id="dedicatoria" class="form-control" type="text"></td>
 						</tr>
 						<tr>
 							<td>Fecha de Entrega:</td>
@@ -299,7 +312,7 @@ $(document).ready(function(){
 
 			<div class="modal-footer alexito">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Agregar al
+				<button id="addToCart" type="button" class="btn btn-primary">Agregar al
 					Carrito</button>
 			</div>
 		</div>
