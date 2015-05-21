@@ -146,7 +146,7 @@ $(document).ready(function(){
 			   var agazajado=$('#agazajado').val();
 			   var dedicatoria=$('#dedicatoria').val();
 			   var fecha=$('#fecha').val();			
-			   alert(cantidad);
+			   
 			   comprar(datos,cantidad,agazajado,dedicatoria,fecha);
 			   $('#myModal').modal('hide');
 		   });
@@ -173,11 +173,11 @@ $(document).ready(function(){
 				url:"addToCart.action",
 				type:"post",
 				datatype:"json",
-				contentType: 'application/json',
+				contentType:'application/json;charset-utf-8',
 				data:orderDetail,
 				
 				success:function(result){
-					alert(result);
+					alert('Se agrego al Carrito');
 				}
 		 	});
 				
@@ -189,8 +189,6 @@ $(document).ready(function(){
 });
 
 </script>
-
-<button id="compraT">Comprando</button>
 
  <div class="row col-xs-12  col-sm-12  col-md-12  col-lg-12">
 	

@@ -44,8 +44,9 @@ public class CartAction extends ActionSupport{
 		
 		BufferedReader br;
 		try {
-				
-				br = new BufferedReader(new InputStreamReader(reques.getInputStream()));
+				//Es importante establecer el tipo de decodificacion UTF-8 para que aparescan bien los
+				//caracteres como por ejem: "ñ"
+				br = new BufferedReader(new InputStreamReader(reques.getInputStream(),"utf-8"));
 				String json = "";
 				if(br != null){
 					json = br.readLine();

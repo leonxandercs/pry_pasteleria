@@ -25,11 +25,14 @@ public class LoginAction  extends ActionSupport{
 	private String navbar;
 	private String email;
 	private String password;
+	private String logged;
+	
 	public Map<String, Object> session=(Map<String, Object>)ActionContext.getContext().getSession();
 	
 	@Action(value="ValidateUser",
 			results={@Result(name=SUCCESS,type="tiles",location="catalogo"),
-			@Result(name=ERROR,type="tiles",location="login")
+			@Result(name=ERROR,type="tiles",location="login"),
+			@Result(name="orderPending",type="tiles",location="carrito")
 			})
 	public String validateUser()
 	{
@@ -41,6 +44,11 @@ public class LoginAction  extends ActionSupport{
 			session.put("navbar", this.navbar);
 			session.put("user", user);
 			addActionMessage(user.getNombre());
+			
+			if (session.get("cart")!=null) {
+				return "orderPending";
+			}
+			
 			return SUCCESS;
 		}
 		else
@@ -51,6 +59,15 @@ public class LoginAction  extends ActionSupport{
 		
 	}
 	
+	@Action(value="isLogged",results={@Result(name=SUCCESS,type="json")})
+	public String isLogged(){
+		if (session.get("user")!=null)
+			this.logged="true";
+		else
+			this.logged="false";
+			System.out.println(logged);
+		return SUCCESS;
+	}
 
 	public String getEmail() {
 		return email;
@@ -69,9 +86,18 @@ public class LoginAction  extends ActionSupport{
 		return navbar;
 	}
 
+	public String getLogged() {
+		return logged;
+	}
+
+	public void setLogged(String logged) {
+		this.logged = logged;
+	}
+
 	public void setNavbar(String navbar) {
 		this.navbar = navbar;
 	}
+
 	
 	
 }

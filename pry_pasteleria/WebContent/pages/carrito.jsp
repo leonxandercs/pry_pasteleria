@@ -7,8 +7,22 @@ input[type=number]{
 </style>
 <script>
 $(window).load(function(){
+	var logueado='false';
+	//Cosultamos al servidor si el usuario esta logueado
+	$.get("isLogged.action",function(data){
+		logueado=data.logged;
+	});
 	
+	//Si el Usuario no esta logueado lo redireccionamos al login
 	
+	$('#regPedido').click(function(){
+		if (logueado=='false')
+			window.location.href="logueo.action";
+		else{
+			alert('Su pedido ah sido registrado');
+			window.location.href="seguimiento.action";
+		}
+	});
 });
 </script>
 
@@ -59,7 +73,7 @@ $(window).load(function(){
 
 <div style="text-align:right;margin-right:80px;">
   <a href="catalogo.action" class="btn btn-primary">Agregar Productos</a>
-  <input type="submit" class="btn btn-success" value="Realizar Pedido"/>
+  <input id="regPedido" type="submit" class="btn btn-success" value="Realizar Pedido"/>
 </div>
 
 </div>
