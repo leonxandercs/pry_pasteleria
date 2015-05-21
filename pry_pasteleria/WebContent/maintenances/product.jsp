@@ -290,10 +290,10 @@ $(document).ready(function() {
 <div class="modal fade" id="myModalNuevo" role="dialog" ria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
-  <s:form action="cargarProduct" enctype="multipart/form-data" method="post" theme="bootstrap" cssClass="well form-vertical">
+  <s:form action="cargarProduct" enctype="multipart/form-data" method="post" acceptcharset="utf-8" theme="bootstrap" cssClass="well form-vertical">
     <div class="modal-header">
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    	<h4>Registrar Empleado</h4>
+    	<h4>Registrar Producto</h4>
     </div>
 		<div class="modal-body">
 	    		<s:hidden id="idProducto" name="producto.idProducto" />

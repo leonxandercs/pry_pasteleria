@@ -138,6 +138,7 @@ $(document).ready(function(){
 		   }
 		   
 		   
+		   
 		   $('#addToCart').click(function(event){
 			   
 			   var datos=$('#myModal').data("dataproducto");
@@ -149,6 +150,8 @@ $(document).ready(function(){
 			   comprar(datos,cantidad,agazajado,dedicatoria,fecha);
 			   $('#myModal').modal('hide');
 		   });
+		   
+		   
 		   
 		   function comprar(datos,cantidad,agazajado,dedicatoria,fecha){
 				

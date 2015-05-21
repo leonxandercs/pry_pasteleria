@@ -1,11 +1,8 @@
 package com.pasteleria.actions;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +20,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pasteleria.bean.OrderDetail;
-import com.pasteleria.bean.Product;
 /**
  * 
  * @author Pantera
@@ -102,22 +98,6 @@ public class CartAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	
-	@SuppressWarnings("unchecked")
-	@Action(value="getCart",results={@Result(name=SUCCESS,type="json")})
-	public String getCart(){
-		/* this.currentOrder=(ArrayList<OrderDetail>) session.get("cart");
-		 for (OrderDetail deta : currentOrder) {
-			System.out.println
-					(
-					deta.getProducto().getIdProducto()+
-					"-"+deta.getProducto().getDescripcion()+
-					"-"+deta.getCantidad()
-					);
-		}*/
-		return SUCCESS;
-	}
-
 
 	public String getOrderDetailJSON() {
 		return orderDetailJSON;
