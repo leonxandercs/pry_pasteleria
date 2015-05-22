@@ -137,6 +137,10 @@ $(document).ready(function(){
 			 $('#pdescripcion').val(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
 			 $('#pprecio').val(datos.torta.precio);
 			 $('#pimagen').val(datos.torta.imagen);
+			 
+			 $('#pcobertura').val(datos.torta.cobertura);
+			 $('#pmasa').val(datos.torta.masa);
+			 $('#prelleno').val(datos.torta.relleno);
 		    // ya no es necesario
 		    //$('#myModal').data("dataproducto",datos);
 		   }
@@ -303,7 +307,10 @@ $(document).ready(function(){
 		 	<s:hidden id="pdescripcion" name="orderDetail.producto.descripcion"/>
 		 	<s:hidden id="pprecio" name="orderDetail.producto.precio"/>
 		 	<s:hidden id="pimagen" name="orderDetail.producto.image_resource"/>
-		 
+		 	<s:hidden id="pcobertura" name="orderDetail.producto.cobertura.descripcion"/>
+		 	<s:hidden id="pmasa" name="orderDetail.producto.masa.descripcion"/>
+		 	<s:hidden id="prelleno" name="orderDetail.producto.relleno.descripcion"/>
+		 	
 			<div class="modal-body">
 				<div class="alex col-xs-12 col-sm-5 col-md-5 col-lg-5">
 					<img src="">

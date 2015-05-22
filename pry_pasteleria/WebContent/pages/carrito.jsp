@@ -1,8 +1,50 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
+
+
 <style type="text/css">
+
+        .table>tbody>tr>td, .table>tfoot>tr>td{
+    vertical-align: middle;
+}
+
 input[type=number]{
 	width:60px;
 	}
+.table{
+background-color: white;
+}	
+
+@media screen and (max-width: 600px) {
+    table#cart tbody td .form-control{
+		width:20%;
+		display: inline !important;
+	}
+	.actions .btn{
+		width:36%;
+		margin:1.5em 0;
+	}
+	
+	.actions .btn-info{
+		float:left;
+	}
+	.actions .btn-danger{
+		float:right;
+	}
+	
+	table#cart thead { display: none; }
+	table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
+	table#cart tbody tr td:first-child { background: #333; color: #fff; }
+	table#cart tbody td:before {
+		content: attr(data-th); font-weight: bold;
+		display: inline-block; width: 8rem;
+	}
+	
+	
+	
+	table#cart tfoot td{display:block; }
+	table#cart tfoot td .btn{display:block;}
+	
+}
 </style>
 <script>
 
@@ -31,12 +73,12 @@ $(document).ready(function(){
 		 alert('hola');
 	 });
 	 
-	 /*
+	 /**/
 	 actualizarGrillar();
 	
 	
 	function actualizarGrillar(){
-		
+
 		$.getJSON('listCart.action',function(data){
 			
 			var lista=data.currentOrder;			
@@ -46,21 +88,25 @@ $(document).ready(function(){
 				//declaramos una variable producto
 				var detalle=(lista[i]);
 				
-				var imagen='<img src="verImagen?imagenName='+detalle.producto.image_resource+'" width="200" alt="134x180"/>';
+				//var imagen='<img src="verImagen?imagenName='+detalle.producto.image_resource+'" width="200" alt="134x180"/>';
+				var imagen='<img src="verImagen?imagenName='+detalle.producto.image_resource+'"width=100% alt="..." class="img-responsive"/>';
 				//almanecamos la info del producto[i] en un JSON
 			    var datos={"torta":{
 							"idx":i,
 							"idProducto":detalle.producto.idProducto,
-							"label":(detalle.producto.descripcion).toUpperCase(),
+							"label":detalle.producto.descripcion,
 							"imagen":imagen,
 							"precio":detalle.producto.precio,
 							"cantidad":detalle.cantidad,
 							"subTotal":detalle.subTotal,
-							"fec_requerimiento":detalle.fec_requerimiento
+							"fec_requerimiento":detalle.fec_requerimiento,
+							"cobertura":detalle.producto.cobertura.descripcion,
+							"masa":detalle.producto.masa.descripcion,
+							"relleno":detalle.producto.relleno.descripcion
 				           }
 			     		 };	
-				
-				var fila='<tr class="info">'+
+				/*
+				var fila='<tr>'+
 				'<td>'+datos.torta.idProducto+'</td>'+
 				'<td>'+datos.torta.imagen+'</td>'+
 				'<td>'+datos.torta.label+'</td>'+
@@ -70,18 +116,52 @@ $(document).ready(function(){
 				'<td>'+datos.torta.subTotal+'</td>'+
 				"<td><a class='eliminar' href='#'><span class='glyphicon glyphicon-trash'></span></a></td>"+
 				'</tr>';
+				*/
+				
+				
+				
+				var fila='<tr>'+
+				'<td data-th="Product">'+
+				 '<input type="hidden" value="'+datos.torta.idProducto+'"/>'+
+				 '<div class="row">'+
+						'<div class="col-sm-2 col-xs-12">'+imagen+'</div>'+
+						'<div class="col-sm-10">'+
+							'<h4 class="nomargin">Producto '+datos.torta.idProducto+'-'+datos.torta.label+'</h4>'+
+							'<p>El pastel de '+datos.torta.label+', tiene como base lo mejor de nuestros '+datos.torta.masa+
+							' con una cobertura de '+datos.torta.cobertura+' y un exquisito relleno de '+datos.torta.relleno+'.</p>'+
+						'</div>'+
+					'</div>'+
+				'</td>'+
+				'<td data-th="Precio">'+'S/.'+datos.torta.precio+'</td>'+
+				'<td data-th="Cantidad">'+
+					'<input type="number" class="form-control text-center" value="'+datos.torta.cantidad+'" min="1">'+
+				'</td>'+
+				'<td data-th="Subtotal" class="text-center">S/.'+datos.torta.subTotal+'</td>'+
+				'<td class="actions" data-th="">'+
+					'<button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-edit"></i></button>'+
+					'<button class="eliminar btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>	'+							
+				'</td>'+
+			'</tr>';
+			
+				
+				
+				
+				
+				
+				
+				
 				
 				$('.table tbody').append(fila);
-		
+				
 			    }
 			
 			
 		});
 		
 	}
-	*/
-	/**/	
-    var table=$('#example').DataTable({
+	
+	/*
+    var table=$('#cart').DataTable({
         "processing": true,
         "ajax": {
         	"url":"listCart.action",
@@ -114,16 +194,20 @@ $(document).ready(function(){
        },
         responsive:true
     });
-
-	$('#example').on('click','.eliminar',function(){		
-		var id=$(this).parent().parent().children().eq(0).html();		
+	*/	
+		$('#cart').on('click','.eliminar',function(){	
+		//$('.row #aeliminar').on('click','.eliminar',function(){
+		var id=$(this).parent().parent().children().eq(0).children().eq(0).val();
+		//var id=$(this).parent().parent().children().eq(0).html();
+		
 		 $.ajax({
 				url:"removeItemCart.action",
 				type:"post",
 				datatype:"json",
 				data:{idProducto:id},
 				success:function(result){
-					table.ajax.reload(null,false);
+					//table.ajax.reload(null,false);
+					actualizarGrillar();
 					$.growl(
 							{
 								title:" <strong> Producto</strong> ",
@@ -142,48 +226,61 @@ $(document).ready(function(){
 
 </script>
 
+<!-- ------------------------------------------------------------- -->
 
-<table id="example" class="table table-responsive table-striped table-bordered table-hover" cellspacing="0" width="100%">
-  <thead>
-    <tr class="info">
-      <th>Codigo</th>
-      <th>Imagen</th>
-      <th>Producto</th>
-      <th>Fecha Requerimiento</th>
-      <th>Cantidad</th>
-      <th>Precio</th>
-      <th>Subtotal</th>
-      <th>Accion</th>
-    </tr>
-  </thead>
+<div class="container">
+
+	<table id="cart" class="table table-hover table-condensed">
+	  <thead>
+	    <tr class="info">
+	      <th style="width:50%">Producto</th>
+	      <th style="width:10%">Precio</th>
+	      <th style="width:8%">Cantidad</th>
+	      <th style="width:22%" class="text-center">Subtotal</th>
+	      <th style="width:10%"></th>
+	    </tr>
+	  </thead>
         
-  <tbody>
+	  <tbody>
+	
+	
+	  </tbody> 
 
 
-  </tbody> 
-
+	 <tfoot>
+		<tr class="visible-xs">
+			<td class="text-center"><strong>Total S/.200.00</strong></td>
+		</tr>
+		<tr>
+			<td><a  href="catalogo.action" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
+			<td colspan="2" class="hidden-xs"></td>
+			<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+			<td><a  id="regPedido"  href="#" class="btn btn-success btn-block"><!--Checkout-->Realizar Pedido<i class="fa fa-angle-right"></i></a></td>
+		</tr>
+	 </tfoot>
+  </table> 
+</div>
+<!-- 		
   <tfoot>
     <tr>
     	<td></td>
     	<td></td>
          <td></td>
-         <td></td>
-          <td></td>
-          <td></td>
          <td  class="danger"><strong>Sub Total:</strong></td>
           <td  class="danger"><strong>S/.200.00</strong></td>
     </tr>
   </tfoot>
      
 </table> 
-<!-- ------------------------------------------------------------- -->
+
+
+
 
 <div style="text-align:right;margin-right:80px;">
   <a href="catalogo.action" class="btn btn-primary">Agregar Productos</a>
   <input id="regPedido" type="submit" class="btn btn-success" value="Realizar Pedido"/>
 </div>
-
-<button id="boton">Hola</button>
+ -->			
 
 
 <br></br>
