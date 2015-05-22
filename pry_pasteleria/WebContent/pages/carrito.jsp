@@ -28,18 +28,24 @@ $(window).load(function(){
 		
 		var id=$(this).parent().parent().children().eq(1).html();
 		
-		var dato=new Object();
-		dato.producto={idProducto:id};
+		/*var dato=new Object();
+		dato.producto={idProducto:id};*/
 					
 		 $.ajax({
-				url:"removeItem.action",
+				url:"removeItemCart.action",
 				type:"post",
 				datatype:"json",
-				contentType:'application/json;charset-utf-8',
-				data:JSON.stringify(dato),
-				
+				data:{idProducto:id},
 				success:function(result){
-					alert('Se Elimino');
+					$.growl(
+							{
+								title:" <strong> Producto</strong> ",
+								message:"eliminado",
+								icon:"glyphicon glyphicon-thumbs-up"
+							},{
+								type:'info'
+							}
+						  );
 				}
 		 	});
 		 

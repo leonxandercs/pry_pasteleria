@@ -21,6 +21,15 @@ public class Product implements Serializable {
 	private Filling relleno;
 	
 	
+	
+	public Product(int idProducto) {
+		this.idProducto=idProducto;
+	}
+
+	public Product() {
+	}
+
+
 	public int getIdProducto() {
 		return idProducto;
 	}
