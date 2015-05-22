@@ -1,17 +1,15 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<%@taglib uri="/struts-jquery-tags" prefix="sj" %>
-<%@taglib uri="/struts-jquery-grid-tags" prefix="sjg"%>
 <style type="text/css">
 input[type=number]{
 	width:60px;
 	}
 </style>
 <script>
-//var eliminar;
-var eliminar;
+
+
 $(document).ready(function(){
 	
-	var table;
+	
 	var logueado='false';
 	//Cosultamos al servidor si el usuario esta logueado
 	$.get("isLogged.action",function(data){
@@ -83,7 +81,7 @@ $(document).ready(function(){
 	}
 	*/
 	/**/	
-    table=$('#example').DataTable({
+    var table=$('#example').DataTable({
         "processing": true,
         "ajax": {
         	"url":"listCart.action",
@@ -125,6 +123,7 @@ $(document).ready(function(){
 				datatype:"json",
 				data:{idProducto:id},
 				success:function(result){
+					table.ajax.reload(null,false);
 					$.growl(
 							{
 								title:" <strong> Producto</strong> ",
@@ -135,9 +134,7 @@ $(document).ready(function(){
 							}
 						  );
 				}
-		 	});
-		 //actualizarGrillar();
-		 table.ajax.reload();
+		 	});		
 	});
 	
 });
