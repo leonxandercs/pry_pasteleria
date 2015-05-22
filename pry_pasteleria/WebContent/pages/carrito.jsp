@@ -6,7 +6,9 @@ input[type=number]{
 	}
 </style>
 <script>
-$(window).load(function(){
+var eliminar;
+
+$(document).ready(function(){
 	var logueado='false';
 	//Cosultamos al servidor si el usuario esta logueado
 	$.get("isLogged.action",function(data){
@@ -23,14 +25,60 @@ $(window).load(function(){
 			window.location.href="seguimiento.action";
 		}
 	});
+	
+	actualizarGrillar();
+			
+	function actualizarGrillar(){
 		
-	$('.eliminar').click(function(){
+		$.getJSON('listCart.action',function(data){
+			
+			var lista=data.currentOrder;			
+			$('.table tbody').html('');
+			
+			for (var i = 0; i < lista.length; i++) {
+				//declaramos una variable producto
+				var detalle=(lista[i]);
+				
+				var imagen='<img src="verImagen?imagenName='+detalle.producto.image_resource+'" width="200" alt="134x180"/>';
+				//almanecamos la info del producto[i] en un JSON
+			    var datos={"torta":{
+							"idx":i,
+							"idProducto":detalle.producto.idProducto,
+							"label":(detalle.producto.descripcion).toUpperCase(),
+							"imagen":imagen,
+							"precio":detalle.producto.precio,
+							"cantidad":detalle.cantidad,
+							"subTotal":detalle.subTotal,
+							"fec_requerimiento":detalle.fec_requerimiento
+				           }
+			     		 };	
+				
+				var fila='<tr class="info">'+
+				'<td>'+datos.torta.idProducto+'</td>'+
+				'<td>'+datos.torta.imagen+'</td>'+
+				'<td>'+datos.torta.label+'</td>'+
+				'<td>'+datos.torta.fec_requerimiento+'</td>'+
+				'<td><input type="number" value="'+datos.torta.cantidad+'" min="1" /></td>'+
+				'<td>'+datos.torta.precio+'</td>'+
+				'<td>'+datos.torta.subTotal+'</td>'+
+				"<td><a class='eliminar' href='javascript:eliminar()'><span class='glyphicon glyphicon-trash'></span></a></td>"+
+				'</tr>';
+				
+				$('.table tbody').append(fila);
 		
-		var id=$(this).parent().parent().children().eq(1).html();
+			    }
+			
+			
+		});
 		
-		/*var dato=new Object();
-		dato.producto={idProducto:id};*/
-					
+	}
+	
+
+	eliminar=function(){
+		var id=$('.eliminar').parent().parent().children().eq(0).html();
+		//var id=$(this).parent().parent().children().eq(0).html();
+		 /*var dato=new Object();
+		 dato.producto={idProducto:id};*/
 		 $.ajax({
 				url:"removeItemCart.action",
 				type:"post",
@@ -48,30 +96,61 @@ $(window).load(function(){
 						  );
 				}
 		 	});
-		 
-	});
+		 actualizarGrillar();
+	};
 	
+	
+	/*
+    var table=$('#example').DataTable({
+        "processing": true,
+        "ajax": {
+        	"url":"listCart.action",
+        	 "dataSrc":"currentOrder"
+        	},
+            "bPaginate": false,
+            "bFilter": false,
+            "bInfo":false,
+	        "columns": [
+                    { "data": "producto.idProducto" },
+                    { "data": "producto.descripcion" },
+                    { "data": "fec_requerimiento" },
+                    { "data": "cantidad" },
+                    { "data": "producto.precio" },
+                    { "data": "subTotal" }                    
+                ]
+       , "language": {
+           "zeroRecords": "No se hallaron Registros ",
+           "infoEmpty": "No hay Registros disponibles",
+           "loadingRecords": "Cargando...",    
+           "processing":     "Procesando..."
+       },
+        responsive:true
+        
+    });
+	*/	
 });
+
+
 </script>
 
 
-<div>
-<div class="table-responsive">
-<table class="table table-striped table-hover " style="margin-rigth:40px;">
+
+<table id="example" class="table table-responsive table-striped table-bordered table-hover" cellspacing="0" width="100%">
   <thead>
     <tr class="info">
-      <th>#</th>
       <th>Codigo</th>
+      <th>Imagen</th>
       <th>Producto</th>
       <th>Fecha Requerimiento</th>
       <th>Cantidad</th>
       <th>Precio</th>
       <th>Subtotal</th>
-      <th></th>
+      <th>Accion</th>
     </tr>
   </thead>
+        
   <tbody>
-      
+<!-- 	
 	<s:iterator value="#session.cart" var="c">
 		<tr class="info">
 			<td><s:property value="idPedidoCabe"/></td>
@@ -84,12 +163,14 @@ $(window).load(function(){
 		  	<td><a class="eliminar" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
 		 </tr>
 	</s:iterator>
-  
-  
-  </tbody>  
+-->	
+
+  </tbody> 
+
   <tfoot>
     <tr>
-          <td></td>
+    	<td></td>
+    	<td></td>
          <td></td>
          <td></td>
           <td></td>
@@ -98,8 +179,8 @@ $(window).load(function(){
           <td  class="danger"><strong>S/.200.00</strong></td>
     </tr>
   </tfoot>
+     
 </table> 
-</div>
 <!-- ------------------------------------------------------------- -->
 
 <div style="text-align:right;margin-right:80px;">
@@ -107,7 +188,7 @@ $(window).load(function(){
   <input id="regPedido" type="submit" class="btn btn-success" value="Realizar Pedido"/>
 </div>
 
-</div>
+
 
 <br></br>
 <br></br>
