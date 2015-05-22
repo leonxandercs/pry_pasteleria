@@ -26,7 +26,7 @@ public class ByteArrayImage{
 		  try {
 			  	//busca el archivo por su nombre en el Directorio establecido
 	            File file = new File("C:\\Files\\imagen\\"+filename);
-	            System.out.println(file.exists() + "!!");
+	            //System.out.println(file.exists() + "!!");
 	           
 	            FileInputStream fis = new FileInputStream(file);
 	            ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -34,7 +34,7 @@ public class ByteArrayImage{
 	            try {
 	                for (int readNum; (readNum = fis.read(buf)) != -1;) {
 	                    bos.write(buf, 0, readNum);
-	                    System.out.println("read " + readNum + " bytes,");
+	                  //  System.out.println("read " + readNum + " bytes,");
 	                }
 	            } catch (IOException ex) {
 	                Logger.getLogger(ByteArrayImage.class.getName()).log(Level.SEVERE, null, ex);

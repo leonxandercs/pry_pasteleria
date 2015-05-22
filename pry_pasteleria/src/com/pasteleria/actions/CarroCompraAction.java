@@ -13,57 +13,44 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-
-
-
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pasteleria.bean.OrderDetail;
-/**
- * 
- * @author Pantera
- *
- */
+
 @ParentPackage(value="cloudedleopard")
-public class CartAction extends ActionSupport{
+public class CarroCompraAction extends ActionSupport{
+
 	private static final long serialVersionUID = 1L;
 	 
 	private Map<String,Object> session=(Map<String,Object>)ActionContext.getContext().getSession();
 	private HttpServletRequest reques=ServletActionContext.getRequest();
 	
-	private String orderDetailJSON;
 	private OrderDetail orderDetail;
 	private List<OrderDetail> currentOrder=new LinkedList<OrderDetail>();
 
 	
 	
+	
+	
 	@SuppressWarnings("unchecked")
-	@Action(value="addToCart",results={@Result(name=SUCCESS,type="json")})
+	@Action(value="addToCarrito",results={@Result(name=SUCCESS,type="json")})
 	public String  add(){
 		
-		BufferedReader br;
+	
 		try {
-				//Es importante establecer el tipo de decodificacion UTF-8 para que aparescan bien los
-				//caracteres como por ejem: "ñ"
-				br = new BufferedReader(new InputStreamReader(reques.getInputStream(),"utf-8"));
-				String json = "";
-				if(br != null){
-					json = br.readLine();
-				} 
-		        //inicamos Jackson mapper
-		        ObjectMapper mapper=new ObjectMapper();
-		        //convertimos el json en producto
-		        this.orderDetail=mapper.readValue(json,OrderDetail.class);
-		        //enviar response type json
+			System.out.println("Cantidad: "+orderDetail.getCantidad());
+	        System.out.println("Dedicatoria: "+orderDetail.getDedicatoria());
+	        System.out.println("Agasajado: "+orderDetail.getNombre_agasajado());
+	        System.out.println("Requerimiento: "+orderDetail.getFec_requerimiento());
+	        
 		        System.out.println("se agrego al Carrito");
-		        System.out.println("Pedido: "+orderDetail.getIdPedidoCabe());
-		        System.out.println("Producto: "+orderDetail.getProducto().getIdProducto()+"-"+orderDetail.getProducto().getDescripcion());
-		        System.out.println("Cantidad: "+orderDetail.getCantidad());
-		        System.out.println("Dedicatoria: "+orderDetail.getDedicatoria());
-		        System.out.println("Agasajado: "+orderDetail.getNombre_agasajado());
-		        System.out.println("Requerimiento: "+orderDetail.getFec_requerimiento());
+		        System.out.println("Producto: "+orderDetail.getProducto().getIdProducto());
+		        System.out.println("-"+orderDetail.getProducto().getDescripcion());
+		        
+		        System.out.println("Imagen: "+orderDetail.getProducto().getImage_resource());
+		        
 		        System.out.println("Subtotal:"+orderDetail.getCantidad()*orderDetail.getProducto().getPrecio());
 		        
 		     if ((List<OrderDetail>) session.get("cart")!=null) {
@@ -82,7 +69,7 @@ public class CartAction extends ActionSupport{
 						currentOrder.add(orderDetail);
 					}
 					session.put("cart",currentOrder);
-					System.out.println("agrenado 2 veces");
+					System.out.println("agregado al carrito");
 				
 			}else{
 				
@@ -114,7 +101,7 @@ public class CartAction extends ActionSupport{
 	
 	
 	@SuppressWarnings("unchecked")
-	@Action(value="removeItem",results={@Result(name=SUCCESS,type="json")})
+	@Action(value="removeItemCarrito",results={@Result(name=SUCCESS,type="json")})
 	public String remove(){
 		
 		boolean eliminado=false;
@@ -138,17 +125,14 @@ public class CartAction extends ActionSupport{
 		return SUCCESS;
 	}
 
-	public String getOrderDetailJSON() {
-		return orderDetailJSON;
+	public OrderDetail getOrderDetail() {
+		return orderDetail;
 	}
 
 
-	public void setOrderDetailJSON(String orderDetailJSON) {
-		this.orderDetailJSON = orderDetailJSON;
+	public void setOrderDetail(OrderDetail orderDetail) {
+		this.orderDetail = orderDetail;
 	}
-
-	
-
 	
 	
 }

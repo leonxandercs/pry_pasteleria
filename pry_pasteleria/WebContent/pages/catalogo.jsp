@@ -41,7 +41,7 @@ $(document).ready(function(){
 				"idx":i,
 				"idProducto":producto.idProducto,
 				"label":(producto.descripcion).toUpperCase(),
-				"imagen":imagen,
+				"imagen":producto.image_resource,
 				"precio":producto.precio,
 				"cobertura":producto.cobertura.descripcion,
 				"masa":producto.masa.descripcion,
@@ -129,16 +129,44 @@ $(document).ready(function(){
 		     var img=$(father).find('img').clone();
 			 $(img).attr('width','100%');
 			 $('#myModal h3').text(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
-			 $('#idProducto').val(datos.torta.idProducto);
 			 $('#myModal input[type=number]').val(cantidad);
 			 $("#myModal .modal-body img").replaceWith(img);
-		     $('#price').text(datos.torta.precio);
-		     
-		     $('#myModal').data("dataproducto",datos);
+			 $('#price').text(datos.torta.precio);
+			 
+			 $('#idProducto').val(datos.torta.idProducto);
+			 $('#pdescripcion').val(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
+			 $('#pprecio').val(datos.torta.precio);
+			 $('#pimagen').val(datos.torta.imagen);
+		    // ya no es necesario
+		    //$('#myModal').data("dataproducto",datos);
 		   }
 		   
+		   // Interceptamos el evento submit
+		   $('#formComprar').submit(function(){
+			   $('#myModal').modal('hide');
+			// Enviamos el formulario usando AJAX
+			  $.ajax({
+				  type:'POST',
+				  url:$(this).attr('action'),
+				  data:$(this).serialize(),
+			  	  //capturamos el resultado
+			  	  success:function(data){
+			  		//Mostramos un mensaje
+			  		$.growl(
+			  				{
+			  					title:"<strong> Producto</strong>",
+			  					message:" agreado al carrito",
+			  					icon:"glyphicon glyphicon-thumbs-up"
+			  				},{
+			  					type:'info'
+			  				}
+			  			  );
+			  	  }
+			  	});
+			   return false;
+		   });
 		   
-		   
+		   /*
 		   $('#addToCart').click(function(event){
 			   
 			   var datos=$('#myModal').data("dataproducto");
@@ -170,7 +198,7 @@ $(document).ready(function(){
 			 var orderDetail=JSON.stringify(parametros);
 			 	
 			 $.ajax({
-				url:"addToCart.action",
+				url:"addToCarrito.action",
 				type:"post",
 				datatype:"json",
 				contentType:'application/json;charset-utf-8',
@@ -181,7 +209,7 @@ $(document).ready(function(){
 				}
 		 	});
 				
-			}
+			}  */
 		   
 	},1000);
 	
@@ -194,7 +222,7 @@ $(document).ready(function(){
 	
 					
 		<div class="col-xs-12  col-sm-2  col-md-2  col-lg-2">
-			 <s:form  theme="bootstrap">
+			 <s:form id="formFiltros" theme="bootstrap" >
 	    			<s:url id="URL_ListCategorys" action="listCategory"/>
 					<sj:select cssClass="form-control"
 					id="cbocategoria" 
@@ -268,11 +296,15 @@ $(document).ready(function(){
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h3 class="modal-title" id="myModalLabel">Modal title</h3>
-				<s:hidden id="idProducto"/>
 			</div>
 
+		 <s:form theme="bootstrap"  action="addToCarrito" method="post" acceptcharset="UTF-8" id="formComprar">
+		 	<s:hidden id="idProducto" name="orderDetail.producto.idProducto"/>
+		 	<s:hidden id="pdescripcion" name="orderDetail.producto.descripcion"/>
+		 	<s:hidden id="pprecio" name="orderDetail.producto.precio"/>
+		 	<s:hidden id="pimagen" name="orderDetail.producto.image_resource"/>
+		 
 			<div class="modal-body">
-
 				<div class="alex col-xs-12 col-sm-5 col-md-5 col-lg-5">
 					<img src="">
 				</div>
@@ -281,23 +313,26 @@ $(document).ready(function(){
 					<table class="detaAC">
 						<tr>
 							<td>Cantidad</td>
-							<td><input type="number" min=1></td>
+								<td><s:textfield type="number" name="orderDetail.cantidad" min="1"/></td>
+								<!--  <input type="number" min=1 > -->
 						</tr>
 						<tr>
 							<td>Nombre Agazajado:</td>
-							<td><input id="agazajado" class="form-control" type="text"></td>
+							<td><s:textfield id="agazajado"  cssClass="form-control" name="orderDetail.nombre_agasajado"/></td>
+							<!-- <input id="agazajado"  class="form-control" type="text" > -->
 						</tr>
 						<tr>
 							<td>Dedicatoria:</td>
-							<td><input id="dedicatoria" class="form-control" type="text"></td>
+							<td><s:textfield id="dedicatoria"  cssClass="form-control" name="orderDetail.dedicatoria"/></td>
+							<!-- <td><input id="dedicatoria" class="form-control" type="text" name="dedicatoria"></td>-->
 						</tr>
 						<tr>
 							<td>Fecha de Entrega:</td>
 							<td>
 								<div class="input-group date">
-									<input id="fecha" class="form-control" type="text"> <span
-										class="input-group-addon"> <i
-										class="glyphicon glyphicon-th"></i>
+								<!-- <input id="fecha" class="form-control" type="text" name="fec_requerimiento">  -->
+								<s:textfield id="fecha"  cssClass="form-control" name="orderDetail.fec_requerimiento"/>
+									<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i>
 									</span>
 								</div>
 							</td>
@@ -313,9 +348,11 @@ $(document).ready(function(){
 
 			<div class="modal-footer alexito">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button id="addToCart" type="button" class="btn btn-primary">Agregar al
-					Carrito</button>
+				<s:submit value="Agregar al Carrito" cssClass="btn btn-primary"/>
+				<!-- <button id="addToCart" type="button" class=""></button>  -->
 			</div>
+			
+		</s:form>
 		</div>
 	</div>
 </div>
