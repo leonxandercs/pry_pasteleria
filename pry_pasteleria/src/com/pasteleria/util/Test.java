@@ -143,13 +143,17 @@ public class Test {
 		Customer c=new ServiceCustomer().find(customer);
 		System.out.println(c.getNombre());
 		System.out.println(c.getRol().getDescripcion());*/
-		Coverage c=new Coverage();
+		
+		/*Coverage c=new Coverage();
 		c.setIdCobertura(7);
 		c.setDescripcion("Sin cobertura");
 		
-		int salida=new ServiceCoverage().update(c);
+		int salida=new ServiceCoverage().update(c);*/
 		
-		
+		List<Product> productos=new ServiceProduct().filter(0,0,0,1);
+		for (Product product : productos) {
+			System.out.println(product.getDescripcion());
+		}
 	}
 
 

@@ -1,6 +1,8 @@
 package com.pasteleria.daos;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -88,6 +90,41 @@ public class SqlServerProductDAO implements ProductDAO {
 			session.close();
 		}
 		return salida;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> filter(int idcategoria, int idcobertura, int idmasa,int idrelleno) {
+		SqlSession session=SQL_SESSION_FACTORY.openSession();
+		List<Product> list=null;	
+		try {
+			
+			Map<String,String> map=new HashMap<String, String>();
+			
+			if (idcategoria==0)
+				map.put("idCategoria","");
+			else
+				map.put("idCategoria",""+idcategoria);
+			if (idcobertura==0)
+				map.put("idCobertura","");
+			else
+				map.put("idCobertura",""+idcobertura);
+			if (idmasa==0)
+				map.put("idMasa","");
+			else
+				map.put("idMasa",""+idmasa);
+			if (idrelleno==0)
+				map.put("idRelleno","");
+			else
+				map.put("idRelleno",""+idrelleno);
+			
+			list=session.selectList("productxml.sql_filter",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}	
+		return list;
 	}
 
 }

@@ -142,18 +142,10 @@ $(document).ready(function(){
 					'<button class="eliminar btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>	'+							
 				'</td>'+
 			'</tr>';
+
+			$('.table tbody').append(fila);
 			
-				
-				
-				
-				
-				
-				
-				
-				
-				$('.table tbody').append(fila);
-				
-			    }
+		    }
 			
 			
 		});
@@ -252,7 +244,7 @@ $(document).ready(function(){
 			<td class="text-center"><strong>Total S/.200.00</strong></td>
 		</tr>
 		<tr>
-			<td><a  href="catalogo.action" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
+			<td><a  href="catalogo.action" class="btn btn-primary"><i class="fa fa-angle-left"></i>Agregar Productos</a></td>
 			<td colspan="2" class="hidden-xs"></td>
 			<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
 			<td><a  id="regPedido"  href="#" class="btn btn-success btn-block"><!--Checkout-->Realizar Pedido<i class="fa fa-angle-right"></i></a></td>

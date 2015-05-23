@@ -36,4 +36,9 @@ public class ServiceProduct implements ProductDAO {
 		return dao.delete(bean);
 	}
 
+	@Override
+	public List<Product> filter(int idcategoria, int idcobertura, int idmasa, int idrelleno) {
+		return dao.filter(idcategoria, idcobertura, idmasa, idrelleno);
+	}
+
 }

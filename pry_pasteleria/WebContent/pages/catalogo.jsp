@@ -24,69 +24,12 @@ var childRow='ola soy un virus';
 
 $(document).ready(function(){	
 	
-	row=$('.panelalex');
-	row.html('');
-	
-    $.getJSON('listProduct',function(data){
-		//recuperamos el array de productos
-		products=data.productos;
-		
-		for (var i = 0; i < products.length; i++) {
-			//declaramos una variable producto
-			var producto=(products[i]);
-			
-			var imagen='<img src="verImagen?imagenName='+producto.image_resource+'" width="200" alt="134x180"/>'
-			//almanecamos la info del producto[i] en un JSON
-		    var datos={"torta":{
-				"idx":i,
-				"idProducto":producto.idProducto,
-				"label":(producto.descripcion).toUpperCase(),
-				"imagen":producto.image_resource,
-				"precio":producto.precio,
-				"cobertura":producto.cobertura.descripcion,
-				"masa":producto.masa.descripcion,
-				"relleno":producto.relleno.descripcion
-	           }
-     		 };	
-			//agregamos el producto al catalogo
-			row.append(agregaProductContainer(i,datos.torta.label, imagen, datos.torta.precio, 
-					datos.torta.cobertura,datos.torta.masa,datos.torta.relleno));
-			
-			//le asignamos la data respectiva al container html producto
-			var currentProduct=$('.thumbnail').eq(i);
-			$(currentProduct).data("dataproducto",datos);
-			
-		}
-	});
-	
+	row=$('.panelalex'); //obtenemos el panel
+	row.html(''); //limpiamos el panel que contiene la grilla de productos
 
-	function agregaProductContainer(position,label,imagen,precio,cobertura,masa,relleno){
-				
-		var containerProducto='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">'+
-		'<div id="'+position+'" class="thumbnail calex">'+
-		imagen+
-		'<div class="caption">'+
-			'<h3>'+label.charAt(0)+label.slice(1).toLowerCase()+'</h3>'+
-			'<p>El pastel de '+label.toLowerCase()+', tiene como base lo mejor de nuestros '+masa+
-			' con una cobertura de '+cobertura+' y un exquisito relleno de '+relleno+'.</p>'+
-				'<p class="palex">'+
-				'<a href="#" class="btn btn-primary">Agregar al Carrito</a>'+
-				'</p>'+
-			'</div>'+
-		'</div>'+
-		'</div>';
-			
-		return containerProducto;
-	}
-	
-	console.log('ready - gallery loaded successfully');
-	
-	
-	setTimeout(function(){
-			
 			var cantidad=1;
 			var precio=0;
-			var patron = /^\d*$/;        
+			var patron = /^\d*$/; //patron de validacion numerica
 		    var subtotal=$("#price");
 		    var datos;
 		       
@@ -112,111 +55,196 @@ $(document).ready(function(){
 		     return true;
 		   }
 		   
-		   $(".caption p a").click(function(){
-		       var modal=$("#myModal");
-		         updateModal(this);
-		         modal.modal('show');
-	    	});
 
+    $.getJSON('listProduct',function(data){
+		//recuperamos el array de productos
+		products=data.productos;
+		//llenamos la grilla de productos
+		getProductsGrid(products);
+	});
+			
+    function getProductsGrid(products){
+    	
+		for (var i = 0; i <products.length; i++) {
+			//declaramos una variable producto
+			var producto=(products[i]);
+			
+			var imagen='<img src="verImagen?imagenName='+producto.image_resource+'" width="200" alt="134x180"/>'
+			//almanecamos la info del producto[i] en un JSON
+		    var datos={"torta":{
+				"idx":i,
+				"idProducto":producto.idProducto,
+				"label":(producto.descripcion).toUpperCase(),
+				"imagen":producto.image_resource,
+				"precio":producto.precio,
+				"cobertura":producto.cobertura.descripcion,
+				"masa":producto.masa.descripcion,
+				"relleno":producto.relleno.descripcion
+	           }
+     		 };	
+			//agregamos el producto al catalogo
+			row.append(agregaProductContainer(i,datos.torta.label, imagen, datos.torta.precio, 
+					datos.torta.cobertura,datos.torta.masa,datos.torta.relleno));
+			
+			//le asignamos la data respectiva al container html producto
+			var currentProduct=$('.thumbnail').eq(i);
+			$(currentProduct).data("dataproducto",datos);
+			
+		}
+    }
 
-		   function updateModal(elemento){
-			   
-			 var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
-
-		     datos=$(father).data("dataproducto");
-		     precio=datos.torta.precio;  
-			 
-		     var img=$(father).find('img').clone();
-			 $(img).attr('width','100%');
-			 $('#myModal h3').text(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
-			 $('#myModal input[type=number]').val(cantidad);
-			 $("#myModal .modal-body img").replaceWith(img);
-			 $('#price').text(datos.torta.precio);
-			 
-			 $('#idProducto').val(datos.torta.idProducto);
-			 $('#pdescripcion').val(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
-			 $('#pprecio').val(datos.torta.precio);
-			 $('#pimagen').val(datos.torta.imagen);
-			 
-			 $('#pcobertura').val(datos.torta.cobertura);
-			 $('#pmasa').val(datos.torta.masa);
-			 $('#prelleno').val(datos.torta.relleno);
-		    // ya no es necesario
-		    //$('#myModal').data("dataproducto",datos);
-		   }
-		   
-		   // Interceptamos el evento submit
-		   $('#formComprar').submit(function(){
-			   $('#myModal').modal('hide');
-			// Enviamos el formulario usando AJAX
-			  $.ajax({
-				  type:'POST',
-				  url:$(this).attr('action'),
-				  data:$(this).serialize(),
-			  	  //capturamos el resultado
-			  	  success:function(data){
-			  		//Mostramos un mensaje
-			  		$.growl(
-			  				{
-			  					title:"<strong> Producto</strong>",
-			  					message:" agreado al carrito",
-			  					icon:"glyphicon glyphicon-thumbs-up"
-			  				},{
-			  					type:'info'
-			  				}
-			  			  );
-			  	  }
-			  	});
-			   return false;
-		   });
-		   
-		   /*
-		   $('#addToCart').click(function(event){
-			   
-			   var datos=$('#myModal').data("dataproducto");
-			   cantidad=$('#myModal input[type=number]').val();  
-			   var agazajado=$('#agazajado').val();
-			   var dedicatoria=$('#dedicatoria').val();
-			   var fecha=$('#fecha').val();			
-			   
-			   comprar(datos,cantidad,agazajado,dedicatoria,fecha);
-			   $('#myModal').modal('hide');
-		   });
-		   
-		   
-		   
-		   function comprar(datos,cantidad,agazajado,dedicatoria,fecha){
+	function agregaProductContainer(position,label,imagen,precio,cobertura,masa,relleno){
 				
-			 	var parametros=new Object();
-			 	parametros.idPedidoCabe=1;
-			 	parametros.producto={
-			 				idProducto:datos.torta.idProducto,
-			 				descripcion:datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase(),
-			 				precio:datos.torta.precio
-			 				};
-			 	parametros.dedicatoria=dedicatoria;
-			 	parametros.nombre_agasajado=agazajado;
-			 	parametros.fec_requerimiento=fecha;
-			 	parametros.cantidad=cantidad;
-			 		
-			 var orderDetail=JSON.stringify(parametros);
-			 	
-			 $.ajax({
-				url:"addToCarrito.action",
-				type:"post",
-				datatype:"json",
-				contentType:'application/json;charset-utf-8',
-				data:orderDetail,
-				
-				success:function(result){
-					alert('Se agrego al Carrito');
-				}
-		 	});
-				
-			}  */
-		   
-	},1000);
+		var containerProducto='<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">'+
+		'<div id="'+position+'" class="thumbnail calex">'+
+		imagen+
+		'<div class="caption">'+
+			'<h3>'+label.charAt(0)+label.slice(1).toLowerCase()+'</h3>'+
+			'<p>El pastel de '+label.toLowerCase()+', tiene como base lo mejor de nuestros '+masa+
+			' con una cobertura de '+cobertura+' y un exquisito relleno de '+relleno+'.</p>'+
+				'<p class="palex">'+
+				'<a href="#" class="btn btn-primary">Agregar al Carrito</a>'+
+				'</p>'+
+			'</div>'+
+		'</div>'+
+		'</div>';
+			
+		return containerProducto;
+	}
 	
+ 	console.log('ready - gallery loaded successfully');
+
+		   
+		   
+   //evento para agregar producto al carrito
+   $('.panelalex').on('click','.caption p a',function(){
+       var modal=$("#myModal");
+         updateModal(this);
+         modal.modal('show');
+   	});
+		  
+   //llena el modal con los datos del producto seleccionado
+   function updateModal(elemento){
+	   
+	 var father=$(elemento).parent("p").parent(".caption").parent(".thumbnail");
+
+     datos=$(father).data("dataproducto");
+     precio=datos.torta.precio;  
+	 
+     var img=$(father).find('img').clone();
+	 $(img).attr('width','100%');
+	 $('#myModal h3').text(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
+	 $('#myModal input[type=number]').val(cantidad);
+	 $("#myModal .modal-body img").replaceWith(img);
+	 $('#price').text(datos.torta.precio);
+	 
+	 $('#idProducto').val(datos.torta.idProducto);
+	 $('#pdescripcion').val(datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase());
+	 $('#pprecio').val(datos.torta.precio);
+	 $('#pimagen').val(datos.torta.imagen);
+	 
+	 $('#pcobertura').val(datos.torta.cobertura);
+	 $('#pmasa').val(datos.torta.masa);
+	 $('#prelleno').val(datos.torta.relleno);
+    // ya no es necesario
+    //$('#myModal').data("dataproducto",datos);
+   }
+	
+   
+   // Interceptamos el evento submit enviar el producto al carrito por Ajax
+   $('#formComprar').submit(function(){
+	   $('#myModal').modal('hide');
+	// Enviamos el formulario usando AJAX
+	  $.ajax({
+		  type:'POST',
+		  url:$(this).attr('action'),
+		  data:$(this).serialize(),
+	  	  //capturamos el resultado
+	  	  success:function(data){
+	  		//Mostramos un mensaje
+	  		$.growl(
+	  				{
+	  					title:"<strong> Producto</strong>",
+	  					message:" agreado al carrito",
+	  					icon:"glyphicon glyphicon-thumbs-up"
+	  				},{
+	  					type:'info'
+	  				}
+	  			  );
+	  	  }
+	  	});
+	   return false;
+   });
+   
+   //Filtrado de productos segun diversos criterios
+   $('#formFiltros').submit(function(){
+		$.ajax({
+			url:$(this).attr('action'),
+			type:'POST',
+			datatype:'json',
+			data:$(this).serialize(),
+			success:function(json){
+				row.html('');//limpiamos la grilla de productos
+				products=json.productos;
+				if(products.length==0)
+					row.html('<h3>Ningún productos coincide con el criterio de búsqueda</h3>');
+				else
+				getProductsGrid(products);//recargamos la grilla con los productos encontrados
+			}
+			
+		});
+		return false;
+	});
+		   
+   /*Este metodo ya no se utiliza -- era para enviar el producto como data JSON a el action
+   lo mantengo como modelo  para posible  uso posterior
+   
+   $('#addToCart').click(function(event){
+	   
+	   var datos=$('#myModal').data("dataproducto");
+	   cantidad=$('#myModal input[type=number]').val();  
+	   var agazajado=$('#agazajado').val();
+	   var dedicatoria=$('#dedicatoria').val();
+	   var fecha=$('#fecha').val();			
+	   
+	   comprar(datos,cantidad,agazajado,dedicatoria,fecha);
+	   $('#myModal').modal('hide');
+   });
+   
+   
+  /* 
+   function comprar(datos,cantidad,agazajado,dedicatoria,fecha){
+		
+	 	var parametros=new Object();
+	 	parametros.idPedidoCabe=1;
+	 	parametros.producto={
+	 				idProducto:datos.torta.idProducto,
+	 				descripcion:datos.torta.label.charAt(0)+datos.torta.label.slice(1).toLowerCase(),
+	 				precio:datos.torta.precio
+	 				};
+	 	parametros.dedicatoria=dedicatoria;
+	 	parametros.nombre_agasajado=agazajado;
+	 	parametros.fec_requerimiento=fecha;
+	 	parametros.cantidad=cantidad;
+	 		
+	 var orderDetail=JSON.stringify(parametros);
+	 	
+	 $.ajax({
+		url:"addToCarrito.action",
+		type:"post",
+		datatype:"json",
+		contentType:'application/json;charset-utf-8',
+		data:orderDetail,
+		
+		success:function(result){
+			alert('Se agrego al Carrito');
+		}
+ 	});
+		
+	}  */
+		   
+	
+
 	
 });
 
@@ -226,7 +254,7 @@ $(document).ready(function(){
 	
 					
 		<div class="col-xs-12  col-sm-2  col-md-2  col-lg-2">
-			 <s:form id="formFiltros" theme="bootstrap" >
+			<s:form id="formFiltros" theme="bootstrap" method="post" action="filterProduct">
 	    			<s:url id="URL_ListCategorys" action="listCategory"/>
 					<sj:select cssClass="form-control"
 					id="cbocategoria" 
@@ -277,7 +305,7 @@ $(document).ready(function(){
 					name="producto.relleno.idRelleno" />
 			<br/>					   
 			<s:submit value="Consultar Producto" cssClass="btn btn-primary col-xs-12"/>
-			</s:form>
+		</s:form>
 		</div><!-- fin filtros -->
 
 		<div class="panelalex col-xs-12  col-sm-10  col-md-10  col-lg-10">	

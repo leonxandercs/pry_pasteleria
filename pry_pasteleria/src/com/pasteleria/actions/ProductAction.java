@@ -21,7 +21,7 @@ public class ProductAction extends ActionSupport {
 	private File archivo;
 	private String archivoContentType;
 	private String archivoFileName;
-	
+			
 	@Action(value="listProduct",results={@Result(name="success",type="json")})
 	public String list(){
 		productos=new ServiceProduct().list();
@@ -76,6 +76,17 @@ public class ProductAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	@Action(value="filterProduct",results={@Result(name="success",type="json")})
+	public String filter(){
+		this.productos=new ServiceProduct().filter(
+					producto.getCategoria().getIdCategoria(),
+					producto.getCobertura().getIdCobertura(),
+					producto.getMasa().getIdMasa(),producto.getRelleno().getIdRelleno()
+					);
+		System.out.println("Product  filter was invoked");
+		return SUCCESS;
+	}
+	
 	public List<Product> getProductos() {
 		return productos;
 	}
@@ -115,6 +126,6 @@ public class ProductAction extends ActionSupport {
 	public void setArchivoFileName(String archivoFileName) {
 		this.archivoFileName = archivoFileName;
 	}
-
+	
 	
 }
