@@ -22,9 +22,12 @@
  	
 	<link href="css/styles_catalogo.css" media="all" rel="stylesheet">
 	<link href="css/bootstrap.min.css" media="all" rel="stylesheet">
-	<!--  
+	<!-- 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css"/>
 	-->
+	 
   	<sj:head jquerytheme="excite-bike" locale="es" jqueryui="true"/>
   	<!-- excite-bike start dot-luv
   	<sj:head jquerytheme="showcase" customBasepath="themes" locale="es" jqueryui="true"/>
