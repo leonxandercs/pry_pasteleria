@@ -119,6 +119,7 @@ $(document).ready(function(){
    //evento para agregar producto al carrito
    $('.panelalex').on('click','.caption p a',function(){
        var modal=$("#myModal");
+       	 limpiarfields();
          updateModal(this);
          modal.modal('show');
    	});
@@ -151,28 +152,52 @@ $(document).ready(function(){
    }
 	
    
+ 	//Clean Fields
+   function limpiarfields(){
+		/* Limpiar el Validate */
+	    $('.modal-body .form-group').removeClass('has-error');
+	    $('.modal-body .form-group').removeClass('has-success');
+	    $(".help-block").hide();
+	    $(".modal-body .form-control-feedback").removeClass('.glyphicon glyphicon-ok');
+	    /* Limpiar el Modal */
+		var modal =$('#myModal');
+		modal.find('.modal-body input').val('');
+	}
+   
+   
    // Interceptamos el evento submit enviar el producto al carrito por Ajax
-   $('#formComprar').submit(function(){
-	   $('#myModal').modal('hide');
-	// Enviamos el formulario usando AJAX
-	  $.ajax({
-		  type:'POST',
-		  url:$(this).attr('action'),
-		  data:$(this).serialize(),
-	  	  //capturamos el resultado
-	  	  success:function(data){
-	  		//Mostramos un mensaje
-	  		$.growl(
-	  				{
-	  					title:"<strong> Producto</strong>",
-	  					message:" agreado al carrito",
-	  					icon:"glyphicon glyphicon-thumbs-up"
-	  				},{
-	  					type:'info'
-	  				}
-	  			  );
-	  	  }
-	  	});
+   $('#formComprar').submit(function(e){
+	   e.preventDefault();
+	   //detenemos el evento para validar el form
+	   var $form=$(this);
+	   if (! $form.valid()) {
+			return false;
+		  //si no es valido no hacemos nada
+		}else{
+			
+			 $('#myModal').modal('hide');
+			// Enviamos el formulario usando AJAX
+			  $.ajax({
+				  type:'POST',
+				  url:$(this).attr('action'),
+				  data:$(this).serialize(),
+			  	  //capturamos el resultado
+			  	  success:function(data){
+			  		//Mostramos un mensaje
+			  		$.growl(
+			  				{
+			  					title:"<strong> Producto</strong>",
+			  					message:" agreado al carrito",
+			  					icon:"glyphicon glyphicon-thumbs-up"
+			  				},{
+			  					type:'info'
+			  				}
+			  			  );
+			  	  }
+			  	});
+		}
+	 
+	
 	   return false;
    });
    
@@ -330,7 +355,7 @@ $(document).ready(function(){
 				<h3 class="modal-title" id="myModalLabel">Modal title</h3>
 			</div>
 
-		 <s:form theme="bootstrap"  action="addToCarrito" method="post" acceptcharset="UTF-8" id="formComprar">
+		 <s:form theme="bootstrap"  action="addToCarrito" method="post" acceptcharset="UTF-8" id="formComprar" cssClass="form animate-form">
 		 	<s:hidden id="idProducto" name="orderDetail.producto.idProducto"/>
 		 	<s:hidden id="pdescripcion" name="orderDetail.producto.descripcion"/>
 		 	<s:hidden id="pprecio" name="orderDetail.producto.precio"/>
@@ -348,27 +373,35 @@ $(document).ready(function(){
 					<table class="detaAC">
 						<tr>
 							<td>Cantidad</td>
-								<td><s:textfield type="number" name="orderDetail.cantidad" min="1"/></td>
-								<!--  <input type="number" min=1 > -->
+							<td><s:textfield type="number" name="orderDetail.cantidad" min="1"/></td>
 						</tr>
 						<tr>
 							<td>Nombre Agazajado:</td>
-							<td><s:textfield id="agazajado"  cssClass="form-control" name="orderDetail.nombre_agasajado"/></td>
-							<!-- <input id="agazajado"  class="form-control" type="text" > -->
+							<td>
+								<div class="form-group has-feedback">
+								<s:textfield id="agazajado"  cssClass="form-control" name="orderDetail.nombre_agasajado"/>
+								<span	class="glyphicon glyphicon-ok form-control-feedback"></span>
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<td>Dedicatoria:</td>
-							<td><s:textfield id="dedicatoria"  cssClass="form-control" name="orderDetail.dedicatoria"/></td>
-							<!-- <td><input id="dedicatoria" class="form-control" type="text" name="dedicatoria"></td>-->
+							<td>
+							<div class="form-group has-feedback">
+							<s:textfield id="dedicatoria"  cssClass="form-control" name="orderDetail.dedicatoria"/>
+							<span	class="glyphicon glyphicon-ok form-control-feedback"></span>
+							</div>
+							</td>
 						</tr>
 						<tr>
 							<td>Fecha de Entrega:</td>
 							<td>
+								<div class="form-group has-feedback">
 								<div class="input-group date">
-								<!-- <input id="fecha" class="form-control" type="text" name="fec_requerimiento">  -->
 								<s:textfield id="fecha"  cssClass="form-control" name="orderDetail.fec_requerimiento"/>
 									<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i>
 									</span>
+								</div>
 								</div>
 							</td>
 						</tr>
@@ -384,11 +417,10 @@ $(document).ready(function(){
 			<div class="modal-footer alexito">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 				<s:submit value="Agregar al Carrito" cssClass="btn btn-primary"/>
-				<!-- <button id="addToCart" type="button" class=""></button>  -->
 			</div>
 			
 		</s:form>
 		</div>
 	</div>
 </div>
-
+  

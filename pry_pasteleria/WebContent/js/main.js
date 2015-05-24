@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	
+//Validación de login
   $("#form").validate({
     rules: {
       username: {
@@ -44,4 +46,74 @@ $(document).ready(function(){
       }
     });
   });
+  
+////////////////////////////////////////////////////////////////////////  
+  
+  $("#formComprar").validate({
+	    rules: {
+	    	"orderDetail.nombre_agasajado": {
+	          minlength: 3,
+	          maxlength: 20,
+	          required: true
+	        },
+	        "orderDetail.dedicatoria": {
+	        	 minlength:10,
+		         maxlength:20,
+		         required: true
+	        },
+	        "orderDetail.fec_requerimiento": {
+	          date:true,
+	          required: true
+	        },
+	        "orderDetail.cantidad": {
+	          min:1,
+		      max:7,
+	          required: true
+	        }
+	      },
+	      highlight: function(element) {
+	        $(element).closest(".form-group").removeClass("has-success").addClass("has-error").parents('form.animate-form').addClass("animated shake");;
+	      },
+	      unhighlight: function(element) {
+	        $(element).closest(".form-group").removeClass("has-error").addClass("has-success");
+	        var f=$(element).parent().parent().parent().children().eq(1);
+	        if (f.hasClass('input-group-addon')){}	        	
+	        else{f.addClass('glyphicon glyphicon-ok');}
+	      }
+	    });
+	    $('input[type=submit]').click(function() {
+	    	
+	      $('#formComprar.animated').removeClass('animated shake');
+	      if ($("#form").valid()) {
+	        $("#formComprar").addClass("success");
+	      } else {
+	        $("#formComprar").removeClass("success").addClass("invalid");
+	        $(this).addClass("disabled");
+	      }
+
+	      $("#formComprar.invalid input").on("keyup blur", function() {
+	        if ($("#formComprar").valid()) {
+	          $(".submit input").removeClass("disabled");
+	          $("#formComprar").removeClass("invalid");
+	        } else {
+	          $(".submit input").addClass("disabled");
+	        }
+	      });
+	    });
+	  
+////////////////////////////////////////////////////////////////////////  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 });

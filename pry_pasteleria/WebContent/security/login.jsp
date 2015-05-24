@@ -48,8 +48,8 @@
 								<div class="glyphicon glyphicon-envelope"></div>
 							</div>
 							<input class="form-control" id="email" name="email"
-								placeholder="Correo Electrónico" type="text"><span
-								class="glyphicon glyphicon-ok form-control-feedback"></span>
+								placeholder="Correo Electrónico" type="text">
+							<span	class="glyphicon glyphicon-ok form-control-feedback"></span>
 						</div>
 						<div class="form-group has-feedback">
 							<div class="input-group-addon">
