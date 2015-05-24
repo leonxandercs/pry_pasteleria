@@ -25,6 +25,10 @@ jQuery.validator.addMethod("lettersonly", function(value, element) {
       payment: {
         required: true
       }
+    },messages:{ 
+    	email: {
+    		email:"Ingrese una direcci\u00F3n de correo v\u00E1lida"
+        }
     },
     highlight: function(element) {
       $(element).closest(".form-group").removeClass("has-success").addClass("has-error").parents('form.animate-form').addClass("animated shake");

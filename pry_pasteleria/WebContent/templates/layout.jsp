@@ -7,7 +7,7 @@
 <html lang="es">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     
     <title><tiles:insertAttribute name="title" ignore="true" /></title>

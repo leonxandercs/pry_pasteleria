@@ -36,7 +36,7 @@
 	<div class="wrapper col-xs-12 col-sm-6 col-sm-push-6 col-md-6 col-md-push-6 col-lg-4 col-lg-push-4 col-centered nopading" >
 	
 					<s:form action="ValidateUser" cssClass="form animate-form"
-						id="form" onsubmit="return true;">
+						id="form" onsubmit="return true;" acceptcharset="UTF-8">
 						<div class="form-header">
 							<h1>INICIE SESIÓN</h1>
 						</div>
