@@ -1,4 +1,10 @@
 $(document).ready(function(){
+
+//Patrones de Validación  personalizados
+jQuery.validator.addMethod("lettersonly", function(value, element) {
+    return this.optional(element) || /^[a-z]+$/i.test(value);
+  }, "Solo letras");
+	
 	
 //Validación de login
   $("#form").validate({
@@ -54,11 +60,13 @@ $(document).ready(function(){
 	    	"orderDetail.nombre_agasajado": {
 	          minlength: 3,
 	          maxlength: 20,
+	          lettersonly:true,
 	          required: true
 	        },
 	        "orderDetail.dedicatoria": {
 	        	 minlength:10,
 		         maxlength:20,
+		         lettersonly:true,
 		         required: true
 	        },
 	        "orderDetail.fec_requerimiento": {
