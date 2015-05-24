@@ -24,7 +24,7 @@ background-color: white;
 		margin:1.5em 0;
 	}
 	
-	.actions .btn-info{
+	.actions .btn-primary{
 		float:left;
 	}
 	.actions .btn-danger{
@@ -124,8 +124,8 @@ $(document).ready(function(){
 				'<td data-th="Product">'+
 				 '<input type="hidden" value="'+datos.torta.idProducto+'"/>'+
 				 '<div class="row">'+
-						'<div class="col-sm-2 col-xs-12">'+imagen+'</div>'+
-						'<div class="col-sm-10">'+
+						'<div class="col-sm-4 col-xs-12">'+imagen+'</div>'+
+						'<div class="col-sm-8">'+
 							'<h4 class="nomargin">Producto '+datos.torta.idProducto+'-'+datos.torta.label+'</h4>'+
 							'<p>El pastel de '+datos.torta.label+', tiene como base lo mejor de nuestros '+datos.torta.masa+
 							' con una cobertura de '+datos.torta.cobertura+' y un exquisito relleno de '+datos.torta.relleno+'.</p>'+
@@ -138,7 +138,7 @@ $(document).ready(function(){
 				'</td>'+
 				'<td data-th="Subtotal" class="text-center">S/.'+datos.torta.subTotal+'</td>'+
 				'<td class="actions" data-th="">'+
-					'<button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-edit"></i></button>'+
+					'<button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-edit"></i></button>'+
 					'<button class="eliminar btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>	'+							
 				'</td>'+
 			'</tr>';
@@ -224,7 +224,7 @@ $(document).ready(function(){
 
 	<table id="cart" class="table table-hover table-condensed">
 	  <thead>
-	    <tr class="info">
+	    <tr class="primary">
 	      <th style="width:50%">Producto</th>
 	      <th style="width:10%">Precio</th>
 	      <th style="width:8%">Cantidad</th>
@@ -234,8 +234,6 @@ $(document).ready(function(){
 	  </thead>
         
 	  <tbody>
-	
-	
 	  </tbody> 
 
 
@@ -244,10 +242,10 @@ $(document).ready(function(){
 			<td class="text-center"><strong>Total S/.200.00</strong></td>
 		</tr>
 		<tr>
-			<td><a  href="catalogo.action" class="btn btn-primary"><i class="fa fa-angle-left"></i>Agregar Productos</a></td>
+			<td><a  href="catalogo.action" class="btn btn-primary">Agregar Productos</a></td>
 			<td colspan="2" class="hidden-xs"></td>
-			<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-			<td><a  id="regPedido"  href="#" class="btn btn-success btn-block"><!--Checkout-->Realizar Pedido<i class="fa fa-angle-right"></i></a></td>
+			<td class="hidden-xs text-center"><strong id="TotalPedido">Total $1.99</strong></td>
+			<td><a  id="regPedido"  href="#" class="btn btn-success btn-block"><!--Checkout-->Continuar con Pedido</a></td>
 		</tr>
 	 </tfoot>
   </table> 
@@ -264,9 +262,6 @@ $(document).ready(function(){
   </tfoot>
      
 </table> 
-
-
-
 
 <div style="text-align:right;margin-right:80px;">
   <a href="catalogo.action" class="btn btn-primary">Agregar Productos</a>

@@ -68,30 +68,7 @@ $(document).ready(function() {
         	
     });
     
-  
-	
-	//Setup - add a text input to each footer cell
-   /* 
-	$('#example tfoot th').each( function () {   
-     	var title = $('#example thead th').eq( $(this).index() ).text();  
-       $(this).html( '<input type="text" placeholder="Buscar '+title+'" />' );
-     });
-    
-    
-    
-    // Apply the filter
-    /*
-    table.columns().every(function(){  
-      var column=this; 
-
-      $( 'input', this.footer() ).on( 'keyup change', function () { 
-            column
-            .search( this.value ) 
-            .draw();    
-        });
-     });
-  */
-        
+         
     /*Evento Un click -- sombrea la celda seleccionada*/
     $('#example tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
@@ -193,21 +170,6 @@ $(document).ready(function() {
 	      	$("#conexionServer").before(res);
 	      });   
 	 
-	 /*
-	 $('.modal-body #borrame').click(function(event){
-		 event.preventDefault();
-		 alert('clickeaste');
-	 });
-	 
-	  
-	  
-	 function eliminar(cellvalue){
-			$.getJSON("deleteEmployed?empleado.idUsuario="+cellvalue,function(datos){
-				table.ajax.reload();
-				alert("Registro Eliminado");
-			});
-	 }
-	 */
 	 
 	 // Interceptamos el evento submit
 	    $('#form').submit(function() {

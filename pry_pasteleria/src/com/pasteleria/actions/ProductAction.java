@@ -33,19 +33,9 @@ public class ProductAction extends ActionSupport {
 		producto=new ServiceProduct().find(producto);
 		return SUCCESS;
 	}
-	
-	@Action(value="saveProduct",results={@Result(name="success",type="json")})
-	public String save(){
-		if (producto.getIdProducto()==0)
-			new ServiceProduct().create(producto);
-		else
-			new ServiceProduct().update(producto);
 		
-		return SUCCESS;
-	}
 	
-	
-	@Action(value="cargarProduct",results={@Result(name=SUCCESS,type="redirectAction",location="mproduct")})
+	@Action(value="saveProduct",results={@Result(name=SUCCESS,type="redirectAction",location="mproduct")})
 	public String cargar(){
 		//Validamos si se cargo algun archivo al input File si se cargo se actualiza imagen 
 		//con el archivo nuevo si no se cargo nada se mantiene la imagen original
@@ -86,6 +76,9 @@ public class ProductAction extends ActionSupport {
 		System.out.println("Product  filter was invoked");
 		return SUCCESS;
 	}
+	
+	
+	
 	
 	public List<Product> getProductos() {
 		return productos;

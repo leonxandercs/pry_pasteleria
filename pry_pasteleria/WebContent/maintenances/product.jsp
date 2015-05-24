@@ -19,17 +19,8 @@
 //var categoriasArray;
 
 $(document).ready(function() {
- /*	
-	$.getJSON("listCategory",function(data){
-		categoriasArray=data.categorias;
-		for (var i = 0; i < categoriasArray.length; i++) {
-			var idcat = categoriasArray[i].idCategoria;
-			var cat = categoriasArray[i].descripcion;
-			console.log(idcat+": "+cat);
-		}
-	});
- */
-    var table=$('#example').DataTable({
+
+  var table=$('#example').DataTable({
         "processing": true,
         "ajax": {
         	"url":"listProduct.action",
@@ -133,7 +124,7 @@ $(document).ready(function() {
            var dato9=currentRow.relleno.descripcion;
            /* Esta manera es obtener data por las filas
            pero no es muy optima ya que al colpasar
-           la tabla por el repsonse no funciona y causa
+           la tabla por el responsive no funciona y causa
            un breakpoint*/
            
            /*var dato1=$(".selected td")[0].innerHTML;
@@ -290,7 +281,7 @@ $(document).ready(function() {
 <div class="modal fade" id="myModalNuevo" role="dialog" ria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
-  <s:form action="cargarProduct" enctype="multipart/form-data" method="post" acceptcharset="utf-8" theme="bootstrap" cssClass="well form-vertical">
+  <s:form action="saveProduct" enctype="multipart/form-data" method="post" acceptcharset="utf-8" theme="bootstrap" cssClass="well form-vertical">
     <div class="modal-header">
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     	<h4>Registrar Producto</h4>
