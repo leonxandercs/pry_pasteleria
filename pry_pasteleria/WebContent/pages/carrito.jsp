@@ -68,12 +68,12 @@ background-color: white;
 
 	 <tfoot>
 		<tr class="visible-xs">
-			<td class="text-center"><strong>Total S/.200.00</strong></td>
+			<td class="text-center"><strong>Total S/.</strong><strong class="txtTotal">0.00</strong></td>
 		</tr>
 		<tr>
 			<td><a  href="catalogo.action" class="btn btn-primary">Agregar Productos</a></td>
 			<td colspan="2" class="hidden-xs"></td>
-			<td class="hidden-xs text-center"><strong id="TotalPedido">Total $1.99</strong></td>
+			<td class="hidden-xs text-center"><strong id="TotalPedido">Total S/.</strong><strong class="txtTotal">0.00</strong></td>
 			<td><a  id="continuarSteptwo"  href="#" class="btn btn-success btn-block"><!--Checkout-->Continuar con Pedido</a></td>
 		</tr>
 	 </tfoot>
@@ -101,7 +101,7 @@ background-color: white;
 </table>  
 
  <div style="text-align:right;margin-right:0px;">
-   <button id="volver" class="btn btn-primary">Volver</button>
+   <a id="volver" class="btn btn-primary" href="#">Volver</a>
   <s:submit id="regPedido" cssClass="btn btn-success" value="Realizar Pedido"/>
 </div>
 

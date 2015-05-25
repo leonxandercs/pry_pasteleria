@@ -3,9 +3,11 @@
  */
 $(document).ready(function(){
 	
-	var lista;
+	var lista=[];
 	var datos=[];
+	var total;
 	
+	$('#continuarSteptwo').attr('disabled',true);
 	
 	var logueado='false';
 	//Cosultamos al servidor si el usuario esta logueado
@@ -13,13 +15,8 @@ $(document).ready(function(){
 		logueado=data.logged;
 	});
 	
-	//Si el Usuario no esta logueado lo redireccionamos al login
 	
-	/* $('#regPedido').click(function(){
-		
-	}); */
-	
-	
+	//Registro del Pedido
 	$('#formRegPedido').submit(function(event){
 		event.preventDefault();
 		if (logueado=='false')
@@ -68,8 +65,25 @@ $(document).ready(function(){
 	$('#cartDetail').on('click','#skipRow',function(){
 		$(this).parent().parent().parent().parent().hide();
 	});
-	 
+	
+	$('#cart tbody').on('change','#txtCantidad',function(){
+		var idProd=$(this).parent().parent().children().eq(0).children().eq(0).val();
+		var cant=$(this).val();		
+		//Actualizamos la cantidad en el carrito
+		$.ajax({
+			url:"updateItemCart",
+			type:"post",
+			datatype:"json",
+			data:{idProducto:idProd,cantidad:cant},
+			success:function(data){
+				$('.txtTotal').text(data.total);
+			}
+		});
+		
+	});
+	
 	function loadDetailFields(){
+		
 		var k=0;
 		for (var i = 0; i < lista.length; i++) {
 			
@@ -96,21 +110,21 @@ $(document).ready(function(){
 	    
 	    '<td>'+
 		'<div class="form-group has-feedback">'+
-	    '<input type="text" class="form-control" name="orderDetail['+j+'].nombre_agasajado">'+
+	    '<input type="text" class="form-control" name="orderDetail['+j+'].nombre_agasajado"  pattern="[A-Za-z]+" >'+
 	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
 		'</div>'+
 		'</td>'+
 	    
 	    '<td>'+
 		'<div class="form-group has-feedback">'+
-		'<input type="text" class="form-control" name="orderDetail['+j+'].dedicatoria">'+
+		'<input type="text" class="form-control" name="orderDetail['+j+'].dedicatoria" pattern="[A-Za-z]+" >'+
 	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
 		'</div>'+
 		'</td>'+
 	    '<td>'+
 		'<div class="form-group has-feedback">'+
 		'<div class="input-group date">'+
-		'<input type="text" class="form-control" name="orderDetail['+j+'].fec_requerimiento"/>'+
+		'<input type="text" class="form-control" name="orderDetail['+j+'].fec_requerimiento" pattern="\\d{1,2}/\\d{1,2}/\\d{4}" />'+
 			'<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i>'+
 			'</span>'+
 		'</div>'+
@@ -128,13 +142,21 @@ $(document).ready(function(){
 	
 	
 	 actualizarGrillar();
-		
-		
+			 	 
 	function actualizarGrillar(){
 
 		$.getJSON('listCart.action',function(data){
+			total=data.total;
+			$('.txtTotal').text(total);//setteamos el total al campo para que se muestre
 			
-			lista=data.currentOrder;			
+			lista=data.currentOrder;		
+			
+			if (lista.length<1 || lista==null) {
+				$('#continuarSteptwo').attr('disabled',true);
+			}else{
+				$('#continuarSteptwo').attr('disabled',false);
+			}
+			
 			$('#cart tbody').html('');
 			
 			for (var i = 0; i < lista.length; i++) {
@@ -173,11 +195,11 @@ $(document).ready(function(){
 				'</td>'+
 				'<td data-th="Precio">'+'S/.'+datos[i].torta.precio+'</td>'+
 				'<td data-th="Cantidad">'+
-					'<input type="number" class="form-control text-center" value="'+datos[i].torta.cantidad+'" min="1">'+
+					'<input id="txtCantidad" type="number" class="form-control text-center" value="'+datos[i].torta.cantidad+'" min="1">'+
 				'</td>'+
 				'<td data-th="Subtotal" class="text-center">S/.'+datos[i].torta.subTotal+'</td>'+
 				'<td class="actions" data-th="">'+
-					'<button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-edit"></i></button>'+
+					//'<button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-edit"></i></button>'+
 					'<button class="eliminar btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>	'+							
 				'</td>'+
 			'</tr>';
@@ -190,7 +212,7 @@ $(document).ready(function(){
 		});
 		
 	}
-		
+	
 
 	$('#cart').on('click','.eliminar',function(){	
 		//$('.row #aeliminar').on('click','.eliminar',function(){

@@ -24,8 +24,7 @@ public class OrderAction  extends ActionSupport{
 		System.out.println("register Order was invoked");
 		
 		for (OrderDetail od : orderDetail) {
-			System.out.println("ID: "+od.getProducto().getIdProducto()+"-"+"Producto: "+
-			od.getProducto().getDescripcion()+"-Agasajado: "+od.getNombre_agasajado());
+			System.out.println("ID: "+od.getProducto().getIdProducto()+"-Agasajado: "+od.getNombre_agasajado());
 		}
 		
 		ActionContext.getContext().getSession().remove("cart");

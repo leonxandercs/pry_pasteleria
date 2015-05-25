@@ -29,6 +29,8 @@ public class ShoppingCartAction extends ActionSupport{
 	private OrderDetail orderDetail;
 	private List<OrderDetail> currentOrder=new LinkedList<OrderDetail>();
 	private int idProducto;
+	private int cantidad;
+	private double total;
 
 	
 	
@@ -80,6 +82,26 @@ public class ShoppingCartAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Action(value="updateItemCart",results={@Result(name=SUCCESS,type="json")})
+	public String update(){
+		
+		 this.currentOrder=(LinkedList<OrderDetail>) session.get("cart");
+		 
+		 for (Iterator<OrderDetail> iterator = currentOrder.iterator(); iterator.hasNext();){
+			OrderDetail obj = (OrderDetail) iterator.next();
+			OrderDetail aux=new OrderDetail();
+			aux.setProducto(new Product(this.idProducto));
+			if (obj.equals(aux)){
+				obj.setCantidad(this.cantidad);
+				System.out.println("product: "+this.idProducto+" was update");
+				break;
+			}		 
+		 }
+		 
+		return SUCCESS;
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	@Action(value="removeItemCart",results={@Result(name=SUCCESS,type="json")})
@@ -104,34 +126,41 @@ public class ShoppingCartAction extends ActionSupport{
 	
 	
 	
-
+	@SuppressWarnings("unchecked")
+	public double getTotal() {
+		this.currentOrder=(LinkedList<OrderDetail>) session.get("cart");
+		for (OrderDetail obj : currentOrder) {
+			total+=obj.getSubTotal();
+		}
+		return total;
+	}
+	
+	public void setTotal(double total) {
+		this.total = total;
+	}
 	public OrderDetail getOrderDetail() {
 		return orderDetail;
 	}
-
-
 	public void setOrderDetail(OrderDetail orderDetail) {
 		this.orderDetail = orderDetail;
 	}
-
-
 	public List<OrderDetail> getCurrentOrder() {
 		return currentOrder;
 	}
-
-
 	public void setCurrentOrder(List<OrderDetail> currentOrder) {
 		this.currentOrder = currentOrder;
 	}
-
-
 	public int getIdProducto() {
 		return idProducto;
 	}
-
-
 	public void setIdProducto(int idProducto) {
 		this.idProducto = idProducto;
+	}
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 	
 	

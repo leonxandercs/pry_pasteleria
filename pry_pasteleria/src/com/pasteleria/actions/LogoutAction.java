@@ -21,7 +21,7 @@ public class LogoutAction extends ActionSupport {
 	
 	
 	@Override
-	@Action(value="logout",results={@Result(name="success",type="redirectAction",location="layout")})
+	@Action(value="logout",results={@Result(name="success",type="redirectAction",location="logueo")})
 	public String execute() throws Exception {
 		session.invalidate();		
 		String navbar=new ServiceNavbar().getNavBarWithRol(1);
