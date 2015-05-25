@@ -195,7 +195,7 @@ $(document).ready(function(){
 				'</td>'+
 				'<td data-th="Precio">'+'S/.'+datos[i].torta.precio+'</td>'+
 				'<td data-th="Cantidad">'+
-					'<input id="txtCantidad" type="number" class="form-control text-center" value="'+datos[i].torta.cantidad+'" min="1">'+
+					'<input id="txtCantidad" type="number" class="form-control text-center" value="'+datos[i].torta.cantidad+'" min="1" max="7" >'+
 				'</td>'+
 				'<td data-th="Subtotal" class="text-center">S/.'+datos[i].torta.subTotal+'</td>'+
 				'<td class="actions" data-th="">'+

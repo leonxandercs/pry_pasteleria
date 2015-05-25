@@ -373,7 +373,7 @@ $(document).ready(function(){
 					<table class="detaAC">
 						<tr>
 							<td>Cantidad</td>
-							<td><s:textfield type="number" name="orderDetail.cantidad" min="1"/></td>
+							<td><s:textfield type="number" name="orderDetail.cantidad" min="1" max="7" /></td>
 						</tr>
 						<!-- 
 						<tr>
