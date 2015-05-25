@@ -12,7 +12,7 @@ import java.util.List;
 public class Order implements Serializable {
 	
 	private int idPedidoCabe;
-	private List<OrderDetail> detallePedido;
+	private List<OrderDetail> orderDetail;
 	private String fecha_pedido;
 	private Customer cliente;
 	private Status estado;
@@ -23,11 +23,11 @@ public class Order implements Serializable {
 	public void setIdPedidoCabe(int idPedidoCabe) {
 		this.idPedidoCabe = idPedidoCabe;
 	}
-	public List<OrderDetail> getDetallePedido() {
-		return detallePedido;
+	public List<OrderDetail> getOrderDetail() {
+		return orderDetail;
 	}
-	public void setDetallePedido(List<OrderDetail> detallePedido) {
-		this.detallePedido = detallePedido;
+	public void setOrderDetail(List<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
 	}
 	public String getFecha_pedido() {
 		return fecha_pedido;
@@ -47,7 +47,6 @@ public class Order implements Serializable {
 	public void setEstado(Status estado) {
 		this.estado = estado;
 	}
-	
 	
 	
 }

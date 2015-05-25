@@ -25,37 +25,47 @@ $(document).ready(function(){
 	});
 	 
 	function loadDetailFields(){
+		var k=0;
 		for (var i = 0; i < lista.length; i++) {
 			
 			for (var j = 0; j < datos[i].torta.cantidad; j++) {
-				$('#cartDetail tbody').append(addFieldDetail(i));
+				$('#cartDetail tbody').append(addFieldDetail(i,k));
+				k++;
 			}
 			
 		}
 	}
 	
-	function addFieldDetail(i){
+	function addFieldDetail(i,j){
 		
 		return '<tr>'+
 		'<td>'+datos[i].torta.idProducto+'</td>'+
 	    '<td>'+datos[i].torta.label+'</td>'+
-	    '<td>'+
+	    
+	    '<td style="display:none;">'+
 		'<div class="form-group has-feedback">'+
-	    '<input type="text" class="form-control" name="orderDetail.nombre_agasajado">'+
+	    '<input type="text" class="form-control" name="orderDetail['+j+'].producto.idProducto value="'+datos[i].torta.idProducto+'">'+
 	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
 		'</div>'+
 		'</td>'+
 	    
 	    '<td>'+
 		'<div class="form-group has-feedback">'+
-		'<input type="text" class="form-control" name="orderDetail.dedicatoria">'+
+	    '<input type="text" class="form-control" name="orderDetail['+j+'].nombre_agasajado">'+
+	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
+		'</div>'+
+		'</td>'+
+	    
+	    '<td>'+
+		'<div class="form-group has-feedback">'+
+		'<input type="text" class="form-control" name="orderDetail['+j+'].dedicatoria">'+
 	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
 		'</div>'+
 		'</td>'+
 	    '<td>'+
 		'<div class="form-group has-feedback">'+
 		'<div class="input-group date">'+
-		'<input type="text" class="form-control" name="orderDetail.fec_requerimiento"/>'+
+		'<input type="text" class="form-control" name="orderDetail['+j+'].fec_requerimiento"/>'+
 			'<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i>'+
 			'</span>'+
 		'</div>'+
