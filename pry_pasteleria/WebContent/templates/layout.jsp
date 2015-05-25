@@ -80,7 +80,7 @@
        var month = date.getMonth()+1;
        var day = date.getDate();
        var year=date.getFullYear();
-        
+      /*  
 	  $('.input-group.date').datepicker({
 	        language: "es",
 	        startDate: date,
@@ -89,7 +89,18 @@
 	                        day+1+'/'+month+'/'+year
 	                      ]                     
 	    });
-
+	  */
+	  
+	  $('body').delegate(".input-group.date", "focusin", function () {
+		    $(this).datepicker({
+		        language: "es",
+		        startDate: date,
+		        datesDisabled:[
+		                        day+'/'+month+'/'+year,
+		                        day+1+'/'+month+'/'+year
+		                      ]                     
+		    });
+		});
 	
        
        $('#detalle').hide();

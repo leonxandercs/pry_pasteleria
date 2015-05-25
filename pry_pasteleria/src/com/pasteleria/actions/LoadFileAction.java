@@ -15,7 +15,7 @@ import com.pasteleria.util.ByteArrayImage;
 import com.pasteleria.util.SaveFile;
 
 @ParentPackage(value="cloudedleopard")
-public class CargarArchivoAction extends ActionSupport{
+public class LoadFileAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
 	private File archivo;

@@ -19,7 +19,7 @@ import com.pasteleria.services.ServiceDough;
 import com.pasteleria.services.ServiceFilling;
 
 @ParentPackage(value="cloudedleopard")
-public class CargarCombosAction extends ActionSupport{
+public class LoadSelectorsAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
 	private List<Rol> roles;

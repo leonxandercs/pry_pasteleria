@@ -188,7 +188,7 @@ $(document).ready(function(){
 			  				{
 			  					title:"<strong> Producto</strong>",
 			  					message:" agreado al carrito",
-			  					icon:"glyphicon glyphicon-thumbs-up"
+			  					icon:"glyphicon glyphicon-shopping-cart"
 			  				},{
 			  					type:'info'
 			  				}
@@ -385,6 +385,7 @@ $(document).ready(function(){
 								</div>
 							</td>
 						</tr>
+						
 						<tr>
 							<td>Dedicatoria:</td>
 							<td>

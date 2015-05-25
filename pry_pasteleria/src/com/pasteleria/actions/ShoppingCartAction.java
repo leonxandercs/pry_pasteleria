@@ -20,7 +20,7 @@ import com.pasteleria.bean.Product;
  *
  */
 @ParentPackage(value="cloudedleopard")
-public class CarroCompraAction extends ActionSupport{
+public class ShoppingCartAction extends ActionSupport{
 
 	private static final long serialVersionUID = 1L;
 	 
