@@ -375,6 +375,7 @@ $(document).ready(function(){
 							<td>Cantidad</td>
 							<td><s:textfield type="number" name="orderDetail.cantidad" min="1"/></td>
 						</tr>
+						<!-- 
 						<tr>
 							<td>Nombre Agazajado:</td>
 							<td>
@@ -405,6 +406,7 @@ $(document).ready(function(){
 								</div>
 							</td>
 						</tr>
+						 -->
 						<tr>
 							<td><font size="5">Precio:</font></td>
 							<td><font size="6">S/.</font><font size="6" id="price">60.00</font></td>
