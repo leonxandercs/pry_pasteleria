@@ -5,8 +5,49 @@ $(document).ready(function(){
 	
 	var lista;
 	var datos=[];
-		
 	
+	
+	var logueado='false';
+	//Cosultamos al servidor si el usuario esta logueado
+	$.get("isLogged.action",function(data){
+		logueado=data.logged;
+	});
+	
+	//Si el Usuario no esta logueado lo redireccionamos al login
+	
+	/* $('#regPedido').click(function(){
+		
+	}); */
+	
+	
+	$('#formRegPedido').submit(function(event){
+		event.preventDefault();
+		if (logueado=='false')
+			window.location.href="logueo.action";
+		else{
+			
+			$.ajax({
+				url:$(this).attr('action'),
+				type:"post",
+				datatype:"json",
+				data:$(this).serialize(),
+				success:function(data){
+					$.growl(
+						{
+							title:" <strong>Pedido</strong> ",
+							message:"Registrado",
+							icon:"glyphicon glyphicon-thumbs-up"
+						},{
+							type:'success'
+					   });
+					window.location.href="seguimiento.action";
+				}
+			 });
+		}
+		return false;
+	});
+	
+
 	$('#cartDetail tbody').html('');
 	
 	 $('#setptwo').hide();
@@ -22,6 +63,10 @@ $(document).ready(function(){
 		 $('#setptwo').hide();
 		 $('#stepone').fadeIn();
 		 
+	});
+	 
+	$('#cartDetail').on('click','#skipRow',function(){
+		$(this).parent().parent().parent().parent().hide();
 	});
 	 
 	function loadDetailFields(){
@@ -44,7 +89,7 @@ $(document).ready(function(){
 	    
 	    '<td style="display:none;">'+
 		'<div class="form-group has-feedback">'+
-	    '<input type="text" class="form-control" name="orderDetail['+j+'].producto.idProducto value="'+datos[i].torta.idProducto+'">'+
+	    '<input type="text" class="form-control" name="orderDetail['+j+'].producto.idProducto" value='+datos[i].torta.idProducto+'>'+
 	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
 		'</div>'+
 		'</td>'+

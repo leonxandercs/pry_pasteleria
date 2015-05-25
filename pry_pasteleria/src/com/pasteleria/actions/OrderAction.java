@@ -2,8 +2,11 @@ package com.pasteleria.actions;
 
 import java.util.List;
 
+import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pasteleria.bean.Order;
 import com.pasteleria.bean.OrderDetail;
@@ -14,6 +17,20 @@ public class OrderAction  extends ActionSupport{
 	
 	private Order order;
 	private List<OrderDetail> orderDetail;
+	
+	@Action(value="registerOrder",results={@Result(name=SUCCESS,type="json")})
+	public String registerOrder(){
+		
+		System.out.println("register Order was invoked");
+		
+		for (OrderDetail od : orderDetail) {
+			System.out.println("ID: "+od.getProducto().getIdProducto()+"-"+"Producto: "+
+			od.getProducto().getDescripcion()+"-Agasajado: "+od.getNombre_agasajado());
+		}
+		
+		ActionContext.getContext().getSession().remove("cart");
+		return SUCCESS;
+	}
 	
 	
 	public Order getOrder() {
@@ -28,8 +45,5 @@ public class OrderAction  extends ActionSupport{
 	public void setOrderDetail(List<OrderDetail> orderDetail) {
 		this.orderDetail = orderDetail;
 	}
-	
-	
-	
 	
 }

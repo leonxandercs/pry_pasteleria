@@ -4,10 +4,9 @@
 
 <style type="text/css">
 
-        .table>tbody>tr>td, .table>tfoot>tr>td{
+.table>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;
 }
-
 input[type=number]{
 	width:60px;
 	}
@@ -47,35 +46,6 @@ background-color: white;
 	
 }
 </style>
-<script>
-
-
-$(document).ready(function(){
-	
-	
-	var logueado='false';
-	//Cosultamos al servidor si el usuario esta logueado
-	$.get("isLogged.action",function(data){
-		logueado=data.logged;
-	});
-	
-	//Si el Usuario no esta logueado lo redireccionamos al login
-	
-	$('#regPedido').click(function(){
-		if (logueado=='false')
-			window.location.href="logueo.action";
-		else{
-			alert('Su pedido ah sido registrado');
-			window.location.href="seguimiento.action";
-		}
-	});
-	
- 
-	
-});
-
-
-</script>
 
 <!-- ------------------------------------------------------------- -->
 
@@ -113,7 +83,7 @@ $(document).ready(function(){
 
 <!------------------------------------------------------------------- -- -->
 <div class="container" id="setptwo">
-<s:form theme="bootstrap" action="" acceptcharset="UTF-8" method="post">
+<s:form id="formRegPedido" theme="bootstrap" action="registerOrder" acceptcharset="UTF-8" method="post">
 
 <table class="table" id="cartDetail">
    <thead>
