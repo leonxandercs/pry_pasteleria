@@ -49,6 +49,7 @@ $(document).ready(function(){
 	
 	 $('#setptwo').hide();
 	 
+	//Actualiza las grillas de detalles luego las muestra
 	 $('#continuarSteptwo').click(function(){
 	     loadDetailFields();
 		 $('#stepone').fadeOut(1000);
@@ -56,21 +57,32 @@ $(document).ready(function(){
 		 
 	});
 	
+	 //Boton volver
 	 $('#volver').click(function(){
 		 $('#setptwo').hide();
 		 $('#stepone').fadeIn();
 		 
 	});
-	 
+	
+	//Oculta las filas al dar omitir
 	$('#cartDetail').on('click','#skipRow',function(){
-		//oculta las filas al dar omitir
 		$(this).parent().parent().parent().parent().hide();
 	});
 	
+	
+	//Evento de modificación de cantidad: actualiza la cantidad,subtotoal y total en el carrito y la sessión
 	$('#cart tbody').on('change','#txtCantidad',function(){
-		var idProd=$(this).parent().parent().children().eq(0).children().eq(0).val();
-		var cant=$(this).val();		
-		//Actualizamos la cantidad en el carrito
+		
+		//var idProd=$(this).parent().parent().children().eq(0).children().eq(0).val();
+		var idProd=$(this).parents('tr').children().eq(0).children().eq(0).val();
+		var cant=$(this).val();	
+		
+		var precio=$(this).parents('tr').children().eq(1).html();
+		precio=new String(precio).substring(3,precio.length);
+		
+		var subt=$(this).parents('tr').children().eq(3);
+			
+		//Actualizamos el carrito
 		$.ajax({
 			url:"updateItemCart",
 			type:"post",
@@ -78,6 +90,7 @@ $(document).ready(function(){
 			data:{idProducto:idProd,cantidad:cant},
 			success:function(data){
 				var num=data.total;
+				subt.html("S/."+ Math.round((precio*cant)*100)/100);
 				num=Math.round(num * 100) / 100;
 				$('.txtTotal').text(num);
 			}
@@ -85,6 +98,7 @@ $(document).ready(function(){
 		
 	});
 	
+	//Función que actualiza las grillas del carrtio
 	function loadDetailFields(){
 		$('#cartDetail tbody').html('');
 		$.getJSON('listCart.action',function(data){			
@@ -107,6 +121,7 @@ $(document).ready(function(){
 		});		
 	}
 	
+	// Crea los fields para ingresar el detalle  envía los datos como un Array al servidor mediante un POST Ajax
 	function addFieldDetail(i,j){
 		
 		return '<tr>'+
@@ -155,6 +170,7 @@ $(document).ready(function(){
 	
 	 actualizarGrillar();
 			 	 
+	//Funcion para listar el carrito con la ultima data guardada en la sessión(Actualiza todos los productos del carrito)
 	function actualizarGrillar(){
 
 		$.getJSON('listCart.action',function(data){
@@ -173,7 +189,7 @@ $(document).ready(function(){
 			$('#cart tbody').html('');
 			
 			for (var i = 0; i < lista.length; i++) {
-				//declaramos una variable producto
+				//declaramos una variable de un objeto
 				var detalle=(lista[i]);
 				
 				//var imagen='<img src="verImagen?imagenName='+detalle.producto.image_resource+'" width="200" alt="134x180"/>';
@@ -226,12 +242,10 @@ $(document).ready(function(){
 		
 	}
 	
-
-	$('#cart').on('click','.eliminar',function(){	
-		//$('.row #aeliminar').on('click','.eliminar',function(){
+	//Elimina el producto del carrito y actualiza la grilla
+	$('#cart').on('click','.eliminar',function(){			
 		var id=$(this).parent().parent().children().eq(0).children().eq(0).val();
-		//var id=$(this).parent().parent().children().eq(0).html();
-		
+		//Se elimina mediante Ajax
 		 $.ajax({
 				url:"removeItemCart.action",
 				type:"post",
