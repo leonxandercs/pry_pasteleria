@@ -137,14 +137,14 @@ $(document).ready(function(){
 	    
 	    '<td>'+
 		'<div class="form-group has-feedback">'+
-	    '<input type="text" class="form-control" name="orderDetail['+j+'].nombre_agasajado"  pattern="[A-Za-z]+" >'+
+	    '<input type="text" class="form-control" name="orderDetail['+j+'].nombre_agasajado"  pattern="[A-Za-z ]+" >'+
 	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
 		'</div>'+
 		'</td>'+
 	    
 	    '<td>'+
 		'<div class="form-group has-feedback">'+
-		'<input type="text" class="form-control" name="orderDetail['+j+'].dedicatoria" pattern="[A-Za-z]+" >'+
+		'<input type="text" class="form-control" name="orderDetail['+j+'].dedicatoria" pattern="[A-Za-z ]+" >'+
 	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
 		'</div>'+
 		'</td>'+
