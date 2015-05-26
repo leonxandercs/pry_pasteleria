@@ -56,7 +56,11 @@ public class ShoppingCartAction extends ActionSupport{
 		        	for (Iterator<OrderDetail> iter= currentOrder.iterator(); iter.hasNext();) {
 						OrderDetail obj =iter.next();
 						 if((existe=obj.equals(this.orderDetail))){
-							 obj.setCantidad(this.orderDetail.getCantidad()+obj.getCantidad());
+							 //Controlamos la máxima cantidad a 7 siempre
+							 if ((this.orderDetail.getCantidad()+obj.getCantidad())>=7)
+								obj.setCantidad(7);
+							 else
+								obj.setCantidad(this.orderDetail.getCantidad()+obj.getCantidad());
 							 break;
 						 }
 					}		

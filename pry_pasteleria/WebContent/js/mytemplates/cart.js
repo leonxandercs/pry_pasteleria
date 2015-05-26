@@ -63,6 +63,7 @@ $(document).ready(function(){
 	});
 	 
 	$('#cartDetail').on('click','#skipRow',function(){
+		//oculta las filas al dar omitir
 		$(this).parent().parent().parent().parent().hide();
 	});
 	
@@ -76,23 +77,34 @@ $(document).ready(function(){
 			datatype:"json",
 			data:{idProducto:idProd,cantidad:cant},
 			success:function(data){
-				$('.txtTotal').text(data.total);
+				var num=data.total;
+				num=Math.round(num * 100) / 100;
+				$('.txtTotal').text(num);
 			}
 		});
 		
 	});
 	
 	function loadDetailFields(){
-		
-		var k=0;
-		for (var i = 0; i < lista.length; i++) {
-			
-			for (var j = 0; j < datos[i].torta.cantidad; j++) {
-				$('#cartDetail tbody').append(addFieldDetail(i,k));
-				k++;
+		$('#cartDetail tbody').html('');
+		$.getJSON('listCart.action',function(data){			
+			lista=data.currentOrder;
+			var k=0;
+			for (var i = 0; i < lista.length; i++) {
+				var detalle=(lista[i]);
+				 datos[i]={"torta":{
+						"idProducto":detalle.producto.idProducto,
+						"label":detalle.producto.descripcion,
+						"cantidad":detalle.cantidad
+			           }
+		     		 };	
+				for (var j = 0; j < datos[i].torta.cantidad; j++) {
+					$('#cartDetail tbody').append(addFieldDetail(i,k));
+					k++;
+				}
+				
 			}
-			
-		}
+		});		
 	}
 	
 	function addFieldDetail(i,j){
@@ -147,6 +159,7 @@ $(document).ready(function(){
 
 		$.getJSON('listCart.action',function(data){
 			total=data.total;
+			total=Math.round(total * 100) / 100;
 			$('.txtTotal').text(total);//setteamos el total al campo para que se muestre
 			
 			lista=data.currentOrder;		

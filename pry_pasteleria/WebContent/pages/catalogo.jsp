@@ -35,6 +35,7 @@ $(document).ready(function(){
 		       
 		  $("#myModal input[type=number]").change(function(){
 		        var number=this.value*precio;
+		        number=Math.round(number * 100) / 100;
 		        if (validatenumber()) {
 		          subtotal.text(number);
 		        };
