@@ -25,6 +25,8 @@ public class OrderAction  extends ActionSupport{
 	private Order order;
 	private List<OrderDetail> orderDetail;
 	
+	
+	
 	@Action(value="registerOrder",results={@Result(name=SUCCESS,type="json")})
 	public String registerOrder(){
 		
@@ -34,10 +36,9 @@ public class OrderAction  extends ActionSupport{
 			this.order=new Order();
 			//Recuperams el  Usuairo Logueado
 			User u=(User) session.get("user");
-			System.out.println(u.getIdUsuario());
-			
+
+			//Asignamos el id al Cliente que registra el pedido(en observación)
 			if (u.getRol().getIdRol()==2) {
-				//Asignamos el id al Cliente que registra el pedido(en observación)
 				this.order.setCliente(new Customer(u.getIdUsuario()));
 			}else{
 				this.order.setCliente(new Customer("C0001"));
@@ -50,11 +51,6 @@ public class OrderAction  extends ActionSupport{
 				System.out.println("Registro correcto");
 			}
 			
-			
-			for (OrderDetail od : orderDetail) {
-				System.out.println("ID: "+od.getProducto().getIdProducto()+"-Agasajado: "+od.getNombre_agasajado()+
-				od.getPrecioUnidad());
-			}
 			ActionContext.getContext().getSession().remove("cart");
 			
 		} catch (Exception e) {
