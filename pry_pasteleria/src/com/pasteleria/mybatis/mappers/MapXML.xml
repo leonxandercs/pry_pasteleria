@@ -70,4 +70,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<association property="relleno" resultMap="fillingMap" />
 	</resultMap>
 	
+	<resultMap type="com.pasteleria.bean.Status" id="statusMap">
+		<id property="idEstado" column="idEstado" javaType="int"/>
+		<result property="descripcion" column="descripcion" javaType="string"/>
+	</resultMap>
+	
+	<resultMap type="com.pasteleria.bean.Order" id="orderMap">
+		<id property="idPedidoCabe" column="idPedidoCabe" javaType="string" />
+		<result property="fechaPedido" column="fechaPedido" javaType="string"/>
+		<result property="" column="fechaFinPedido" javaType="string"/>
+		<association property="cliente" resultMap="customerMap"/>
+		<association property="estado" resultMap="statusMap" />
+	</resultMap>
+	
+	<resultMap type="com.pasteleria.bean.OrderDetail" id="orderDetailMap">
+		<result property="precioUnidad" column="precioUnidad" javaType="double"/>
+		<result property="dedicatoria" column="dedicatoria" javaType="string"/>
+		<result property="nombre_agasajado" column="nombre_agasajado" javaType="string"/>
+		<result property="fec_requerimiento" column="fecha_requerimiento" javaType="string"/>
+		<association property="pedidoCabe" resultMap="orderMap"/>
+		<association property="producto" resultMap="productMap"/>
+	</resultMap>
+	
 </mapper>

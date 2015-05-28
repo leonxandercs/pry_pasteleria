@@ -11,12 +11,14 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class OrderDetail implements Serializable{
 	
-	private int idPedidoCabe;
+	private Order pedidoCabe;
 	private Product producto;
+	private double precioUnidad;
 	private int cantidad;
 	private String dedicatoria;
 	private String nombre_agasajado;
 	private String fec_requerimiento;
+	
 	
 	//Sobrescribimos el Metodo Equals
 	@Override
@@ -29,11 +31,19 @@ public class OrderDetail implements Serializable{
 		return this.cantidad*this.producto.getPrecio();
 	}
 	
-	public int getIdPedidoCabe() {
-		return idPedidoCabe;
+	
+	
+	public Order getPedidoCabe() {
+		return pedidoCabe;
 	}
-	public void setIdPedidoCabe(int idPedidoCabe) {
-		this.idPedidoCabe = idPedidoCabe;
+	public void setPedidoCabe(Order pedidoCabe) {
+		this.pedidoCabe = pedidoCabe;
+	}
+	public double getPrecioUnidad() {
+		return precioUnidad;
+	}
+	public void setPrecioUnidad(double precioUnidad) {
+		this.precioUnidad = precioUnidad;
 	}
 	public Product getProducto() {
 		return producto;

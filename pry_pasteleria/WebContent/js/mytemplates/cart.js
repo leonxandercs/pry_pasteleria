@@ -31,13 +31,13 @@ $(document).ready(function(){
 				success:function(data){
 					$.growl(
 						{
-							title:" <strong>Pedido</strong> ",
-							message:"Registrado",
+							title:" <strong>Pedido: "+data.order.idPedidoCabe+"</strong> ",
+							message:"Registrado exitosamente..!",
 							icon:"glyphicon glyphicon-thumbs-up"
 						},{
 							type:'success'
 					   });
-					window.location.href="seguimiento.action";
+					setTimeout(function(){window.location.href="seguimiento.action";},3000);
 				}
 			 });
 		}
@@ -109,7 +109,8 @@ $(document).ready(function(){
 				 datos[i]={"torta":{
 						"idProducto":detalle.producto.idProducto,
 						"label":detalle.producto.descripcion,
-						"cantidad":detalle.cantidad
+						"cantidad":detalle.cantidad,
+						"precio":detalle.producto.precio
 			           }
 		     		 };	
 				for (var j = 0; j < datos[i].torta.cantidad; j++) {
@@ -130,7 +131,14 @@ $(document).ready(function(){
 	    
 	    '<td style="display:none;">'+
 		'<div class="form-group has-feedback">'+
-	    '<input type="text" class="form-control" name="orderDetail['+j+'].producto.idProducto" value='+datos[i].torta.idProducto+'>'+
+	    '<input type="text" class="form-control" name="orderDetail['+j+'].producto.idProducto" value='+datos[i].torta.idProducto+' />'+
+	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
+		'</div>'+
+		'</td>'+
+		
+		'<td style="display:none;">'+
+		'<div class="form-group has-feedback">'+
+	    '<input type="text" class="form-control" name="orderDetail['+j+'].producto.precio" value='+datos[i].torta.precio+' />'+
 	    '<span	class="glyphicon glyphicon-ok form-control-feedback"></span>'+
 		'</div>'+
 		'</td>'+

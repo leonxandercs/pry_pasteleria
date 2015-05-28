@@ -10,10 +10,13 @@ import java.io.Serializable;
 public class Customer extends User implements Serializable {
 
 	private String fecha_registro;
-	//private String categoria;
 	
 	public Customer() {
 		super();
+	}
+	
+	public Customer(String idcliente) {
+		this.setIdUsuario(idcliente);
 	}
 	
 	public String getFecha_registro() {

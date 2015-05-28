@@ -11,29 +11,29 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Order implements Serializable {
 	
-	private int idPedidoCabe;
-	private List<OrderDetail> orderDetail;
-	private String fecha_pedido;
+	private String idPedidoCabe;
 	private Customer cliente;
+	private String fechaPedido;
+	private String fechaFinPedido;
 	private Status estado;
+	private List<OrderDetail> orderDetail;
 	
-	public int getIdPedidoCabe() {
-		return idPedidoCabe;
+	
+	
+	public Order() {
+		super();
 	}
-	public void setIdPedidoCabe(int idPedidoCabe) {
+
+	public Order(String idPedidoCabe) {
+		super();
 		this.idPedidoCabe = idPedidoCabe;
 	}
-	public List<OrderDetail> getOrderDetail() {
-		return orderDetail;
+	
+	public String getIdPedidoCabe() {
+		return idPedidoCabe;
 	}
-	public void setOrderDetail(List<OrderDetail> orderDetail) {
-		this.orderDetail = orderDetail;
-	}
-	public String getFecha_pedido() {
-		return fecha_pedido;
-	}
-	public void setFecha_pedido(String fecha_pedido) {
-		this.fecha_pedido = fecha_pedido;
+	public void setIdPedidoCabe(String idPedidoCabe) {
+		this.idPedidoCabe = idPedidoCabe;
 	}
 	public Customer getCliente() {
 		return cliente;
@@ -41,12 +41,32 @@ public class Order implements Serializable {
 	public void setCliente(Customer cliente) {
 		this.cliente = cliente;
 	}
+	public String getFechaPedido() {
+		return fechaPedido;
+	}
+	public void setFechaPedido(String fechaPedido) {
+		this.fechaPedido = fechaPedido;
+	}
+	public String getFechaFinPedido() {
+		return fechaFinPedido;
+	}
+	public void setFechaFinPedido(String fechaFinPedido) {
+		this.fechaFinPedido = fechaFinPedido;
+	}
 	public Status getEstado() {
 		return estado;
 	}
 	public void setEstado(Status estado) {
 		this.estado = estado;
 	}
+	public List<OrderDetail> getOrderDetail() {
+		return orderDetail;
+	}
+	public void setOrderDetail(List<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+	
+	
 	
 	
 }

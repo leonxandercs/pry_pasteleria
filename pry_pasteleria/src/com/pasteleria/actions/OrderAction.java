@@ -1,6 +1,7 @@
 package com.pasteleria.actions;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -8,12 +9,18 @@ import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pasteleria.bean.Customer;
 import com.pasteleria.bean.Order;
 import com.pasteleria.bean.OrderDetail;
+import com.pasteleria.bean.User;
+import com.pasteleria.services.HasServiceOrder;
+import com.pasteleria.services.HasServiceOrderDetail;
 
 @ParentPackage(value="cloudedleopard")
 public class OrderAction  extends ActionSupport{
 	private static final long serialVersionUID = 1L;
+	
+	private Map<String, Object> session=ActionContext.getContext().getSession();
 	
 	private Order order;
 	private List<OrderDetail> orderDetail;
@@ -22,12 +29,38 @@ public class OrderAction  extends ActionSupport{
 	public String registerOrder(){
 		
 		System.out.println("register Order was invoked");
-		
-		for (OrderDetail od : orderDetail) {
-			System.out.println("ID: "+od.getProducto().getIdProducto()+"-Agasajado: "+od.getNombre_agasajado());
+		try {
+			
+			this.order=new Order();
+			//Recuperams el  Usuairo Logueado
+			User u=(User) session.get("user");
+			System.out.println(u.getIdUsuario());
+			
+			if (u.getRol().getIdRol()==2) {
+				//Asignamos el id al Cliente que registra el pedido(en observación)
+				this.order.setCliente(new Customer(u.getIdUsuario()));
+			}else{
+				this.order.setCliente(new Customer("C0001"));
+			}
+			
+			//Registramos el pedido y obtenemos el Codigo del Pedido Generado
+			this.order.setIdPedidoCabe(new HasServiceOrder().create(this.order));
+			int salida=new HasServiceOrderDetail().createfromList(this.order.getIdPedidoCabe(),this.orderDetail);
+			if (salida>0) {
+				System.out.println("Registro correcto");
+			}
+			
+			
+			for (OrderDetail od : orderDetail) {
+				System.out.println("ID: "+od.getProducto().getIdProducto()+"-Agasajado: "+od.getNombre_agasajado()+
+				od.getPrecioUnidad());
+			}
+			ActionContext.getContext().getSession().remove("cart");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		ActionContext.getContext().getSession().remove("cart");
 		return SUCCESS;
 	}
 	

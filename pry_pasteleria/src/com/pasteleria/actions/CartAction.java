@@ -58,7 +58,7 @@ public class CartAction extends ActionSupport{
 		        this.orderDetail=mapper.readValue(json,OrderDetail.class);
 		        //enviar response type json
 		        System.out.println("se agrego al Carrito");
-		        System.out.println("Pedido: "+orderDetail.getIdPedidoCabe());
+		        System.out.println("Pedido: "+orderDetail.getPedidoCabe().getIdPedidoCabe());
 		        System.out.println("Producto: "+orderDetail.getProducto().getIdProducto()+"-"+orderDetail.getProducto().getDescripcion());
 		        System.out.println("Cantidad: "+orderDetail.getCantidad());
 		        System.out.println("Dedicatoria: "+orderDetail.getDedicatoria());

@@ -139,6 +139,7 @@ public class ShoppingCartAction extends ActionSupport{
 		return total;
 	}
 	
+	
 	public void setTotal(double total) {
 		this.total = total;
 	}

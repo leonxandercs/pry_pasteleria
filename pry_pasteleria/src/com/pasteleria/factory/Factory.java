@@ -7,6 +7,8 @@ import com.pasteleria.interfaces.DoughDAO;
 import com.pasteleria.interfaces.EmployedDAO;
 import com.pasteleria.interfaces.FillingDAO;
 import com.pasteleria.interfaces.NavbarDAO;
+import com.pasteleria.interfaces.OrderDAO;
+import com.pasteleria.interfaces.OrderDetailDAO;
 import com.pasteleria.interfaces.ProductDAO;
 import com.pasteleria.interfaces.RolDAO;
 import com.pasteleria.interfaces.StatusDAO;
@@ -28,6 +30,8 @@ public abstract class Factory {
 	public abstract DoughDAO getDoughDAO();
 	public abstract FillingDAO getFillingDAO();
 	public abstract ProductDAO getProductDAO();
+	public abstract OrderDAO getOrderDAO();
+	public abstract OrderDetailDAO getOrderDetailDAO();
 	
 	
 	public static Factory  getTipo(int tipo){

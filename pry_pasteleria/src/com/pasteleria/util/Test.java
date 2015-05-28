@@ -1,5 +1,6 @@
 package com.pasteleria.util;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,9 +12,14 @@ import com.pasteleria.bean.Customer;
 import com.pasteleria.bean.Dough;
 import com.pasteleria.bean.Employed;
 import com.pasteleria.bean.Filling;
+import com.pasteleria.bean.Order;
+import com.pasteleria.bean.OrderDetail;
 import com.pasteleria.bean.Product;
 import com.pasteleria.bean.Rol;
 import com.pasteleria.bean.User;
+import com.pasteleria.services.HasServiceOrder;
+import com.pasteleria.services.HasServiceOrderDetail;
+import com.pasteleria.services.HasServiceRol;
 import com.pasteleria.services.ServiceCategory;
 import com.pasteleria.services.ServiceCoverage;
 import com.pasteleria.services.ServiceCustomer;
@@ -149,11 +155,61 @@ public class Test {
 		c.setDescripcion("Sin cobertura");
 		
 		int salida=new ServiceCoverage().update(c);*/
-		
+		/*
 		List<Product> productos=new ServiceProduct().filter(0,0,0,1);
 		for (Product product : productos) {
 			System.out.println(product.getDescripcion());
-		}
+		}*/
+			try {
+				Order o=new Order();
+				Customer c=new Customer();
+				c.setIdUsuario("C0002");
+				o.setCliente(c);
+				
+				OrderDetail od=new OrderDetail();
+				od.setPedidoCabe(new Order("P00001"));
+				od.setProducto(new Product(2));
+				od.setPrecioUnidad(70.00);
+				od.setDedicatoria("feliz ucmpleaños");
+				od.setNombre_agasajado("Alexander Chavez");
+				od.setFec_requerimiento("10/10/2015");
+				
+				
+				OrderDetail od1=new OrderDetail();
+				od1.setPedidoCabe(new Order("P00001"));
+				od1.setProducto(new Product(2));
+				od1.setPrecioUnidad(70.00);
+				od1.setDedicatoria("feliz ucmpleaños");
+				od1.setNombre_agasajado("Alexander Chavez");
+				od1.setFec_requerimiento("10/10/2015");
+				
+				
+				OrderDetail od2=new OrderDetail();
+				od2.setPedidoCabe(new Order("P00001"));
+				od2.setProducto(new Product(2));
+				od2.setPrecioUnidad(70.00);
+				od2.setDedicatoria("feliz ucmpleaños");
+				od2.setNombre_agasajado("Alexander Chavez");
+				od2.setFec_requerimiento("10/10/2015");
+				
+				
+				List<OrderDetail> l=new ArrayList<OrderDetail>();
+				l.add(od);
+				l.add(od1);
+				l.add(od2);
+				o.setOrderDetail(l);
+				
+				//int salida=new HasServiceOrderDetail().create(od);
+				//System.out.println(salida);
+				
+				String s=new HasServiceOrder().create(o);
+				int salida=new HasServiceOrderDetail().createfromList(s,o.getOrderDetail());
+				System.out.println(salida);
+				
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 	}
 
 
