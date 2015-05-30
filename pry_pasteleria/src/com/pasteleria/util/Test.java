@@ -1,5 +1,6 @@
 package com.pasteleria.util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -160,7 +161,8 @@ public class Test {
 		for (Product product : productos) {
 			System.out.println(product.getDescripcion());
 		}*/
-			try {
+			
+		/*  try {
 				Order o=new Order();
 				Customer c=new Customer();
 				c.setIdUsuario("C0002");
@@ -210,8 +212,17 @@ public class Test {
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
+			*/
+		/**/
+
+		
 	}
 
 
+
+	
 	
 }
+
+
+
