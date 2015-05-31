@@ -1,35 +1,5 @@
 package com.pasteleria.util;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import org.apache.struts2.components.Bean;
-
-import com.pasteleria.bean.Category;
-import com.pasteleria.bean.Coverage;
-import com.pasteleria.bean.Customer;
-import com.pasteleria.bean.Dough;
-import com.pasteleria.bean.Employed;
-import com.pasteleria.bean.Filling;
-import com.pasteleria.bean.Order;
-import com.pasteleria.bean.OrderDetail;
-import com.pasteleria.bean.Product;
-import com.pasteleria.bean.Rol;
-import com.pasteleria.bean.User;
-import com.pasteleria.services.HasServiceOrder;
-import com.pasteleria.services.HasServiceOrderDetail;
-import com.pasteleria.services.HasServiceRol;
-import com.pasteleria.services.ServiceCategory;
-import com.pasteleria.services.ServiceCoverage;
-import com.pasteleria.services.ServiceCustomer;
-import com.pasteleria.services.ServiceDough;
-import com.pasteleria.services.ServiceEmployed;
-import com.pasteleria.services.ServiceFilling;
-import com.pasteleria.services.ServiceProduct;
-import com.pasteleria.services.ServiceUser;
-
 public class Test {
 
 	

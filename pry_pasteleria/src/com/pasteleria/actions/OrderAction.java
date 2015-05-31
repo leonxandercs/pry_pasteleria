@@ -9,7 +9,6 @@ import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.pasteleria.bean.Customer;
 import com.pasteleria.bean.Order;
 import com.pasteleria.bean.OrderDetail;
 import com.pasteleria.bean.User;

@@ -1,7 +1,6 @@
 package com.pasteleria.daos;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -9,10 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.pasteleria.bean.Order;
-import com.pasteleria.bean.OrderDetail;
 import com.pasteleria.factory.SqlServerFactory;
 import com.pasteleria.interfaces.OrderDAO;
-import com.pasteleria.services.HasServiceOrderDetail;
 
 public class SqlServerOrderDAO implements OrderDAO {
 	
