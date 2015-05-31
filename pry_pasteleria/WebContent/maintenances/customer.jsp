@@ -43,7 +43,7 @@ $(document).ready(function() {
                     { "data":"celular"}
                     
                 ]
-       , "language": {
+        	,  "language": {
            "lengthMenu": "Mostrar _MENU_ Registros por pagina",
            "zeroRecords": "No se hallaron Registros ",
            "info": "Mostrando pagina _PAGE_ de _PAGES_",
@@ -58,8 +58,8 @@ $(document).ready(function() {
                    "next":   "siguiente",       
                    "previous": "Anterior"    
                   },
-       },
-       "lengthMenu": [
+      		 }
+        	,"lengthMenu": [
 		              [5,10, 25, 50, -1], 
 		              [5,10, 25, 50, "Todo"]
 		             ]
@@ -182,11 +182,18 @@ $(document).ready(function() {
 	            // Mostramos un mensaje con la respuesta de PHP
 	            success: function(data) {
 	                $('#result').html(data);
+	            	$.growl(
+	            			{
+	            				title:" <strong>!Cambios</strong>:",
+	            				message:" <strong>Guardados</strong>",
+	            				icon:"glyphicon glyphicon-thumbs-up"
+	            			},{
+	            				type:'success'
+	            			}
+	            		  );
 	                //recargamos el DataTable
 	                table.ajax.reload();
-	                alert('Registrado');
-	                
-	            }
+	             }
 	        })        
 	        return false;
 	    }); 
@@ -220,7 +227,7 @@ $(document).ready(function() {
 			                <th>Celular</th>
 			            </tr>
 			        </thead>
-			 
+			 		<!--  
 			        <tfoot>
 			            <tr>
 			                <th>Codigo</th>
@@ -236,6 +243,7 @@ $(document).ready(function() {
 			                <th>Celular</th>
 			            </tr>
 			        </tfoot>
+			        -->
 			    </table>
 			   
 			<!--  </div>-->

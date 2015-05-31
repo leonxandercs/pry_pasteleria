@@ -12,7 +12,7 @@ import java.util.List;
 public class Order implements Serializable {
 	
 	private String idPedidoCabe;
-	private Customer cliente;
+	private User usuario;
 	private String fechaPedido;
 	private String fechaFinPedido;
 	private Status estado;
@@ -29,17 +29,19 @@ public class Order implements Serializable {
 		this.idPedidoCabe = idPedidoCabe;
 	}
 	
+	
+	
+	public User getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
+	}
 	public String getIdPedidoCabe() {
 		return idPedidoCabe;
 	}
 	public void setIdPedidoCabe(String idPedidoCabe) {
 		this.idPedidoCabe = idPedidoCabe;
-	}
-	public Customer getCliente() {
-		return cliente;
-	}
-	public void setCliente(Customer cliente) {
-		this.cliente = cliente;
 	}
 	public String getFechaPedido() {
 		return fechaPedido;

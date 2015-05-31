@@ -37,7 +37,7 @@ public class SqlServerOrderDAO implements OrderDAO {
 		Map<String,String> map=new HashMap<String,String>();
 		try {
 			//Parametros para registrar el Pedido
-			map.put("idCliente",bean.getCliente().getIdUsuario());
+			map.put("idUsuario",bean.getUsuario().getIdUsuario());
 			map.put("idPedidoCabe",idPedidoCabe);
 			//Registramos el Pedido
 			session.selectOne("orderxml.sql_insert",map);

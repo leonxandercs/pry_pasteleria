@@ -38,11 +38,7 @@ public class OrderAction  extends ActionSupport{
 			User u=(User) session.get("user");
 
 			//Asignamos el id al Cliente que registra el pedido(en observación)
-			if (u.getRol().getIdRol()==2) {
-				this.order.setCliente(new Customer(u.getIdUsuario()));
-			}else{
-				this.order.setCliente(new Customer("C0001"));
-			}
+			this.order.setUsuario(u);
 			
 			//Registramos el pedido y obtenemos el Codigo del Pedido Generado
 			this.order.setIdPedidoCabe(new HasServiceOrder().create(this.order));

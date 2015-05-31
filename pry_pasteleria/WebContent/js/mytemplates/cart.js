@@ -81,7 +81,9 @@ $(document).ready(function(){
 		precio=new String(precio).substring(3,precio.length);
 		
 		var subt=$(this).parents('tr').children().eq(3);
-			
+		
+		console.log('cambie d enumero');
+		
 		//Actualizamos el carrito
 		$.ajax({
 			url:"updateItemCart",
@@ -159,18 +161,18 @@ $(document).ready(function(){
 	    '<td>'+
 		'<div class="form-group has-feedback">'+
 		'<div class="input-group date">'+
-		'<input type="text" class="form-control" name="orderDetail['+j+'].fec_requerimiento" pattern="\\d{1,2}/\\d{1,2}/\\d{4}" />'+
+		'<input type="text" class="form-control" name="orderDetail['+j+'].fec_requerimiento" pattern="\\d{1,2}/\\d{1,2}/\\d{4}" required="true" />'+
 			'<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i>'+
 			'</span>'+
 		'</div>'+
 		'</div>'+
 	    '</td>'+
-	    '<td>'+
+	    '<td>'+/*
 	    '<div class="form-group has-feedback">'+
 	    '<div class="btn-group btn-group-xs" role="group" aria-label="Extra-small button group">'+
 	      '<button id="skipRow" type="button" class="btn btn-default">Omitir</button>'+
 	    '</div></div>'+
-	    '</td>'+
+	    '</td>'+*/
 	    '</tr>';
 	}
 	

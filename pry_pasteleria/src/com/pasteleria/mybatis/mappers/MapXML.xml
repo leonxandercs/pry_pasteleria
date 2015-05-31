@@ -79,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<id property="idPedidoCabe" column="idPedidoCabe" javaType="string" />
 		<result property="fechaPedido" column="fechaPedido" javaType="string"/>
 		<result property="" column="fechaFinPedido" javaType="string"/>
-		<association property="cliente" resultMap="customerMap"/>
+		<association property="usuario" resultMap="userMap"/>
 		<association property="estado" resultMap="statusMap" />
 	</resultMap>
 	

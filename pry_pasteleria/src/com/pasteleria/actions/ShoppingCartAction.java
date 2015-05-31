@@ -21,7 +21,6 @@ import com.pasteleria.bean.Product;
  */
 @ParentPackage(value="cloudedleopard")
 public class ShoppingCartAction extends ActionSupport{
-
 	private static final long serialVersionUID = 1L;
 	 
 	private Map<String,Object> session=(Map<String,Object>)ActionContext.getContext().getSession();
@@ -69,8 +68,6 @@ public class ShoppingCartAction extends ActionSupport{
 						currentOrder.add(orderDetail);
 					}
 					session.put("cart",currentOrder);
-					System.out.println("agregado al carrito");
-					System.out.println("Cantidad: "+orderDetail.getCantidad());
 				
 			}else{				
 				  currentOrder.add(this.orderDetail);

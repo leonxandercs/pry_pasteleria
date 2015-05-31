@@ -93,7 +93,6 @@ background-color: white;
 	    <th>Agazajado</th>
 	    <th>Dedicatoria</th>
 	    <th>Fecha Requerimiento</th>
-	    <th>Acción</th>
 	    </tr>
   </thead>
   <tbody>

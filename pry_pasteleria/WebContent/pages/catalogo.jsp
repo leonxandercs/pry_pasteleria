@@ -85,7 +85,7 @@ $(document).ready(function(){
      		 };	
 			//agregamos el producto al catalogo
 			row.append(agregaProductContainer(i,datos.torta.label, imagen, datos.torta.precio, 
-					datos.torta.cobertura,datos.torta.masa,datos.torta.relleno));
+			datos.torta.cobertura,datos.torta.masa,datos.torta.relleno));
 			
 			//le asignamos la data respectiva al container html producto
 			var currentProduct=$('.thumbnail').eq(i);
