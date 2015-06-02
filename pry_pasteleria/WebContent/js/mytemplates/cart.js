@@ -3,9 +3,16 @@
  */
 $(document).ready(function(){
 	
+	var patron = /^\d*$/; //patron de validacion numerica
 	var lista=[];
 	var datos=[];
 	var total;
+	
+	//Evita la escritura en los input[type=number] para que solo se modifique cantidad con las flechitas
+	$('#cart tbody').on('keypress','#txtCantidad',function(e){
+		e.preventDefault();
+		alert('Escritura deshabilitada, utilize los indicadores para cambiar la cantidad');
+	});
 	
 	$('#continuarSteptwo').attr('disabled',true);
 	
@@ -69,6 +76,7 @@ $(document).ready(function(){
 		$(this).parent().parent().parent().parent().hide();
 	});
 	
+
 	
 	//Evento de modificación de cantidad: actualiza la cantidad,subtotoal y total en el carrito y la sessión
 	$('#cart tbody').on('change','#txtCantidad',function(){
